@@ -1,0 +1,36 @@
+import React from 'react';
+
+export default function withCat(Component) {
+    return class extends React.Component {
+        state = {  mouse:{x: this.props.mouse.x, y: this.props.mouse.y} }
+
+        componentDidUpdate(prevProps){
+            const {mouse} = this.props;
+        
+            if (mouse.x !== prevProps.mouse.x || mouse.y !== prevProps.mouse.y) {
+                this.setState({mouse});
+            }
+        }
+
+        render(){
+            return(
+                <>
+                <Cat mouse={this.state.mouse} />
+                <Component {...this.props}/>
+            </>
+            );
+        }
+
+    }
+
+
+}
+
+class Cat extends React.Component {
+    render() {
+      const {mouse} = this.props;
+      return (
+        <img src="/cat.jpg" alt="cat" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
+      );
+    }
+  }
