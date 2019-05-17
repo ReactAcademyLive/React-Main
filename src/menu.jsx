@@ -16,9 +16,7 @@ export default class Menu extends React.Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
+    this.state = {isOpen: false};
   }
   toggle() {
     this.setState({

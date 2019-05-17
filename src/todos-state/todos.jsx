@@ -2,22 +2,29 @@ import React, { Component } from 'react';
 import FilterButtons from './filter-buttons';
 import AddTodo from './add-todo';
 import VisibleTodoList from './visible-todo-list';
+//import TodoList from './todo-list';
 import { VisibilityFilters } from './visibility-filters';
 
 
 export default class Todos extends Component {
-  state = { todos: [] , 
-            visibilityFilter: VisibilityFilters.SHOW_ALL //"SHOW_COMPLETED", "SHOW_ACTIVE" 
-          };
-  currentId=0;
+  state = {
+    todos: [{id:1, text: "Buy Milk", completed:false},
+            {id:2, text: "Walk the Dog", completed:false},
+            {id:3, text: "Learn React", completed:false}
+          ],
+    visibilityFilter: VisibilityFilters.SHOW_ALL //"SHOW_COMPLETED", "SHOW_ACTIVE" 
+  };
+  currentId = 4;
 
   toggleTodo = (id) => {
-    this.setState({todos: 
-      this.state.todos.map(todo =>
-      (todo.id === id)
-        ? {...todo, completed: !todo.completed}
-        : todo
-    ) }) 
+    this.setState({
+      todos:
+        this.state.todos.map(todo =>
+          (todo.id === id)
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        )
+    })
   };
 
   addTodo = (todoText) => (
@@ -35,9 +42,13 @@ export default class Todos extends Component {
     ))
   );
 
+  deleteTodo = (id) => (
+    this.setState({todos: this.state.todos.filter((todo) => (todo.id!==id))})
+  );
+
 
   changeFilter = (filter) => (
-    this.setState({visibilityFilter: filter}));
+    this.setState({ visibilityFilter: filter }));
 
   // sortText = (a,b) => {
   //   const textA = a.text.toUpperCase(); // ignore upper and lowercase
@@ -54,21 +65,24 @@ export default class Todos extends Component {
 
 
 
-  render = () => (
-    <div >
-      <h1>Todos (using state)</h1>
-      <AddTodo onAddTodo={this.addTodo} />
-      <FilterButtons 
-          visibilityFilter={this.state.visibilityFilter} 
-          onChangeFilter={this.changeFilter}  />  
-      <VisibleTodoList 
-              todos={this.state.todos}
-              visibilityFilter={this.state.visibilityFilter} 
-              onToggleTodo={this.toggleTodo}
-              />
-     </div>
+  render() {
+    return (
+      <div >
+        <h1>Todos (using state)</h1>
+        <AddTodo onAddTodo={this.addTodo} />
+        <FilterButtons
+          visibilityFilter={this.state.visibilityFilter}
+          onChangeFilter={this.changeFilter} />
+        <VisibleTodoList
+          todos={this.state.todos}
+          visibilityFilter={this.state.visibilityFilter}
+          onToggleTodo={this.toggleTodo}
+          onDeleteTodo={this.deleteTodo}
+        />
+      </div>
 
-  );
+    );
+  }
 }
 
 

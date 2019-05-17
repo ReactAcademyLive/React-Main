@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import TodoItem from './todo-item';
 import {ListGroup} from 'reactstrap';
 
-const TodoList = ({ todos,  onToggleTodo }) => (
+const TodoList = ({ todos,  onToggleTodo, onDeleteTodo }) => (
   <ListGroup className="my-4">
     {todos.map(todo =>
       <TodoItem
         key={todo.id}
         {...todo}
         onClick={() => onToggleTodo(todo.id)}
+        onDelete={(evt) => { evt.stopPropagation();
+                             onDeleteTodo(todo.id);                 
+                           }  
+                 }
       />
     )}
   </ListGroup>
@@ -24,6 +28,7 @@ TodoList.propTypes = {
     }).isRequired
   ).isRequired,
   onToggleTodo: PropTypes.func.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
 };
 
 export default TodoList;

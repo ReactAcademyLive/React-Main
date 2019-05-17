@@ -17,8 +17,8 @@ const getVisibleTodos = (todos, filter) => {
 }
 
 const VisibleTodoList = (props) => (
-  <TodoList todos={getVisibleTodos(props.todos,props.visibilityFilter)} 
-            onToggleTodo={props.onToggleTodo}        
+  <TodoList  {...props} 
+             todos={getVisibleTodos(props.todos,props.visibilityFilter)} 
   />
 ); 
 
@@ -31,6 +31,7 @@ VisibleTodoList.propTypes = {
     }).isRequired
   ).isRequired,
   onToggleTodo: PropTypes.func.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired
 };
 
 export default VisibleTodoList;

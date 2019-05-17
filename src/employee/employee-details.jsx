@@ -3,6 +3,7 @@ import EmployeeApi from '../employee-api/employee-api';
 import EmployeeForm from './employee-form';
 
 
+
 export default class EmployeeDetails extends React.Component {
     constructor(){
         super();
@@ -33,12 +34,17 @@ export default class EmployeeDetails extends React.Component {
         this.props.history.push("/employees");
     }
 
+    delete = async () => {
+      
+        await EmployeeApi.deleteEmployee(this.state.id);
+        this.props.history.push("/employees");
+    }
+
 
     change = (e) => {
         this.setState ({[e.target.name]: e.target.value}, 
                  this.employeeFormIsValid )
-                 ;
-        
+                 ;      
     }
 
     employeeFormIsValid = () => {
@@ -50,6 +56,14 @@ export default class EmployeeDetails extends React.Component {
   
         if (this.state.lastName.length <3 ) {
             formErrors.lastName="Last name needs three letters or more"; 
+        }
+
+        if (this.state.lastName.length > 10 ) {
+            formErrors.lastName="Last name is too long!"; 
+        }
+
+        if (this.state.lastName.length +  this.state.firstName.length> 12 ) {
+            formErrors.global="first name and lastname must have less than twelve!"; 
         }
 
         this.setState({formErrors})
@@ -67,6 +81,7 @@ export default class EmployeeDetails extends React.Component {
          </h1>
          <EmployeeForm 
              {...this.state}
+             onDelete={this.delete}
              onChange={this.change}
              onSubmit={this.submit}
              />

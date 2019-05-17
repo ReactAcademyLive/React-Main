@@ -23,7 +23,7 @@ const getVisibleTodos = (todos, filter) => {
 
 const mapDispatchToProps = dispatch => ({
   onToggleTodo: id => dispatch(toggleTodo(id)),
-  onDelete: id => null
+  onDelete: id => dispatch(deleteTodo(id))
 });
 
 export default connect(

@@ -26,6 +26,11 @@ const todos = (state = [], action) => {
         : todo
     ); 
 
+    case 'DELETE_TODO':
+      return state.filter(
+        todo => (todo.id !== action.id)
+      );
+
     default:
       return state;
   }
