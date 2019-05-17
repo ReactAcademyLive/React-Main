@@ -10,15 +10,11 @@ export default function Counter(props)  {
     React.useEffect(()=>{
         let num =ref.current.num;
         if (+window.localStorage.getItem("count")){
-            if (count !== +window.localStorage.getItem("count")){
-                setTheCount(+window.localStorage.getItem("count"));
-            }
+            setTheCount(+window.localStorage.getItem("count"));
         }  
         return () =>{
-            
             window.localStorage.setItem("count", num);
         } 
-        // eslint-disable-next-line
     }, []);
 
     function setTheCount(num){
