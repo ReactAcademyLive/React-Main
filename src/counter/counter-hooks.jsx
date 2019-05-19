@@ -5,23 +5,27 @@ import MyTextbox from './my-textbox'
 
 export default function Counter(props)  {
     const [count, setCount] =  React.useState(props.init || 1);
-    const ref = React.useRef({});
-
-    React.useEffect(()=>{
-        let num =ref.current.num;
-        if (+window.localStorage.getItem("count")){
-            setTheCount(+window.localStorage.getItem("count"));
-        }  
-        return () =>{
-            window.localStorage.setItem("count", num);
-        } 
-    }, []);
+    const ref = React.useRef(null);
 
     function setTheCount(num){
-        ref.current.num=num;
+        ref.current=num;
         setCount(num);
     }
 
+    React.useEffect(()=>{
+        if (+window.localStorage.getItem("count")){
+            setTheCount(+window.localStorage.getItem("count"));
+        }  
+        return () => {
+            saveCountToLocalStorage();
+        } ;
+    }, []);
+
+    function saveCountToLocalStorage() {
+        window.localStorage.setItem("count", ref.current);
+    }
+
+    
     function click(incr) {
         setTheCount(count + incr);
     }

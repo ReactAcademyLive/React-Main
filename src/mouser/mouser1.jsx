@@ -29,8 +29,13 @@ function withMouse(Component) {
 
 export default withMouse(Mouser); 
 
-//Higher Order Component:
-//function, takes a component, returns a parent component to push extra props down!
-
 //Higher order Function:  
 //function, that return a new function with added functionality 
+
+
+//Higher Order Component:
+//function, takes a "child" component, 
+//returns a parent component to push props down 
+//to this child component
+
+

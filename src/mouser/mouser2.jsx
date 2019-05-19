@@ -1,5 +1,6 @@
 import React from 'react';
-import withCat from './with-cat';
+//import Cat from './cat';
+//import withCat from './with-cat';
 
 
 function withMouse(Component) {
@@ -17,8 +18,6 @@ function withMouse(Component) {
             </div>
             );
         }
-
-
     }
 }
 
@@ -31,6 +30,8 @@ class Mouser extends React.Component {
     }
 }
 
-//export default  withMouse(Mouser);
 
-export default  withMouse(withCat(Mouser));
+export default withMouse(Mouser)
+
+//export default withMouse(Cat);
+//export default withMouse(withCat(Mouser));

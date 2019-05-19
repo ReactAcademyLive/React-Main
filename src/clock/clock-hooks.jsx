@@ -15,29 +15,27 @@ function getTime() {
 
 export default function Clock(props) {
   const [time, setTime] = React.useState(getTime());
-  const ref = React.useRef({});
+  const timer = React.useRef(null);
 
   function startTimer() {
-    ref.current.timer=(setInterval(() => {
-
+    timer.current=(setInterval(() => {
       setTime(getTime());
     }));
     setTime(getTime());
   }
 
   function stopTimer() {
-    clearInterval(ref.current.timer);
-    ref.current.timer = (null);
+    clearInterval(timer.current);
+    timer.current = null;
   }
 
   function timerToggler() {
-    if (ref.current.timer) {
+    if (timer.current) {
       stopTimer();
     } else {
       startTimer();
     }
   }
-
 
 
   React.useEffect(()=>{

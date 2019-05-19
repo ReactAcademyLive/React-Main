@@ -1,5 +1,5 @@
 import React from 'react';
-import Cat from './cat';
+//import Cat from './cat';
 
 
 class Mouse extends React.Component {
@@ -12,7 +12,7 @@ class Mouse extends React.Component {
   render() {
     return (
       <div style={{ height: "500px" }} onMouseMove={this.handleMouseMouve} >
-        {this.props.render(this.state)}
+        {this.props.children(this.state)}
       </div>
     );
   }
@@ -22,13 +22,9 @@ class Mouse extends React.Component {
 class Mouser extends React.Component {
   render() {
     return (
-      <Mouse render={
-        mouse => <>
-          <h1>The position is: ({mouse.x}, {mouse.y})</h1>
-          <Cat mouse={mouse} />
-        </>
-      }
-      />
+      <Mouse>
+        {mouse => <h1>The position is: ({mouse.x}, {mouse.y})</h1>  }
+      </Mouse>
     );
   }
 }
@@ -39,8 +35,8 @@ export default Mouser;
       //               (hence the name)
       //variation two: do a more complex render where you push the data
       //               down to Cat also.
-//<>
-//  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
-//  <Cat mouse={mouse} />
-//</>
+          //<>
+          //  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
+          //  <Cat mouse={mouse} />
+          //</>
 

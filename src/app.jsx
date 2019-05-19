@@ -12,7 +12,7 @@ import NotFound from './404';
 import Todos from './todos-redux/todos';
 import Reddits from "./reddit/reddits";
 import Clock from './clock/clock-hooks';
-import Mouser from './mouser/mouser3';
+import Mouser from './mouser/mouser2';
 //import { CSSTransition, TransitionGroup } from 'react-transition-group';
 //import About from './about/about';
 const About = React.lazy(() => import('./about/about'));
