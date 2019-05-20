@@ -1,6 +1,6 @@
 import React from 'react';
-import MyButton from './my-button';
-import MyTextbox from './my-textbox'
+import MyButton from '../my-button';
+import MyTextbox from '../my-textbox'
 
 
 export default function Counter(props)  {

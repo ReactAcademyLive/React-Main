@@ -8,10 +8,7 @@ import { VisibilityFilters } from './visibility-filters';
 
 export default class Todos extends Component {
   state = {
-    todos: [{id:1, text: "Buy Milk", completed:false},
-            {id:2, text: "Walk the Dog", completed:false},
-            {id:3, text: "Learn React", completed:false}
-          ],
+    todos: [],
     visibilityFilter: VisibilityFilters.SHOW_ALL //"SHOW_COMPLETED", "SHOW_ACTIVE" 
   };
   currentId = 4;
@@ -27,11 +24,11 @@ export default class Todos extends Component {
     })
   };
 
-  addTodo = (todoText) => (
-    this.setState((prevState) => (
+  addTodo = (todoText) => {
+    this.setState( 
       {
         todos: [
-          ...prevState.todos,
+          ...this.state.todos,
           {
             id: this.currentId++,
             text: todoText,
@@ -39,35 +36,14 @@ export default class Todos extends Component {
           }
         ]
       }
-    ))
-  );
+    );
+  };
 
-  deleteTodo = (id) => (
-    this.setState({todos: this.state.todos.filter((todo) => (todo.id!==id))})
-  );
-
-
-  changeFilter = (filter) => (
-    this.setState({ visibilityFilter: filter }));
-
-  // sortText = (a,b) => {
-  //   const textA = a.text.toUpperCase(); // ignore upper and lowercase
-  //   const textB = b.text.toUpperCase(); // ignore upper and lowercase
-  //   if (textA < textB) {
-  //     return -1;
-  //   }
-  //   if (textA > textB) {
-  //     return 1;
-  //   }
-  //   // names must be equal
-  //   return 0;
-  // }
-
-
+  changeFilter = (filter) => (this.setState({ visibilityFilter: filter }));
 
   render() {
     return (
-      <div >
+      <div>
         <h1>Todos (using state)</h1>
         <AddTodo onAddTodo={this.addTodo} />
         <FilterButtons
@@ -77,10 +53,8 @@ export default class Todos extends Component {
           todos={this.state.todos}
           visibilityFilter={this.state.visibilityFilter}
           onToggleTodo={this.toggleTodo}
-          onDeleteTodo={this.deleteTodo}
         />
       </div>
-
     );
   }
 }

@@ -13,7 +13,7 @@ function getTime() {
 }
 
 
-export default class Clock extends React.PureComponent {
+export default class Clock extends React.Component {
    
     state = {
         time: getTime()
@@ -25,9 +25,9 @@ export default class Clock extends React.PureComponent {
         this.timerRef = setInterval(() => {
             //console.log('tick');
             this.setState({time: getTime()});
-        });
+        },1000);
 
-        this.setState({time: getTime()});
+       // this.setState({time: getTime()});
     }
 
     stopTimer = () => {
@@ -55,12 +55,12 @@ export default class Clock extends React.PureComponent {
     //     console.log("tick");
     // }
 
-    componentWillUnmount = () => {
-        this.stopTimer();
-    }
+    // componentWillUnmount = () => {
+    //     this.stopTimer();
+    // }
 
     render = () => {
-        console.log(this.state.time);
+        //console.log(this.state.time);
         return (
             <>
                 <Button color="primary" onClick={this.timerToggler}>

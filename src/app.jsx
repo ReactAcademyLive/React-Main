@@ -1,21 +1,21 @@
 import React from 'react';
-import Counter from './counter/counter-hooks';
+import Counter from './counter/counter';
 import { Container } from 'reactstrap';
 import Menu from './menu';
 import Footer from './footer';
 import Home from './home/home';
 import './custom.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Employees from './employee/employees';
-import EmployeeDetails from './employee/employee-details';
+import Employees from './employees/employees';
+import EmployeeDetails from './employee-details/employee-details';
 import NotFound from './404';
-import Todos from './todos-redux/todos';
+import Todos from './todos-state/todos';
 import Reddits from "./reddit/reddits";
-import Clock from './clock/clock-hooks';
-import Mouser from './mouser/mouser2';
+import Clock from './clock/clock';
+import Mouser from './mouser/mouser';
 //import { CSSTransition, TransitionGroup } from 'react-transition-group';
-//import About from './about/about';
-const About = React.lazy(() => import('./about/about'));
+import About from './about/about';
+//const About = React.lazy(() => import('./about/about'));
 
 //npm install node-sass bootstrap reactstrap
 //npm install react-icons 
@@ -27,7 +27,7 @@ export default class App extends React.Component {
       <BrowserRouter >
         <Menu />
         <Container>
-          <React.Suspense fallback={<h1>Loading...</h1>}   >
+          {/* <React.Suspense fallback={<h1>Loading...</h1>}   > */}
             <Switch >
               <Route path='/' exact component={Home} />
               <Route path='/about' component={About} />
@@ -46,7 +46,7 @@ export default class App extends React.Component {
               <Route component={NotFound} />
             </Switch>
             <Footer />
-          </React.Suspense>
+          {/* </React.Suspense> */}
         </Container>
       </BrowserRouter>
     );

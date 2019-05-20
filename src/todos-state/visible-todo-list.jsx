@@ -31,7 +31,7 @@ VisibleTodoList.propTypes = {
     }).isRequired
   ).isRequired,
   onToggleTodo: PropTypes.func.isRequired,
-  onDeleteTodo: PropTypes.func.isRequired
+ // onDeleteTodo: PropTypes.func.isRequired
 };
 
 export default VisibleTodoList;

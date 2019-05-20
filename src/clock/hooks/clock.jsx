@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from 'reactstrap';
+import React from './node_modules/react';
+import { Button } from './node_modules/reactstrap';
 
 
 function getTime() {

@@ -1,7 +1,6 @@
 import React from 'react';
 //import Cat from './cat';
 
-
 class Mouse extends React.Component {
   state = { x: 0, y: 0 }
 
@@ -18,7 +17,6 @@ class Mouse extends React.Component {
   }
 }
 
-
 class Mouser extends React.Component {
   render() {
     return (
@@ -30,6 +28,10 @@ class Mouser extends React.Component {
 }
 
 export default Mouser;
+
+
+//render props  (push the function in at prop that is called "render")
+//function as a child (push the function in children)
 
       //variation one: instead of children, use a prop called "render"
       //               (hence the name)

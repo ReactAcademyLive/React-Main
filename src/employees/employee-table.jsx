@@ -1,11 +1,9 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import { FaRegTrashAlt } from 'react-icons/fa';
-import EmployeeContext from './employee-context';
+// import { FaRegTrashAlt } from 'react-icons/fa';
 
 const EmployeeTable = (props) => {
-    const context = React.useContext(EmployeeContext)
     return (<Table striped>
         <thead>
             <tr>
@@ -16,16 +14,16 @@ const EmployeeTable = (props) => {
             </tr>
         </thead>
         <tbody>
-            {context.employees.map(emp =>
+            {props.employees.map(emp =>
                 <tr key={emp.id} >
                     <td><Link to={`/employee/${emp.id}`}><Button color="primary"  >{emp.id}</Button></Link></td>
                     <td className="align-middle">{emp.firstName}</td>
                     <td className="align-middle">{emp.lastName}</td>
                     <td className="align-middle" >
-                       <Button color='danger'
-                           onClick={ () => context.onDelete(emp.id) }  >
+                       {/* <Button color='danger'
+                           onClick={ () => null }  >
                             <FaRegTrashAlt />  
-                       </Button> 
+                       </Button>  */}
                     </td>
                 </tr>)
             }

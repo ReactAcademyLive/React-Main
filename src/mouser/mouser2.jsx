@@ -2,18 +2,17 @@ import React from 'react';
 //import Cat from './cat';
 //import withCat from './with-cat';
 
-
 function withMouse(Component) {
     return class extends React.Component {
         state = { x: 0, y: 0 }
 
-        handleMouseMouve = (evt) => {
+        handleMouseMove = (evt) => {
             this.setState({ x: evt.clientX, y: evt.clientY });
         }
 
         render() {
             return(
-            <div style={{ height: "500px" }} onMouseMove={this.handleMouseMouve} >
+            <div style={{ height: "500px" }} onMouseMove={this.handleMouseMove} >
                 <Component {...this.props} mouse={this.state} />
             </div>
             );
@@ -29,7 +28,6 @@ class Mouser extends React.Component {
         );
     }
 }
-
 
 export default withMouse(Mouser)
 
