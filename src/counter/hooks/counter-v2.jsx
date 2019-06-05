@@ -3,7 +3,7 @@ import MyButton from '../my-button';
 import MyTextbox from '../my-textbox'
 
 
-export default function Counter(props)  {
+export default function Counter(props)  {    
     const [count, setCount] =  React.useState(props.init || 1);
     const ref = React.useRef(null);
 
@@ -17,15 +17,10 @@ export default function Counter(props)  {
             setTheCount(+window.localStorage.getItem("count"));
         }  
         return () => {
-            saveCountToLocalStorage();
+            window.localStorage.setItem("count", ref.current);
         } ;
     }, []);
-
-    function saveCountToLocalStorage() {
-        window.localStorage.setItem("count", ref.current);
-    }
-
-    
+  
     function click(incr) {
         setTheCount(count + incr);
     }

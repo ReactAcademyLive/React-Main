@@ -1,19 +1,19 @@
 import React, {useState, useEffect, useRef} from 'react';
-//import Cat from './cat';
+//import Cat from '../cat';
 
 function useMouse(div) {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   
-  function handleMouseMouve(evt)  {
+  function handleMouseMove(evt)  {
     setPos({x: evt.clientX, y: evt.clientY});
   }
 
   useEffect(() => {
     //use the div, if none then use the whole window
     const dest = (div && div.current) || window;  
-    dest.addEventListener('mousemove', handleMouseMouve);
+    dest.addEventListener('mousemove', handleMouseMove);
     return () => {
-      dest.removeEventListener('mousemove', handleMouseMouve);
+      dest.removeEventListener('mousemove', handleMouseMove);
     };
   }, [div]);
 

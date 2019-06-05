@@ -1,5 +1,5 @@
-import React from './node_modules/react';
-import { Button } from './node_modules/reactstrap';
+import React from 'react';
+import { Button } from 'reactstrap';
 
 
 function getTime() {
@@ -20,7 +20,7 @@ export default function Clock(props) {
   function startTimer() {
     timer.current=(setInterval(() => {
       setTime(getTime());
-    }));
+    }, 1000 ) );
     setTime(getTime());
   }
 

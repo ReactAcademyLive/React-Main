@@ -1,6 +1,6 @@
 import React from 'react';
-//import Cat from './cat';
-//import withCat from './with-cat';
+//import Cat from '../cat';
+//import withCat from '../with-cat';
 
 function withMouse(Component) {
     return class extends React.Component {
@@ -33,3 +33,15 @@ export default withMouse(Mouser)
 
 //export default withMouse(Cat);
 //export default withMouse(withCat(Mouser));
+
+
+
+
+//Higher order Function:  
+//function, that return a new function with added functionality 
+
+
+//Higher Order Component:
+//function, takes a "child" component, 
+//returns a parent component to push props down 
+//to this child component

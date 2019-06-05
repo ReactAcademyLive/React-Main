@@ -1,16 +1,16 @@
 import React from 'react';
-//import Cat from './cat';
+//import Cat from '../cat';
 
 class Mouse extends React.Component {
   state = { x: 0, y: 0 }
 
-  handleMouseMouve = (evt) => {
+  handleMouseMove = (evt) => {
     this.setState({ x: evt.clientX, y: evt.clientY });
   }
 
   render() {
     return (
-      <div style={{ height: "500px" }} onMouseMove={this.handleMouseMouve} >
+      <div style={{ height: "500px" }} onMouseMove={this.handleMouseMove} >
         {this.props.children(this.state)}
       </div>
     );
@@ -30,8 +30,8 @@ class Mouser extends React.Component {
 export default Mouser;
 
 
-//render props  (push the function in at prop that is called "render")
-//function as a child (push the function in children)
+//render props: push a function into a prop that is called "render"
+//function as a child:  push the same function in children
 
       //variation one: instead of children, use a prop called "render"
       //               (hence the name)

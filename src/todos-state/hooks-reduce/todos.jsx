@@ -37,7 +37,7 @@ export default function Todos() {
 
   return (
     <div >
-      <h1>Todos (using hooks and useState)</h1>
+      <h1>Todos (using hooks and useReducer)</h1>
       <AddTodo onAddTodo={addTodo} />
       <FilterButtons
         visibilityFilter={visibilityFilter}
