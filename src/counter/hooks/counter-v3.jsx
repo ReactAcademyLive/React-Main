@@ -5,49 +5,24 @@ import MyTextbox from '../my-textbox'
 
 function useStateWithLocalStorage(initial, localStorageName) {
     const [state, setState] =  React.useState(initial);
-    const ref = React.useRef();
+    const ref = React.useRef(initial);
    
-    function mySetState(newState){
+    function newSetState(newState){
         ref.current=newState;
         setState(newState);
     }
 
-    React.useEffect(()=>{
-        alert("effect1")
-       
-        return () => {
-            alert("cleanup1")
-        } ;
-    });
 
-    React.useLayoutEffect(()=>{
-        alert("effect2")
-        if (+window.localStorage.getItem(localStorageName)){
-            mySetState(+window.localStorage.getItem(localStorageName));
-        }  
-        return () => {
-            alert("cleanup2")
+    React.useEffect(()=>{
+        let savedState = +window.localStorage.getItem(localStorageName);
+        newSetState(savedState || ref.current);
+
+        return function cleanup() {
             window.localStorage.setItem(localStorageName, ref.current);
-        } ;
-    }, [localStorageName]);
+        };
+    }, [localStorageName,initial]);
 
-    React.useEffect(()=>{
-        alert("effect3")
-       
-        return () => {
-            alert("cleanup3")
-        } ;
-    });
-
-    React.useLayoutEffect(()=>{
-        alert("effect4")
-       
-        return () => {
-            alert("cleanup4")
-        } ;
-    });
-  
-    return [state,mySetState];
+    return [state, newSetState];
 }
 
 

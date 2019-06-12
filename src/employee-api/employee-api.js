@@ -3,7 +3,7 @@
 export default class EmployeeApi {
   
   static getAllEmployees() {
-    return fetch("/employees").then(resp => resp.json()) ;   
+    return fetch("/employees").then(resp => resp.json()) ;
   }
     
   static getEmployee(empId) {
@@ -11,7 +11,7 @@ export default class EmployeeApi {
   }
 
   static saveEmployee(employee) {
-    employee = {...employee}; // spread to clone object
+    //employee = {...employee}; // spread to clone object
                               //to avoid manipulating original employee.
 
     // Simulate server-side validation
@@ -23,8 +23,8 @@ export default class EmployeeApi {
     if (employee.lastName.length < minEmpNameLength) {
       throw new Error(`Last Name must be at least ${minEmpNameLength} characters.`);
     }
-
-    if (employee.id) { 
+     
+    if (employee.id) { //if id, update employee
       return fetch("/employees/" + employee.id, 
         {
           method: "PUT", 
@@ -32,7 +32,7 @@ export default class EmployeeApi {
           body: JSON.stringify(employee) // body data type must match "Content-Type" header
         }
       ); 
-    } else {
+    } else { //if no id, create employee
       return fetch("/employees" , 
         {
           method: "POST", 
@@ -49,4 +49,14 @@ export default class EmployeeApi {
                    { method: "DELETE" }
                 ); 
   }
+
+  // static async getAllEmployees() {
+  //   const resp = await fetch("/employees");
+  //   if(resp.ok) {
+  //     return resp.json();
+  //   }
+  //   throw new Error('Network response was not ok.'); 
+  // }
+
+
 }

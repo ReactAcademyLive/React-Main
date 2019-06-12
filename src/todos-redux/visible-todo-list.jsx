@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleTodo, deleteTodo} from './actions';
+import { toggleTodo /*, deleteTodo */} from './actions';
 import TodoList from './todo-list';
 import { VisibilityFilters } from './actions';
 

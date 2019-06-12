@@ -1,9 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, Button, Input } from 'reactstrap';
-//import { addTodo } from './actions'
-import { connect } from 'react-redux'
+//import { addTodo } from '../actions'
 
-function AddTodo ({ dispatch  /*onAddTodo*/ })  {
+export default function AddTodo ()  {
+  const dispatch = useDispatch();
+  //const onAddTodo = (text) => {dispatch(addTodo(_input.current.value));};
   let _input= React.createRef();
   return (
     <div>
@@ -29,7 +31,3 @@ function AddTodo ({ dispatch  /*onAddTodo*/ })  {
   )
 };
 
-//  const mapDispatchToProps= dispatch => 
-//        ({onAddTodo: (text)=>{dispatch(addTodo(text))}});
-
-export default connect()(AddTodo);

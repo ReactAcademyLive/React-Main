@@ -2,7 +2,7 @@ import React from 'react';
 import MyButton from '../my-button';
 import MyTextbox from '../my-textbox'
 
-
+//simple use of hooks.  No effects (so no save or restore of the counter value)
 export default function Counter(props)  {
     const [count, setCount] =  React.useState(props.init || 1);
     

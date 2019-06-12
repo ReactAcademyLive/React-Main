@@ -1,10 +1,12 @@
-const todos = (state = [], action) => {
+let nextTodoId = 4;
+
+export default function todos(state = [], action) {
   switch (action.type) {
     case 'ADD_TODO':
       return [
         ...state,
         {
-          id: action.id,
+          id: nextTodoId++,
           text: action.text,
           completed: false
         }
@@ -26,11 +28,8 @@ const todos = (state = [], action) => {
         : todo
     ); 
 
-
-
     default:
       return state;
   }
 }
 
-export default todos;

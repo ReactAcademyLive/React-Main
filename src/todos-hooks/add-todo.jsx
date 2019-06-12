@@ -1,9 +1,13 @@
 import React from 'react';
 import { Form, Button, Input } from 'reactstrap';
-//import { addTodo } from './actions'
-import { connect } from 'react-redux'
+import TodoContext from './todo-context';
 
-function AddTodo ({ dispatch  /*onAddTodo*/ })  {
+
+
+export default function AddTodo(props)  {
+  const context = React.useContext(TodoContext);
+  const {onAddTodo}= context;
+
   let _input= React.createRef();
   return (
     <div>
@@ -13,10 +17,9 @@ function AddTodo ({ dispatch  /*onAddTodo*/ })  {
           if (!_input.current.value.trim()) {
             return;
           }
-          dispatch({type: "ADD_TODO", text: _input.current.value});
-          //dispatch(addTodo(_input.current.value));
-          //onAddTodo(_input.current.value);
+          onAddTodo(_input.current.value);
           _input.current.value = '';
+          _input.current.focus();
         }}
       >
         <Input innerRef={_input} 
@@ -29,7 +32,3 @@ function AddTodo ({ dispatch  /*onAddTodo*/ })  {
   )
 };
 
-//  const mapDispatchToProps= dispatch => 
-//        ({onAddTodo: (text)=>{dispatch(addTodo(text))}});
-
-export default connect()(AddTodo);

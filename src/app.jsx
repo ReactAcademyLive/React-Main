@@ -1,14 +1,14 @@
 import React from 'react';
-import './custom.scss';
 import { Container } from 'reactstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Menu from './menu';
-import Footer from './footer';
+import './template/custom.scss';
+import Menu from './template/menu';
+import Footer from './template/footer';
 import Home from './home/home';
 import Counter from './counter/counter';
 import Employees from './employees/employees';
 import EmployeeDetails from './employee-details/employee-details';
-import NotFound from './404';
+import NotFound from './404/404';
 import Todos from './todos-state/todos';
 import Reddits from "./reddit/reddits";
 import Clock from './clock/clock';

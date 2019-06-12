@@ -1,5 +1,5 @@
 import React from 'react';
-import EmployeeApi from '../employee-api/employee-api';
+import EmployeeApi from '../employee-api/employee-api2';
 import EmployeeForm from './employee-form';
 
 
@@ -15,6 +15,7 @@ export default class EmployeeDetails extends React.Component {
     async componentDidMount() {
         if (this.props.match.params.id){
             let emp = await EmployeeApi.getEmployee(this.props.match.params.id)
+            console.log(emp);
             this.setState(emp);
         }   
     }
@@ -59,7 +60,7 @@ export default class EmployeeDetails extends React.Component {
     <>
          <h1>
               {(this.props.match.params.id) ? 
-              `Employee ${this.state.firstName} ${this.state.lastName}` : 
+              `Employee ${this.state.firstName} ${this.state.lastName} ` : 
               "Create Employee" 
               }
          </h1>

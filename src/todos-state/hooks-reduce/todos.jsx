@@ -2,7 +2,6 @@ import React from 'react';
 import FilterButtons from '../filter-buttons';
 import AddTodo from '../add-todo';
 import VisibleTodoList from '../visible-todo-list';
-//import TodoList from './todo-list';
 import { VisibilityFilters } from '../visibility-filters';
 
 

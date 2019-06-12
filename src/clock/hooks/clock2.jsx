@@ -19,7 +19,7 @@ export default function Clock(props) {
   const [isTimerRunning, setIsTimerRunning] =  useState(false);
 
   useInterval(() => { setTime(getTime()); },
-    isTimerRunning ? 1000 : null
+    isTimerRunning ? 100 : null
   );
 
   function timerToggler() {
@@ -27,12 +27,14 @@ export default function Clock(props) {
       setTime(getTime());
   }
 
+
   return (
-    <>
+    <div>
       <Button color="primary" onClick={timerToggler}>
         Toggle Clock
       </Button>
       <h1>{time}</h1>
-    </>
+    </div>
   );
 }
+

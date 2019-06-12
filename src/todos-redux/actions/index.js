@@ -1,27 +1,18 @@
-let nextTodoId = 4;
-export const addTodo = text => ({
-  type: 'ADD_TODO',
-  id: nextTodoId++,
-  text
-});
+export function addTodo(text) {
+  return { type:'ADD_TODO', text };
+}
 
-export const toggleTodo = id => ({
-  type: 'TOGGLE_TODO',
-  id
-});
+export function toggleTodo(id) {
+  return { type: 'TOGGLE_TODO', id };
+}
 
-export const editTodo = (id, newText) => ({
-  type: 'EDIT_TODO',
-  id,
-  text: newText
-})
+export function editTodo(id, newText) {
+  return { type: 'EDIT_TODO', id, text: newText };
+}
 
-
-
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter
-});
+export function setVisibilityFilter(filter) {
+  return { type: 'SET_VISIBILITY_FILTER', filter };
+}
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
@@ -29,3 +20,5 @@ export const VisibilityFilters = {
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
 
+//Actions describe how to do bad
+//Actions describe 

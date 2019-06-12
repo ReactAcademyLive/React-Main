@@ -3,6 +3,8 @@ import MyButton from '../my-button';
 import MyTextbox from '../my-textbox'
 
 
+
+//Use of hooks with effects. Added refs and effects.
 export default function Counter(props)  {    
     const [count, setCount] =  React.useState(props.init || 1);
     const ref = React.useRef(null);

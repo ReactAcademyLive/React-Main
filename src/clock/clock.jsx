@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button /* as Btn */ } from 'reactstrap';
+import Day from './day';
 
 
 function getTime() {
@@ -9,8 +10,18 @@ function getTime() {
         second: 'numeric'
     };
     return new Intl.DateTimeFormat
+        ('en-CA', options).format(new Date());
+}
+
+
+function getDay() {
+    const options = {
+        weekday: 'long'
+    };
+    return new Intl.DateTimeFormat
         ('en-CA', options).format(new Date())
 }
+
 
 
 export default class Clock extends React.Component {
@@ -62,12 +73,15 @@ export default class Clock extends React.Component {
     render = () => {
         //console.log(this.state.time);
         return (
-            <>
+            <div>
                 <Button color="primary" onClick={this.timerToggler}>
                     Toggle Clock
                 </Button>
                 <h1>{this.state.time}</h1>
-            </>
+                <Day day={getDay()} />
+            </div>
         );
     }
 }
+
+//const Button = React.memo(Btn)

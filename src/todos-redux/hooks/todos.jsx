@@ -1,25 +1,39 @@
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import FilterButtons from './filter-buttons';
 import AddTodo from './add-todo';
 import VisibleTodoList from './visible-todo-list';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import rootReducer from './reducers/index.js';
+import rootReducer from '../reducers/index.js';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-export default class Todos extends Component {
+export default function Todos() {
+  React.useEffect(
+    ()=> {
+      let savedTitle= document.title;
+      document.title="Todos!"
+    return () => {document.title=savedTitle;}
+    }
+  , []);
   
-  store = createStore(rootReducer,
-                     {todos:[]},        
-                     devToolsEnhancer());
+  let store = useRef( );
 
-  render = () => (
-    <Provider store={this.store}>
+  if (!store.current) {
+    store.current = createStore(
+      rootReducer,
+      { todos: [] },
+      devToolsEnhancer())
+  } 
+
+
+
+  return (
+    <Provider store={store.current}>
       <div >
-        <h1>Todos (using Redux)</h1>
-        <AddTodo  />
-        <FilterButtons   />  
-        <VisibleTodoList  />
+        <h1>Todos (using Redux and hooks)</h1>
+        <AddTodo />
+        <FilterButtons />
+        <VisibleTodoList />
       </div>
     </Provider>
   );

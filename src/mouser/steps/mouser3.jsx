@@ -33,12 +33,12 @@ export default Mouser;
 //render props: push a function into a prop that is called "render"
 //function as a child:  push the same function in children
 
-      //variation one: instead of children, use a prop called "render"
-      //               (hence the name)
-      //variation two: do a more complex render where you push the data
-      //               down to Cat also.
-          //<>
-          //  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
-          //  <Cat mouse={mouse} />
-          //</>
+//variation one: instead of children, use a prop called "render"
+//               (hence the name)
+//variation two: do a more complex render where you push the data
+//               down to Cat also.
+    //<>
+    //  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
+    //  <Cat mouse={mouse} />
+    //</>
 

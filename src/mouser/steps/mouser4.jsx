@@ -27,8 +27,10 @@ function Mouser() {
 
 export default Mouser;
 
+//Try to add the cat!  See haw easy it is!
+
 //// use the following function to link to a div
-// function ComplexMouser() {
+// function DivMouser() {
 //   const ref = useRef(null);
 //   const mouse = useMouse(ref);
 //   return ( <div ref={ref} style={{height: "400px"}} >

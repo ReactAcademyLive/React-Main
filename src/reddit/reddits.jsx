@@ -3,12 +3,22 @@ import { Provider } from 'react-redux';
 import configureStore from './redux/configure-store';
 import AsyncApp from './async-app';
 
-const store = configureStore();
 
-const Reddits = () => (
-  <Provider store={store}>
-    <AsyncApp />
-  </Provider>
-);
+const Reddits = () => {
+  React.useEffect(
+    ()=> {
+      let savedTitle= document.title;
+      document.title="Reddits!"
+    return () => {document.title=savedTitle;}
+    }
+  , []);
+
+  const store = configureStore();
+  return(
+    <Provider store={store}>
+      <AsyncApp />
+    </Provider>
+  )
+};
 
 export default Reddits;

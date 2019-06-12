@@ -1,8 +1,8 @@
 import React from 'react'
-import EmployeeApi from '../../employee-api/employee-api';
-import EmployeeTable from "./employee-table-hooks";
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import EmployeeApi from '../../employee-api/employee-api';
+import EmployeeTable from "./employee-table-hooks";
 import EmployeeContext from "./employee-context";
 
 export default function Employees() {
@@ -36,10 +36,6 @@ export default function Employees() {
     </EmployeeContext.Provider>
   );
 }
-
-
-
-
 
 
 // {

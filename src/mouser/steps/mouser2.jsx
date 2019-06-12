@@ -36,12 +36,13 @@ export default withMouse(Mouser)
 
 
 
-
+//DEFINITIONS:
 //Higher order Function:  
-//function, that return a new function with added functionality 
+//Function, takes a fn, and returns a new function that 
+//wraps the original one with added functionality 
 
 
 //Higher Order Component:
-//function, takes a "child" component, 
+//Function, takes a "child" component, 
 //returns a parent component to push props down 
 //to this child component

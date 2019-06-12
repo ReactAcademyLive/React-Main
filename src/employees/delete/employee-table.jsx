@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
- import { FaRegTrashAlt } from 'react-icons/fa';
+ import { FaRegTrashAlt, FaPenAlt } from 'react-icons/fa';
 
 const EmployeeTable = (props) => {
     console.log (props);
@@ -17,7 +17,7 @@ const EmployeeTable = (props) => {
         <tbody>
             {props.employees.map(emp =>
                 <tr key={emp.id} >
-                    <td><Link to={`/employee/${emp.id}`}><Button color="primary"  >{emp.id}</Button></Link></td>
+                                      <td><Link to={`/employee/${emp.id}`}><Button color="primary"  ><FaPenAlt /></Button></Link></td>
                     <td className="align-middle">{emp.firstName}</td>
                     <td className="align-middle">{emp.lastName}</td>
                     <td className="align-middle" >

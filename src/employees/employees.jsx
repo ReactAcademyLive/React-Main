@@ -14,7 +14,7 @@ export default class Employees extends React.Component {
 
   refreshData() {
     EmployeeApi.getAllEmployees()
-      .then(data => this.setState({ employees: data }))
+      .then(data => {this.setState({ employees: data });})
       .catch(err => console.log(err))
     // try {
     //   let data = await EmployeeApi.getAllEmployees();
