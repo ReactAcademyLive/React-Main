@@ -6,23 +6,18 @@ import MyTextbox from '../my-textbox'
 function useStateWithLocalStorage(initial, localStorageName) {
     const [state, setState] =  React.useState(initial);
     const ref = React.useRef(initial);
-   
-    function newSetState(newState){
-        ref.current=newState;
-        setState(newState);
-    }
-
+    ref.current=state;
 
     React.useEffect(()=>{
         let savedState = +window.localStorage.getItem(localStorageName);
-        newSetState(savedState || ref.current);
+        setState(savedState || ref.current);
 
         return function cleanup() {
             window.localStorage.setItem(localStorageName, ref.current);
         };
     }, [localStorageName,initial]);
 
-    return [state, newSetState];
+    return [state, setState];
 }
 
 

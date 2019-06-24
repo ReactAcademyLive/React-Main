@@ -6,10 +6,11 @@ import VisibleTodoList from '../visible-todo-list';
 import { VisibilityFilters } from '../visibility-filters';
 
 
+let currentId = 4;
+
 export default function Todos() {
   const [todos, setTodos] = React.useState([]);
   const [visibilityFilter, setVisibilityFilter] = React.useState(VisibilityFilters.SHOW_ALL);
-  const [currentId, setCurrentId] = React.useState(4);
 
   function toggleTodo(id) {
     setTodos(todos.map(todo =>
@@ -23,12 +24,11 @@ export default function Todos() {
     setTodos([
       ...todos,
       {
-        id: currentId,
+        id: currentId++,
         text: todoText,
         completed: false
       }
     ]);
-    setCurrentId(currentId + 1);
   }
 
   function changeFilter(filter) {

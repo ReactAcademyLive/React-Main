@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 
-
 function getTime() {
   const options = {
     hour: 'numeric',
@@ -13,7 +12,7 @@ function getTime() {
 }
 
 
-export default function Clock(props) {
+export default function Clock() {
   const [time, setTime] = React.useState(getTime());
   const timer = React.useRef(null);
 
@@ -36,7 +35,6 @@ export default function Clock(props) {
       startTimer();
     }
   }
-
 
   React.useEffect(()=>{
     return ()=>{

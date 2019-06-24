@@ -11,9 +11,12 @@ export default class Posts extends Component {
             <a href={post.url} >{post.title}</a>   
             { post.is_self  ? ''  :  
                 <React.Fragment> &mdash; 
-                  <a href={`https://www.reddit.com${post.permalink}`} >discussion</a> 
+                  <a href={`https://www.reddit.com${post.permalink}`} > discussion</a> 
                 </React.Fragment>   
-            }   
+            }  
+            <span className="float-right">
+              {post.ups} ups
+            </span> 
           </ListGroupItem>)
         }
       </ListGroup>

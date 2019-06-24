@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import configureStore from './redux/configure-store';
 import AsyncApp from './async-app';
 
-
 const Reddits = () => {
   React.useEffect(
     ()=> {
@@ -14,6 +13,7 @@ const Reddits = () => {
   , []);
 
   const store = configureStore();
+
   return(
     <Provider store={store}>
       <AsyncApp />

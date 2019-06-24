@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import useInterval from './use-interval';
 import { Button } from 'reactstrap';
 
-
 function getTime() {
   const options = {
     hour: 'numeric',
@@ -14,7 +13,7 @@ function getTime() {
 }
 
 
-export default function Clock(props) {
+export default function Clock() {
   const [time, setTime] = useState(getTime());
   const [isTimerRunning, setIsTimerRunning] =  useState(false);
 
@@ -26,7 +25,6 @@ export default function Clock(props) {
       setIsTimerRunning(!isTimerRunning);
       setTime(getTime());
   }
-
 
   return (
     <div>

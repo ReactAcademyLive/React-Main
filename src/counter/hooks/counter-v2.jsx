@@ -8,15 +8,11 @@ import MyTextbox from '../my-textbox'
 export default function Counter(props)  {    
     const [count, setCount] =  React.useState(props.init || 1);
     const ref = React.useRef(null);
-
-    function setTheCount(num){
-        ref.current=num;
-        setCount(num);
-    }
+    ref.current=count;
 
     React.useEffect(()=>{
         if (+window.localStorage.getItem("count")){
-            setTheCount(+window.localStorage.getItem("count"));
+            setCount(+window.localStorage.getItem("count"));
         }  
         return () => {
             window.localStorage.setItem("count", ref.current);
@@ -24,12 +20,12 @@ export default function Counter(props)  {
     }, []);
   
     function click(incr) {
-        setTheCount(count + incr);
+        setCount(count + incr);
     }
 
     function change(e) {
         if (Number.isInteger(+e.target.value)) {
-            setTheCount( +e.target.value );
+            setCount( +e.target.value );
         }
     }
 

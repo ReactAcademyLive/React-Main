@@ -9,7 +9,7 @@ import Counter from './counter/counter';
 import Employees from './employees/employees';
 import EmployeeDetails from './employee-details/employee-details';
 import NotFound from './404/404';
-import Todos from './todos-state/todos';
+import Todos from './todos-state/hooks/todos';
 import Reddits from "./reddit/reddits";
 import Clock from './clock/clock';
 import Mouser from './mouser/mouser';

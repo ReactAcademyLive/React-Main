@@ -17,14 +17,14 @@ export function invalidateSubreddit(subreddit) {
   };
 };
 
-function requestPosts(subreddit) {
+export function requestPosts(subreddit) {
   return {
     type: REQUEST_POSTS,
     subreddit
   };
 };
 
-function receivePosts(subreddit, json) {;
+export function receivePosts(subreddit, json) {;
   return {
     type: RECEIVE_POSTS,
     subreddit,
@@ -33,37 +33,36 @@ function receivePosts(subreddit, json) {;
   };
 };
 
-function fetchPosts(subreddit) {
-  return async (dispatch) => {
-    dispatch(requestPosts(subreddit));
-    try {
-      const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
-      const json = await response.json();
-     // debug.log (json);
-      dispatch(receivePosts(subreddit, json));
-    }
-    catch (e)
-    {
-      // dispatch({ type: 'error', name: 'error', value: e.message });
-    }
-  };
-};
+// function fetchPosts(subreddit) {
+//   return async (dispatch) => {
+//     dispatch(requestPosts(subreddit));
+//     try {
+//       const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
+//       const json = await response.json();
+//       dispatch(receivePosts(subreddit, json));
+//     }
+//     catch (e)
+//     {
+//       //dispatch({ type: 'error', name: 'error', value: e.message });
+//     }
+//   };
+// };
 
-function shouldFetchPosts(state, subreddit) {
-  const posts = state.postsBySubreddit[subreddit];
-  if (!posts) {
-    return true;
-  } else if (posts.isFetching) {
-    return false;
-  } else {
-    return posts.didInvalidate;
-  }
-}
+// function shouldFetchPosts(state, subreddit) {
+//   const posts = state.postsBySubreddit[subreddit];
+//   if (!posts) {
+//     return true;
+//   } else if (posts.isFetching) {
+//     return false;
+//   } else {
+//     return posts.didInvalidate;
+//   }
+// }
 
-export function fetchPostsIfNeeded(subreddit) {
-  return (dispatch, getState) => {
-    if (shouldFetchPosts(getState(), subreddit)) {
-      return  dispatch(fetchPosts(subreddit));
-    }
-  };
-};
+// export function fetchPostsIfNeeded(subreddit) {
+//   return (dispatch, getState) => {
+//     if (shouldFetchPosts(getState(), subreddit)) {
+//       return  dispatch(fetchPosts(subreddit));
+//     }
+//   };
+// };

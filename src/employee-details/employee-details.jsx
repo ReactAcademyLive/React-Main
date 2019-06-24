@@ -1,5 +1,5 @@
 import React from 'react';
-import EmployeeApi from '../employee-api/employee-api2';
+import EmployeeApi from '../employee-api/employee-api';
 import EmployeeForm from './employee-form';
 
 

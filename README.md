@@ -1,4 +1,4 @@
 React-Academy-Main
 =============
 
-Project for **React Academy**, March 2019
+Project for **React Academy**,  2019

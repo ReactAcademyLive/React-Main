@@ -6,12 +6,12 @@ import TodoContext from './todo-context';
 import reducer from "./reducer";
 import {addTodo, toggleTodo, VisibilityFilters} from "./action";
 
-//dispatch: single function schedule the changes: dispatch(action)
-//action: describes the changes we want to do to the state
-//        action.type: describes the type of change
+//dispatch: single function that schedules the changes: dispatch(action)
+//action: object that describes the changes we want to do to the state
+//  action.type: describes the type of change
 //reducer: method scheduled by the dispatch. Takes two arguments:
 //  reducer(currentState, action) : returns the new state.
-//reducers have to use the state in an immutable way.
+//reducers have to use the state in an *immutable* way.
 
 
 //actions exemples: 

@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+//import thunkMiddleware from 'redux-thunk';
+//import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-const loggerMiddleware = createLogger()
+//const loggerMiddleware = createLogger()
 
 export default function configureStore(preloadedState) {
   return createStore(
@@ -12,8 +12,8 @@ export default function configureStore(preloadedState) {
     preloadedState,
     composeWithDevTools(
       applyMiddleware(
-        thunkMiddleware,
-        loggerMiddleware
+        // thunkMiddleware,
+        // loggerMiddleware
       )
     )
   );

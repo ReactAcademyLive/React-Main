@@ -20,5 +20,5 @@ export const VisibilityFilters = {
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
 
-//Actions describe how to do bad
-//Actions describe 
+//Actions describe "What we want to do" (type) and additionnal data
+

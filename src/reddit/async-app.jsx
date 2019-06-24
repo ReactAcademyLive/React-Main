@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   selectSubreddit,
-  fetchPostsIfNeeded,
-  invalidateSubreddit
+  //fetchPostsIfNeeded,
+  invalidateSubreddit,
+  requestPosts,
+  receivePosts
 } from './redux/actions';
 import {Button} from 'reactstrap';
 import Picker from './picker';
@@ -18,20 +20,23 @@ class AsyncApp extends Component {
   }
   
   componentDidMount() {
-    const { dispatch, selectedSubreddit } = this.props;
-    dispatch(fetchPostsIfNeeded(selectedSubreddit));
+    const { /* dispatch, */  selectedSubreddit } = this.props;
+    this.fetchPostsIfNeeded(selectedSubreddit);
+    //dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
-      const { dispatch, selectedSubreddit } = this.props;
-      dispatch(fetchPostsIfNeeded(selectedSubreddit));
+      const {  /* dispatch, */  selectedSubreddit } = this.props;
+      this.fetchPostsIfNeeded(selectedSubreddit);
+      //dispatch(fetchPostsIfNeeded(selectedSubreddit));
     }
   }
 
   handleChange(nextSubreddit) {
     this.props.dispatch(selectSubreddit(nextSubreddit));
-    this.props.dispatch(fetchPostsIfNeeded(nextSubreddit));
+    this.fetchPostsIfNeeded(nextSubreddit);
+    //this.props.dispatch(fetchPostsIfNeeded(nextSubreddit));
   }
 
   handleRefreshClick(e) {
@@ -39,8 +44,37 @@ class AsyncApp extends Component {
 
     const { dispatch, selectedSubreddit } = this.props;
     dispatch(invalidateSubreddit(selectedSubreddit));
-    dispatch(fetchPostsIfNeeded(selectedSubreddit));
+    this.fetchPostsIfNeeded(selectedSubreddit,true);
+    //dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
+
+  shouldFetchPosts(subreddit, isInvalid) {
+    const posts = this.props.postsBySubreddit[subreddit];
+    if (!posts) {
+      return true;
+    } else if (posts.isFetching) {
+      return false;
+    } else {
+      return isInvalid;
+    }
+  }
+
+  async fetchPostsIfNeeded(subreddit, isInvalid) {
+    const {dispatch} = this.props;
+    if (this.shouldFetchPosts(subreddit,isInvalid)) {
+      dispatch(requestPosts(subreddit));
+      try {
+        const response = await fetch(`https://www.reddit.com2/r/${subreddit}.json`);
+        const json = await response.json();
+        dispatch(receivePosts(subreddit, json));
+      }
+      catch (e)
+      {
+       // dispatch({ type: 'error', name: 'error', value: e.message });
+      }
+    }
+  }
+
 
   render() {
     const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
@@ -95,7 +129,8 @@ function mapStateToProps(state) {
     selectedSubreddit,
     posts,
     isFetching,
-    lastUpdated
+    lastUpdated,
+    postsBySubreddit
   };
 }
 
