@@ -64,7 +64,7 @@ class AsyncApp extends Component {
     if (this.shouldFetchPosts(subreddit,isInvalid)) {
       dispatch(requestPosts(subreddit));
       try {
-        const response = await fetch(`https://www.reddit.com2/r/${subreddit}.json`);
+        const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
         const json = await response.json();
         dispatch(receivePosts(subreddit, json));
       }
