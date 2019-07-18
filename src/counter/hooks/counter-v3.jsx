@@ -9,7 +9,7 @@ function useStateWithLocalStorage(initial, localStorageName) {
     ref.current=state;
 
     React.useEffect(()=>{
-        let savedState = +window.localStorage.getItem(localStorageName);
+        let savedState = window.localStorage.getItem(localStorageName);
         setState(savedState || ref.current);
 
         return function cleanup() {
@@ -36,9 +36,9 @@ export default function Counter(props)  {
 
     return (<>
             <h1>the count is: {count} </h1>
-            <MyButton onClick={click} incr="1" />
-            <MyButton onClick={click} incr="-10" />
-            <MyButton onClick={click} incr="100" />
+            <MyButton onClick={click} incr={1} />
+            <MyButton onClick={click} incr={-10} />
+            <MyButton onClick={click} incr={100} />
             <MyTextbox value={count} onChange={change} />
         </>);
 }
