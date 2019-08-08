@@ -8,7 +8,7 @@ import MyTextBox from './my-textbox';
 
 export default function EmployeeForm (props) {
     return (
-    <Form onSubmit={(e) => { e.preventDefault();
+    <Form onSubmit={(evt) => { evt.preventDefault();
                              props.onSubmit(); }
                     } >
         <Input type="hidden"

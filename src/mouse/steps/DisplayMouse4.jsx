@@ -1,7 +1,7 @@
 import React from 'react';
 //import Cat from '../cat';
 
-class Mouse extends React.Component {
+class MouseProvider extends React.Component {
   state = { x: 0, y: 0 }
 
   handleMouseMove = (evt) => {
@@ -17,17 +17,15 @@ class Mouse extends React.Component {
   }
 }
 
-class Mouser extends React.Component {
-  render() {
-    return (
-      <Mouse>
-        {mouse => <h1>The position is: ({mouse.x}, {mouse.y})</h1>  }
-      </Mouse>
-    );
-  }
+function DisplayMouse({mouse}) {
+  return (
+    <MouseProvider>
+      { (mouse) => <h1>The mouse position is: ({mouse.x}, {mouse.y})</h1> }      
+    </MouseProvider>
+  );
 }
 
-export default Mouser;
+export default DisplayMouse;
 
 
 //render props: push a function into a prop that is called "render"

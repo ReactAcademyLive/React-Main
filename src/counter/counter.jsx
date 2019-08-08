@@ -22,9 +22,9 @@ export default class Counter extends React.Component {
         this.setState({ count: this.state.count + incr });
     }
 
-    change = (e) => {
-        if (Number.isInteger(+e.target.value)) {
-            this.setState({ count: +e.target.value });
+    change = (evt) => {
+        if (Number.isInteger(+evt.target.value)) {
+            this.setState({ count: +evt.target.value });
         }
     }
 

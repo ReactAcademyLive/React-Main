@@ -10,8 +10,8 @@ const TodoList = ({ todos, onDelete, onToggleTodo }) => (
         key={todo.id}
         {...todo}
         onClick={() => onToggleTodo(todo.id)}
-        onDelete={(e) => {e.stopPropagation();
-                          onDelete(todo.id) ; } } 
+        onDelete={(evt) => {evt.stopPropagation();
+                            onDelete(todo.id) ; } } 
       />
     )}
   </ListGroup>

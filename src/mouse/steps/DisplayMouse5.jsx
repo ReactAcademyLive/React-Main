@@ -20,17 +20,17 @@ function useMouse(div) {
   return pos;
 }
 
-function Mouser() {
+function DisplayMouse() {
   const mouse = useMouse();
   return ( <h1>The position is: ({mouse.x}, {mouse.y})</h1> );
 }
 
-export default Mouser;
+export default DisplayMouse;
 
 //Try to add the cat!  See haw easy it is!
 
 //// use the following function to link to a div
-// function DivMouser() {
+// function DivMouse() {
 //   const ref = useRef(null);
 //   const mouse = useMouse(ref);
 //   return ( <div ref={ref} style={{height: "400px"}} >

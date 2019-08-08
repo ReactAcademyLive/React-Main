@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Mouser extends React.Component {
+class DisplayMouse extends React.Component {
 	state = { x: 0, y: 0 };
 
 	handleMouseMove = (evt) => {
@@ -17,7 +17,7 @@ class Mouser extends React.Component {
 	}
 }
 
-export default Mouser;
+export default DisplayMouse;
 
 //Everything in a single component.
 //Hard to reuse this elsewhere (Need to copy paste some parts of the code)

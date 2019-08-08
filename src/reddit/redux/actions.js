@@ -41,7 +41,7 @@ export function receivePosts(subreddit, json) {;
 //       const json = await response.json();
 //       dispatch(receivePosts(subreddit, json));
 //     }
-//     catch (e)
+//     catch (err)
 //     {
 //       //dispatch({ type: 'error', name: 'error', value: e.message });
 //     }

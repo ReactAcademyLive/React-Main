@@ -28,9 +28,9 @@ export default function Counter(props)  {
         setCount(count + incr);
     }
 
-    function change(e) {
-        if (Number.isInteger(+e.target.value)) {
-            setCount( +e.target.value );
+    function change(evt) {
+        if (Number.isInteger(+evt.target.value)) {
+            setCount( +evt.target.value );
         }
     }
 

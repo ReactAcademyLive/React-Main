@@ -5,17 +5,16 @@ import EmployeeForm from './employee-form';
 
 
 export default class EmployeeDetails extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {id: 0, 
                       firstName:"", lastName:"", 
-                      formErrors:{}}
+                      formErrors:{}};
     }
     
     async componentDidMount() {
         if (this.props.match.params.id){
-            let emp = await EmployeeApi.getEmployee(this.props.match.params.id)
-            console.log(emp);
+            let emp = await EmployeeApi.getEmployee(this.props.match.params.id);
             this.setState(emp);
         }   
     }
@@ -35,8 +34,8 @@ export default class EmployeeDetails extends React.Component {
     }
 
 
-    change = (e) => {
-        this.setState ({[e.target.name]: e.target.value}, 
+    change = (evt) => {
+        this.setState ({[evt.target.name]: evt.target.value}, 
                  this.employeeFormIsValid );      
     }
 
@@ -51,7 +50,7 @@ export default class EmployeeDetails extends React.Component {
             formErrors.lastName="Last name needs three letters or more"; 
         }
 
-        this.setState({formErrors})
+        this.setState({formErrors});
         return Object.keys(formErrors).length===0;
     }
 
@@ -69,5 +68,5 @@ export default class EmployeeDetails extends React.Component {
              onChange={this.change}
              onSubmit={this.submit}
              />
-    </>
+    </>;
 }

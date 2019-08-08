@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
  import { FaRegTrashAlt, FaPenAlt } from 'react-icons/fa';
 
 const EmployeeTable = (props) => {
-    console.log (props);
     return (<Table striped>
         <thead>
             <tr>

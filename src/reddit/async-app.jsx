@@ -39,8 +39,8 @@ class AsyncApp extends Component {
     //this.props.dispatch(fetchPostsIfNeeded(nextSubreddit));
   }
 
-  handleRefreshClick(e) {
-    e.preventDefault();
+  handleRefreshClick(evt) {
+    evt.preventDefault();
 
     const { dispatch, selectedSubreddit } = this.props;
     dispatch(invalidateSubreddit(selectedSubreddit));
@@ -68,7 +68,7 @@ class AsyncApp extends Component {
         const json = await response.json();
         dispatch(receivePosts(subreddit, json));
       }
-      catch (e)
+      catch (err)
       {
        // dispatch({ type: 'error', name: 'error', value: e.message });
       }

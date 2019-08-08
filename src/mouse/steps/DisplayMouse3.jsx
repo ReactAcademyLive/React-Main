@@ -20,19 +20,16 @@ function withMouse(Component) {
     }
 }
 
-class Mouser extends React.Component {
-    render() {
-        const { x, y } = this.props.mouse;
+function DisplayMouse({mouse}) {
         return (
-            <h1>The mouse position is: ({x}, {y})</h1>
+            <h1>The mouse position is: ({mouse.x}, {mouse.y})</h1>
         );
-    }
 }
 
-export default withMouse(Mouser)
+export default withMouse(DisplayMouse)
 
 //export default withMouse(Cat);
-//export default withMouse(withCat(Mouser));
+//export default withMouse(withCat(DisplayMouse));
 
 
 
