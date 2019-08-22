@@ -10,7 +10,7 @@ import React from 'react';
     render() {
         return (
             <div style={{ height: "500px" }} onMouseMove={this.handleMouseMove} >
-                <h1>The mouse position is: ({state.x}, {state.y})</h1>
+                <h1>The mouse position is: ({this.state.x}, {this.state.y})</h1>
             </div>     
         );
     }
