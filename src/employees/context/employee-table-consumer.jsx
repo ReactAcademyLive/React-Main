@@ -1,8 +1,9 @@
 import React from "react";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import { FaRegTrashAlt } from 'react-icons/fa';
-import EmployeeContext from './employee-context';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import EmployeeContext from "./employee-context";
 
 function EmployeeTable() {
   return (
@@ -18,19 +19,25 @@ function EmployeeTable() {
             </tr>
           </thead>
           <tbody>
-            {context.employees.map(emp =>
-              <tr key={emp.id} >
-                <td><Link to={`/employee/${emp.id}`}><Button color="primary"  >{emp.id}</Button></Link></td>
+            {context.employees.map(emp => (
+              <tr key={emp.id}>
+                <td>
+                  <Link to={`/employee/${emp.id}`}>
+                    <Button color="primary">{emp.id}</Button>
+                  </Link>
+                </td>
                 <td className="align-middle">{emp.firstName}</td>
                 <td className="align-middle">{emp.lastName}</td>
-                <td className="align-middle" >
-                  <Button color='danger'
-                    onClick={() => context.onDelete(emp.id)}  >
-                    <FaRegTrashAlt />
+                <td className="align-middle">
+                  <Button
+                    color="danger"
+                    onClick={() => context.onDelete(emp.id)}
+                  >
+                    <FontAwesomeIcon icon={faTrashAlt} />
                   </Button>
                 </td>
-              </tr>)
-            }
+              </tr>
+            ))}
           </tbody>
         </Table>
       )}
@@ -39,5 +46,3 @@ function EmployeeTable() {
 }
 
 export default EmployeeTable;
-
-
