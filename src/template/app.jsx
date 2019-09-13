@@ -18,6 +18,7 @@ import StarterHooks from "../todos/redux/starter-kit/hooks/todos";
 import Reddits from "../reddit/reddits";
 import Clock from "../clock/clock";
 import Mouser from "../mouse/display-mouse";
+import SimpleContext from "../simple-context/simple-context";
 import About from "../about/about";
 //const About = React.lazy(() => import('./about/about'));
 
@@ -43,6 +44,7 @@ export default class App extends React.Component {
             <Route path="/todos/StarterHooks" component={StarterHooks} />
             <Route path="/reddits" component={Reddits} />
             <Route path="/clock" component={Clock} />
+            <Route path="/context" component={SimpleContext} />
             <Route path="/mouser" component={Mouser} />
             <Route component={NotFound} />
           </Switch>
