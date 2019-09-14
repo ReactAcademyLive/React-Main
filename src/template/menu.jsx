@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import logo from './logo.svg';
-import ToggleTodo from './toggle-todo';
+import ToggleMenu from './toggle-menu';
 
 export default class Menu extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ export default class Menu extends React.Component {
                 </NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <ToggleTodo />
+                <ToggleMenu name="Todos" link="todos" />
                 <DropdownMenu>
                   <DropdownItem tag={RRNavLink} to='/todos/ClassicState'>
                     Classic State
@@ -93,11 +93,18 @@ export default class Menu extends React.Component {
                   Clock
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink tag={RRNavLink} to='/context'>
-                  Context
-                </NavLink>
-              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+              <ToggleMenu name="Context" link="context" />
+                <DropdownMenu>
+                  <DropdownItem tag={RRNavLink} to='/context/PropDrill'>
+                    Property Drilling (no context)
+                  </DropdownItem>
+                  <DropdownItem tag={RRNavLink} to='/context/WithContext'>
+                    With Context
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+             
               <NavItem>
                 <NavLink tag={RRNavLink} to='/mouser'>
                   Mouser

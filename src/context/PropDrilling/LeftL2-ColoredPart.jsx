@@ -1,5 +1,5 @@
 import React from 'react';
-import DisplayData from './display-data';
+import DisplayData from './LeftL3-DisplayData';
 
 export default function ColoredPart(props) {
   return (

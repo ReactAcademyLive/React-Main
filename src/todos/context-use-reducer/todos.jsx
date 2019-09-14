@@ -1,10 +1,11 @@
-import React, { useReducer, useState } from "react";
-import FilterButtons from "./filter-buttons";
-import AddTodo from "./add-todo";
-import VisibleTodoList from "./visible-todo-list";
-import TodoContext from "./todo-context";
-import reducer from "./reducer";
-import { addTodo, toggleTodo, VisibilityFilters } from "./action";
+import React, { useReducer, useState } from 'react';
+import FilterButtons from './filter-buttons';
+import AddTodo from './add-todo';
+import VisibleTodoList from './visible-todo-list';
+import TodoContext from './todo-context';
+import reducer from './reducer';
+import { addTodo, toggleTodo, VisibilityFilters } from './action';
+import initialTodos from '../../../common/initial-todos';
 
 //dispatch: single function that schedules the changes: dispatch(action)
 //action: object that describes the changes we want to do to the state
@@ -18,26 +19,8 @@ import { addTodo, toggleTodo, VisibilityFilters } from "./action";
 //{type: "TOGGLE_TODO", id: 2}
 //{type: "DELETE_TODO", id: 3}
 
-const initState = [
-  {
-    id: 1,
-    text: "Buy milk",
-    completed: false
-  },
-  {
-    id: 2,
-    text: "Walk the dog",
-    completed: false
-  },
-  {
-    id: 3,
-    text: "Learn React",
-    completed: false
-  }
-];
-
 export default function Todos(props) {
-  const [todos, dispatch] = useReducer(reducer, initState);
+  const [todos, dispatch] = useReducer(reducer, initialTodos);
   const [visibilityFilter, setVisibilityFilter] = useState(
     VisibilityFilters.SHOW_ALL
   );

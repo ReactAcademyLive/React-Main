@@ -2,18 +2,17 @@ import React from "react";
 import { DropdownToggle } from "reactstrap";
 import useRouter from "./use-router";
 
-function ToggleTodo() {
+export default function ToggleMenu({name, link}) {
   const { location } = useRouter();
   return (
     <DropdownToggle
       nav
       tag="a"
-      className={location.pathname.startsWith("/todos") ? "active" : ""}
+      className={location.pathname.startsWith("/" +link) ? "active" : ""}
       caret
     >
-      Todos
+      {name}
     </DropdownToggle>
   );
 }
 
-export default ToggleTodo;
