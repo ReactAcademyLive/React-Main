@@ -23,7 +23,7 @@ export default function Counter(props) {
   let [count, setCount] = useLocalStorage(props.init || 1, 'count');
   count = +count;
 
-  function click(incr) {
+  function increment(incr) {
     setCount(count + incr);
   }
 
@@ -36,9 +36,9 @@ export default function Counter(props) {
   return (
     <>
       <h1>The count is: {count} </h1>
-      <MyButton onClick={click} incr='1' />
-      <MyButton onClick={click} incr='-10' />
-      <MyButton onClick={click} incr='100' />
+      <MyButton onIncrement={increment} incr={1} />
+      <MyButton onIncrement={increment} incr={-10} />
+      <MyButton onIncrement={increment} incr={100} />
       <MyTextbox value={count} onChange={change} />
     </>
   );

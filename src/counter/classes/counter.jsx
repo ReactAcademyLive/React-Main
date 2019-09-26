@@ -17,7 +17,7 @@ export default class Counter extends React.Component {
     window.localStorage.setItem('count', this.state.count);
   }
 
-  click = incr => {
+  increment = incr => {
     this.setState({ count: this.state.count + incr });
   };
 
@@ -32,9 +32,9 @@ export default class Counter extends React.Component {
     return (
       <>
         <h1>the count is: {count} </h1>
-        <MyButton onClick={this.click} incr='1' />
-        <MyButton onClick={this.click} incr='-10' />
-        <MyButton onClick={this.click} incr='100' />
+        <MyButton onIncrement={this.increment} incr={1} />
+        <MyButton onIncrement={this.increment} incr={-10} />
+        <MyButton onIncrement={this.increment} incr={100} />
         <MyTextbox value={count} onChange={this.change} />
       </>
     );

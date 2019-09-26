@@ -17,7 +17,7 @@ export default function Counter(props) {
     };
   }, []);
 
-  function click(incr) {
+  function increment(incr) {
     setCount(count + incr);
   }
 
@@ -30,9 +30,9 @@ export default function Counter(props) {
   return (
     <>
       <h1>the count is: {count} </h1>
-      <MyButton onClick={click} incr='1' />
-      <MyButton onClick={click} incr='-10' />
-      <MyButton onClick={click} incr='100' />
+      <MyButton onIncrement={increment} incr={1} />
+      <MyButton onIncrement={increment} incr={-10} />
+      <MyButton onIncrement={increment} incr={100} />
       <MyTextbox value={count} onChange={change} />
     </>
   );

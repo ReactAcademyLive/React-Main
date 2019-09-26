@@ -12,14 +12,14 @@ export default function EmployeeDetails(props) {
 
   React.useEffect(() => {
     async function getData(id) {
-      let emp = await EmployeeApi.getEmployee(props.match.params.id);
+      let emp = await EmployeeApi.getEmployee(id);
       setState({ ...emp, formErrors: {} });
     }
 
     if (props.match.params.id) {
-      getData();
+      getData(props.match.params.id);
     }
-  }, []);
+  }, [props.match.params.id]);
 
   React.useEffect(() => {
     employeeFormIsValid();
@@ -79,7 +79,7 @@ function isEquivalent(a, b) {
 
   // If number of properties is different,
   // objects are not equivalent
-  if (aProps.length != bProps.length) {
+  if (aProps.length !== bProps.length) {
     return false;
   }
 
