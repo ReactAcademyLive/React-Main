@@ -7,9 +7,12 @@ import useRouter from './use-router';
 import Menu from './menu';
 import Footer from './footer';
 import Home from '../home/home';
-import Counter from '../counter/counter';
+import ClassesCounter from '../counter/classes/counter';
+import HooksCounterV1 from '../counter/hooks/counter-v1';
+import HooksCounterV2 from '../counter/hooks/counter-v2';
+import HooksCounterV3 from '../counter/hooks/counter-v3';
 import Employees from '../employees/employees';
-import EmployeeDetails from '../employee-details/employee-details';
+import EmployeeDetails from '../employee-details/employee-details-hooks';
 import NotFound from '../404/404';
 import TodosClassic from '../todos/state/todos';
 import TodosContextHooks from '../todos/context-use-reducer/todos';
@@ -41,7 +44,22 @@ function Content() {
       <Switch location={item}>
         <Route path='/' exact component={Home} />
         <Route path='/about' component={About} />
-        <Route path='/counter' render={() => <Counter init={5} />} />
+        <Route
+          path='/counter/classes'
+          render={() => <ClassesCounter init={5} />}
+        />
+        <Route
+          path='/counter/hooks-v1'
+          render={() => <HooksCounterV1 init={5} />}
+        />
+        <Route
+          path='/counter/hooks-v2'
+          render={() => <HooksCounterV2 init={5} />}
+        />
+        <Route
+          path='/counter/hooks-v3'
+          render={() => <HooksCounterV3 init={5} />}
+        />
         <Route path='/employees' component={Employees} />
         <Route exact path='/employee' component={EmployeeDetails} />
         <Route path='/employee/:id' component={EmployeeDetails} />
