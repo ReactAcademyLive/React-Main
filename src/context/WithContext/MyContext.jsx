@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default React.createContext({ name: 'default', color: 'black' });
+export default React.createContext({ firstName: 'default', color: 'black' });

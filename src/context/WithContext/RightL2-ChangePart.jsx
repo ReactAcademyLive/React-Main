@@ -8,13 +8,13 @@ export default function ChangePart() {
     <div>
       <h3>Modify State (Context with Hooks)</h3>
       <ModifyDataHooks />
-      <hr></hr>
+      <hr className='mb-5'></hr>
 
       <h3>Modify State (Context Consumer)</h3>
       <ModifyDataConsumer />
-      <hr></hr>
-      
-      <h3>Modify State (PropTypes)</h3>
+      <hr className='mb-5'></hr>
+
+      <h3>Modify State (Context PropTypes)</h3>
       <ModifyDataPropType />
     </div>
   );

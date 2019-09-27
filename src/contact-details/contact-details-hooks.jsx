@@ -1,8 +1,8 @@
 import React from 'react';
-import EmployeeApi from '../employee-api/employee-api';
-import EmployeeForm from './employee-form';
+import ContactApi from '../contact-api/contact-api';
+import ContactForm from './contact-form';
 
-export default function EmployeeDetails(props) {
+export default function ContactDetails(props) {
   const [state, setState] = React.useState({
     id: 0,
     firstName: '',
@@ -12,8 +12,8 @@ export default function EmployeeDetails(props) {
 
   React.useEffect(() => {
     async function getData(id) {
-      let emp = await EmployeeApi.getEmployee(id);
-      setState({ ...emp, formErrors: {} });
+      let contact = await ContactApi.getContact(id);
+      setState({ ...contact, formErrors: {} });
     }
 
     if (props.match.params.id) {
@@ -22,27 +22,27 @@ export default function EmployeeDetails(props) {
   }, [props.match.params.id]);
 
   React.useEffect(() => {
-    employeeFormIsValid();
+    contactFormIsValid();
   });
 
   async function submit() {
-    if (!employeeFormIsValid()) {
+    if (!contactFormIsValid()) {
       return;
     }
 
-    await EmployeeApi.saveEmployee({
+    await ContactApi.saveContact({
       id: state.id,
       firstName: state.firstName,
       lastName: state.lastName
     });
-    props.history.push('/employees');
+    props.history.push('/contacts');
   }
 
   function change(evt) {
     setState({ ...state, [evt.target.name]: evt.target.value });
   }
 
-  function employeeFormIsValid() {
+  function contactFormIsValid() {
     let formErrors = {};
 
     if (state.firstName.length < 3) {
@@ -64,10 +64,10 @@ export default function EmployeeDetails(props) {
     <>
       <h1>
         {props.match.params.id
-          ? `Employee ${state.firstName} ${state.lastName} `
-          : 'Create Employee'}
+          ? `Contact ${state.firstName} ${state.lastName} `
+          : 'Create Contact'}
       </h1>
-      <EmployeeForm {...state} onChange={change} onSubmit={submit} />
+      <ContactForm {...state} onChange={change} onSubmit={submit} />
     </>
   );
 }

@@ -62,11 +62,28 @@ export default function Menu() {
               </DropdownMenu>
             </UncontrolledDropdown>
 
-            <NavItem>
-              <NavLink tag={RRNavLink} to='/employees'>
-                Employees
-              </NavLink>
-            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <ToggleMenu name='Contacts' link='contacts' />
+              <DropdownMenu>
+                <DropdownItem tag={RRNavLink} to='/contacts/hooks'>
+                  Contacts using hooks
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/contacts/class'>
+                  Contacts using classes
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <ToggleMenu name='Context' link='context' />
+              <DropdownMenu>
+                <DropdownItem tag={RRNavLink} to='/context/PropDrill'>
+                  Property Drilling (no context)
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/context/WithContext'>
+                  With Context
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
               <ToggleMenu name='Todos' link='todos' />
               <DropdownMenu>
@@ -102,17 +119,6 @@ export default function Menu() {
                 Clock
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <ToggleMenu name='Context' link='context' />
-              <DropdownMenu>
-                <DropdownItem tag={RRNavLink} to='/context/PropDrill'>
-                  Property Drilling (no context)
-                </DropdownItem>
-                <DropdownItem tag={RRNavLink} to='/context/WithContext'>
-                  With Context
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
 
             <NavItem>
               <NavLink tag={RRNavLink} to='/mouser'>

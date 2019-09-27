@@ -2,7 +2,6 @@ import React from 'react';
 import { Input } from 'reactstrap';
 import MyContext from './MyContext';
 
-
 //contextTypes only works with classes
 export default class ModifyData extends React.Component {
   static contextType = MyContext;
@@ -12,9 +11,9 @@ export default class ModifyData extends React.Component {
     return (
       <>
         <Input
-          value={ctx.name}
-          name='name'
-          placeholder='Name'
+          value={ctx.firstName}
+          name='firstName'
+          placeholder='First Name'
           onChange={ctx.onChange}
           className='mb-4'
         />

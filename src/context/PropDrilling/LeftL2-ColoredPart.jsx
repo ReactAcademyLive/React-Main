@@ -11,7 +11,7 @@ export default function ColoredPart(props) {
         padding: '5px 20px'
       }}
     >
-      <DisplayData name={props.name} color={props.color} />
+      <DisplayData firstName={props.firstName} color={props.color} />
     </div>
   );
 }

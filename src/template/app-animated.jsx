@@ -2,8 +2,8 @@ import React from 'react';
 import { Container } from 'reactstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useTransition, animated } from 'react-spring';
-import './custom.scss';
 import useRouter from './use-router';
+import './custom.scss';
 import Menu from './menu';
 import Footer from './footer';
 import Home from '../home/home';
@@ -11,8 +11,9 @@ import ClassesCounter from '../counter/classes/counter';
 import HooksCounterV1 from '../counter/hooks/counter-v1';
 import HooksCounterV2 from '../counter/hooks/counter-v2';
 import HooksCounterV3 from '../counter/hooks/counter-v3';
-import Employees from '../employees/employees';
-import EmployeeDetails from '../employee-details/employee-details-hooks';
+import ContactsHooks from '../contacts/contacts-hooks';
+import ContactsClass from '../contacts/contacts-class';
+import ContactDetails from '../contact-details/contact-details-hooks';
 import NotFound from '../404/404';
 import TodosClassic from '../todos/state/todos';
 import TodosContextHooks from '../todos/context-use-reducer/todos';
@@ -60,9 +61,11 @@ function Content() {
           path='/counter/hooks-v3'
           render={() => <HooksCounterV3 init={5} />}
         />
-        <Route path='/employees' component={Employees} />
-        <Route exact path='/employee' component={EmployeeDetails} />
-        <Route path='/employee/:id' component={EmployeeDetails} />
+
+        <Route path='/contacts/hooks' component={ContactsHooks} />
+        <Route path='/contacts/class' component={ContactsClass} />
+        <Route exact path='/contact' component={ContactDetails} />
+        <Route path='/contact/:id' component={ContactDetails} />
         <Route path='/todos/ClassicState' component={TodosClassic} />
         <Route path='/todos/ContextHooks' component={TodosContextHooks} />
         <Route path='/todos/ReduxClassic' component={ReduxClassic} />

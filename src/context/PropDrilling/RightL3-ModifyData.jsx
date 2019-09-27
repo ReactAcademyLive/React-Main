@@ -5,9 +5,9 @@ export default function ModifyData(props) {
   return (
     <>
       <Input
-        value={props.name}
-        name='name'
-        placeholder='Name'
+        value={props.firstName}
+        name='firstName'
+        placeholder='First Name'
         onChange={props.onChange}
         className='mb-4'
       />

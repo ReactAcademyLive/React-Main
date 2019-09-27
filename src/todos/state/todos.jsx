@@ -2,44 +2,38 @@ import React, { Component } from 'react';
 import FilterButtons from './filter-buttons';
 import AddTodo from './add-todo';
 import VisibleTodoList from './visible-todo-list';
-//import TodoList from './todo-list';
+//import initialTodos from '../common/initial-todos';
 import { VisibilityFilters } from './visibility-filters';
-
 
 export default class Todos extends Component {
   state = {
     todos: [],
-    visibilityFilter: VisibilityFilters.SHOW_ALL //"SHOW_COMPLETED", "SHOW_ACTIVE" 
+    visibilityFilter: VisibilityFilters.SHOW_ALL //"SHOW_COMPLETED", "SHOW_ACTIVE"
   };
   currentId = 4;
 
-  toggleTodo = (id) => {
+  toggleTodo = id => {
     this.setState({
-      todos:
-        this.state.todos.map(todo =>
-          (todo.id === id)
-            ? { ...todo, completed: !todo.completed }
-            : todo
-        )
-    })
+      todos: this.state.todos.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    });
   };
 
-  addTodo = (todoText) => {
-    this.setState( 
-      {
-        todos: [
-          ...this.state.todos,
-          {
-            id: this.currentId++,
-            text: todoText,
-            completed: false
-          }
-        ]
-      }
-    );
+  addTodo = todoText => {
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: this.currentId++,
+          text: todoText,
+          completed: false
+        }
+      ]
+    });
   };
 
-  changeFilter = (filter) => (this.setState({ visibilityFilter: filter }));
+  changeFilter = filter => this.setState({ visibilityFilter: filter });
 
   render() {
     return (
@@ -48,7 +42,8 @@ export default class Todos extends Component {
         <AddTodo onAddTodo={this.addTodo} />
         <FilterButtons
           visibilityFilter={this.state.visibilityFilter}
-          onChangeFilter={this.changeFilter} />
+          onChangeFilter={this.changeFilter}
+        />
         <VisibleTodoList
           todos={this.state.todos}
           visibilityFilter={this.state.visibilityFilter}
@@ -58,6 +53,3 @@ export default class Todos extends Component {
     );
   }
 }
-
-
-

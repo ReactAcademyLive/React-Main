@@ -9,9 +9,9 @@ export default function ModifyData() {
       {ctx => (
         <>
           <Input
-            value={ctx.name}
-            name='name'
-            placeholder='Name'
+            value={ctx.firstName}
+            name='firstName'
+            placeholder='First Name'
             onChange={ctx.onChange}
             className='mb-4'
           />

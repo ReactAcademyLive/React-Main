@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Form, Input, Button, FormGroup } from "reactstrap"; //Alert
-import MyTextBox from "./my-textbox";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Form, Input, Button, FormGroup } from 'reactstrap'; //Alert
+import MyTextBox from './my-textbox';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faTrashAlt  } from "@fortawesome/free-solid-svg-icons";
 
-export default function EmployeeForm(props) {
+export default function ContactForm(props) {
   return (
     <Form
       onSubmit={evt => {
@@ -13,18 +13,18 @@ export default function EmployeeForm(props) {
         props.onSubmit();
       }}
     >
-      <Input type="hidden" id="empId" value={props.id} />
+      <Input type='hidden' name='id' value={props.id} />
       <MyTextBox
-        name="firstName"
-        fullName="First Name"
+        name='firstName'
+        fullName='First Name'
         value={props.firstName}
         onChange={props.onChange}
         formErrors={props.formErrors}
       />
 
       <MyTextBox
-        name="lastName"
-        fullName="Last Name"
+        name='lastName'
+        fullName='Last Name'
         value={props.lastName}
         onChange={props.onChange}
         formErrors={props.formErrors}
@@ -37,7 +37,7 @@ export default function EmployeeForm(props) {
               {props.formErrors.global}
             </Alert> 
             : ""}  */}
-        <Button color="primary">Submit Employee</Button>
+        <Button color='primary'>Submit Employee</Button>
 
         {/* <Button className="ml-3" color="danger"
                        onClick={null}>
@@ -48,7 +48,7 @@ export default function EmployeeForm(props) {
   );
 }
 
-EmployeeForm.propTypes = {
+ContactForm.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   id: PropTypes.any.isRequired,

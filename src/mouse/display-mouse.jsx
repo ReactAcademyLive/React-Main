@@ -1,19 +1,21 @@
 import React from 'react';
+// import Cat from './cat';
 
- class DisplayMouse extends React.Component {
-    state = { x: 0, y: 0 };
+function DisplayMouse() {
+  const [mouse, setMouse] = React.useState({ x: 0, y: 0 });
 
-    handleMouseMove = (evt) => {
-        this.setState({ x: evt.clientX, y: evt.clientY });
-    };
+  function handleMouseMove(evt) {
+    setMouse({ x: evt.clientX, y: evt.clientY });
+  }
 
-    render() {
-        return (
-            <div style={{ height: "500px" }} onMouseMove={this.handleMouseMove} >
-                <h1>The mouse position is: ({this.state.x}, {this.state.y})</h1>
-            </div>     
-        );
-    }
+  return (
+    <div style={{ height: '500px' }} onMouseMove={handleMouseMove}>
+      <h1>
+        The mouse position is: ({mouse.x}, {mouse.y})
+      </h1>
+      {/* <Cat mouse={mouse} /> */}
+    </div>
+  );
 }
 
-export default DisplayMouse; 
+export default DisplayMouse;

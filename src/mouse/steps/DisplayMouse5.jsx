@@ -1,33 +1,39 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 //import Cat from '../cat';
 
 function useMouse(div) {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  
-  function handleMouseMove(evt)  {
-    setPos({x: evt.clientX, y: evt.clientY});
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+  function handleMouseMove(evt) {
+    setMouse({ x: evt.clientX, y: evt.clientY });
   }
 
   useEffect(() => {
     //use the div, if none then use the whole window
-    const dest = (div && div.current) || window;  
+    const dest = (div && div.current) || window;
     dest.addEventListener('mousemove', handleMouseMove);
     return () => {
       dest.removeEventListener('mousemove', handleMouseMove);
     };
   }, [div]);
 
-  return pos;
+  return mouse;
 }
 
-function DisplayMouse() {
+///////////////////////////////////////////////////////
+
+export default function DisplayMouse() {
   const mouse = useMouse();
-  return ( <h1>The position is: ({mouse.x}, {mouse.y})</h1> );
+  return (
+    <>
+      <h1>
+        The position is: ({mouse.x}, {mouse.y})
+      </h1>
+    </>
+  );
 }
 
-export default DisplayMouse;
-
-//Try to add the cat!  See haw easy it is!
+//Try to add the cat!  See how easy it is!
 
 //// use the following function to link to a div
 // function DivMouse() {
@@ -38,9 +44,8 @@ export default DisplayMouse;
 //            </div> );
 // }
 
-
 ////add cat to the mix
-          //<>
-          //  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
-          //  <Cat mouse={mouse} />
-          //</>
+//<>
+//  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
+//  <Cat mouse={mouse} />
+//</>

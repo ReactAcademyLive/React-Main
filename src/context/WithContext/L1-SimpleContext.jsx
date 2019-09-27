@@ -5,22 +5,22 @@ import { Row, Col } from 'reactstrap';
 import MyContext from './MyContext';
 
 export default function SimpleContext() {
-  const [name, setName] = useState('John');
+  const [firstName, setFirstName] = useState('John');
   const [color, setColor] = useState('blue');
 
   function change(evt) {
     const { name, value } = evt.target;
 
-    if (name === 'name') {
-      setName(value);
+    if (name === 'firstName') {
+      setFirstName(value);
     }
     if (name === 'color') {
       setColor(value);
     }
   }
-  
+
   return (
-    <MyContext.Provider value={{ name, color, onChange: change }}>
+    <MyContext.Provider value={{ firstName, color, onChange: change }}>
       <Row>
         <Col md='6'>
           <ColoredPart />
