@@ -9,7 +9,7 @@ export default function Contacts() {
 
   React.useEffect(() => {
     refreshData();
-  });
+  }, []);
 
   function refreshData() {
     ContactApi.getAllContacts()
