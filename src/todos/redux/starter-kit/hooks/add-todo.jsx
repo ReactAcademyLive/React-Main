@@ -1,15 +1,14 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { Form, Button, Input } from "reactstrap";
-//import { addTodo } from '../slices/todos'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Form, Button, Input } from 'reactstrap';
+//import { addTodo } from '../connect/slices/todos'
 
 export default function AddTodo() {
   const dispatch = useDispatch();
   let inputText = React.createRef();
-  
+
   //const onAddTodo = (text) => {dispatch(addTodo(inputText.current.value));};
 
-  
   return (
     <div>
       <Form
@@ -19,15 +18,15 @@ export default function AddTodo() {
           if (!inputText.current.value.trim()) {
             return;
           }
-          dispatch({ type: "todos/addTodo", payload: inputText.current.value });
+          dispatch({ type: 'todos/addTodo', payload: inputText.current.value });
           //dispatch(addTodo(inputText.current.value));
           //onAddTodo(inputText.current.value);
-          inputText.current.value = "";
+          inputText.current.value = '';
           inputText.current.focus();
         }}
       >
-        <Input innerRef={inputText} className="mr-2" autoFocus />
-        <Button color="primary">Add Todo</Button>
+        <Input innerRef={inputText} className='mr-2' autoFocus />
+        <Button color='primary'>Add Todo</Button>
       </Form>
     </div>
   );
