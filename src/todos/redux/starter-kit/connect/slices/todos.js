@@ -1,9 +1,9 @@
-import { createSlice } from "redux-starter-kit";
+import { createSlice } from 'redux-starter-kit';
 
 let nextTodoId = 4;
 
 const todos = createSlice({
-  slice: "todos",
+  name: 'todos',
   initialState: [],
   reducers: {
     addTodo: (state, action) => {
@@ -22,12 +22,10 @@ const todos = createSlice({
       if (todo) {
         todo.completed = !todo.completed;
       }
-    }
-  }
+    },
+  },
 });
 
 export default todos;
-
-
 
 export const { addTodo, editTodo, toggleTodo } = todos.actions;
