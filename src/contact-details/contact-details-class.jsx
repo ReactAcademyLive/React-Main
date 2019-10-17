@@ -23,9 +23,9 @@ export default class ContactDetails extends React.Component {
     await ContactApi.saveContact({
       id: this.state.id,
       firstName: this.state.firstName,
-      lastName: this.state.lastName
+      lastName: this.state.lastName,
     });
-    this.props.history.push('/contacts');
+    this.props.history.push('/contacts/hooks');
   };
 
   change = evt => {

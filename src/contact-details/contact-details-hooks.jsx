@@ -7,7 +7,7 @@ export default function ContactDetails(props) {
     id: 0,
     firstName: '',
     lastName: '',
-    formErrors: {}
+    formErrors: {},
   });
 
   React.useEffect(() => {
@@ -33,9 +33,9 @@ export default function ContactDetails(props) {
     await ContactApi.saveContact({
       id: state.id,
       firstName: state.firstName,
-      lastName: state.lastName
+      lastName: state.lastName,
     });
-    props.history.push('/contacts');
+    props.history.push('/contacts/hooks');
   }
 
   function change(evt) {
