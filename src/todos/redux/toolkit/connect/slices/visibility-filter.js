@@ -1,4 +1,4 @@
-import { createSlice } from 'redux-starter-kit';
+import { createSlice } from '@reduxjs/toolkit';
 
 // export default createReducer(SHOW_ALL, {
 //   SET_VISIBILITY_FILTER: (state, action) => action.payload

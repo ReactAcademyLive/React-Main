@@ -1,9 +1,9 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleTodo /*, deleteTodo */ } from "../connect/slices/todos";
-import TodoList from "../../../common/todo-list";
-import { VisibilityFilters } from "../connect/slices/visibility-filter";
-import { createSelector } from "redux-starter-kit";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTodo /*, deleteTodo */ } from '../connect/slices/todos';
+import TodoList from '../../../common/todo-list';
+import { VisibilityFilters } from '../connect/slices/visibility-filter';
+import { createSelector } from '@reduxjs/toolkit';
 
 const getTodos = state => state.todos;
 const getVisibilityFilter = state => state.visibilityFilter;
@@ -19,7 +19,7 @@ const selectVisibleTodos = createSelector(
       case VisibilityFilters.SHOW_ACTIVE:
         return todos.filter(t => !t.completed);
       default:
-        throw new Error("Unknown filter: " + filter);
+        throw new Error('Unknown filter: ' + filter);
     }
   }
 );
