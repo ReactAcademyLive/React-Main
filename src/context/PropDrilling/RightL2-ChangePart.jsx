@@ -5,7 +5,11 @@ export default function ChangePart(props) {
   return (
     <div>
       <h1>Modify State (props)</h1>
-      <ModifyData firstName={props.firstName} color={props.color} />
+      <ModifyData
+        firstName={props.firstName}
+        color={props.color}
+        onChange={props.onChange}
+      />
       {/* <ModifyData {...props} /> */}
     </div>
   );

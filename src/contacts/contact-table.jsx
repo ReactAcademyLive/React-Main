@@ -16,18 +16,18 @@ const ContactTable = props => {
         </tr>
       </thead>
       <tbody>
-        {props.contacts.map(emp => (
-          <tr key={emp.id}>
+        {props.contacts.map(contact => (
+          <tr key={contact.id}>
             <td>
-              <Link to={`/contact/${emp.id}`}>
-                <Button color='primary'>
+              <Link to={`/contact/${contact.id}`}>
+                <Button color="primary">
                   <FontAwesomeIcon icon={faPenAlt} />
                 </Button>
               </Link>
             </td>
-            <td className='align-middle'>{emp.firstName}</td>
-            <td className='align-middle'>{emp.lastName}</td>
-            <td className='align-middle'>
+            <td className="align-middle">{contact.firstName}</td>
+            <td className="align-middle">{contact.lastName}</td>
+            <td className="align-middle">
               {/* <Button color="danger" onClick={() => null}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </Button> */}
