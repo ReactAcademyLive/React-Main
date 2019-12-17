@@ -9,6 +9,11 @@ export default function Contacts() {
 
   React.useEffect(() => {
     refreshData();
+    //  if (ContactApi.subscribeChangeNotification) {
+    //    ContactApi.subscribeChangeNotification(refreshData)
+    //  }
+
+    // return ()=> {ContactApi.unsubscribeChangeNotification()}
   }, []);
 
   function refreshData() {
