@@ -19,8 +19,8 @@ import TodosClassic from '../todos/state/todos';
 import TodosContextHooks from '../todos/context-use-reducer/todos';
 import ReduxClassic from '../todos/redux/classic/connect/todos';
 import ReduxHooks from '../todos/redux/classic/hooks/todos';
-import StarterClassic from '../todos/redux/starter-kit/connect/todos';
-import StarterHooks from '../todos/redux/starter-kit/hooks/todos';
+import StarterClassic from '../todos/redux/toolkit/connect/todos';
+import StarterHooks from '../todos/redux/toolkit/hooks/todos';
 import Reddits from '../reddit/reddits';
 import Clock from '../clock/clock';
 import Mouser from '../mouse/display-mouse';
@@ -34,12 +34,17 @@ function Content() {
   const transitions = useTransition(location, location => location.pathname, {
     from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' }
+    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
   });
   return transitions.map(({ item, props, key }) => (
     <animated.div
       key={key}
-      style={{ ...props, position: 'absolute', width: '100%' }}
+      style={{
+        ...props,
+        position: 'absolute',
+        width: '100%',
+        paddingBottom: '100px',
+      }}
     >
       {/* <React.Suspense fallback={<h1>Loading...</h1>}   > */}
       <Switch location={item}>
@@ -79,7 +84,6 @@ function Content() {
         <Route path='/mouser' component={Mouser} />
         <Route component={NotFound} />
       </Switch>
-      <Footer />
       {/* </React.Suspense> */}
     </animated.div>
   ));
@@ -88,10 +92,20 @@ function Content() {
 export default function App() {
   return (
     <BrowserRouter>
-      <Menu />
-      <Container style={{ position: 'relative' }}>
-        <Content />
-      </Container>
+      <div
+        style={{
+          minHeight: '100vh',
+          // display: 'flex',
+          // flexDirection: 'column',
+          overflowX: 'hidden',
+        }}
+      >
+        <Menu />
+        <Container className='position-relative '>
+          <Content />
+        </Container>
+        <Footer className='bg-dark text-light py-3 fixed-bottom' />
+      </div>
     </BrowserRouter>
   );
 }

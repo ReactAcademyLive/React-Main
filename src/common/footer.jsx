@@ -1,10 +1,10 @@
 import React from 'react';
+import { Container } from 'reactstrap';
 
-export default function Footer() {
+export default function Footer(props) {
   return (
-    <footer>
-      <hr className='mt-5' />
-      <p>Copyright 2019</p>
+    <footer className='bg-dark text-light py-3 mt-auto' {...props}>
+      <Container>Copyright 2020</Container>
     </footer>
-  )
+  );
 }

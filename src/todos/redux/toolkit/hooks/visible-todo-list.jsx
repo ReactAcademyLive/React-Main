@@ -31,7 +31,7 @@ export default function VisibleTodoList() {
     <TodoList
       todos={filteredTodos}
       onToggleTodo={id => dispatch(toggleTodo(id))}
-      onDelete={id => null}
+      onDeleteTodo={id => null}
     />
   );
 }

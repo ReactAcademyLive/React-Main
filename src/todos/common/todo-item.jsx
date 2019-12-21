@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { ListGroupItem, Button } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ListGroupItem, Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const TodoItem = ({ onClick, onDelete, completed, text }) => (
-  <ListGroupItem onClick={onClick} style={{ cursor: "pointer" }}>
+  <ListGroupItem onClick={onClick} style={{ cursor: 'pointer' }}>
     <div
-      className="float-left my-3"
+      className='float-left my-3'
       style={{
-        textDecoration: completed ? "line-through" : "none"
+        textDecoration: completed ? 'line-through' : 'none',
       }}
     >
       {text}
     </div>
-    <Button className="float-right  mt-2" color="info" onClick={onDelete}>
+    <Button className='float-right  mt-2' color='info' onClick={onDelete}>
       <FontAwesomeIcon icon={faTrashAlt} />
     </Button>
   </ListGroupItem>
@@ -23,7 +23,7 @@ const TodoItem = ({ onClick, onDelete, completed, text }) => (
 TodoItem.propTypes = {
   onClick: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 };
 
 export default TodoItem;

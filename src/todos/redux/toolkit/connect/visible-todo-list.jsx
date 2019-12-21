@@ -42,7 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onToggleTodo: toggleTodo,
-  onDelete: id => id => null,
+  onDeleteTodo: id => id => null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

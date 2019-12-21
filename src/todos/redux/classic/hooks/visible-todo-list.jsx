@@ -1,8 +1,8 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleTodo /*, deleteTodo */ } from "../connect/actions";
-import TodoList from "../../../common/todo-list";
-import { VisibilityFilters } from "../connect/actions";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTodo /*, deleteTodo */ } from '../connect/actions';
+import TodoList from '../../../common/todo-list';
+import { VisibilityFilters } from '../connect/actions';
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -13,7 +13,7 @@ const getVisibleTodos = (todos, filter) => {
     case VisibilityFilters.SHOW_ACTIVE:
       return todos.filter(t => !t.completed);
     default:
-      throw new Error("Unknown filter: " + filter);
+      throw new Error('Unknown filter: ' + filter);
   }
 };
 
@@ -25,7 +25,7 @@ export default function VisibleTodoList() {
     <TodoList
       todos={getVisibleTodos(todos, visibilityFilter)}
       onToggleTodo={id => dispatch(toggleTodo(id))}
-      onDelete={id => null}
+      onDeleteTodo={id => null}
     />
   );
 }

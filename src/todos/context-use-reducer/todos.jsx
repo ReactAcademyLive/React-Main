@@ -31,9 +31,9 @@ export default function Todos(props) {
         todos: todos,
         onAddTodo: text => dispatch(addTodo(text)),
         onToggleTodo: id => dispatch(toggleTodo(id)),
-        onDelete: id => null,
+        onDeleteTodo: id => null,
         visibilityFilter: visibilityFilter,
-        onChangeFilter: setVisibilityFilter
+        onChangeFilter: setVisibilityFilter,
       }}
     >
       <h1>Todos (using context, hooks, actions and reducers)</h1>

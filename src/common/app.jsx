@@ -31,49 +31,57 @@ export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Menu />
-        <Container>
-          {/* <React.Suspense fallback={<h1>Loading...</h1>}> */}
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route
-              path="/counter/classes"
-              render={() => <ClassesCounter init={5} />}
-            />
-            <Route
-              path="/counter/hooks-v1"
-              render={() => <HooksCounterV1 init={5} />}
-            />
-            <Route
-              path="/counter/hooks-v2"
-              render={() => <HooksCounterV2 init={5} />}
-            />
-            <Route
-              path="/counter/hooks-v3"
-              render={() => <HooksCounterV3 init={5} />}
-            />
+        <div
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <Menu />
+          <Container className='mb-5'>
+            {/* <React.Suspense fallback={<h1>Loading...</h1>}> */}
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/about' component={About} />
+              <Route
+                path='/counter/classes'
+                render={() => <ClassesCounter init={5} />}
+              />
+              <Route
+                path='/counter/hooks-v1'
+                render={() => <HooksCounterV1 init={5} />}
+              />
+              <Route
+                path='/counter/hooks-v2'
+                render={() => <HooksCounterV2 init={5} />}
+              />
+              <Route
+                path='/counter/hooks-v3'
+                render={() => <HooksCounterV3 init={5} />}
+              />
 
-            <Route path="/contacts/hooks" component={ContactsHooks} />
-            <Route path="/contacts/class" component={ContactsClass} />
-            <Route exact path="/contact" component={ContactDetails} />
-            <Route path="/contact/:id" component={ContactDetails} />
-            <Route path="/todos/ClassicState" component={TodosClassic} />
-            <Route path="/todos/ContextHooks" component={TodosContextHooks} />
-            <Route path="/todos/ReduxClassic" component={ReduxClassic} />
-            <Route path="/todos/ReduxHooks" component={ReduxHooks} />
-            <Route path="/todos/ToolkitClassic" component={ToolkitClassic} />
-            <Route path="/todos/ToolkitHooks" component={ToolkitHooks} />
-            <Route path="/reddits" component={Reddits} />
-            <Route path="/clock" component={Clock} />
-            <Route path="/context/PropDrill" component={ContextDrill} />
-            <Route path="/context/WithContext" component={ContextWith} />
-            <Route path="/mouser" component={Mouser} />
-            <Route component={NotFound} />
-          </Switch>
+              <Route path='/contacts/hooks' component={ContactsHooks} />
+              <Route path='/contacts/class' component={ContactsClass} />
+              <Route exact path='/contact' component={ContactDetails} />
+              <Route path='/contact/:id' component={ContactDetails} />
+              <Route path='/todos/ClassicState' component={TodosClassic} />
+              <Route path='/todos/ContextHooks' component={TodosContextHooks} />
+              <Route path='/todos/ReduxClassic' component={ReduxClassic} />
+              <Route path='/todos/ReduxHooks' component={ReduxHooks} />
+              <Route path='/todos/ToolkitClassic' component={ToolkitClassic} />
+              <Route path='/todos/ToolkitHooks' component={ToolkitHooks} />
+              <Route path='/reddits' component={Reddits} />
+              <Route path='/clock' component={Clock} />
+              <Route path='/context/PropDrill' component={ContextDrill} />
+              <Route path='/context/WithContext' component={ContextWith} />
+              <Route path='/mouser' component={Mouser} />
+              <Route component={NotFound} />
+            </Switch>
+            {/* </React.Suspense> */}
+          </Container>
           <Footer />
-          {/* </React.Suspense> */}
-        </Container>
+        </div>
       </BrowserRouter>
     );
   }
