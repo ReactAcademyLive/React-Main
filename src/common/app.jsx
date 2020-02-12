@@ -19,12 +19,18 @@ import ReduxClassic from '../todos/redux/classic/connect/todos';
 import ReduxHooks from '../todos/redux/classic/hooks/todos';
 import ToolkitClassic from '../todos/redux/toolkit/connect/todos';
 import ToolkitHooks from '../todos/redux/toolkit/hooks/todos';
+import Step1 from '../best/steps/DisplayMouse1';
+import Step2 from '../best/steps/DisplayMouse2';
+import Step3 from '../best/steps/DisplayMouse3';
+import Step4 from '../best/steps/DisplayMouse4';
+import Step5 from '../best/steps/DisplayMouse5';
 import Reddits from '../reddit/reddits';
 import Clock from '../clock/clock';
-import Mouser from '../mouse/display-mouse';
+import Mouser from '../best/display-mouse';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextWith from '../context/WithContext/L1-SimpleContext';
 import About from '../about/about';
+
 //const About = React.lazy(() => import('../about/about'));
 
 export default class App extends React.Component {
@@ -75,7 +81,11 @@ export default class App extends React.Component {
               <Route path='/clock' component={Clock} />
               <Route path='/context/PropDrill' component={ContextDrill} />
               <Route path='/context/WithContext' component={ContextWith} />
-              <Route path='/mouser' component={Mouser} />
+              <Route path='/best/step1' component={Step1} />
+              <Route path='/best/step2' component={Step2} />
+              <Route path='/best/step3' component={Step3} />
+              <Route path='/best/step4' component={Step4} />
+              <Route path='/best/step5' component={Step5} />
               <Route component={NotFound} />
             </Switch>
             {/* </React.Suspense> */}

@@ -19,11 +19,11 @@ import TodosClassic from '../todos/state/todos';
 import TodosContextHooks from '../todos/context-use-reducer/todos';
 import ReduxClassic from '../todos/redux/classic/connect/todos';
 import ReduxHooks from '../todos/redux/classic/hooks/todos';
-import StarterClassic from '../todos/redux/toolkit/connect/todos';
-import StarterHooks from '../todos/redux/toolkit/hooks/todos';
+import ToolkitClassic from '../todos/redux/toolkit/connect/todos';
+import ToolkitHooks from '../todos/redux/toolkit/hooks/todos';
 import Reddits from '../reddit/reddits';
 import Clock from '../clock/clock';
-import Mouser from '../mouse/display-mouse';
+import Mouser from '../best/display-mouse';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextWith from '../context/WithContext/L1-SimpleContext';
 import About from '../about/about';
@@ -75,8 +75,8 @@ function Content() {
         <Route path='/todos/ContextHooks' component={TodosContextHooks} />
         <Route path='/todos/ReduxClassic' component={ReduxClassic} />
         <Route path='/todos/ReduxHooks' component={ReduxHooks} />
-        <Route path='/todos/StarterClassic' component={StarterClassic} />
-        <Route path='/todos/StarterHooks' component={StarterHooks} />
+        <Route path='/todos/ToolkitClassic' component={ToolkitClassic} />
+        <Route path='/todos/ToolkitHooks' component={ToolkitHooks} />
         <Route path='/reddits' component={Reddits} />
         <Route path='/clock' component={Clock} />
         <Route path='/context/PropDrill' component={ContextDrill} />
