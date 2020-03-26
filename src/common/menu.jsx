@@ -120,30 +120,28 @@ export default function Menu() {
               </NavLink>
             </NavItem>
 
-            <NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <ToggleMenu name='Best Practices' link='mouse' />
-                <DropdownMenu>
-                  <DropdownItem tag={RRNavLink} to='/best/step1'>
-                    Single component
-                  </DropdownItem>
-                  <DropdownItem tag={RRNavLink} to='/best/step2'>
-                    Component split
-                  </DropdownItem>
+            <UncontrolledDropdown nav inNavbar>
+              <ToggleMenu name='Best Practices' link='mouse' />
+              <DropdownMenu>
+                <DropdownItem tag={RRNavLink} to='/best/step1'>
+                  Single component
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step2'>
+                  Component split
+                </DropdownItem>
 
-                  <DropdownItem tag={RRNavLink} to='/best/step3'>
-                    Higher-Order Component
-                  </DropdownItem>
-                  <DropdownItem tag={RRNavLink} to='/best/step4'>
-                    Render Props
-                  </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step3'>
+                  Higher-Order Component
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step4'>
+                  Render Props
+                </DropdownItem>
 
-                  <DropdownItem tag={RRNavLink} to='/best/step5'>
-                    Custom Hooks
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </NavItem>
+                <DropdownItem tag={RRNavLink} to='/best/step5'>
+                  Custom Hooks
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </Nav>
         </Collapse>
       </Navbar>
