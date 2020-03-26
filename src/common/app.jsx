@@ -26,7 +26,6 @@ import Step4 from '../best/steps/DisplayMouse4';
 import Step5 from '../best/steps/DisplayMouse5';
 import Reddits from '../reddit/reddits';
 import Clock from '../clock/clock';
-import Mouser from '../best/display-mouse';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextWith from '../context/WithContext/L1-SimpleContext';
 import About from '../about/about';
