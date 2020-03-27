@@ -5,7 +5,13 @@ import ContactForm from './contact-form';
 export default class ContactDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { id: 0, firstName: '', lastName: '', formErrors: {} };
+    this.state = {
+      id: 0,
+      firstName: '',
+      lastName: '',
+      email: '',
+      formErrors: {},
+    };
   }
 
   async componentDidMount() {
@@ -24,11 +30,12 @@ export default class ContactDetails extends React.Component {
       id: this.state.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
+      email: this.state.email,
     });
     this.props.history.push('/contacts/hooks');
   };
 
-  change = evt => {
+  change = (evt) => {
     this.setState(
       { [evt.target.name]: evt.target.value },
       this.contactFormIsValid

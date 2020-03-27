@@ -1,7 +1,7 @@
 import React from 'react';
 import ModifyDataHooks from './RightL3-a-Hooks';
 import ModifyDataConsumer from './RightL3-b-Consumer';
-import ModifyDataPropType from './RightL3-c-PropTypes';
+import ModifyDataContextType from './RightL3-c-ContextTypes';
 
 export default function ChangePart() {
   return (
@@ -14,8 +14,8 @@ export default function ChangePart() {
       <ModifyDataConsumer />
       <hr className='mb-5'></hr>
 
-      <h3>Modify State (Context PropTypes)</h3>
-      <ModifyDataPropType />
+      <h3>Modify State (Context with ContextType)</h3>
+      <ModifyDataContextType />
     </div>
   );
 }

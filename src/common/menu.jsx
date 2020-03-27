@@ -42,7 +42,6 @@ export default function Menu() {
                 About
               </NavLink>
             </NavItem>
-
             <UncontrolledDropdown nav inNavbar>
               <ToggleMenu name='Counter' link='counter' />
               <DropdownMenu>
@@ -85,6 +84,26 @@ export default function Menu() {
               </DropdownMenu>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
+              <ToggleMenu name='Best Practices' link='mouse' />
+              <DropdownMenu>
+                <DropdownItem tag={RRNavLink} to='/best/step1'>
+                  Single component
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step2'>
+                  Component split
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step3'>
+                  Higher-Order Component
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step4'>
+                  Render Props
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step5'>
+                  Custom Hooks
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
               <ToggleMenu name='Todos' link='todos' />
               <DropdownMenu>
                 <DropdownItem tag={RRNavLink} to='/todos/ClassicState'>
@@ -119,29 +138,6 @@ export default function Menu() {
                 Clock
               </NavLink>
             </NavItem>
-
-            <UncontrolledDropdown nav inNavbar>
-              <ToggleMenu name='Best Practices' link='mouse' />
-              <DropdownMenu>
-                <DropdownItem tag={RRNavLink} to='/best/step1'>
-                  Single component
-                </DropdownItem>
-                <DropdownItem tag={RRNavLink} to='/best/step2'>
-                  Component split
-                </DropdownItem>
-
-                <DropdownItem tag={RRNavLink} to='/best/step3'>
-                  Higher-Order Component
-                </DropdownItem>
-                <DropdownItem tag={RRNavLink} to='/best/step4'>
-                  Render Props
-                </DropdownItem>
-
-                <DropdownItem tag={RRNavLink} to='/best/step5'>
-                  Custom Hooks
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
           </Nav>
         </Collapse>
       </Navbar>

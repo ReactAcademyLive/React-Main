@@ -7,7 +7,7 @@ Object.filter = (obj, predicate) =>
 firebase.initializeApp({
   apiKey: 'AIzaSyAKDS8BM9MWwRA2PYgyqd3BpfRE0GyjULk',
   //authDomain: '### FIREBASE AUTH DOMAIN ###',
-  projectId: 'test-10929'
+  projectId: 'test-10929',
 });
 
 const db = firebase.firestore();
@@ -27,8 +27,8 @@ export default class ContactApi {
   static unsubscribe = null;
 
   static subscribeChangeNotification(onChange) {
-    ContactApi.unsubscribe = db.collection('contacts').onSnapshot(snap => {
-      snap.docChanges().forEach(change => {
+    ContactApi.unsubscribe = db.collection('contacts').onSnapshot((snap) => {
+      snap.docChanges().forEach((change) => {
         if (
           change.type === 'added' ||
           change.type === 'modified' ||
@@ -49,7 +49,7 @@ export default class ContactApi {
 
     const snapshot = await db.collection('contacts').get();
 
-    snapshot.forEach(doc => {
+    snapshot.forEach((doc) => {
       a.push({ ...doc.data(), id: doc.id });
     });
 

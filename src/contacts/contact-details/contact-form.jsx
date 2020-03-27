@@ -8,7 +8,7 @@ import MyTextBox from './my-textbox';
 export default function ContactForm(props) {
   return (
     <Form
-      onSubmit={evt => {
+      onSubmit={(evt) => {
         evt.preventDefault();
         props.onSubmit();
       }}
@@ -26,6 +26,14 @@ export default function ContactForm(props) {
         name='lastName'
         fullName='Last Name'
         value={props.lastName}
+        onChange={props.onChange}
+        formErrors={props.formErrors}
+      />
+
+      <MyTextBox
+        name='email'
+        fullName='Email'
+        value={props.email}
         onChange={props.onChange}
         formErrors={props.formErrors}
       />
@@ -54,5 +62,5 @@ ContactForm.propTypes = {
   id: PropTypes.any.isRequired,
   formErrors: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };

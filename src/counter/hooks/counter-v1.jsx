@@ -18,7 +18,7 @@ export default function Counter(props) {
 
   return (
     <>
-      <h1>the count is: {count} </h1>
+      <h1>The count is: {count} </h1>
       <MyButton onIncrement={increment} incr={1} />
       <MyButton onIncrement={increment} incr={-10} />
       <MyButton onIncrement={increment} incr={100} />

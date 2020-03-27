@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactApi from '../contact-api/contact-api';
+import ContactApi from './contact-api/contact-api';
 import ContactTable from './contact-table';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -13,10 +13,10 @@ export default class Contacts extends React.Component {
 
   refreshData() {
     ContactApi.getAllContacts()
-      .then(data => {
+      .then((data) => {
         this.setState({ contacts: data });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
     // try {
     //   let data = await ContactApi.getAllContacts();
     //   this.setState({ contacts: data });

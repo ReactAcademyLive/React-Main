@@ -2,17 +2,19 @@ import React from 'react';
 import { FormGroup, Input, FormFeedback } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const MyTextBox = props => {
+const MyTextBox = (props) => {
   return (
-    <FormGroup>
+    <FormGroup className='form-label-group'>
       <Input
         type='text'
+        id={props.name}
         name={props.name}
         placeholder={props.fullName}
         value={props.value}
         onChange={props.onChange}
         invalid={!!props.formErrors[props.name]}
       />
+      <label for={props.name}>{props.fullName}</label>
       <FormFeedback>{props.formErrors[props.name]}</FormFeedback>
     </FormGroup>
   );
@@ -25,5 +27,5 @@ MyTextBox.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   formErrors: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };

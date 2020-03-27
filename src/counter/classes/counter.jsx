@@ -17,11 +17,11 @@ export default class Counter extends React.Component {
     window.localStorage.setItem('count', this.state.count);
   }
 
-  increment = incr => {
+  increment = (incr) => {
     this.setState({ count: this.state.count + incr });
   };
 
-  change = evt => {
+  change = (evt) => {
     if (Number.isInteger(+evt.target.value)) {
       this.setState({ count: +evt.target.value });
     }
@@ -31,7 +31,7 @@ export default class Counter extends React.Component {
     const { count } = this.state;
     return (
       <>
-        <h1>the count is: {count} </h1>
+        <h1>The count is: {count} </h1>
         <MyButton onIncrement={this.increment} incr={1} />
         <MyButton onIncrement={this.increment} incr={-10} />
         <MyButton onIncrement={this.increment} incr={100} />

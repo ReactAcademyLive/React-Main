@@ -7,6 +7,7 @@ export default function ContactDetails(props) {
     id: 0,
     firstName: '',
     lastName: '',
+    email: '',
     formErrors: {},
   });
 
@@ -31,9 +32,10 @@ export default function ContactDetails(props) {
     }
 
     await ContactApi.saveContact({
-      id: state.id,
+      id: state.id || undefined,
       firstName: state.firstName,
       lastName: state.lastName,
+      email: state.email,
     });
     props.history.push('/contacts/hooks');
   }

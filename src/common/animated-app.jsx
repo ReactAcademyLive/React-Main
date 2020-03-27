@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import { useTransition, animated } from 'react-spring';
-import useRouter from './use-router';
+
 import './custom.scss';
 import Menu from './menu';
 import Footer from './footer';
@@ -13,7 +13,7 @@ import HooksCounterV2 from '../counter/hooks/counter-v2';
 import HooksCounterV3 from '../counter/hooks/counter-v3';
 import ContactsHooks from '../contacts/contacts-hooks';
 import ContactsClass from '../contacts/contacts-class';
-import ContactDetails from '../contact-details/contact-details-hooks';
+import ContactDetails from '../contacts/contact-details/contact-details-hooks';
 import NotFound from '../404/404';
 import TodosClassic from '../todos/state/todos';
 import TodosContextHooks from '../todos/context-use-reducer/todos';
@@ -23,15 +23,19 @@ import ToolkitClassic from '../todos/redux/toolkit/connect/todos';
 import ToolkitHooks from '../todos/redux/toolkit/hooks/todos';
 import Reddits from '../reddit/reddits';
 import Clock from '../clock/clock';
-import Mouser from '../best/display-mouse';
+import Step1 from '../best/steps/DisplayMouse1';
+import Step2 from '../best/steps/DisplayMouse2';
+import Step3 from '../best/steps/DisplayMouse3';
+import Step4 from '../best/steps/DisplayMouse4';
+import Step5 from '../best/steps/DisplayMouse5';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextWith from '../context/WithContext/L1-SimpleContext';
 import About from '../about/about';
 //const About = React.lazy(() => import('./about/about'));
 
 function Content() {
-  const { location } = useRouter();
-  const transitions = useTransition(location, location => location.pathname, {
+  const location = useLocation();
+  const transitions = useTransition(location, (location) => location.pathname, {
     from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
     leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
@@ -81,7 +85,11 @@ function Content() {
         <Route path='/clock' component={Clock} />
         <Route path='/context/PropDrill' component={ContextDrill} />
         <Route path='/context/WithContext' component={ContextWith} />
-        <Route path='/mouser' component={Mouser} />
+        <Route path='/best/step1' component={Step1} />
+        <Route path='/best/step2' component={Step2} />
+        <Route path='/best/step3' component={Step3} />
+        <Route path='/best/step4' component={Step4} />
+        <Route path='/best/step5' component={Step5} />
         <Route component={NotFound} />
       </Switch>
       {/* </React.Suspense> */}

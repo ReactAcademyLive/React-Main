@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactApi from '../contact-api/contact-api';
+import ContactApi from './contact-api/contact-api';
 import ContactTable from './contact-table';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -18,10 +18,10 @@ export default function Contacts() {
 
   function refreshData() {
     ContactApi.getAllContacts()
-      .then(data => {
+      .then((data) => {
         setContacts(data);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
     // try {
     //   let data = await ContactApi.getAllContacts();
     //   setContacts(data);
@@ -41,3 +41,6 @@ export default function Contacts() {
     </>
   );
 }
+
+// to show a spinner while loading:
+// { isLoading ? <Spinner /> : <ContactTable /> }

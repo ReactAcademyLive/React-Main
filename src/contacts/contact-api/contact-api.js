@@ -1,10 +1,10 @@
 export default class EmployeeApi {
   static getAllContacts() {
-    return fetch('/contacts').then(resp => resp.json());
+    return fetch('/contacts').then((resp) => resp.json());
   }
 
   static getContact(contactId) {
-    return fetch('/contacts/' + contactId).then(resp => resp.json());
+    return fetch('/contacts/' + contactId).then((resp) => resp.json());
   }
 
   static saveContact(contact) {
@@ -35,7 +35,7 @@ export default class EmployeeApi {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contact), // body data type must match "Content-Type" header
-      }).then(resp => resp.json());
+      }).then((resp) => resp.json());
     }
   }
 
