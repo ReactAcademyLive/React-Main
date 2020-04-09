@@ -28,7 +28,7 @@ export default function WithRef(props) {
       <div>
         <h4>Using State</h4>
         <Input type='text' value={theState} onChange={change} />
-        <Button onClick={showState} color='primary' className='mt-2 mb-5'>
+        <Button onClick={showState} color='primary' className='mt-2 mb-4'>
           Show value
         </Button>
       </div>
@@ -41,7 +41,7 @@ export default function WithRef(props) {
           ref={myRef1}
           defaultValue='Uncontrolled component'
         />
-        <Button onClick={showRef1} color='primary' className='mt-2 mb-5'>
+        <Button onClick={showRef1} color='primary' className='mt-2 mb-4'>
           Show value
         </Button>
       </div>
@@ -49,7 +49,7 @@ export default function WithRef(props) {
       <div>
         <h4>Using Forwarding Reference</h4>
         <MyInput ref={myRef2} defaultValue='Other uncontrolled component' />
-        <Button onClick={showRef2} color='primary' className='mt-2 mb-5'>
+        <Button onClick={showRef2} color='primary' className='mt-2 mb-4'>
           Show value
         </Button>
       </div>

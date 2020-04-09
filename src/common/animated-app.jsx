@@ -7,6 +7,8 @@ import './custom.scss';
 import Menu from './menu';
 import Footer from './footer';
 import Home from '../home/home';
+import Covid from '../covid/Covid';
+import WithRef from '../context/WithRef/WithRef';
 import ClassesCounter from '../counter/classes/counter';
 import HooksCounterV1 from '../counter/hooks/counter-v1';
 import HooksCounterV2 from '../counter/hooks/counter-v2';
@@ -70,6 +72,8 @@ function Content() {
           path='/counter/hooks-v3'
           render={() => <HooksCounterV3 init={5} />}
         />
+        <Route path='/context/reference' component={WithRef} />
+        <Route path='/covid' component={Covid} />
 
         <Route path='/contacts/hooks' component={ContactsHooks} />
         <Route path='/contacts/class' component={ContactsClass} />
