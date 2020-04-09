@@ -19,6 +19,8 @@ import ReduxClassic from '../todos/redux/classic/connect/todos';
 import ReduxHooks from '../todos/redux/classic/hooks/todos';
 import ToolkitClassic from '../todos/redux/toolkit/connect/todos';
 import ToolkitHooks from '../todos/redux/toolkit/hooks/todos';
+import Covid from '../covid/Covid';
+import WithRef from '../context/WithRef/WithRef';
 import Step1 from '../best/steps/DisplayMouse1';
 import Step2 from '../best/steps/DisplayMouse2';
 import Step3 from '../best/steps/DisplayMouse3';
@@ -65,6 +67,8 @@ export default class App extends React.Component {
                 path='/counter/hooks-v3'
                 render={() => <HooksCounterV3 init={5} />}
               />
+              <Route path='/context/reference' component={WithRef} />
+              <Route path='/covid' component={Covid} />
 
               <Route path='/contacts/hooks' component={ContactsHooks} />
               <Route path='/contacts/class' component={ContactsClass} />

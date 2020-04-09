@@ -64,6 +64,9 @@ export default function Menu() {
             <UncontrolledDropdown nav inNavbar>
               <ToggleMenu name='Contacts' link='contacts' />
               <DropdownMenu>
+                <DropdownItem tag={RRNavLink} to='/covid'>
+                  Covid
+                </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/contacts/hooks'>
                   Contacts using hooks
                 </DropdownItem>
@@ -80,6 +83,9 @@ export default function Menu() {
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/context/WithContext'>
                   With Context
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/context/reference'>
+                  With reference
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
