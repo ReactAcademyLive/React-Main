@@ -53,24 +53,21 @@ export default class ContactApi {
       a.push({ ...doc.data(), id: doc.id });
     });
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       resolve(a);
     });
   }
 
   static async getContact(contactId) {
     let data = {};
-    const doc = await db
-      .collection('contacts')
-      .doc(contactId)
-      .get();
+    const doc = await db.collection('contacts').doc(contactId).get();
     if (doc.exists) {
       data = doc.data();
     }
 
     data.id = contactId;
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       resolve(data);
     });
   }
@@ -101,15 +98,13 @@ export default class ContactApi {
         .update(Object.filter(contact, ([key, value]) => key !== 'id'));
     } else {
       //if no id, create employee
+      contact.id = null;
       return db.collection('contacts').add(contact);
     }
   }
 
   static deleteContact(contactId) {
-    return db
-      .collection('contacts')
-      .doc(contactId)
-      .delete();
+    return db.collection('contacts').doc(contactId).delete();
   }
 
   // static async getAllEmployees() {

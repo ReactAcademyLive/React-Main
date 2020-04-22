@@ -7,7 +7,7 @@ export default function Covid(props) {
 
   useEffect(() => {
     axios
-      .get('https://corona.lmao.ninja/countries?sort=cases')
+      .get('https://corona.lmao.ninja/v2/countries?sort=cases')
       .then((result) => {
         setCountries(result.data);
       });

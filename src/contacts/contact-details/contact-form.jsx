@@ -45,7 +45,7 @@ export default function ContactForm(props) {
               {props.formErrors.global}
             </Alert> 
             : ""}  */}
-        <Button color='primary'>Submit Employee</Button>
+        <Button color='primary'>Submit Contact</Button>
 
         {/* <Button className="ml-3" color="danger"
                        onClick={null}>
