@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button /* as Btn */ } from 'reactstrap';
-import Day from './Day';
+import Day from './Day1';
 
 function getTime() {
   const options = {

@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import logo from './logo.svg';
-import ToggleMenu from './Toggle-Menu';
+import ToggleMenu from './ToggleMenu';
 
 export default function Menu() {
   const [isOpen, setIsOpen] = React.useState(false);
