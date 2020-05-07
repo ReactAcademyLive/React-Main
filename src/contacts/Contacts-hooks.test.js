@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import Contacts from './Contacts-hooks1';
+import Contacts from './Contacts-hooks';
 import { Link } from 'react-router-dom';
 
 let container = null;

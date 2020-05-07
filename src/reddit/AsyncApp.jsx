@@ -9,8 +9,8 @@ import {
   receivePosts,
 } from './redux/actions';
 import { Button } from 'reactstrap';
-import Picker from './Picker1';
-import Posts from './Posts1';
+import Picker from './Picker';
+import Posts from './Posts';
 
 class AsyncApp extends Component {
   constructor(props) {
