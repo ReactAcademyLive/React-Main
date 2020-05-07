@@ -1,4 +1,3 @@
-React-Academy-Main
-=============
+# React-Academy-Main
 
-Project for **React Academy**,  2019
+Project for **React Academy**, 2020

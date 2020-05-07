@@ -15,7 +15,7 @@ import HooksCounterV2 from '../counter/hooks/counter-v2';
 import HooksCounterV3 from '../counter/hooks/counter-v3';
 import ContactsHooks from '../contacts/Contacts-hooks';
 import ContactsClass from '../contacts/Contacts-class';
-import ContactDetails from '../contacts/contact-details/contact-details-hooks';
+import ContactDetails from '../contacts/contact-details/ContactDetails-hooks';
 import NotFound from '../404';
 import TodosClassic from '../todos/state/todos';
 import TodosContextHooks from '../todos/context-use-reducer/todos';

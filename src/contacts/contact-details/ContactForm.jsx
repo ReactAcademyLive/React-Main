@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Button, FormGroup } from 'reactstrap'; //Alert
-import MyTextBox from './my-textbox';
+import MyTextBox from './MyTextbox';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faTrashAlt  } from "@fortawesome/free-solid-svg-icons";
 

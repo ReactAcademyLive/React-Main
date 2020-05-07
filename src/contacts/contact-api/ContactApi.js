@@ -1,4 +1,4 @@
-export default class EmployeeApi {
+export default class ContactApi {
   static getAllContacts() {
     return fetch('/contacts').then((resp) => resp.json());
   }
@@ -23,14 +23,14 @@ export default class EmployeeApi {
     }
 
     if (contact.id) {
-      //if id, update employee
+      //if id, update contact
       return fetch('/contacts/' + contact.id, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contact), // body data type must match "Content-Type" header
       });
     } else {
-      //if no id, create employee
+      //if no id, create contact
       return fetch('/contacts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,7 +43,7 @@ export default class EmployeeApi {
     return fetch('/contacts/' + contactId, { method: 'DELETE' });
   }
 
-  // static async getAllEmployees() {
+  // static async getAllContacts() {
   //   const resp = await fetch("/contacts");
   //   if(resp.ok) {
   //     return resp.json();

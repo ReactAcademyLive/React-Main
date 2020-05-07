@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactApi from '../contact-api/contact-api';
-import ContactForm from './contact-form';
+import ContactApi from '../contact-api/ContactApi';
+import ContactForm from './ContactForm';
 
 export default function ContactDetails(props) {
   const [state, setState] = React.useState({

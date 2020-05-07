@@ -73,9 +73,6 @@ export default class ContactApi {
   }
 
   static saveContact(contact) {
-    //employee = {...employee}; // spread to clone object
-    //to avoid manipulating original employee.
-
     // Simulate server-side validation
     const minContactLength = 3;
     if (contact.firstName.length < minContactLength) {
@@ -97,7 +94,7 @@ export default class ContactApi {
         .doc(contact.id)
         .update(Object.filter(contact, ([key, value]) => key !== 'id'));
     } else {
-      //if no id, create employee
+      //if no id, create contact
       contact.id = null;
       return db.collection('contacts').add(contact);
     }
@@ -107,11 +104,3 @@ export default class ContactApi {
     return db.collection('contacts').doc(contactId).delete();
   }
 
-  // static async getAllEmployees() {
-  //   const resp = await fetch("/employees");
-  //   if(resp.ok) {
-  //     return resp.json();
-  //   }
-  //   throw new Error('Network response was not ok.');
-  // }
-}
