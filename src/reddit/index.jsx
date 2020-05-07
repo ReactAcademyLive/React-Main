@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
-import { Provider } from "react-redux";
-import configureStore from "./redux/configure-store";
-import AsyncApp from "./async-app";
+import React, { useRef } from 'react';
+import { Provider } from 'react-redux';
+import configureStore from './redux/configure-store';
+import AsyncApp from './AsyncApp';
 
 const Reddits = () => {
   const store = useRef();
@@ -12,7 +12,7 @@ const Reddits = () => {
 
   React.useEffect(() => {
     const savedTitle = document.title;
-    document.title = "Reddits!";
+    document.title = 'Reddits!';
     return () => {
       document.title = savedTitle;
     };

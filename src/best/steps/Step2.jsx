@@ -1,10 +1,10 @@
 import React from 'react';
-//import Cat from '../cat';
+//import Cat from '../Cat';
 
 class MouseParent extends React.Component {
   state = { x: 0, y: 0 };
 
-  handleMouseMove = evt => {
+  handleMouseMove = (evt) => {
     this.setState({ x: evt.clientX, y: evt.clientY });
   };
 

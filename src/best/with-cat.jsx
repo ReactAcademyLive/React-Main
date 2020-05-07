@@ -1,9 +1,9 @@
 import React from 'react';
-import Cat from './cat';
+import Cat from './Cat';
 
 export default function withCat(Component) {
   return class extends React.Component {
-    state = { mouse: { x: this.props.mouse.x, y: this.props.mouse.y } }
+    state = { mouse: { x: this.props.mouse.x, y: this.props.mouse.y } };
 
     componentDidUpdate(prevProps) {
       const { mouse } = this.props;
@@ -21,7 +21,5 @@ export default function withCat(Component) {
         </>
       );
     }
-
-  }
+  };
 }
-

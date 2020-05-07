@@ -8,32 +8,32 @@ import { VisibilityFilters } from './visibility-filters';
 export default class Todos extends Component {
   state = {
     todos: [],
-    visibilityFilter: VisibilityFilters.SHOW_ALL //"SHOW_COMPLETED", "SHOW_ACTIVE"
+    visibilityFilter: VisibilityFilters.SHOW_ALL, //"SHOW_COMPLETED", "SHOW_ACTIVE"
   };
   currentId = 4;
 
-  toggleTodo = id => {
+  toggleTodo = (id) => {
     this.setState({
-      todos: this.state.todos.map(todo =>
+      todos: this.state.todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+      ),
     });
   };
 
-  addTodo = todoText => {
+  addTodo = (todoText) => {
     this.setState({
       todos: [
         ...this.state.todos,
         {
           id: this.currentId++,
           text: todoText,
-          completed: false
-        }
-      ]
+          completed: false,
+        },
+      ],
     });
   };
 
-  changeFilter = filter => this.setState({ visibilityFilter: filter });
+  changeFilter = (filter) => this.setState({ visibilityFilter: filter });
 
   render() {
     return (

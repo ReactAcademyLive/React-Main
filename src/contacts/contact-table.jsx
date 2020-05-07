@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenAlt /*, faTrashAlt */ } from '@fortawesome/free-solid-svg-icons';
 
-const ContactTable = props => {
+const ContactTable = (props) => {
   return (
     <Table striped>
       <thead>
@@ -16,18 +16,18 @@ const ContactTable = props => {
         </tr>
       </thead>
       <tbody>
-        {props.contacts.map(contact => (
+        {props.contacts.map((contact) => (
           <tr key={contact.id}>
             <td>
               <Link to={`/contact/${contact.id}`}>
-                <Button color="primary">
+                <Button color='primary'>
                   <FontAwesomeIcon icon={faPenAlt} />
                 </Button>
               </Link>
             </td>
-            <td className="align-middle">{contact.firstName}</td>
-            <td className="align-middle">{contact.lastName}</td>
-            <td className="align-middle">
+            <td className='align-middle'>{contact.firstName}</td>
+            <td className='align-middle'>{contact.lastName}</td>
+            <td className='align-middle'>
               {/* <Button color="danger" onClick={() => null}>
                 <FontAwesomeIcon icon={faTrashAlt} />
               </Button> */}

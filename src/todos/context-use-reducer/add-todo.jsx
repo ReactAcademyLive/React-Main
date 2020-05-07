@@ -11,7 +11,7 @@ export default function AddTodo(props) {
     <div>
       <Form
         inline
-        onSubmit={evt => {
+        onSubmit={(evt) => {
           evt.preventDefault();
           if (!inputText.current.value.trim()) {
             return;

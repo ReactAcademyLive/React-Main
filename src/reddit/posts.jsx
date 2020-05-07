@@ -6,24 +6,29 @@ export default class Posts extends Component {
   render() {
     return (
       <ListGroup>
-        {this.props.posts.map((post, i) => 
+        {this.props.posts.map((post, i) => (
           <ListGroupItem key={i}>
-            <a href={post.url} >{post.title}</a>   
-            { post.is_self  ? ''  :  
-                <React.Fragment> &mdash; 
-                  <a href={`https://www.reddit.com${post.permalink}`} > discussion</a> 
-                </React.Fragment>   
-            }  
-            <span className="float-right">
-              {post.ups} ups
-            </span> 
-          </ListGroupItem>)
-        }
+            <a href={post.url}>{post.title}</a>
+            {post.is_self ? (
+              ''
+            ) : (
+              <>
+                {' '}
+                &mdash;
+                <a href={`https://www.reddit.com${post.permalink}`}>
+                  {' '}
+                  discussion
+                </a>
+              </>
+            )}
+            <span className='float-right'>{post.ups} ups</span>
+          </ListGroupItem>
+        ))}
       </ListGroup>
     );
   }
 }
 
 Posts.propTypes = {
-  posts: PropTypes.array.isRequired
+  posts: PropTypes.array.isRequired,
 };

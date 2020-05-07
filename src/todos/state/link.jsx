@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button} from 'reactstrap';
+import { Button } from 'reactstrap';
 
-const  Link = ({ active, children, onClick }) => (
-  <Button color="primary"
-     onClick={onClick}
-     disabled={active} >
+const Link = ({ active, children, onClick }) => (
+  <Button color='primary' onClick={onClick} disabled={active}>
     {children}
   </Button>
 );
@@ -13,7 +11,7 @@ const  Link = ({ active, children, onClick }) => (
 Link.propTypes = {
   active: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Link;

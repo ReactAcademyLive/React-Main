@@ -3,7 +3,7 @@ import {
   SELECT_SUBREDDIT,
   INVALIDATE_SUBREDDIT,
   REQUEST_POSTS,
-  RECEIVE_POSTS
+  RECEIVE_POSTS,
 } from './actions';
 
 function selectedSubreddit(state = 'reactjs', action) {
@@ -19,27 +19,23 @@ function posts(
   state = {
     isFetching: false,
     didInvalidate: false,
-    items: []
+    items: [],
   },
   action
 ) {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
-      return {...state, 
-              didInvalidate: true 
-             };
+      return { ...state, didInvalidate: true };
     case REQUEST_POSTS:
-      return {...state, 
-              isFetching: true,
-              didInvalidate: false
-             };
+      return { ...state, isFetching: true, didInvalidate: false };
     case RECEIVE_POSTS:
-      return {...state, 
-              isFetching: false,
-              didInvalidate: false,
-              items: action.posts,
-              lastUpdated: action.receivedAt
-             };
+      return {
+        ...state,
+        isFetching: false,
+        didInvalidate: false,
+        items: action.posts,
+        lastUpdated: action.receivedAt,
+      };
     default:
       return state;
   }
@@ -50,9 +46,10 @@ function postsBySubreddit(state = {}, action) {
     case INVALIDATE_SUBREDDIT:
     case RECEIVE_POSTS:
     case REQUEST_POSTS:
-      return { ...state, 
-               [action.subreddit]: posts(state[action.subreddit], action)
-             };
+      return {
+        ...state,
+        [action.subreddit]: posts(state[action.subreddit], action),
+      };
     default:
       return state;
   }
@@ -60,7 +57,7 @@ function postsBySubreddit(state = {}, action) {
 
 const rootReducer = combineReducers({
   postsBySubreddit,
-  selectedSubreddit
+  selectedSubreddit,
 });
 
 export default rootReducer;

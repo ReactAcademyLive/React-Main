@@ -12,7 +12,7 @@ export default function AddTodo() {
     <div>
       <Form
         inline
-        onSubmit={evt => {
+        onSubmit={(evt) => {
           evt.preventDefault();
           if (!inputText.current.value.trim()) {
             return;

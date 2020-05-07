@@ -29,9 +29,9 @@ export default function Todos(props) {
     <TodoContext.Provider
       value={{
         todos: todos,
-        onAddTodo: text => dispatch(addTodo(text)),
-        onToggleTodo: id => dispatch(toggleTodo(id)),
-        onDeleteTodo: id => null,
+        onAddTodo: (text) => dispatch(addTodo(text)),
+        onToggleTodo: (id) => dispatch(toggleTodo(id)),
+        onDeleteTodo: (id) => null,
         visibilityFilter: visibilityFilter,
         onChangeFilter: setVisibilityFilter,
       }}

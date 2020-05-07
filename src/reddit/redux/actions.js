@@ -6,32 +6,32 @@ export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
 export function selectSubreddit(subreddit) {
   return {
     type: SELECT_SUBREDDIT,
-    subreddit
+    subreddit,
   };
-};
+}
 
 export function invalidateSubreddit(subreddit) {
   return {
     type: INVALIDATE_SUBREDDIT,
-    subreddit
+    subreddit,
   };
-};
+}
 
 export function requestPosts(subreddit) {
   return {
     type: REQUEST_POSTS,
-    subreddit
+    subreddit,
   };
-};
+}
 
-export function receivePosts(subreddit, json) {;
+export function receivePosts(subreddit, json) {
   return {
     type: RECEIVE_POSTS,
     subreddit,
-    posts: json.data.children.map(child => child.data),
-    receivedAt: Date.now()
+    posts: json.data.children.map((child) => child.data),
+    receivedAt: Date.now(),
   };
-};
+}
 
 // function fetchPosts(subreddit) {
 //   return async (dispatch) => {

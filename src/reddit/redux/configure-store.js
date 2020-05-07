@@ -11,11 +11,9 @@ export default function configureStore(preloadedState) {
     rootReducer,
     preloadedState,
     composeWithDevTools(
-      applyMiddleware(
-        // thunkMiddleware,
-        // loggerMiddleware
-      )
+      applyMiddleware()
+      // thunkMiddleware,
+      // loggerMiddleware
     )
   );
-};
-
+}

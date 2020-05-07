@@ -6,11 +6,11 @@ import {
   //fetchPostsIfNeeded,
   invalidateSubreddit,
   requestPosts,
-  receivePosts
+  receivePosts,
 } from './redux/actions';
-import {Button} from 'reactstrap';
-import Picker from './picker';
-import Posts from './posts';
+import { Button } from 'reactstrap';
+import Picker from './Picker';
+import Posts from './Posts';
 
 class AsyncApp extends Component {
   constructor(props) {
@@ -18,16 +18,16 @@ class AsyncApp extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
   }
-  
+
   componentDidMount() {
-    const { /* dispatch, */  selectedSubreddit } = this.props;
+    const { /* dispatch, */ selectedSubreddit } = this.props;
     this.fetchPostsIfNeeded(selectedSubreddit);
     //dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
-      const {  /* dispatch, */  selectedSubreddit } = this.props;
+      const { /* dispatch, */ selectedSubreddit } = this.props;
       this.fetchPostsIfNeeded(selectedSubreddit);
       //dispatch(fetchPostsIfNeeded(selectedSubreddit));
     }
@@ -44,7 +44,7 @@ class AsyncApp extends Component {
 
     const { dispatch, selectedSubreddit } = this.props;
     dispatch(invalidateSubreddit(selectedSubreddit));
-    this.fetchPostsIfNeeded(selectedSubreddit,true);
+    this.fetchPostsIfNeeded(selectedSubreddit, true);
     //dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
 
@@ -60,24 +60,23 @@ class AsyncApp extends Component {
   }
 
   async fetchPostsIfNeeded(subreddit, isInvalid) {
-    const {dispatch} = this.props;
-    if (this.shouldFetchPosts(subreddit,isInvalid)) {
+    const { dispatch } = this.props;
+    if (this.shouldFetchPosts(subreddit, isInvalid)) {
       dispatch(requestPosts(subreddit));
       try {
-        const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
+        const response = await fetch(
+          `https://www.reddit.com/r/${subreddit}.json`
+        );
         const json = await response.json();
         dispatch(receivePosts(subreddit, json));
-      }
-      catch (err)
-      {
-       // dispatch({ type: 'error', name: 'error', value: e.message });
+      } catch (err) {
+        // dispatch({ type: 'error', name: 'error', value: e.message });
       }
     }
   }
 
-
   render() {
-    const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
+    const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props;
     return (
       <div>
         <Picker
@@ -86,24 +85,24 @@ class AsyncApp extends Component {
           options={['reactjs', 'frontend', 'javascript']}
         />
         <p>
-          {lastUpdated &&
+          {lastUpdated && (
             <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-              {' '}
-            </span>}
-          {!isFetching &&
-            <Button onClick={this.handleRefreshClick}>
-              Refresh
-            </Button>}
+              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.{' '}
+            </span>
+          )}
+          {!isFetching && (
+            <Button onClick={this.handleRefreshClick}>Refresh</Button>
+          )}
         </p>
         {isFetching && posts.length === 0 && <h2>Loading...</h2>}
         {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
-        {posts.length > 0 &&
+        {posts.length > 0 && (
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
             <Posts posts={posts} />
-          </div>}
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 
@@ -112,25 +111,23 @@ AsyncApp.propTypes = {
   posts: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number,
-  dispatch: PropTypes.func.isRequired
-}
+  dispatch: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   const { selectedSubreddit, postsBySubreddit } = state;
-  const {
-    isFetching,
-    lastUpdated,
-    items: posts
-  } = postsBySubreddit[selectedSubreddit] || {
+  const { isFetching, lastUpdated, items: posts } = postsBySubreddit[
+    selectedSubreddit
+  ] || {
     isFetching: true,
-    items: []
+    items: [],
   };
   return {
     selectedSubreddit,
     posts,
     isFetching,
     lastUpdated,
-    postsBySubreddit
+    postsBySubreddit,
   };
 }
 

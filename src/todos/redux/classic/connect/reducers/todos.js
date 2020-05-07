@@ -1,4 +1,4 @@
-import {actionList} from '../actions'
+import { actionList } from '../actions';
 
 let nextTodoId = 4;
 
@@ -10,28 +10,21 @@ export default function todos(state = [], action) {
         {
           id: nextTodoId++,
           text: action.text,
-          completed: false
-        }
+          completed: false,
+        },
       ];
 
     case actionList.TOGGLE_TODO:
-      return state.map(todo =>
-        (todo.id === action.id)
-          ? {...todo, completed: !todo.completed}
-          : todo
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
       );
 
-    
-
     case actionList.EDIT_TODO:
-    return state.map(todo =>
-      (todo.id === action.id)
-        ? {...todo, text: action.text}
-        : todo
-    ); 
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, text: action.text } : todo
+      );
 
     default:
       return state;
   }
 }
-

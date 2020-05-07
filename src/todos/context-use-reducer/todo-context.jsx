@@ -1,3 +1,3 @@
-import React from 'react'
+import React from 'react';
 
-export default React.createContext({todos:[]});
+export default React.createContext({ todos: [] });

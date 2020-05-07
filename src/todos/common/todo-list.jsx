@@ -5,12 +5,12 @@ import { ListGroup } from 'reactstrap';
 
 const TodoList = ({ todos, onDeleteTodo, onToggleTodo }) => (
   <ListGroup className='my-4'>
-    {todos.map(todo => (
+    {todos.map((todo) => (
       <TodoItem
         key={todo.id}
         {...todo}
         onClick={() => onToggleTodo(todo.id)}
-        onDelete={evt => {
+        onDelete={(evt) => {
           evt.stopPropagation();
           onDeleteTodo(todo.id);
         }}

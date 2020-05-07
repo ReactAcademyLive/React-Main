@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import Contacts from './contacts-hooks';
+import Contacts from './Contacts-hooks';
 import { Link } from 'react-router-dom';
 
 let container = null;
@@ -19,8 +19,8 @@ afterEach(() => {
 });
 
 jest.mock('react-router-dom', () => ({
-  Link: props => {
-    return <a href="">{props.children}</a>;
+  Link: (props) => {
+    return <a href=''>{props.children}</a>;
   },
 }));
 

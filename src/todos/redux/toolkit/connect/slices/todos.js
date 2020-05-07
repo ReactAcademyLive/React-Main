@@ -11,14 +11,14 @@ const todos = createSlice({
     },
 
     editTodo: (state, action) => {
-      const todo = state.find(todo => todo.id === action.payload.id);
+      const todo = state.find((todo) => todo.id === action.payload.id);
       if (todo) {
         todo.text = action.payload.text;
       }
     },
 
     toggleTodo: (state, action) => {
-      const todo = state.find(todo => todo.id === action.payload);
+      const todo = state.find((todo) => todo.id === action.payload);
       if (todo) {
         todo.completed = !todo.completed;
       }
