@@ -14,7 +14,7 @@ const MyTextBox = (props) => {
         onChange={props.onChange}
         invalid={!!props.formErrors[props.name]}
       />
-      <label for={props.name}>{props.fullName}</label>
+      <label htmlFor={props.name}>{props.fullName}</label>
       <FormFeedback>{props.formErrors[props.name]}</FormFeedback>
     </FormGroup>
   );

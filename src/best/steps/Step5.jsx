@@ -1,5 +1,5 @@
 import React, { useState, useEffect /*, useRef */ } from 'react';
-//import Cat from '../cat';
+//import Cat from '../Cat';
 
 function useMouse(div) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });

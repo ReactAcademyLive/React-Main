@@ -103,4 +103,4 @@ export default class ContactApi {
   static deleteContact(contactId) {
     return db.collection('contacts').doc(contactId).delete();
   }
-
+}

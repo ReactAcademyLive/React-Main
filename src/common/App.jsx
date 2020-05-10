@@ -29,7 +29,7 @@ import Step5 from '../best/steps/Step5';
 import Reddits from '../reddit';
 import Clock from '../clock';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
-import ContextWith from '../context/WithContext/L1-SimpleContext';
+import ContextWith from '../context/ContextSample/L1-SimpleContext';
 import About from '../about';
 
 //const About = React.lazy(() => import('../about'));

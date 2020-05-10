@@ -31,7 +31,7 @@ import Step3 from '../best/steps/Step3';
 import Step4 from '../best/steps/Step4';
 import Step5 from '../best/steps/Step5';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
-import ContextWith from '../context/WithContext/L1-SimpleContext';
+import ContextWith from '../context/ContextSample/L1-SimpleContext';
 import About from '../about';
 //const About = React.lazy(() => import('./about'));
 

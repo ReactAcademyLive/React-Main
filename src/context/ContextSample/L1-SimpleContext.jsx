@@ -8,15 +8,19 @@ export default function SimpleContext() {
   const [firstName, setFirstName] = useState('John');
   const [color, setColor] = useState('blue');
 
+  //the folloing is to avoid the ESLint warning that
+  //we're not calling the "set" methods.
+  if ((setFirstName, setColor)) {
+  }
+
   function change(evt) {
     const { name, value } = evt.target;
 
-    if (name === 'firstName') {
-      setFirstName(value);
-    }
-    if (name === 'color') {
-      setColor(value);
-    }
+    const fnName = 'set' + name[0].toUpperCase() + name.slice(1);
+    const str = `${fnName}("${value}")`;
+
+    // eslint-disable-next-line
+    eval(str);
   }
 
   return (

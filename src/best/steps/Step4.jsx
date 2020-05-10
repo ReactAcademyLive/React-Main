@@ -1,32 +1,35 @@
 import React from 'react';
-//import Cat from '../cat';
+//import Cat from '../Cat';
 
 class MouseProvider extends React.Component {
-  state = { x: 0, y: 0 }
+  state = { x: 0, y: 0 };
 
   handleMouseMove = (evt) => {
     this.setState({ x: evt.clientX, y: evt.clientY });
-  }
+  };
 
   render() {
     return (
-      <div style={{ height: "500px" }} onMouseMove={this.handleMouseMove} >
+      <div style={{ height: '500px' }} onMouseMove={this.handleMouseMove}>
         {this.props.children(this.state)}
       </div>
     );
   }
 }
 
-function DisplayMouse({mouse}) {
+function DisplayMouse({ mouse }) {
   return (
     <MouseProvider>
-      { (mouse) => <h1>The mouse position is: ({mouse.x}, {mouse.y})</h1> }      
+      {(mouse) => (
+        <h1>
+          The mouse position is: ({mouse.x}, {mouse.y})
+        </h1>
+      )}
     </MouseProvider>
   );
 }
 
 export default DisplayMouse;
-
 
 //render props: push a function into a prop that is called "render"
 //function as a child:  push the same function in children
@@ -35,8 +38,7 @@ export default DisplayMouse;
 //               (hence the name)
 //variation two: do a more complex render where you push the data
 //               down to Cat also.
-    //<>
-    //  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
-    //  <Cat mouse={mouse} />
-    //</>
-
+//<>
+//  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
+//  <Cat mouse={mouse} />
+//</>
