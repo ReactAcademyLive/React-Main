@@ -2,8 +2,9 @@ import React from 'react';
 //import Cat from '../Cat';
 //import withCat from '../with-cat';
 
+//This is a HOC, a higher-order component.
 function withMouse(Component) {
-  return class extends React.Component {
+  class WithMouse extends React.Component {
     state = { x: 0, y: 0 };
 
     handleMouseMove = (evt) => {
@@ -17,9 +18,15 @@ function withMouse(Component) {
         </div>
       );
     }
-  };
+  }
+  //convention to help with HOC debugging
+  WithMouse.displayName = `WithMouse(${
+    Component.displayName || Component.name || 'Component'
+  })`;
+  return WithMouse;
 }
 
+//regular component
 function DisplayMouse({ mouse }) {
   return (
     <h1>
@@ -28,6 +35,7 @@ function DisplayMouse({ mouse }) {
   );
 }
 
+//we wrap the component with the HOC
 export default withMouse(DisplayMouse);
 
 //export default withMouse(Cat);

@@ -3,7 +3,7 @@ import { Input } from 'reactstrap';
 import MyContext from './MyContext';
 
 //contextTypes only works with classes
-export default class ModifyData extends React.Component {
+export default class ModifyDataContextTypes extends React.Component {
   static contextType = MyContext;
 
   render() {

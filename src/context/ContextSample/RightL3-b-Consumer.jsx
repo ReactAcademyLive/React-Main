@@ -3,10 +3,10 @@ import { Input } from 'reactstrap';
 import MyContext from './MyContext';
 
 //standard way to consume context, available to both functions and classes
-export default function ModifyData() {
+export default function ModifyDataConsumer() {
   return (
     <MyContext.Consumer>
-      {ctx => (
+      {(ctx) => (
         <>
           <Input
             value={ctx.firstName}

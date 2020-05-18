@@ -32,7 +32,7 @@ export default class ContactDetails extends React.Component {
       lastName: this.state.lastName,
       email: this.state.email,
     });
-    this.props.history.push('/contacts/hooks');
+    this.props.history.push('/data/contacts/hooks');
   };
 
   change = (evt) => {

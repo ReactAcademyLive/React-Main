@@ -5,10 +5,10 @@ export default function ColoredPart(props) {
   return (
     <div
       style={{
-        backgroundColor: 'burlywood',
+        backgroundColor: 'lightblue',
         height: '200px',
         borderRadius: '5px',
-        padding: '5px 20px'
+        padding: '5px 20px',
       }}
     >
       <DisplayData firstName={props.firstName} color={props.color} />

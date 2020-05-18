@@ -5,13 +5,13 @@ export default function ColoredPart() {
   return (
     <div
       style={{
-        backgroundColor: 'burlywood',
+        backgroundColor: 'lightblue',
         height: '200px',
         borderRadius: '5px',
-        padding: '5px 20px'
+        padding: '5px 20px',
       }}
     >
-      <DisplayData  />
+      <DisplayData />
     </div>
   );
 }

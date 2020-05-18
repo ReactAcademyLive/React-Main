@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactApi from '../contact-api/ContactApi';
+import ContactApi from '../contact-api/ContactApi2';
 import ContactForm from './ContactForm';
 
 export default function ContactDetails(props) {
@@ -37,7 +37,7 @@ export default function ContactDetails(props) {
       lastName: state.lastName,
       email: state.email,
     });
-    props.history.push('/contacts/hooks');
+    props.history.push('/data/contacts/hooks');
   }
 
   function change(evt) {

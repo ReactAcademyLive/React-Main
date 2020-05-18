@@ -3,7 +3,7 @@ import { Input } from 'reactstrap';
 import MyContext from './MyContext';
 
 //Hooks only work with functions
-export default function ModifyData() {
+export default function ModifyDataHooks() {
   const ctx = React.useContext(MyContext);
 
   return (

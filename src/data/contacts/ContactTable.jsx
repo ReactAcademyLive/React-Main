@@ -19,7 +19,7 @@ const ContactTable = (props) => {
         {props.contacts.map((contact) => (
           <tr key={contact.id}>
             <td>
-              <Link to={`/contact/${contact.id}`}>
+              <Link to={`/data/details/${contact.id}`}>
                 <Button color='primary'>
                   <FontAwesomeIcon icon={faPenAlt} />
                 </Button>

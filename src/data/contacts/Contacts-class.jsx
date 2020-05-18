@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactApi from './contact-api/ContactApi';
+import ContactApi from './contact-api/ContactApi2';
 import ContactTable from './ContactTable';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -31,7 +31,7 @@ export default class Contacts extends React.Component {
       <>
         <h1>Contacts (using Classes)</h1>
         <ContactTable contacts={this.state.contacts} />
-        <Link to='/contact'>
+        <Link to='/data/details'>
           <Button color='primary'>Create Contact</Button>
         </Link>
       </>

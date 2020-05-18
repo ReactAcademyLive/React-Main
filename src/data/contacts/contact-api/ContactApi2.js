@@ -1,16 +1,4 @@
-import * as firebase from 'firebase/app';
-import 'firebase/firestore';
-
-Object.filter = (obj, predicate) =>
-  Object.fromEntries(Object.entries(obj).filter(predicate));
-
-firebase.initializeApp({
-  apiKey: 'AIzaSyAKDS8BM9MWwRA2PYgyqd3BpfRE0GyjULk',
-  //authDomain: '### FIREBASE AUTH DOMAIN ###',
-  projectId: 'test-10929',
-});
-
-const db = firebase.firestore();
+import { firestore as db } from '../../../common/firebase';
 
 // db.collection("contacts").add({
 //   firstName: "Ada",
@@ -92,7 +80,7 @@ export default class ContactApi {
       return db
         .collection('contacts')
         .doc(contact.id)
-        .update(Object.filter(contact, ([key, value]) => key !== 'id'));
+        .update(filterProps(contact, ([key, value]) => key !== 'id'));
     } else {
       //if no id, create contact
       contact.id = null;
@@ -103,4 +91,8 @@ export default class ContactApi {
   static deleteContact(contactId) {
     return db.collection('contacts').doc(contactId).delete();
   }
+}
+
+function filterProps(obj, predicate) {
+  return Object.fromEntries(Object.entries(obj).filter(predicate));
 }

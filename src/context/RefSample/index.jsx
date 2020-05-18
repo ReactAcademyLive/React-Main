@@ -40,7 +40,7 @@ export default function RefSample(props) {
         <input
           type='text'
           className='form-control'
-          id='id1'
+          id='id1' //Every id should be unique on a page. Is that the case?
           //comment previous, uncomment next line
           //ref={myRef1}
           defaultValue='Uncontrolled component'
