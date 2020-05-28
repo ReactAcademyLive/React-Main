@@ -14,6 +14,7 @@ import {
 import { NavLink as RRNavLink } from 'react-router-dom';
 import logo from './logo.svg';
 import ToggleMenu from './ToggleMenu';
+import DarkModeButton from './DarkModeButton';
 
 export default function Menu() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -167,6 +168,7 @@ export default function Menu() {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
+            <DarkModeButton />
           </Nav>
         </Collapse>
       </Navbar>

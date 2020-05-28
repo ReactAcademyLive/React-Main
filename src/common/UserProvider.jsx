@@ -22,7 +22,7 @@ function UserProvider(props) {
         });
       }
     });
-  });
+  }, []);
 
   // async function refresh() {
   //   const doc = await getUserDocument(user.uid);

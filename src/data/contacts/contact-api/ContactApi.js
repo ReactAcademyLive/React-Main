@@ -1,3 +1,5 @@
+import './ContactTypes';
+
 export default class ContactApi {
   static getAllContacts() {
     return fetch('/contacts').then((resp) => resp.json());

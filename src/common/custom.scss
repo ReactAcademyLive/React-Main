@@ -17,11 +17,24 @@ $body-bg: aliceblue;
 
 @import '~bootstrap/scss/bootstrap.scss';
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $gray-900;
-    color: $white;
-  }
+body,
+.table {
+  transition: color 1s, background-color 1s;
+}
+
+.list-group-item {
+  transition: background-color 1s;
+}
+
+.form-control {
+  transition: color 1s, background-color 1s, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+//@media (prefers-color-scheme: dark) {
+body[data-theme='dark'] {
+  background-color: $gray-900;
+  color: $white;
 
   a {
     color: lightblue;
@@ -94,6 +107,10 @@ $body-bg: aliceblue;
   }
   .dropdown-item-text {
     color: $white;
+  }
+
+  .modal-content {
+    background-color: $gray-900;
   }
 }
 

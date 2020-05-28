@@ -1,10 +1,11 @@
 import React from 'react';
-import ContactApi from './contact-api/ContactApi2';
+import ContactApi from './contact-api/ContactApi';
 import ContactTable from './ContactTable';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 export default function Contacts() {
+  /** @type {[Contacts, Function]} ContactState - state hook of contacts */
   const [contacts, setContacts] = React.useState([]);
 
   React.useEffect(() => {
