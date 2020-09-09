@@ -8,25 +8,25 @@ import 'firebase/auth';
 //   projectId: 'test-10929',
 // });
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyCrNd_ZNCrX_Du-9OyD6TmlLDna2ToC2k4',
-  authDomain: 'trafic3w-a7cf3.firebaseapp.com',
-  databaseURL: 'https://trafic3w-a7cf3.firebaseio.com',
-  projectId: 'trafic3w-a7cf3',
-  storageBucket: 'trafic3w-a7cf3.appspot.com',
-  messagingSenderId: '482549253011',
-  appId: '1:482549253011:web:5b190f14606600b0525e66',
-};
-
 // const firebaseConfig = {
-//   apiKey: 'AIzaSyAKDS8BM9MWwRA2PYgyqd3BpfRE0GyjULk',
-//   projectId: 'test-10929',
-//   authDomain: 'test-10929.firebaseapp.com',
-//   databaseURL: 'https://test-10929.firebaseio.com',
-//   //storageBucket: "test-10929.appspot.com",
-//   //messagingSenderId: "1046705001165",
-//   //appId: "1:1046705001165:web:ab840323e9462440c74f84"
+//   apiKey: 'AIzaSyCrNd_ZNCrX_Du-9OyD6TmlLDna2ToC2k4',
+//   authDomain: 'trafic3w-a7cf3.firebaseapp.com',
+//   databaseURL: 'https://trafic3w-a7cf3.firebaseio.com',
+//   projectId: 'trafic3w-a7cf3',
+//   storageBucket: 'trafic3w-a7cf3.appspot.com',
+//   messagingSenderId: '482549253011',
+//   appId: '1:482549253011:web:5b190f14606600b0525e66',
 // };
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAKDS8BM9MWwRA2PYgyqd3BpfRE0GyjULk',
+  projectId: 'test-10929',
+  authDomain: 'test-10929.firebaseapp.com',
+  databaseURL: 'https://test-10929.firebaseio.com',
+  //storageBucket: "test-10929.appspot.com",
+  //messagingSenderId: "1046705001165",
+  //appId: "1:1046705001165:web:ab840323e9462440c74f84"
+};
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
