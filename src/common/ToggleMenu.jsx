@@ -8,6 +8,7 @@ export default function ToggleMenu({ name, link }) {
     <DropdownToggle
       nav
       tag='a'
+      href='#'
       className={location.pathname.startsWith('/' + link) ? 'active' : ''}
       caret
     >
