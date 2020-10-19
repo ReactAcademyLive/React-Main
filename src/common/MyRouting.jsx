@@ -19,6 +19,7 @@ import Step2 from '../best/steps/Step2';
 import Step3 from '../best/steps/Step3';
 import Step4 from '../best/steps/Step4';
 import Step5 from '../best/steps/Step5';
+import Step6 from '../best/steps/Step6';
 import TodosClassic from '../todos/state/todos';
 import TodosContextHooks from '../todos/context-use-reducer/todos';
 import ReduxClassic from '../todos/redux/classic/connect/todos';
@@ -80,6 +81,7 @@ export default function MyRouting({ location }) {
         <Route path='/best/step3' component={Step3} />
         <Route path='/best/step4' component={Step4} />
         <Route path='/best/step5' component={Step5} />
+        <Route path='/best/step6' component={Step6} />
         <Route path='/auth/signup' component={SignUp} />
         <Route path='/auth/signin' component={SignIn} />
         <Route path='/auth/profile' component={Profile} />

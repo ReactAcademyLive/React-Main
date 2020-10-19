@@ -1,6 +1,10 @@
 import React from 'react';
 //import Cat from '../Cat';
 
+export default function ParentRoot() {
+  return <DisplayMouse />;
+}
+
 class DisplayMouse extends React.Component {
   state = { x: 0, y: 0 };
 
@@ -19,8 +23,6 @@ class DisplayMouse extends React.Component {
     );
   }
 }
-
-export default DisplayMouse;
 
 //Everything in a single component.
 //Hard to reuse this elsewhere (Need to copy paste some parts of the code)

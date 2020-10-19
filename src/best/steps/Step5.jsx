@@ -1,50 +1,43 @@
-import React, { useState, useEffect /*, useRef */ } from 'react';
+import React from 'react';
 //import Cat from '../Cat';
 
-function useMouse(div) {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-
-  function handleMouseMove(evt) {
-    setMouse({ x: evt.clientX, y: evt.clientY });
-  }
-
-  useEffect(() => {
-    //use the div, if none then use the whole window
-    const dest = (div && div.current) || window;
-    dest.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      dest.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, [div]);
-
-  return mouse;
-}
-
-///////////////////////////////////////////////////////
-
-export default function DisplayMouse() {
-  const mouse = useMouse();
+export default function ParentRoot() {
   return (
-    <>
-      <h1>
-        The position is: ({mouse.x}, {mouse.y})
-      </h1>
-    </>
+    <MouseProvider>{(mouse) => <DisplayMouse mouse={mouse} />}</MouseProvider>
   );
 }
 
-//Try to add the cat!  See how easy it is!
+class MouseProvider extends React.Component {
+  state = { x: 0, y: 0 };
 
-//// use the following function to link to a div
-// function DivMouse() {
-//   const ref = useRef(null);
-//   const mouse = useMouse(ref);
-//   return ( <div ref={ref} style={{height: "400px"}} >
-//              <h1>The position is: ({mouse.x}, {mouse.y})</h1>
-//            </div> );
-// }
+  handleMouseMove = (evt) => {
+    this.setState({ x: evt.clientX, y: evt.clientY });
+  };
 
-////add cat to the mix
+  render() {
+    return (
+      <div style={{ height: '500px' }} onMouseMove={this.handleMouseMove}>
+        {this.props.children(this.state)}
+      </div>
+    );
+  }
+}
+
+function DisplayMouse({ mouse }) {
+  return (
+    <h1>
+      The mouse position is: ({mouse.x}, {mouse.y})
+    </h1>
+  );
+}
+
+//render props: push a function into a prop that is called "render"
+//function as a child:  push the same function in children
+
+//variation one: instead of children, use a prop called "render"
+//               (hence the name)
+//variation two: do a more complex render where you push the data
+//               down to Cat also.
 //<>
 //  <h1>The position is: ({mouse.x}, {mouse.y})</h1>
 //  <Cat mouse={mouse} />

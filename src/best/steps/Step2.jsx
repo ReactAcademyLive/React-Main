@@ -1,7 +1,11 @@
 import React from 'react';
 //import Cat from '../Cat';
 
-class MouseParent extends React.Component {
+export default function ParentRoot() {
+  return <MouseProvider />;
+}
+
+class MouseProvider extends React.Component {
   state = { x: 0, y: 0 };
 
   handleMouseMove = (evt) => {
@@ -24,8 +28,6 @@ function DisplayMouse({ mouse }) {
     </h1>
   );
 }
-
-export default MouseParent;
 
 //We split in two components.
 //Problem: parent needs to know the name of the child component

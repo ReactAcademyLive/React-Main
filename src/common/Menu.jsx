@@ -100,15 +100,18 @@ export default function Menu() {
                   Single component
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/best/step2'>
-                  Component split
+                  Split components
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/best/step3'>
-                  Higher-Order Component
+                  cloneElement
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/best/step4'>
-                  Render Props
+                  Higher-Order Component
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/best/step5'>
+                  Render Props
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/best/step6'>
                   Custom Hooks
                 </DropdownItem>
               </DropdownMenu>
