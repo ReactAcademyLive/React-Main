@@ -12,6 +12,7 @@ import ContactsClass from '../data/contacts/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
 import MapWithPins from '../data/maps/MapWithPins';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
+import ContextContainment from '../context/Containment/L1-SimpleContainment';
 import ContextWith from '../context/ContextSample/L1-SimpleContext';
 import WithRef from '../context/RefSample';
 import Step1 from '../best/steps/Step1';
@@ -75,6 +76,7 @@ export default function MyRouting({ location }) {
         <Route path='/clock' component={Clock} />
         <Route path='/context/PropDrill' component={ContextDrill} />
         <Route path='/context/WithContext' component={ContextWith} />
+        <Route path='/context/containment' component={ContextContainment} />
         <Route path='/context/reference' component={WithRef} />
         <Route path='/best/step1' component={Step1} />
         <Route path='/best/step2' component={Step2} />

@@ -86,10 +86,13 @@ export default function Menu() {
                   Property Drilling (no context)
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/context/WithContext'>
-                  With Context
+                  Context
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/context/containment'>
+                  Containment
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/context/reference'>
-                  With reference
+                  Using references
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

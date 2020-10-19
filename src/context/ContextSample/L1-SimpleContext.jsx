@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ColoredPart from './LeftL2-ColoredPart';
-import ChangePart from './RightL2-ChangePart';
+import BlueBox from './LeftL2-BlueBox';
+import GreyBoxes from './RightL2-GreyBoxes';
 import { Row, Col } from 'reactstrap';
 import MyContext from './MyContext';
 
@@ -27,10 +27,10 @@ export default function SimpleContext() {
     <MyContext.Provider value={{ firstName, color, onChange: change }}>
       <Row>
         <Col md='6'>
-          <ColoredPart />
+          <BlueBox />
         </Col>
         <Col md='6'>
-          <ChangePart />
+          <GreyBoxes />
         </Col>
       </Row>
     </MyContext.Provider>

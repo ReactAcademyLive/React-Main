@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ColoredPart from './LeftL2-ColoredPart';
-import ChangePart from './RightL2-ChangePart';
+import BlueBox from './LeftL2-BlueBox';
+import GreyBox from './RightL2-GreyBox';
 import { Row, Col } from 'reactstrap';
 
 export default function SimpleState() {
@@ -25,10 +25,10 @@ export default function SimpleState() {
   return (
     <Row>
       <Col md='6'>
-        <ColoredPart firstName={firstName} color={color} />
+        <BlueBox firstName={firstName} color={color} />
       </Col>
       <Col md='6'>
-        <ChangePart firstName={firstName} color={color} onChange={change} />
+        <GreyBox firstName={firstName} color={color} onChange={change} />
       </Col>
     </Row>
   );
