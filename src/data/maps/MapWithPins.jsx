@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const MyPopupMarker = ({ content, position }) => (
   <Marker position={position}>
@@ -57,13 +57,17 @@ export default class MapWithPins extends Component {
     return (
       <>
         <h1>Map with pins</h1>
-        <Map center={[46.8141244, -71.22]} zoom={13} onClick={this.handleClick}>
+        <MapContainer
+          center={[46.8141244, -71.22]}
+          zoom={13}
+          onClick={this.handleClick}
+        >
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
           <MyMarkersList markers={this.state.markers} />
-        </Map>
+        </MapContainer>
       </>
     );
   }
