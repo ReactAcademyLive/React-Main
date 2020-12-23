@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "installConfig": {
-    "pnp": true
+    "pnp": false
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
