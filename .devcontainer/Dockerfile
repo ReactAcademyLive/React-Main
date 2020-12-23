@@ -5,6 +5,8 @@
 # FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 FROM node:lts-alpine
 
+RUN apk update && apk upgrade && apk add git
+
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
