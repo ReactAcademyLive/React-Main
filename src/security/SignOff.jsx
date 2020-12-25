@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+const SignOff = () => {
   return (
     <>
       <h1>Sign Off page</h1>
@@ -8,3 +8,5 @@ export default () => {
     </>
   );
 };
+
+export default SignOff;
