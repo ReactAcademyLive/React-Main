@@ -39,7 +39,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "api": "cd ../HrService && node .",
+    "api": "npm run start --prefix api",
     "both": "concurrently \"npm run start\" \"npm run api\""
   },
   "proxy": "http://localhost:3001/",

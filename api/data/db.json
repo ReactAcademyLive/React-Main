@@ -1,0 +1,15 @@
+{
+  "ids": {
+    "Contact": 7
+  },
+  "models": {
+    "Contact": {
+      "1": "{\"id\":1,\"firstName\":\"Eric\",\"lastName\":\"Côté\",\"email\":\"ericcote@reactAcademy.ca\"}",
+      "2": "{\"id\":2,\"firstName\":\"Satya\",\"lastName\":\"Nadella\",\"email\":\"satyan@microsoft.com\"}",
+      "3": "{\"id\":3,\"firstName\":\"Mark\",\"lastName\":\"Zuckerberg\",\"email\":\"zuck@fb.com\"}",
+      "4": "{\"id\":4,\"firstName\":\"Jeff\",\"lastName\":\"Bezos\",\"email\":\"jeff@amazon.com\"}",
+      "5": "{\"id\":5,\"firstName\":\"Tim\",\"lastName\":\"Cook\",\"email\":\"tcook@apple.com\"}",
+      "6": "{\"id\":6,\"firstName\":\"Sundar\",\"lastName\":\"Pichai\",\"email\":\"sundar@google.com\"}"
+    }
+  }
+}
