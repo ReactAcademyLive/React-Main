@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../common/UserProvider';
-import { auth } from '../common/firebase';
+import { AuthContext } from '../common/AuthProvider';
 import { Button } from 'reactstrap';
 
 const ProfilePage = () => {
-  let user = useContext(UserContext) ?? { displayName: 'Not logged' };
+  let auth = useContext(AuthContext);
+  let user = auth.user ?? { displayName: 'Not logged' };
 
   const { photoURL, displayName, email } = user;
 
@@ -31,14 +31,16 @@ const ProfilePage = () => {
           </h3>
         </div>
       </div>
-      <Button
-        color='primary'
-        onClick={() => {
-          auth.signOut();
-        }}
-      >
-        Sign out
-      </Button>
+      <div className='mt-3'>
+        <Button
+          color='primary'
+          onClick={() => {
+            auth.logoff();
+          }}
+        >
+          Sign Out
+        </Button>
+      </div>
     </div>
   );
 };

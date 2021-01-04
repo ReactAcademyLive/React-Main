@@ -1,10 +1,33 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { auth, getUserDocument } from './firebase';
+import {
+  auth,
+  getUserDocument,
+  generateUserDocument,
+  signInWithGoogle,
+  signInWithGithub,
+} from './firebase';
 
-export const UserContext = createContext({ user: null });
+export const AuthContext = createContext({ user: null });
 
-function UserProvider(props) {
+function AuthProvider(props) {
   const [user, setUser] = useState(null);
+
+  function login(type) {
+    switch (type) {
+      case 'google':
+        signInWithGoogle();
+        break;
+      case 'github':
+        signInWithGithub();
+        break;
+      default:
+        break;
+    }
+  }
+
+  function logoff() {
+    auth.signOut();
+  }
 
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
@@ -35,7 +58,11 @@ function UserProvider(props) {
   // }
 
   return (
-    <UserContext.Provider value={user}>{props.children}</UserContext.Provider>
+    <AuthContext.Provider
+      value={{ user, login, logoff, generateUserDocument, auth }}
+    >
+      {props.children}
+    </AuthContext.Provider>
   );
 }
-export default UserProvider;
+export default AuthProvider;

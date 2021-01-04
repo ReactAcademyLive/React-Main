@@ -1,23 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Button, Form, Label } from 'reactstrap';
-import { UserContext } from '../common/UserProvider';
-import {
-  signInWithGoogle,
-  signInWithGithub,
-  auth,
-  generateUserDocument,
-} from '../common/firebase';
+import { AuthContext } from '../common/AuthProvider';
 
 const SignUp = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState(null);
-  const user2 = useContext(UserContext);
-
-  if (setError) {
-  }
+  const auth = useContext(AuthContext);
+  const user2 = auth.user;
 
   const createUserWithEmailAndPasswordHandler = async (
     event,
@@ -27,12 +19,12 @@ const SignUp = (props) => {
   ) => {
     event.preventDefault();
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
+      const { user } = await auth.auth.createUserWithEmailAndPassword(
         email,
         password
       );
-      await generateUserDocument(user, { displayName });
-      console.log(user2.refresh);
+      await auth.generateUserDocument(user, { displayName });
+      console.log('user2.refresh');
       await user2.refresh();
 
       props.history.push('/auth/profile');
@@ -112,10 +104,20 @@ const SignUp = (props) => {
           </Button>
         </Form>
         <p className='my-3'>or</p>
-        <Button color='danger' onClick={signInWithGoogle}>
+        <Button
+          color='danger'
+          onClick={() => {
+            auth.login('google');
+          }}
+        >
           Sign In with Google
         </Button>{' '}
-        <Button color='danger' onClick={signInWithGithub}>
+        <Button
+          color='danger'
+          onClick={() => {
+            auth.login('github');
+          }}
+        >
           Sign In with Github
         </Button>
         <p className='my-3'>

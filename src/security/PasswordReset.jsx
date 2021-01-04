@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input, Label, Button, Alert } from 'reactstrap';
-import { auth } from '../common/firebase';
+import { AuthContext } from '../common/AuthProvider';
 
 const PasswordReset = () => {
   const [email, setEmail] = useState('');
   const [emailHasBeenSent, setEmailHasBeenSent] = useState(false);
   const [error, setError] = useState(null);
+  const auth = useContext(AuthContext);
 
   const onChangeHandler = (event) => {
     const { name, value } = event.currentTarget;
@@ -18,7 +19,7 @@ const PasswordReset = () => {
 
   const sendResetEmail = (event) => {
     event.preventDefault();
-    auth
+    auth.auth
       .sendPasswordResetEmail(email)
       .then(() => {
         setEmailHasBeenSent(true);

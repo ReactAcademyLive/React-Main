@@ -7,12 +7,12 @@ import './custom.scss';
 import Menu from './Menu';
 import Footer from './Footer';
 import MyRouting from './MyRouting';
-import UserProvider from './UserProvider';
+import AuthProvider from './AuthProvider';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <UserProvider>
+      <AuthProvider>
         <div
           style={{
             minHeight: '100vh',
@@ -27,7 +27,7 @@ export default function App() {
           </Container>
           <Footer className='bg-dark text-light py-3 fixed-bottom' />
         </div>
-      </UserProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

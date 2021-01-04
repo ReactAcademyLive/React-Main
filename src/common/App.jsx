@@ -5,13 +5,13 @@ import './custom.scss';
 import Menu from './Menu';
 import Footer from './Footer';
 import MyRouting from './MyRouting';
-import UserProvider from './UserProvider';
+import AuthProvider from './AuthProvider';
 
 export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <UserProvider>
+        <AuthProvider>
           <div
             style={{
               minHeight: '100vh',
@@ -25,7 +25,7 @@ export default class App extends React.Component {
             </Container>
             <Footer />
           </div>
-        </UserProvider>
+        </AuthProvider>
       </BrowserRouter>
     );
   }
