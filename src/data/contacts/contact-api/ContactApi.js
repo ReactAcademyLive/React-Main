@@ -1,64 +1,12 @@
 import './ContactTypes';
-import { firestore as db } from '../../../common/firebase';
-
-// db.collection("contacts").add({
-//   firstName: "Ada",
-//   lastName: "Lovelace"
-// })
-// .then(function(docRef) {
-//   console.log("Document written with ID: ", docRef.id);
-// })
-// .catch(function(error) {
-//   console.error("Error adding document: ", error);
-// });
 
 export default class ContactApi {
-  static unsubscribe = null;
-
-  static subscribeChangeNotification(onChange) {
-    ContactApi.unsubscribe = db.collection('contacts').onSnapshot((snap) => {
-      snap.docChanges().forEach((change) => {
-        if (
-          change.type === 'added' ||
-          change.type === 'modified' ||
-          change.type === 'deleted'
-        ) {
-          onChange(change);
-        }
-      });
-    });
+  static getAllContacts() {
+    return fetch('/contacts').then((resp) => resp.json());
   }
 
-  static unsubscribeChangeNotification() {
-    ContactApi.unsubscribe();
-  }
-
-  static async getAllContacts() {
-    const a = [];
-
-    const snapshot = await db.collection('contacts').get();
-
-    snapshot.forEach((doc) => {
-      a.push({ ...doc.data(), id: doc.id });
-    });
-
-    return new Promise(function (resolve, reject) {
-      resolve(a);
-    });
-  }
-
-  static async getContact(contactId) {
-    let data = {};
-    const doc = await db.collection('contacts').doc(contactId).get();
-    if (doc.exists) {
-      data = doc.data();
-    }
-
-    data.id = contactId;
-
-    return new Promise(function (resolve, reject) {
-      resolve(data);
-    });
+  static getContact(contactId) {
+    return fetch('/contacts/' + contactId).then((resp) => resp.json());
   }
 
   static saveContact(contact) {
@@ -77,23 +25,31 @@ export default class ContactApi {
     }
 
     if (contact.id) {
-      //if id, update
-      return db
-        .collection('contacts')
-        .doc(contact.id)
-        .update(filterProps(contact, ([key, value]) => key !== 'id'));
+      //if id, update contact
+      return fetch('/contacts/' + contact.id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contact), // body data type must match "Content-Type" header
+      });
     } else {
       //if no id, create contact
-      contact.id = null;
-      return db.collection('contacts').add(contact);
+      return fetch('/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contact), // body data type must match "Content-Type" header
+      }).then((resp) => resp.json());
     }
   }
 
   static deleteContact(contactId) {
-    return db.collection('contacts').doc(contactId).delete();
+    return fetch('/contacts/' + contactId, { method: 'DELETE' });
   }
-}
 
-function filterProps(obj, predicate) {
-  return Object.fromEntries(Object.entries(obj).filter(predicate));
+  // static async getAllContacts() {
+  //   const resp = await fetch("/contacts");
+  //   if(resp.ok) {
+  //     return resp.json();
+  //   }
+  //   throw new Error('Network response was not ok.');
+  // }
 }
