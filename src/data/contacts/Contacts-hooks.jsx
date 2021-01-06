@@ -17,19 +17,24 @@ export default function Contacts() {
     // return ()=> {ContactApi.unsubscribeChangeNotification()}
   }, []);
 
-  function refreshData() {
+  // This is the old way of calling data
+  // eslint-disable-next-line 
+  function refreshDataPromise() {
     ContactApi.getAllContacts()
       .then((data) => {
         setContacts(data);
       })
       .catch((err) => console.log(err));
-    // try {
-    //   let data = await ContactApi.getAllContacts();
-    //   setContacts(data);
-    // }
-    // catch (err) {
-    //   console.log(err);
-    // }
+  }
+
+  async function refreshData() {
+    try {
+      let data = await ContactApi.getAllContacts();
+      setContacts(data);
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
   return (

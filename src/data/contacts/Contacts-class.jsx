@@ -12,19 +12,24 @@ export default class Contacts extends React.Component {
     this.refreshData();
   }
 
-  refreshData() {
+  // This is the old way of calling data
+  // eslint-disable-next-line 
+  refreshDataPromise() {
     ContactApi.getAllContacts()
       .then((data) => {
         this.setState({ contacts: data });
       })
       .catch((err) => console.log(err));
-    // try {
-    //   let data = await ContactApi.getAllContacts();
-    //   this.setState({ contacts: data });
-    // }
-    // catch (err) {
-    //   console.log(err);
-    // }
+  }
+
+  async refreshData() {
+    try {
+      let data = await ContactApi.getAllContacts();
+      this.setState({ contacts: data });
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
   render() {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenAlt /*, faTrashAlt */ } from '@fortawesome/free-solid-svg-icons';
+import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const ContactTable = (props) => {
   return (
@@ -12,6 +12,7 @@ const ContactTable = (props) => {
           <th>Id</th>
           <th>First Name</th>
           <th>Last Name</th>
+          <th>Email</th>
           <th></th>
         </tr>
       </thead>
@@ -27,10 +28,11 @@ const ContactTable = (props) => {
             </td>
             <td className='align-middle'>{contact.firstName}</td>
             <td className='align-middle'>{contact.lastName}</td>
+            <td className='align-middle'>contact.email</td>
             <td className='align-middle'>
-              {/* <Button color="danger" onClick={() => null}>
+              <Button color="danger" onClick={() => alert("This has to be programmed")}>
                 <FontAwesomeIcon icon={faTrashAlt} />
-              </Button> */}
+              </Button>
             </td>
           </tr>
         ))}
