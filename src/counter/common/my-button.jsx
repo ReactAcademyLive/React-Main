@@ -1,14 +1,14 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 
-export default function MyButton(props) {
+export default function MyButton({ onIncrement, value }) {
   return (
     <Button
-      color='primary'
+      color={value >= 0 ? 'primary' : 'danger'}
       className='mr-3'
-      onClick={evt => props.onIncrement(+props.incr)}
+      onClick={(evt) => onIncrement(value)}
     >
-      {props.incr >= 0 ? 'increment' : 'decrement'} {Math.abs(+props.incr)}
+      {value >= 0 ? 'increment' : 'decrement'} {Math.abs(value)}
     </Button>
   );
 }

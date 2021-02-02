@@ -38,15 +38,13 @@
     "redux-thunk": "^2.3.0",
     "web-vitals": "^1.0.1"
   },
-  "resolutions": {
-    "reactstrap/react-transition-group": "^4.4.1"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "api": "npm run start --prefix api",
+    "api": "json-server ./api/db.json -p 3001",
+    "slow-api": "json-server ./api/db.json -p 3001 --delay 2000",
     "both": "concurrently \"npm run start\" \"npm run api\""
   },
   "proxy": "http://localhost:3001/",
@@ -69,6 +67,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^5.2.0"
+    "concurrently": "^5.2.0",
+    "json-server": "^0.16.3"
   }
 }

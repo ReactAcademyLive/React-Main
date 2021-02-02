@@ -32,9 +32,9 @@ export default class Counter extends React.Component {
     return (
       <>
         <h1>The count is: {count} </h1>
-        <MyButton onIncrement={this.increment} incr={1} />
-        <MyButton onIncrement={this.increment} incr={-10} />
-        <MyButton onIncrement={this.increment} incr={100} />
+        <MyButton onIncrement={this.increment} value={1} />
+        <MyButton onIncrement={this.increment} value={-10} />
+        <MyButton onIncrement={this.increment} value={100} />
         <MyTextbox value={count} onChange={this.change} />
       </>
     );

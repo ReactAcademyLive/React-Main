@@ -1,0 +1,40 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Eric",
+      "lastName": "Côté",
+      "email": "ericcote@reactAcademy.live"
+    },
+    {
+      "id": 2,
+      "firstName": "Satya",
+      "lastName": "Nadella",
+      "email": "satyan@microsoft.com"
+    },
+    {
+      "id": 3,
+      "firstName": "Mark",
+      "lastName": "Zuckerberg",
+      "email": "zuck@fb.com"
+    },
+    {
+      "id": 4,
+      "firstName": "Jeff",
+      "lastName": "Bezos",
+      "email": "jeff@amazon.com"
+    },
+    {
+      "id": 5,
+      "firstName": "Tim",
+      "lastName": "Cook",
+      "email": "tcook@apple.com"
+    },
+    {
+      "id": 6,
+      "firstName": "Sundar",
+      "lastName": "Pichai",
+      "email": "sundar@google.com"
+    }
+  ]
+}
