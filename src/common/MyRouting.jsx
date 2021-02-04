@@ -2,13 +2,16 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../home';
 import NotFound from '../404';
+import Lifecycle from '../lifecycle';
 import ClassesCounter from '../counter/classes/counter';
 import HooksCounterV1 from '../counter/hooks/counter-v1';
 import HooksCounterV2 from '../counter/hooks/counter-v2';
 import HooksCounterV3 from '../counter/hooks/counter-v3';
+import HooksCounterV4 from '../counter/hooks/counter-v4';
+import HooksCounterV5 from '../counter/hooks/counter-v5';
 import Covid from '../data/covid';
-import ContactsHooks from '../data/contacts/Contacts-hooks';
-import ContactsClass from '../data/contacts/Contacts-class';
+import ContactsHooks from '../data/contacts/contact-list/Contacts-hooks';
+import ContactsClass from '../data/contacts/contact-list/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
 import MapWithPins from '../data/maps/MapWithPins';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
@@ -45,6 +48,7 @@ export default function MyRouting({ location }) {
       <Switch location={location}>
         <Route path='/' exact component={Home} />
         <Route path='/about' component={About} />
+        <Route path='/lifecycle' component={Lifecycle} />
         <Route
           path='/counter/classes'
           render={() => <ClassesCounter init={5} />}
@@ -60,6 +64,14 @@ export default function MyRouting({ location }) {
         <Route
           path='/counter/hooks-v3'
           render={() => <HooksCounterV3 init={5} />}
+        />
+        <Route
+          path='/counter/hooks-v4'
+          render={() => <HooksCounterV4 init={5} />}
+        />
+        <Route
+          path='/counter/hooks-v5'
+          render={() => <HooksCounterV5 init={5} />}
         />
         <Route path='/data/covid' component={Covid} />
         <Route path='/data/hooks' component={ContactsHooks} />

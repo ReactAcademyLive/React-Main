@@ -2,26 +2,20 @@ import React from 'react';
 import MyButton from '../common/my-button';
 import MyTextbox from '../common/my-textbox';
 
-function useLocalStorage(initial, name) {
-  const [state, setState] = React.useState(initial);
-  const latestState = React.useRef();
-  latestState.current = state;
+//Use of hooks with effects. Added refs and effects.
+export default function Counter(props) {
+  const [count, setCount] = React.useState(props.init || 1);
+  const ref = React.useRef(null);
+  ref.current = count;
 
   React.useEffect(() => {
-    let storedState = window.localStorage.getItem(name);
-    setState(storedState || latestState.current);
-
-    return function cleanup() {
-      window.localStorage.setItem(name, latestState.current);
+    if (+window.localStorage.getItem('count')) {
+      setCount(+window.localStorage.getItem('count'));
+    }
+    return () => {
+      window.localStorage.setItem('count', ref.current);
     };
-  }, [name]);
-
-  return [state, setState];
-}
-
-export default function Counter(props) {
-  let [count, setCount] = useLocalStorage(props.init || 1, 'count');
-  count = +count;
+  }, []);
 
   function increment(incr) {
     setCount(count + incr);

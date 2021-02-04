@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactApi from './contact-api/ContactApi';
+import ContactApi from '../contact-api/ContactApi';
 import ContactTable from './ContactTable';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -17,8 +17,8 @@ export default function Contacts() {
     // return ()=> {ContactApi.unsubscribeChangeNotification()}
   }, []);
 
-  // This is the old way of calling data
-  // eslint-disable-next-line 
+  // This is the old way of calling data (Promise)
+  // eslint-disable-next-line
   function refreshDataPromise() {
     ContactApi.getAllContacts()
       .then((data) => {
@@ -27,12 +27,12 @@ export default function Contacts() {
       .catch((err) => console.log(err));
   }
 
+  // This is the modern way of calling data (async)
   async function refreshData() {
     try {
       let data = await ContactApi.getAllContacts();
       setContacts(data);
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
     }
   }

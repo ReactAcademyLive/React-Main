@@ -38,11 +38,18 @@ export default function Menu() {
                 Home
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink tag={RRNavLink} to='/about'>
-                About
-              </NavLink>
-            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <ToggleMenu name='Basics' link='basics' />
+              <DropdownMenu>
+                <DropdownItem tag={RRNavLink} to='/about'>
+                  Display list
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/lifecycle'>
+                  Hooks Lifecyle
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+
             <UncontrolledDropdown nav inNavbar>
               <ToggleMenu name='Counter' link='counter' />
               <DropdownMenu>
@@ -58,6 +65,12 @@ export default function Menu() {
                 </DropdownItem>
                 <DropdownItem tag={RRNavLink} to='/counter/hooks-v3'>
                   Counter with hooks - V3
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/counter/hooks-v4'>
+                  Counter with hooks - V4
+                </DropdownItem>
+                <DropdownItem tag={RRNavLink} to='/counter/hooks-v5'>
+                  Counter with hooks - V5
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

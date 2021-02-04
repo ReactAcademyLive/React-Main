@@ -3,19 +3,27 @@ import MyButton from '../common/my-button';
 import MyTextbox from '../common/my-textbox';
 
 //This version stores the counter in local storage
-//each time the counter changes its value
+//when we navigate away from the component
+function useLocalStorage(initial, name) {
+  const [state, setState] = React.useState(initial);
+  const latestState = React.useRef();
+  latestState.current = state;
+
+  React.useEffect(() => {
+    let storedState = window.localStorage.getItem(name);
+    setState(storedState || latestState.current);
+
+    return function cleanup() {
+      window.localStorage.setItem(name, latestState.current);
+    };
+  }, [name]);
+
+  return [state, setState];
+}
+
 export default function Counter(props) {
-  const [count, setCount] = React.useState(props.init || 1);
-
-  React.useEffect(() => {
-    if (+window.localStorage.getItem('count')) {
-      setCount(+window.localStorage.getItem('count'));
-    }
-  }, []);
-
-  React.useEffect(() => {
-    window.localStorage.setItem('count', count);
-  });
+  let [count, setCount] = useLocalStorage(props.init || 1, 'count');
+  count = +count;
 
   function increment(incr) {
     setCount(count + incr);
