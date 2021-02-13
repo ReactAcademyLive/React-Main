@@ -4,14 +4,10 @@ import GreyBoxes from './RightL2-GreyBoxes';
 import { Row, Col } from 'reactstrap';
 import MyContext from './MyContext';
 
+/* eslint-disable no-unused-vars, no-eval */
 export default function SimpleContext() {
   const [firstName, setFirstName] = useState('John');
   const [color, setColor] = useState('blue');
-
-  //the folloing is to avoid the ESLint warning that
-  //we're not calling the "set" methods.
-  if ((setFirstName, setColor)) {
-  }
 
   function change(evt) {
     const { name, value } = evt.target;
@@ -19,7 +15,6 @@ export default function SimpleContext() {
     const fnName = 'set' + name[0].toUpperCase() + name.slice(1);
     const str = `${fnName}("${value}")`;
 
-    // eslint-disable-next-line
     eval(str);
   }
 

@@ -1,26 +1,9 @@
 import React from 'react';
-import { Input } from 'reactstrap';
+import MyInputs from './MyInputs';
 import MyContext from './MyContext';
 
 //Hooks only work with functions
-export default function ModifyDataHooks() {
+export default function ContextHooks() {
   const ctx = React.useContext(MyContext);
-
-  return (
-    <>
-      <Input
-        value={ctx.firstName}
-        name='firstName'
-        placeholder='First Name'
-        onChange={ctx.onChange}
-        className='mb-4'
-      />
-      <Input
-        value={ctx.color}
-        name='color'
-        placeholder='Color'
-        onChange={ctx.onChange}
-      />
-    </>
-  );
+  return <MyInputs {...ctx} />;
 }

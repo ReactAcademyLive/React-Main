@@ -3,14 +3,10 @@ import BlueBox from './LeftL2-BlueBox';
 import GreyBox from './RightL2-GreyBox';
 import { Row, Col } from 'reactstrap';
 
+/* eslint-disable no-unused-vars, no-eval */
 export default function SimpleState() {
   const [firstName, setFirstName] = useState('John');
   const [color, setColor] = useState('blue');
-
-  //the folloing is to avoid the ESLint warning that
-  //we're not calling the "set" methods.
-  if ((setFirstName, setColor)) {
-  }
 
   function change(evt) {
     const { name, value } = evt.target;
@@ -18,7 +14,6 @@ export default function SimpleState() {
     const fnName = 'set' + name[0].toUpperCase() + name.slice(1);
     const str = `${fnName}("${value}")`;
 
-    // eslint-disable-next-line
     eval(str);
   }
 

@@ -1,30 +1,30 @@
 import React from 'react';
 import { Input } from 'reactstrap';
 
-export default function ModifyData(props) {
+export default function MyInputs(ctx) {
   return (
     <>
       <Input
-        value={props.firstName}
+        value={ctx.firstName}
         name='firstName'
         placeholder='First Name'
-        onChange={props.onChange}
+        onChange={ctx.onChange}
         className='mb-4'
       />
-      {props.lastName && (
+      {ctx.lastName && (
         <Input
-          value={props.lastName}
+          value={ctx.lastName}
           name='lastName'
           placeholder='Last Name'
-          onChange={props.onChange}
+          onChange={ctx.onChange}
           className='mb-4'
         />
       )}
       <Input
-        value={props.color}
+        value={ctx.color}
         name='color'
         placeholder='Color'
-        onChange={props.onChange}
+        onChange={ctx.onChange}
       />
     </>
   );

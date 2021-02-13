@@ -1,19 +1,19 @@
 import React from 'react';
 
-const MyInput = (props) => {
+const MyInput = ({ defaultValue, innerRef }) => {
   return (
     <input
       type='search'
       className='form-control'
-      defaultValue={props.defaultValue}
-      ref={props.ref}
+      defaultValue={defaultValue}
+      ref={innerRef}
     />
   );
 };
 
 export default MyInput;
 
-//comment previous, uncomment next line
+//comment previous, uncomment next line, change innerRef to ref
 //export default React.forwardRef((props, ref) => MyInput({ ...props, ref }));
 
 //------------------------------
