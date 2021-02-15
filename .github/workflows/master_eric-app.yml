@@ -32,3 +32,4 @@ jobs:
         with:
           app-name: 'eric-app'
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_c12c7f5c2fa24cc69e263b5d002d3223 }}
+          package: ./build
