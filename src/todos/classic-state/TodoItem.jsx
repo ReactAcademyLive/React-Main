@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CustomCheckbox = ({ text, completed }) => (
-  <div className='form-check float-left my-3'>
+  <div className='form-check float-begin my-3'>
     <input
       type='checkbox'
       className='form-check-input'

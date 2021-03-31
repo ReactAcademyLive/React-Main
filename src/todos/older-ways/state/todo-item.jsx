@@ -7,7 +7,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 const TodoItem = ({ onClick, completed, text }) => (
   <ListGroupItem onClick={onClick} style={{ cursor: 'pointer' }}>
     <div
-      className={'float-left my-3' + (completed ? ' text-muted' : '')}
+      className={'float-begin my-3' + (completed ? ' text-muted' : '')}
       style={{
         textDecoration: completed ? 'line-through' : 'none',
       }}
