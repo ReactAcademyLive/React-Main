@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Form, Label, Button, Input, Alert } from 'reactstrap';
 import { AuthContext } from '../common/AuthProvider';
 
-const SignIn = (props) => {
+const SignIn = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -66,25 +66,27 @@ const SignIn = (props) => {
         </Form>
         <p>or</p>
         <Button
-          color='danger'
-          onClick={() => {
-            auth.login('google');
+          color='warning'
+          onClick={async () => {
+            await auth.login('google');
+            history.push('/auth/profile');
           }}
         >
           Sign in with Google
         </Button>{' '}
         <Button
-          color='danger'
-          onClick={() => {
-            auth.login('github');
+          color='warning'
+          onClick={async () => {
+            await auth.login('github');
+            history.push('/auth/profile');
           }}
         >
           Sign In with Github
         </Button>
         <p>
-          Don't have an account? <Link to='/signUp'>Sign up here</Link>
+          Don't have an account? <Link to='/auth/signUp'>Sign up here</Link>
           <br />
-          <Link to='/passwordreset'>Forgot Password?</Link>
+          <Link to='/auth/passwordreset'>Forgot Password?</Link>
         </p>
       </div>
     </div>

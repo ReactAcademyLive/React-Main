@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Input, Button, Form, Label } from 'reactstrap';
+import { Input, Button, Form, Label, Alert } from 'reactstrap';
 import { AuthContext } from '../common/AuthProvider';
 
-const SignUp = (props) => {
+const SignUp = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState(null);
   const auth = useContext(AuthContext);
-  const user2 = auth.user;
 
   const createUserWithEmailAndPasswordHandler = async (
     event,
@@ -23,18 +22,24 @@ const SignUp = (props) => {
         email,
         password
       );
-      await auth.generateUserDocument(user, { displayName });
-      console.log('user2.refresh');
-      await user2.refresh();
 
-      props.history.push('/auth/profile');
+      const result = await fetch('https://randomuser.me/api/', {
+        //  headers: { 'x-API-KEY': '873771d7760b846d51d025ac5804ab' },
+      });
+      const data = await result.json();
+      const photoURL = data.results[0].picture.large;
+
+      await auth.generateUserDocument(user, {
+        displayName,
+        photoURL,
+      });
+
+      await auth.refreshDoc(user);
+
+      history.push('/auth/profile');
     } catch (error) {
-      setError('Error Signing up with email and password');
+      setError('Error Signing up with email and password: ' + error);
     }
-
-    setEmail('');
-    setPassword('');
-    setDisplayName('');
   };
 
   const onChangeHandler = (event) => {
@@ -56,7 +61,9 @@ const SignUp = (props) => {
         style={{ maxWidth: 400 }}
       >
         {error !== null && (
-          <div className='py-4 danger text-white text-center mb-3'>{error}</div>
+          <Alert color='danger' className='py-4   text-center mb-3'>
+            {error}
+          </Alert>
         )}
         <Form>
           <Label htmlFor='displayName'>Display Name:</Label>
@@ -105,24 +112,26 @@ const SignUp = (props) => {
         </Form>
         <p className='my-3'>or</p>
         <Button
-          color='danger'
-          onClick={() => {
-            auth.login('google');
+          color='warning'
+          onClick={async () => {
+            await auth.login('google');
+            history.push('/auth/profile');
           }}
         >
           Sign In with Google
         </Button>{' '}
         <Button
-          color='danger'
-          onClick={() => {
-            auth.login('github');
+          color='warning'
+          onClick={async () => {
+            await auth.login('github');
+            history.push('/auth/profile');
           }}
         >
           Sign In with Github
         </Button>
         <p className='my-3'>
           Already have an account?{' '}
-          <Link to='/' className='text-blue-500 hover:text-blue-600'>
+          <Link to='/auth/signin' className='text-blue-500 hover:text-blue-600'>
             Sign in here
           </Link>
         </p>

@@ -14,7 +14,7 @@ const TodoItem = ({ onClick, completed, text }) => (
     >
       {text}
     </div>
-    <Button className='float-right mt-2' color='info' onClick={null}>
+    <Button className='float-end mt-2' color='info' onClick={null}>
       <FontAwesomeIcon icon={faTrashAlt} />
     </Button>
   </ListGroupItem>

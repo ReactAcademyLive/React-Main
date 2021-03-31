@@ -9,17 +9,17 @@ import {
 
 export const AuthContext = createContext({ user: null });
 
-function AuthProvider(props) {
+function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   function login(type) {
     switch (type) {
       case 'google':
-        signInWithGoogle();
-        break;
+        return signInWithGoogle();
+
       case 'github':
-        signInWithGithub();
-        break;
+        return signInWithGithub();
+
       default:
         break;
     }
@@ -35,33 +35,24 @@ function AuthProvider(props) {
         setUser(null);
         return;
       }
-
-      const doc = await getUserDocument(userAuth.uid);
-      if (doc) {
-        setUser({
-          ...userAuth,
-          displayName: userAuth.displayName ?? doc.displayName,
-          photoURL: userAuth.photoURL ?? doc.photoURL,
-        });
-      }
+      await refreshDoc(userAuth);
     });
   }, []);
 
-  // async function refresh() {
-  //   const doc = await getUserDocument(user.uid);
-  //   setUser({
-  //     ...user,
-  //     displayName: user.displayName ?? doc.displayName,
-  //     photoURL: user.photoURL ?? doc.photoURL,
-  //     refresh: refreshM,
-  //   });
-  // }
+  async function refreshDoc(user) {
+    const doc = await getUserDocument(user.uid);
+    setUser({
+      ...user,
+      displayName: user.displayName ?? doc?.displayName,
+      photoURL: user.photoURL ?? doc?.photoURL,
+    });
+  }
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logoff, generateUserDocument, auth }}
+      value={{ user, login, logoff, generateUserDocument, auth, refreshDoc }}
     >
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 }

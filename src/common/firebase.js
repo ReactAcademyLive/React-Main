@@ -37,11 +37,11 @@ const gProvider = new firebase.auth.GoogleAuthProvider();
 const ghProvider = new firebase.auth.GithubAuthProvider();
 
 export const signInWithGoogle = () => {
-  auth.signInWithPopup(gProvider);
+  return auth.signInWithPopup(gProvider);
 };
 
 export const signInWithGithub = () => {
-  auth.signInWithPopup(ghProvider);
+  return auth.signInWithPopup(ghProvider);
 };
 
 export const generateUserDocument = async (user, additionalData) => {
@@ -59,11 +59,12 @@ export const generateUserDocument = async (user, additionalData) => {
         photoURL,
         ...additionalData,
       });
+      return getUserDocument(user.uid);
     } catch (error) {
       console.error('Error creating user document', error);
+      return null;
     }
   }
-  return getUserDocument(user.uid);
 };
 
 export const getUserDocument = async (uid) => {

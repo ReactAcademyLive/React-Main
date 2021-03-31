@@ -21,7 +21,7 @@ export default class Posts extends Component {
                 </a>
               </>
             )}
-            <span className='float-right'>{post.ups} ups</span>
+            <span className='float-end'>{post.ups} ups</span>
           </ListGroupItem>
         ))}
       </ListGroup>
