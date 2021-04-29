@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 //import Cat from '../Cat';
 
@@ -30,7 +31,7 @@ function DisplayMouse({ mouse }) {
 }
 
 //render props: push a function into a prop that is called "render"
-//functions as children:  push the same function in children
+//function as children:  push the same function in children
 
 //variation one: instead of children, use a prop called "render"
 //               (hence the name)

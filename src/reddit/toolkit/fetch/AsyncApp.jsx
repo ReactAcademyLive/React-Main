@@ -1,7 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
 //import PropTypes from 'prop-types';
 
-import { invalidate, select, request, receive } from './redux/reducers';
+import {
+  invalidate,
+  select,
+  request,
+  receive,
+  // fetchPosts,
+} from './redux/reducers';
 import { Button } from 'reactstrap';
 import Picker from './Picker';
 import Posts from './Posts';
@@ -27,6 +33,7 @@ function AsyncApp(props) {
       if (shouldFetchPosts()) {
         dispatch(request(selectedSubreddit));
         try {
+          //dispatch(fetchPosts(selectedSubreddit));
           const response = await fetch(
             `https://www.reddit.com/r/${selectedSubreddit}.json`
           );
@@ -75,7 +82,7 @@ function AsyncApp(props) {
         <Button
           onClick={handleRefreshClick}
           color='primary'
-          className={(isFetching ? 'invisible' : '') + ' mr-3'}
+          className={(isFetching ? 'invisible' : '') + ' me-3'}
         >
           Refresh
         </Button>

@@ -8,7 +8,7 @@ export function toggleTodo(id) {
 }
 
 export function editTodo(id, newText) {
-  return { type: 'todos/editTodos', payload: { id: id, text: newText } };
+  return { type: 'todos/editTodo', payload: { id: id, text: newText } };
 }
 
 //add deleteTodo here

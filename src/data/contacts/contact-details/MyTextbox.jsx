@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 const MyTextBox = (props) => {
   return (
-    <FormGroup className='form-label-group'>
+    //form-floating or form-label-group
+    <FormGroup className='form-floating my-4'>
       <Input
         type='text'
         id={props.name}

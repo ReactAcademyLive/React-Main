@@ -1,4 +1,18 @@
-import { combineReducers, createSlice } from '@reduxjs/toolkit';
+import {
+  combineReducers,
+  createSlice,
+  createAsyncThunk,
+} from '@reduxjs/toolkit';
+
+export const fetchPosts = createAsyncThunk(
+  'posts/fetchPosts',
+  async (subreddit, thunkAPI) => {
+    const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
+    const data = await response.json();
+    console.log('retourne données!');
+    return { subreddit, data };
+  }
+);
 
 const selectedSubredditSlice = createSlice({
   name: 'selectedSubreddit',
@@ -18,6 +32,13 @@ const postsSlice = createSlice({
       isInvalid: true,
       posts: [],
       lastUpdated: new Date(),
+    },
+  },
+  extraReducers: {
+    // Add reducers for additional action types here, and handle loading state as needed
+    [fetchPosts.fulfilled]: (state, action) => {
+      console.log('wow!');
+      state[action.payload.subreddit] = action.payload.data;
     },
   },
   reducers: {

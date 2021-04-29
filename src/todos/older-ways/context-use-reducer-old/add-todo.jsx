@@ -21,7 +21,7 @@ export default function AddTodo(props) {
           inputText.current.focus();
         }}
       >
-        <Input innerRef={inputText} className='mr-2' autoFocus />
+        <Input innerRef={inputText} className='me-2' autoFocus />
         <Button color='primary'>Add Todo</Button>
       </Form>
     </div>

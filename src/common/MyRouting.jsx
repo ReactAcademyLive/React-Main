@@ -14,6 +14,7 @@ import ContactsHooks from '../data/contacts/contact-list/Contacts-hooks';
 import ContactsClass from '../data/contacts/contact-list/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
 import MapWithPins from '../data/maps/MapWithPins';
+import ElectionResult from '../data/election/ElectionResult';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextContainment from '../context/Containment/L1-SimpleContainment';
 import ContextWith from '../context/ContextSample/L1-SimpleContext';
@@ -81,6 +82,7 @@ export default function MyRouting({ location }) {
         <Route path='/data/class' component={ContactsClass} />
         <Route path='/data/details/:id?' component={ContactDetails} />
         <Route path='/data/map' component={MapWithPins} />
+        <Route path='/data/election' component={ElectionResult} />
         <Route path='/todos/ClassicState' component={TodosClassic} />
         <Route path='/todos/ContextHooks' component={TodosContextHooks} />
         <Route path='/todos/ReduxClassic' component={TodosReduxClassic} />

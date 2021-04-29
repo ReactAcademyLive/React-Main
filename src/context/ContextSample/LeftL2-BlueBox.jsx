@@ -2,6 +2,7 @@ import React from 'react';
 import DisplayData from './LeftL3-DisplayData';
 
 export default function BlueBox() {
+  //console.log('This is re-rendered!');
   return (
     <div
       style={{

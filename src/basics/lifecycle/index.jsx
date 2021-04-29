@@ -1,62 +1,65 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Button } from 'reactstrap';
 
 let consoleText = '';
 
-const myLog = (data) => {
-  // consoleText += data + '\n';
+function logThis(data) {
+  consoleText += data + '\n';
   console.log(data);
-};
+  document.querySelector('#logConsole') &&
+    (document.querySelector('#logConsole').value = consoleText);
+}
 
 export default function Lifecycle() {
   const [state, setState] = useState();
 
-  myLog('--------------------');
-  myLog('Start of component render');
+  logThis('--------------------');
+  logThis('Start of component render');
 
   const executionTime = new Date().toTimeString();
 
   function updateState() {
-    myLog('Button is clicked');
-    myLog('Before setState');
+    logThis('Button is clicked');
+    logThis('Before setState');
     setState({});
-    myLog('After setState, data is scheduled to be updated.');
+    logThis('After setState, data is scheduled to be updated.');
   }
 
-  useEffect(() => {
-    myLog(`This is executed AFTER the first time we render (only once).`);
-    return () => {
-      myLog('This is executed when we unmount (when we go to another route).');
-    };
-  }, []);
+  // useEffect(() => {
+  //   logThis(`This is executed AFTER the first time we render (only once).`);
+  //   return () => {
+  //     logThis('This is executed when we unmount (ex: when we go to another route).');
+  //   };
+  // }, []);
 
-  useLayoutEffect(() => {
-    myLog(`This layout effect is executed AFTER the render, but before the browser paints
-       at present: ${executionTime}
-    `);
-    return () => {
-      myLog(
-        `This layout cleanup is executed AFTER the render, before the next Layout Effect and browser paint.
-       from the past: ${executionTime}
-        `
-      );
-    };
-  });
+  // useLayoutEffect(() => {
+  //   logThis(`This layout effect is executed AFTER the render, but before the browser paints
+  //      at present: ${executionTime}
+  //   `);
+  //   return () => {
+  //     logThis(
+  //       `This layout cleanup is executed AFTER the render, before the next Layout Effect and browser paint.
+  //      from the past: ${executionTime}
+  //       `
+  //     );
+  //   };
+  // });
 
-  useEffect(() => {
-    myLog(`This effect is executed AFTER the render.
-       at present: ${executionTime}
-    `);
-    return () => {
-      myLog(
-        `This cleanup is executed AFTER the render, just before the next effect.
-       from the past: ${executionTime}
-        `
-      );
-    };
-  });
+  // useEffect(() => {
+  //   logThis(`This effect is executed AFTER the render.
+  //      at present: ${executionTime}
+  //   `);
+  //   return () => {
+  //     logThis(
+  //       `This cleanup is executed AFTER the render, just before the next effect.
+  //      from the past: ${executionTime}
+  //       `
+  //     );
+  //   };
+  // });
 
-  myLog('Returning render');
+  logThis('Returning render');
   return (
     <>
       <h1>Lifecycle of a React component using Hooks</h1>
@@ -65,12 +68,7 @@ export default function Lifecycle() {
       <Button onClick={updateState} className='mb-4'>
         Update State
       </Button>
-      <textarea
-        className='form-control'
-        value={consoleText}
-        cols='70'
-        rows='25'
-      />
+      <textarea id='logConsole' className='form-control' cols='70' rows='25' />
     </>
   );
 }

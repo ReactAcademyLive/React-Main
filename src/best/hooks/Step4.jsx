@@ -1,11 +1,18 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 //import Cat from '../Cat';
-import withCat from '../with-cat';
+//import withCat from '../with-cat';
 
-const ParentRoot = withMouse(withCat(DisplayMouse));
-export default ParentRoot;
+export default function ParentRoot() {
+  return <DisplayPosition />;
+}
+
+//Component DisplayMouse is wrapped with the HOC that
+//provides mouse coordinates to DisplayMouse
+var DisplayPosition = withMouse(DisplayMouse);
 
 //This is a HOC, a higher-order component.
+//The goal is to provide mouse coordinates to Component
 function withMouse(Component) {
   function WithMouse(props) {
     const [mouseState, setMouseState] = useState({ x: 0, y: 0 });
@@ -21,8 +28,7 @@ function withMouse(Component) {
     );
   }
 
-  //Modify component with the following
-  //convention to help with HOC debugging
+  //Convention to help with HOC debugging
   WithMouse.displayName = `WithMouse(${
     Component.displayName || Component.name || 'Component'
   })`;

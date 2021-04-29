@@ -11,7 +11,7 @@ export default function ModifyData(props) {
         onChange={props.onChange}
         className='mb-4'
       />
-      {props.lastName && (
+      {props.lastName !== null && (
         <Input
           value={props.lastName}
           name='lastName'

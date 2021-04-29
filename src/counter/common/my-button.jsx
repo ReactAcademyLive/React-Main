@@ -5,7 +5,7 @@ export default function MyButton({ onIncrement, value }) {
   return (
     <Button
       color={value >= 0 ? 'primary' : 'danger'}
-      className='mr-3'
+      className='me-3'
       onClick={(evt) => onIncrement(value)}
     >
       {value >= 0 ? 'increment' : 'decrement'} {Math.abs(value)}

@@ -39,15 +39,14 @@ export default function ContactForm(props) {
       />
 
       <FormGroup>
-        {/* {
-            props.formErrors.global ? 
-            <Alert color="danger">
-              {props.formErrors.global}
-            </Alert> 
-            : ""}  */}
+        {/* {props.formErrors.global ? (
+          <Alert color='danger'>{props.formErrors.global}</Alert>
+        ) : (
+          ''
+        )} */}
         <Button color='primary'>Submit Contact</Button>
 
-        {/* <Button className="ml-3" color="danger"
+        {/* <Button className="ms-3" color="danger"
                        onClick={null}>
                   <FontAwesomeIcon icon={faTrashAlt} />
           </Button> */}

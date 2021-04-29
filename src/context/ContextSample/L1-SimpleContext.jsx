@@ -20,14 +20,24 @@ export default function SimpleContext() {
 
   return (
     <MyContext.Provider value={{ firstName, color, onChange: change }}>
-      <Row>
-        <Col md='6'>
-          <BlueBox />
-        </Col>
-        <Col md='6'>
-          <GreyBoxes />
-        </Col>
-      </Row>
+      <Content />
     </MyContext.Provider>
+  );
+}
+
+//the following would prevent the content from re-rendering
+//when the props are the same (hint: here they are always the same)
+//var MemoContent = React.memo(Content);
+
+function Content() {
+  return (
+    <Row>
+      <Col md='6'>
+        <BlueBox />
+      </Col>
+      <Col md='6'>
+        <GreyBoxes />
+      </Col>
+    </Row>
   );
 }

@@ -17,7 +17,7 @@ export default function AddTodo({ onAddTodo }) {
           inputText.current.value = '';
         }}
       >
-        <Input innerRef={inputText} className='mr-2' />
+        <Input innerRef={inputText} className='me-2' />
         <Button color='primary'>Add Todo</Button>
       </Form>
     </div>

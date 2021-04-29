@@ -95,6 +95,9 @@ export default function Menu() {
                   <DropdownItem tag={RRNavLink} to='/data/map'>
                     Map with pins
                   </DropdownItem>
+                  <DropdownItem tag={RRNavLink} to='/data/election'>
+                    Election Results (context provider and hooks)
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <UncontrolledDropdown nav inNavbar>
@@ -121,16 +124,16 @@ export default function Menu() {
                     Split components
                   </DropdownItem>
                   <DropdownItem tag={RRNavLink} to='/best/step3'>
-                    cloneElement
+                    Containment with children (2014)
                   </DropdownItem>
                   <DropdownItem tag={RRNavLink} to='/best/step4'>
-                    Higher-Order Component
+                    Higher-Order Component (2015)
                   </DropdownItem>
                   <DropdownItem tag={RRNavLink} to='/best/step5'>
-                    Render Props
+                    Render Props (2016)
                   </DropdownItem>
                   <DropdownItem tag={RRNavLink} to='/best/step6'>
-                    Custom Hooks
+                    Custom Hooks (2019)
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
@@ -141,14 +144,14 @@ export default function Menu() {
                   <DropdownItem
                     tag={RRNavLink}
                     to='/todos/ClassicState'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Classic State
                   </DropdownItem>
                   <DropdownItem
                     tag={RRNavLink}
                     to='/todos/ContextHooks'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Context and hooks
                   </DropdownItem>
@@ -157,7 +160,7 @@ export default function Menu() {
                   <DropdownItem
                     tag={RRNavLink}
                     to='/todos/ToolkitHooks'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Redux Toolkit — hooks
                   </DropdownItem>
@@ -166,21 +169,21 @@ export default function Menu() {
                   <DropdownItem
                     tag={RRNavLink}
                     to='/todos/ReduxClassic'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Classic Redux — connect
                   </DropdownItem>
                   <DropdownItem
                     tag={RRNavLink}
                     to='/todos/ReduxHooks'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Classic Redux — hooks
                   </DropdownItem>
                   <DropdownItem
                     tag={RRNavLink}
                     to='/todos/ToolkitClassic'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Redux Toolkit — connect
                   </DropdownItem>
@@ -193,14 +196,14 @@ export default function Menu() {
                   <DropdownItem
                     tag={RRNavLink}
                     to='/reddit/toolkitFetch'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Redux Toolkit — Hooks
                   </DropdownItem>
                   <DropdownItem
                     tag={RRNavLink}
                     to='/reddit/toolkitThunk'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Redux Toolkit — Thunks
                   </DropdownItem>
@@ -209,14 +212,14 @@ export default function Menu() {
                   <DropdownItem
                     tag={RRNavLink}
                     to='/reddit/classicFetch'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Classic Redux
                   </DropdownItem>
                   <DropdownItem
                     tag={RRNavLink}
                     to='/reddit/classicThunk'
-                    className='pl-5'
+                    className='ps-5'
                   >
                     Classic Redux thunks
                   </DropdownItem>

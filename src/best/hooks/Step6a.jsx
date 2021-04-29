@@ -1,26 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 //import Cat from '../Cat';
 
 export default function ParentRoot() {
-  const [mousePosition] = useMouse();
-  return <DisplayMouse mouse={mousePosition} />;
+  const [mousePosition, moveHandler] = useMouse();
+  return (
+    <div style={{ height: '500px' }} onMouseMove={moveHandler}>
+      <DisplayMouse mouse={mousePosition} />
+    </div>
+  );
 }
 
-function useMouse(div) {
+function useMouse() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   function handleMouseMove(evt) {
     setMouse({ x: evt.clientX, y: evt.clientY });
   }
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
   return [mouse, handleMouseMove];
 }
 

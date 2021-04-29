@@ -59,7 +59,7 @@ export default function Todos() {
         onChangeFilter: (text) => dispatchFilter(setFilter(text)),
       }}
     >
-      <h1>Todos (using state)</h1>
+      <h1>Todos (using Hooks, Context and Reducers)</h1>
       <AddTodo />
       <FilterButtons />
       <TodoList />

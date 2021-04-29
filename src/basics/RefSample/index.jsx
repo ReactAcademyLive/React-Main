@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, createRef } from 'react';
 import { Input, Button } from 'reactstrap';
 import MyInput from './MyInput';
 
 export default function RefSample(props) {
   const [theState, setTheState] = useState('Controlled component');
-  const ref1 = React.createRef();
-  const ref2 = React.createRef();
-  const ref3 = React.createRef();
+  const ref1 = createRef();
+  const ref2 = createRef();
+  const ref3 = createRef();
 
   return (
     <>

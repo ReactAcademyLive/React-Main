@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 //import Cat from '../Cat';
 
@@ -28,11 +29,14 @@ function DisplayMouse({ mouse }) {
 }
 
 //We split in two components. A provider (for the state) and a child.
-//Problem: This is strong coupling.
+
+//Problem:
+//This is strong coupling.
 //If we must use another child component, we need to
 //reprogram the provider.
 //This is far from perfect.
 
+//Solution: step 3
 //We want this kind of root, which would make weak coupling (good):
 //<MouseProvider>
 //  <DisplayMouse mouse={mouseState} />

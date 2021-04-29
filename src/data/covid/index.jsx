@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Spinner, Table, Button } from 'reactstrap';
 // import { MyMap } from './MyMap';
 
-const formatNum = Intl.NumberFormat("en-US").format;
+const formatNum = Intl.NumberFormat('en-US').format;
 
 export default function Covid(props) {
   const [countries, setCountries] = useState([]);
@@ -16,16 +16,25 @@ export default function Covid(props) {
 
   // eslint-disable-next-line
   function getDataPromises() {
-    setFetching(true)
-    axios.get('https://disease.sh/v3/covid-19/countries?sort=cases')
-      .then((resp) => { setCountries(resp.data); setFetching(false) })
-      .catch((err) => { console.log(err); setFetching(false) });
+    setFetching(true);
+    axios
+      .get('https://disease.sh/v3/covid-19/countries?sort=cases')
+      .then((resp) => {
+        setCountries(resp.data);
+        setFetching(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setFetching(false);
+      });
   }
 
   async function getData() {
     try {
       setFetching(true);
-      const resp = await axios.get('https://disease.sh/v3/covid-19/countries?sort=cases');
+      const resp = await axios.get(
+        'https://disease.sh/v3/covid-19/countries?sort=cases'
+      );
       setCountries(resp.data);
     } catch (err) {
       console.log(err);
@@ -34,15 +43,26 @@ export default function Covid(props) {
     }
   }
 
-
   return (
     <>
-      <h1 className="d-flex">Covid cases by countries <Button color="primary" size="sm" className="ml-auto mt-auto" onClick={getData} >Refresh Data</Button></h1>
+      <h1 className='d-flex'>
+        Covid cases by countries{' '}
+        <Button
+          color='primary'
+          size='sm'
+          className='ms-auto mt-auto'
+          onClick={getData}
+        >
+          Refresh Data
+        </Button>
+      </h1>
       {/* <MyMap
         lat={selectedCountry?.countryInfo.lat}
         long={selectedCountry?.countryInfo.long}
       /> */}
-      {isFetching ? <Spinner /> :
+      {isFetching ? (
+        <Spinner color='primary' />
+      ) : (
         <Table color='dark' dark striped hover>
           <thead>
             <tr>
@@ -75,9 +95,8 @@ export default function Covid(props) {
               </tr>
             ))}
           </tbody>
-        </Table>}
+        </Table>
+      )}
     </>
   );
-
-
 }

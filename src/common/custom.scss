@@ -11,11 +11,22 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 $black: #000;
+
 $primary: $blue;
+$info: #0e54be;
 
 $body-bg: aliceblue;
 
 @import '~bootstrap/scss/bootstrap.scss';
+
+$color: color-contrast(opaque(red, #7c0015));
+$hover-bg: mix($white, $gray-900, percentage(0.075));
+$striped-bg: mix($white, $gray-900, percentage(0.05));
+$active-bg: mix($white, $gray-900, percentage(0.1));
+
+:root {
+  --test: #{$color};
+}
 
 body,
 .table {
@@ -35,16 +46,20 @@ body,
   text-decoration: line-through !important;
 }
 
+.sr-only {
+  @include visually-hidden();
+}
+
 //@media (prefers-color-scheme: dark) {
 body[data-theme='dark'] {
-  :root {
-    --bs-table-bg: $gray-900;
-    --bs-table-striped-bg: #2c3034;
-    --bs-table-striped-color: $white;
-    --bs-table-active-bg: #373b3e;
-    --bs-table-active-color: $white;
-    --bs-table-hover-bg: #323539;
-    --bs-table-hover-color: $white;
+  .table {
+    --bs-table-bg: #{$gray-900};
+    --bs-table-striped-bg: #{$striped-bg};
+    --bs-table-striped-color: #{$white};
+    --bs-table-active-bg: #{$active-bg};
+    --bs-table-active-color: #{$white};
+    --bs-table-hover-bg: #{$hover-bg};
+    --bs-table-hover-color: #{$white};
   }
   background-color: $gray-900;
   color: $white;
@@ -133,6 +148,18 @@ body[data-theme='dark'] {
     }
   }
 
+  .form-floating {
+    > label {
+      color: $gray-900;
+    }
+
+    // input {
+    //   &:not(:placeholder-shown) ~ label {
+    //     color: $black;
+    //   }
+    // }
+  }
+
   .dropdown-menu {
     background-color: $gray-900;
     border-color: $gray-700;
@@ -172,52 +199,4 @@ h4 {
   height: 400px;
   width: 80%;
   margin: 0 auto;
-}
-
-//everything below is for the nice textbox with label, used on the contact form.
-
-.form-label-group {
-  position: relative;
-  margin-bottom: 1rem;
-
-  > input,
-  > label {
-    height: 3.125rem;
-    padding: 0.75rem;
-  }
-
-  > label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    margin-bottom: 0; /* Override default `<label>` margin */
-    line-height: 1.5;
-    color: $gray-700;
-    pointer-events: none;
-    cursor: text; /* Match the input under the label */
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-    transition: all 0.1s ease-in-out;
-  }
-
-  input {
-    &::placeholder {
-      color: transparent;
-    }
-
-    &:not(:placeholder-shown) {
-      padding-top: 1.25rem;
-      padding-bottom: 0.25rem;
-    }
-
-    &:not(:placeholder-shown) ~ label {
-      padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
-      font-size: 12px;
-      //  color: #777;
-      color: $gray-700;
-    }
-  }
 }

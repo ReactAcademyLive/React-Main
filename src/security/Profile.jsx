@@ -21,7 +21,7 @@ const ProfilePage = () => {
           }}
           className='border color-primary'
         ></div>
-        <div className='ml-4'>
+        <div className='ms-4'>
           <h2>{displayName}</h2>
           <h3>
             <i>{email}</i>
