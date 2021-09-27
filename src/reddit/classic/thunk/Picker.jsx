@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'reactstrap';
+import { Form } from 'react-bootstrap';
 
 export default class Picker extends Component {
   render() {
@@ -9,7 +9,7 @@ export default class Picker extends Component {
     return (
       <span>
         <h1>{value}</h1>
-        <Input
+        <Form.Control
           className='mb-1'
           type='select'
           onChange={(e) => onChange(e.target.value)}
@@ -20,7 +20,7 @@ export default class Picker extends Component {
               {option}
             </option>
           ))}
-        </Input>
+        </Form.Control>
       </span>
     );
   }

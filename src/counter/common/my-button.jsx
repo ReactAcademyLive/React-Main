@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 
 export default function MyButton({ onIncrement, value }) {
   return (
     <Button
-      color={value >= 0 ? 'primary' : 'danger'}
+      variant={value >= 0 ? 'primary' : 'danger'}
       className='me-3'
       onClick={(evt) => onIncrement(value)}
     >

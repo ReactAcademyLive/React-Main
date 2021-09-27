@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BlueBox from './LeftL2-BlueBox';
 import GreyBox from './RightL2-GreyBox';
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from 'react-bootstrap';
 
 /* eslint-disable no-unused-vars, no-eval */
 export default function SimpleState() {

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Label, Button, Input, Alert } from 'reactstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { AuthContext } from '../common/AuthProvider';
 
 const SignIn = ({ history }) => {
@@ -34,10 +34,10 @@ const SignIn = ({ history }) => {
         className='border rounded py-5 px-3 mx-auto '
         style={{ maxWidth: 400 }}
       >
-        {error !== null && <Alert color='danger'>{error}</Alert>}
+        {error !== null && <Alert variant='danger'>{error}</Alert>}
         <Form>
-          <Label htmlFor='userEmail'>Email:</Label>
-          <Input
+          <Form.Label htmlFor='userEmail'>Email:</Form.Label>
+          <Form.Control
             type='email'
             name='userEmail'
             value={email}
@@ -45,8 +45,8 @@ const SignIn = ({ history }) => {
             id='userEmail'
             onChange={(event) => onChangeHandler(event)}
           />
-          <Label htmlFor='userPassword'>Password:</Label>
-          <Input
+          <Form.Label htmlFor='userPassword'>Password:</Form.Label>
+          <Form.Control
             type='password'
             name='userPassword'
             value={password}
@@ -55,7 +55,7 @@ const SignIn = ({ history }) => {
             onChange={(event) => onChangeHandler(event)}
           />
           <Button
-            color='primary'
+            variant='primary'
             className='mt-5'
             onClick={(event) => {
               signInWithEmailAndPasswordHandler(event, email, password);
@@ -66,7 +66,7 @@ const SignIn = ({ history }) => {
         </Form>
         <p>or</p>
         <Button
-          color='warning'
+          variant='warning'
           onClick={async () => {
             await auth.login('google');
             history.push('/auth/profile');
@@ -75,7 +75,7 @@ const SignIn = ({ history }) => {
           Sign in with Google
         </Button>{' '}
         <Button
-          color='warning'
+          variant='warning'
           onClick={async () => {
             await auth.login('github');
             history.push('/auth/profile');

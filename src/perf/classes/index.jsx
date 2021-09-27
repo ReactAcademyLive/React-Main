@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button /* as Btn */ } from 'reactstrap';
+import { Button /* as Btn */ } from 'react-bootstrap';
 import Day from './Day';
 
 function getTime() {
@@ -67,7 +67,7 @@ export default class Clock extends React.Component {
     //console.log(this.state.time);
     return (
       <div>
-        <Button color='primary' onClick={this.timerToggler}>
+        <Button variant='primary' onClick={this.timerToggler}>
           Toggle Clock
         </Button>
         <h1>{this.state.time}</h1>

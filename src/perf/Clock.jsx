@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useInterval from './use-interval';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 import Day from './Day';
 
 function getTime() {
@@ -49,7 +49,7 @@ export default function Clock() {
   //console.log('rerender');
   return (
     <div>
-      <Button color='primary' onClick={timerToggler}>
+      <Button variant='primary' onClick={timerToggler}>
         Toggle Clock
       </Button>
       <h1>{currentTime}</h1>

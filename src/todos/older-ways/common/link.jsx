@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 
 const Link = ({ active, children, onClick }) => (
-  <Button color='primary' onClick={onClick} disabled={active}>
+  <Button variant='primary' onClick={onClick} disabled={active}>
     {children}
   </Button>
 );

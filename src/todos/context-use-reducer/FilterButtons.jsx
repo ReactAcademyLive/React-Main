@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ButtonGroup, Button } from 'reactstrap';
+import { ButtonGroup, Button } from 'react-bootstrap';
 import todoContext from './StateManager/todo-context';
 import { StatusFilters } from './StateManager/actions';
 
@@ -13,7 +13,7 @@ export default function FilterButtons() {
       <Button
         key={key}
         onClick={() => onChangeFilter(value)}
-        color={selected ? 'primary' : 'info'}
+        variant={selected ? 'primary' : 'info'}
       >
         {key}
       </Button>

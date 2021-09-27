@@ -1,6 +1,6 @@
 import React from 'react';
-import { Input } from 'reactstrap';
+import { Form } from 'react-bootstrap';
 
 export default function MyTextbox(props) {
-  return <Input className='my-3' {...props} />;
+  return <Form.Control className='my-3' {...props} />;
 }

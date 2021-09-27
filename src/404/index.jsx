@@ -1,8 +1,8 @@
 import React from 'react';
-import { Alert } from 'reactstrap';
+import { Alert } from 'react-bootstrap';
 
 const NotFound = (props) => (
-  <Alert color='danger'>
+  <Alert variant='danger'>
     Page <code>{props.location.pathname}</code> not found!!!!
   </Alert>
 );

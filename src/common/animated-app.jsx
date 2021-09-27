@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import { useTransition, animated } from 'react-spring';
 
@@ -22,7 +22,7 @@ export default function App() {
           }}
         >
           <Menu />
-          <Container className='position-relative '>
+          <Container className='position-relative mb-5'>
             <Content />
           </Container>
           <Footer className='bg-dark text-light py-3 fixed-bottom' />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button } from 'reactstrap';
+import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +21,7 @@ const ContactTable = (props) => {
           <tr key={contact.id}>
             <td>
               <Link to={`/data/details/${contact.id}`}>
-                <Button color='primary'>
+                <Button variant='primary'>
                   <FontAwesomeIcon icon={faPenAlt} />
                 </Button>
               </Link>
@@ -31,7 +31,7 @@ const ContactTable = (props) => {
             <td className='align-middle'>contact.email</td>
             <td className='align-middle'>
               <Button
-                color='danger'
+                variant='danger'
                 onClick={() => alert('This has to be programmed')}
               >
                 <FontAwesomeIcon icon={faTrashAlt} />

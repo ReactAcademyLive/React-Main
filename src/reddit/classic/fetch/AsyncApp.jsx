@@ -8,7 +8,7 @@ import {
   requestPosts,
   receivePosts,
 } from './redux/actions';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 import Picker from './Picker';
 import Posts from './Posts';
 
@@ -116,9 +116,11 @@ AsyncApp.propTypes = {
 
 function mapStateToProps(state) {
   const { selectedSubreddit, postsBySubreddit } = state;
-  const { isFetching, lastUpdated, items: posts } = postsBySubreddit[
-    selectedSubreddit
-  ] || {
+  const {
+    isFetching,
+    lastUpdated,
+    items: posts,
+  } = postsBySubreddit[selectedSubreddit] || {
     isFetching: true,
     items: [],
   };

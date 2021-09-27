@@ -1,10 +1,10 @@
 import React from 'react';
-import { Input } from 'reactstrap';
+import { Form } from 'react-bootstrap';
 
 export default function MyInputs(ctx) {
   return (
     <>
-      <Input
+      <Form.Control
         value={ctx.firstName}
         name='firstName'
         placeholder='First Name'
@@ -12,7 +12,7 @@ export default function MyInputs(ctx) {
         className='mb-4'
       />
       {ctx.lastName !== null && (
-        <Input
+        <Form.Control
           value={ctx.lastName}
           name='lastName'
           placeholder='Last Name'
@@ -20,7 +20,7 @@ export default function MyInputs(ctx) {
           className='mb-4'
         />
       )}
-      <Input
+      <Form.Control
         value={ctx.color}
         name='color'
         placeholder='Color'

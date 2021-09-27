@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, FormGroup } from 'reactstrap'; //Alert
+import { Form, Button } from 'react-bootstrap'; //Alert
 import MyTextBox from './MyTextbox';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faTrashAlt  } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,7 @@ export default function ContactForm(props) {
         props.onSubmit();
       }}
     >
-      <Input type='hidden' name='id' value={props.id} />
+      <Form.Control type='hidden' name='id' value={props.id} />
       <MyTextBox
         name='firstName'
         fullName='First Name'
@@ -38,19 +38,19 @@ export default function ContactForm(props) {
         formErrors={props.formErrors}
       />
 
-      <FormGroup>
+      <Form.Group>
         {/* {props.formErrors.global ? (
-          <Alert color='danger'>{props.formErrors.global}</Alert>
+          <Alert variant='danger'>{props.formErrors.global}</Alert>
         ) : (
           ''
         )} */}
-        <Button color='primary'>Submit Contact</Button>
+        <Button variant='primary'>Submit Contact</Button>
 
-        {/* <Button className="ms-3" color="danger"
+        {/* <Button className="ms-3" variant="danger"
                        onClick={null}>
                   <FontAwesomeIcon icon={faTrashAlt} />
           </Button> */}
-      </FormGroup>
+      </Form.Group>
     </Form>
   );
 }

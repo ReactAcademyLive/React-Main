@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
+import { Col, Row } from 'react-bootstrap';
 import { useLoading } from '../containers/ElectionProvider';
 import { useResults, useSelection } from '../containers/ElectionProvider';
 

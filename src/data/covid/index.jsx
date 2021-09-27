@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Spinner, Table, Button } from 'reactstrap';
+import { Spinner, Table, Button } from 'react-bootstrap';
 // import { MyMap } from './MyMap';
 
 const formatNum = Intl.NumberFormat('en-US').format;
@@ -48,7 +48,7 @@ export default function Covid(props) {
       <h1 className='d-flex'>
         Covid cases by countries{' '}
         <Button
-          color='primary'
+          variant='primary'
           size='sm'
           className='ms-auto mt-auto'
           onClick={getData}
@@ -61,9 +61,9 @@ export default function Covid(props) {
         long={selectedCountry?.countryInfo.long}
       /> */}
       {isFetching ? (
-        <Spinner color='primary' />
+        <Spinner variant='primary' animation='border' />
       ) : (
-        <Table color='dark' dark striped hover>
+        <Table variant='dark' bordered striped hover>
           <thead>
             <tr>
               <th>Flag</th>
@@ -78,7 +78,8 @@ export default function Covid(props) {
               <tr
                 key={country.country}
                 onClick={() => setSelectedCountry(country)}
-                style={{ cursor: 'pointer' }}
+                //style={{ cursor: 'pointer' }}
+                role='button'
                 className={country === selectedCountry ? 'bg-primary' : ''}
               >
                 <td>

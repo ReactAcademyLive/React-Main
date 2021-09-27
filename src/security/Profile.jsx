@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../common/AuthProvider';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 
 const ProfilePage = () => {
   let auth = useContext(AuthContext);
@@ -30,7 +30,7 @@ const ProfilePage = () => {
       </div>
       <div className='mt-3'>
         <Button
-          color='primary'
+          variant='primary'
           onClick={() => {
             auth.logoff();
           }}

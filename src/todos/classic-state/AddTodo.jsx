@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Button, Input } from 'reactstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 
 export default function AddTodo({ onAddTodo }) {
   let inputText = React.createRef();
   return (
     <div>
       <Form
-        inline
         onSubmit={(evt) => {
           evt.preventDefault();
           if (!inputText.current.value.trim()) {
@@ -17,13 +15,17 @@ export default function AddTodo({ onAddTodo }) {
           inputText.current.value = '';
         }}
       >
-        <Input innerRef={inputText} className='me-2' />
-        <Button color='primary'>Add Todo</Button>
+        <Row className='my-4'>
+          <Col>
+            <Form.Control ref={inputText} autoFocus />
+          </Col>
+          <Col xs='auto'>
+            <Button variant='primary' type='submit'>
+              Add Todo
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </div>
   );
 }
-
-AddTodo.propTypes = {
-  onAddTodo: PropTypes.func.isRequired,
-};

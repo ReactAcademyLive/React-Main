@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BlueBox from './LeftL2-BlueBox';
 import GreyBoxes from './RightL2-GreyBoxes';
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from 'react-bootstrap';
 import MyContext from './MyContext';
 
 /* eslint-disable no-unused-vars, no-eval */

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroupItem, Button } from 'reactstrap';
+import { ListGroup, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,12 +23,12 @@ const CustomCheckbox = ({ text, completed }) => (
 );
 
 const TodoItem = ({ onToggle, onDelete, completed, text }) => (
-  <ListGroupItem onClick={onToggle} action tag='a'>
+  <ListGroup.Item onClick={onToggle} action as='a'>
     <CustomCheckbox text={text} completed={completed} />
-    <Button className='float-end mt-2' color='info' onClick={onDelete}>
+    <Button className='float-end mt-2' variant='warning' onClick={onDelete}>
       <FontAwesomeIcon icon={faTrashAlt} />
     </Button>
-  </ListGroupItem>
+  </ListGroup.Item>
 );
 
 export default TodoItem;

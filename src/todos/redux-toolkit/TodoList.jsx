@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-import { ListGroup } from 'reactstrap';
+import { ListGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, editTodo /*, deleteTodo */ } from './slices/todos';
 import { StatusFilters } from './slices/visibility-filter';
@@ -34,7 +34,7 @@ const TodoList = () => {
   const onEditTodo = (id, newText) => dispatch(editTodo(id, newText));
 
   return (
-    <ListGroup tag='div' className='my-4'>
+    <ListGroup as='div' className='my-4'>
       {filteredTodos.map((todo) => (
         <TodoItem
           key={todo.id}

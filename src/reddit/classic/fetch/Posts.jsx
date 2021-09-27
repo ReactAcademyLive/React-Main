@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup } from 'react-bootstrap';
 
 export default class Posts extends Component {
   render() {
     return (
       <ListGroup>
         {this.props.posts.map((post, i) => (
-          <ListGroupItem key={i}>
+          <ListGroup.Item key={i}>
             <a href={post.url}>{post.title}</a>
             {post.is_self ? (
               ''
@@ -22,7 +22,7 @@ export default class Posts extends Component {
               </>
             )}
             <span className='float-end'>{post.ups} ups</span>
-          </ListGroupItem>
+          </ListGroup.Item>
         ))}
       </ListGroup>
     );

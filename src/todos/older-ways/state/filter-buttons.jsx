@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonGroup } from 'reactstrap';
+import { ButtonGroup } from 'react-bootstrap';
 import FilterLink from './filter-link';
 import { VisibilityFilters } from './visibility-filters';
 

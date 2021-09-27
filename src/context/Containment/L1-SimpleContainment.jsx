@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import BlueBox from './LeftL2-BlueBox';
 import GreyBox from './RightL2-GreyBox';
-import { Row, Col } from 'reactstrap';
-import { Input } from 'reactstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 
 export default function SimpleContainment() {
   const [firstName, setFirstName] = useState('John');
@@ -12,14 +11,14 @@ export default function SimpleContainment() {
 
   const modifyData = (
     <>
-      <Input
+      <Form.Control
         value={firstName}
         name='firstName'
         placeholder='First Name'
         onChange={(evt) => setFirstName(evt.target.value)}
         className='mb-4'
       />
-      <Input
+      <Form.Control
         value={color}
         name='color'
         placeholder='Color'

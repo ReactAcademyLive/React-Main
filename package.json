@@ -7,36 +7,35 @@
     "pnp": false
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@reduxjs/toolkit": "^1.4.0",
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^13.1.5",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^15.0.1",
-    "@types/react": "^17.0.4",
-    "@types/react-dom": "^17.0.1",
-    "axios": "^0.21.0",
-    "bootstrap": "^5.0.0-beta3",
-    "firebase": "^8.4.2",
-    "leaflet": "^1.6.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.9.6",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "axios": "^0.21.4",
+    "bootstrap": "^5.1.1",
+    "firebase": "^9.0.2",
+    "leaflet": "^1.7.1",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-leaflet": "^3.1.0",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.2",
-    "react-spring": "^8.0.27",
-    "reactstrap": "^8.9.0",
-    "redux": "^4.1.0",
-    "redux-devtools-extension": "^2.13.8",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-rc.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "^4.0.3",
+    "react-spring": "^9.2.4",
+    "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.32.11",
-    "web-vitals": "^1.1.0"
+    "sass": "^1.42.1",
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,7 +47,8 @@
     "both": "concurrently \"npm run start\" \"npm run api\""
   },
   "resolutions": {
-    "reactstrap/react-transition-group": "^4.4.1"
+    "reactstrap/react-transition-group": "^4.4.1",
+    "@react-leaflet/core": "1.0.2"
   },
   "proxy": "http://localhost:3001/",
   "eslintConfig": {
@@ -70,7 +70,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^6.0.2",
+    "concurrently": "^6.2.1",
     "json-server": "^0.16.3"
   }
 }

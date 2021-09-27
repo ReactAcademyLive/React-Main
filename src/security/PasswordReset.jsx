@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Input, Label, Button, Alert } from 'reactstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { AuthContext } from '../common/AuthProvider';
 
 const PasswordReset = () => {
@@ -41,13 +41,11 @@ const PasswordReset = () => {
       >
         <Form action=''>
           {emailHasBeenSent && (
-            <Alert color='success'>An email has been sent to you!</Alert>
+            <Alert variant='success'>An email has been sent to you!</Alert>
           )}
-          {error !== null && <Alert color='danger'>{error}</Alert>}
-          <Label htmlFor='userEmail' className='mt-3'>
-            Email:
-          </Label>
-          <Input
+          {error !== null && <Alert variant='danger'>{error}</Alert>}
+          <Form.Label className='mt-3'>Email:</Form.Label>
+          <Form.Control
             type='email'
             name='userEmail'
             id='userEmail'
@@ -57,7 +55,7 @@ const PasswordReset = () => {
             className='mb-3 '
           />
           <Button
-            color='primary'
+            variant='primary'
             onClick={(event) => {
               sendResetEmail(event);
             }}

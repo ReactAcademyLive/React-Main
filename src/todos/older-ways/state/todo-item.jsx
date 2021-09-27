@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListGroupItem, Button } from 'reactstrap';
+import { ListGroup, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 const TodoItem = ({ onClick, completed, text }) => (
-  <ListGroupItem onClick={onClick} style={{ cursor: 'pointer' }}>
+  <ListGroup.Item onClick={onClick} action>
     <div
       className={'float-start my-3' + (completed ? ' text-muted' : '')}
       style={{
@@ -14,10 +14,10 @@ const TodoItem = ({ onClick, completed, text }) => (
     >
       {text}
     </div>
-    <Button className='float-end mt-2' color='info' onClick={null}>
+    <Button className='float-end mt-2' variant='info' onClick={null}>
       <FontAwesomeIcon icon={faTrashAlt} />
     </Button>
-  </ListGroupItem>
+  </ListGroup.Item>
 );
 
 TodoItem.propTypes = {

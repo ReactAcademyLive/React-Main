@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGroup } from 'reactstrap';
+import { ButtonGroup } from 'react-bootstrap';
 import FilterLink from './filter-link';
 import { VisibilityFilters } from './actions';
 

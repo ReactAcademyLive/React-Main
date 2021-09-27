@@ -1,35 +1,50 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 
 let consoleText = '';
 
+// To be able do display the log data on the screen,
+// as soon as possible
+// we are using DOM updates instead of modifying
+// the React state
+// This is NOT the proper 'React' way of doing things.
+// (To do it the React way, logThis() would need
+// to call setState().  This would create an infinite loop
+// when using useEffect().)
 function logThis(data) {
   consoleText += data + '\n';
   console.log(data);
+
+  // following line updates the DOM.
+  // --NOT the React way of doing things.
   document.querySelector('#logConsole') &&
     (document.querySelector('#logConsole').value = consoleText);
 }
 
 export default function Lifecycle() {
-  const [state, setState] = useState();
+  const [state, setState] = useState(0);
 
   logThis('--------------------');
   logThis('Start of component render');
 
-  const executionTime = new Date().toTimeString();
+  const executionTime = new Date().toLocaleTimeString();
 
-  function updateState() {
-    logThis('Button is clicked');
-    logThis('Before setState');
-    setState({});
-    logThis('After setState, data is scheduled to be updated.');
+  function updateState(evt) {
+    logThis('^^^^^^^^^^^^^^^');
+    logThis(`${evt.currentTarget.id} is clicked`);
+    logThis('setState');
+    setState(state + 1);
+    logThis('After setState, component is scheduled to be updated.');
+    logThis('vvvvvvvvvvvvvv');
   }
 
   // useEffect(() => {
   //   logThis(`This is executed AFTER the first time we render (only once).`);
   //   return () => {
-  //     logThis('This is executed when we unmount (ex: when we go to another route).');
+  //     logThis(
+  //       'This is executed when we unmount (ex: when we go to another route).'
+  //     );
   //   };
   // }, []);
 
@@ -60,15 +75,24 @@ export default function Lifecycle() {
   // });
 
   logThis('Returning render');
+  logThis('--------------------');
   return (
     <>
       <h1>Lifecycle of a React component using Hooks</h1>
       <p>Look at the console. We are logging all events. </p>
-      <p>Here is the empty state: {JSON.stringify(state)}</p>
-      <Button onClick={updateState} className='mb-4'>
-        Update State
-      </Button>
-      <textarea id='logConsole' className='form-control' cols='70' rows='25' />
+      <p>Here is the state: {JSON.stringify(state)}</p>
+      <div id='div1' onNothing={updateState}>
+        <Button onClick={updateState} className='mb-4' id='btn1'>
+          Update State
+        </Button>
+      </div>
+      <textarea
+        id='logConsole'
+        className='form-control'
+        cols='70'
+        rows='25'
+        defaultValue={consoleText}
+      />
     </>
   );
 }

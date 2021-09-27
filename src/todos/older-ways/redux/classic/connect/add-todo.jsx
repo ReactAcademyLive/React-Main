@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Input } from 'reactstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 //import { addTodo } from './actions'
 import { connect } from 'react-redux';
 
@@ -8,7 +8,6 @@ function AddTodo({ dispatch /*onAddTodo*/ }) {
   return (
     <div>
       <Form
-        inline
         onSubmit={(evt) => {
           evt.preventDefault();
           if (!inputText.current.value.trim()) {
@@ -21,8 +20,16 @@ function AddTodo({ dispatch /*onAddTodo*/ }) {
           inputText.current.focus();
         }}
       >
-        <Input innerRef={inputText} className='me-2' autoFocus />
-        <Button color='primary'>Add Todo</Button>
+        <Row className='my-4'>
+          <Col>
+            <Form.Control ref={inputText} autoFocus />
+          </Col>
+          <Col xs='auto'>
+            <Button variant='primary' type='submit'>
+              Add Todo
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </div>
   );

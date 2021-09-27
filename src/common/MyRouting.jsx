@@ -13,7 +13,7 @@ import Covid from '../data/covid';
 import ContactsHooks from '../data/contacts/contact-list/Contacts-hooks';
 import ContactsClass from '../data/contacts/contact-list/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
-import MapWithPins from '../data/maps/MapWithPins';
+// import MapWithPins from '../data/maps/MapWithPins';
 import ElectionResult from '../data/election/ElectionResult';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextContainment from '../context/Containment/L1-SimpleContainment';
@@ -36,11 +36,11 @@ import RedditThunk from '../reddit/toolkit/fetch';
 import RedditClassicFetch from '../reddit/classic/fetch';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/Clock';
-import SignUp from '../security/SignUp';
-import SignIn from '../security/SignIn';
-import Profile from '../security/Profile';
-import PasswordReset from '../security/PasswordReset';
-import SignOff from '../security/SignOff';
+// import SignUp from '../security/SignUp';
+// import SignIn from '../security/SignIn';
+// import Profile from '../security/Profile';
+// import PasswordReset from '../security/PasswordReset';
+// import SignOff from '../security/SignOff';
 
 import About from '../basics/list';
 //const About = React.lazy(() => import('./about'));
@@ -81,7 +81,7 @@ export default function MyRouting({ location }) {
         <Route path='/data/hooks' component={ContactsHooks} />
         <Route path='/data/class' component={ContactsClass} />
         <Route path='/data/details/:id?' component={ContactDetails} />
-        <Route path='/data/map' component={MapWithPins} />
+        {/* <Route path='/data/map' component={MapWithPins} /> */}
         <Route path='/data/election' component={ElectionResult} />
         <Route path='/todos/ClassicState' component={TodosClassic} />
         <Route path='/todos/ContextHooks' component={TodosContextHooks} />
@@ -92,10 +92,7 @@ export default function MyRouting({ location }) {
         <Route path='/reddit/toolkitFetch' component={RedditToolkit} />
         <Route path='/reddit/toolkitThunk' component={RedditThunk} />
         <Route path='/reddit/classicFetch' component={RedditClassicFetch} />
-        <Route
-          path='/reddit/classicThunk'
-          component={RedditClassicThunk}
-        />{' '}
+        <Route path='/reddit/classicThunk' component={RedditClassicThunk} />
         <Route path='/clock' component={Clock} />
         <Route path='/context/PropDrill' component={ContextDrill} />
         <Route path='/context/WithContext' component={ContextWith} />
@@ -107,11 +104,11 @@ export default function MyRouting({ location }) {
         <Route path='/best/step4' component={Step4} />
         <Route path='/best/step5' component={Step5} />
         <Route path='/best/step6' component={Step6} />
-        <Route path='/auth/signup' component={SignUp} />
+        {/* <Route path='/auth/signup' component={SignUp} />
         <Route path='/auth/signin' component={SignIn} />
         <Route path='/auth/profile' component={Profile} />
         <Route path='/auth/passwordreset' component={PasswordReset} />
-        <Route path='/auth/signoff' component={SignOff} />
+        <Route path='/auth/signoff' component={SignOff} /> */}
         <Route component={NotFound} />
       </Switch>
       {/* </React.Suspense> */}

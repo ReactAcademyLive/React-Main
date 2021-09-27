@@ -2,7 +2,7 @@ import React from 'react';
 import '../contact-api/ContactTypes';
 import ContactApi from '../contact-api/ContactApi';
 import ContactTable from './ContactTable';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default class Contacts extends React.Component {
@@ -37,7 +37,7 @@ export default class Contacts extends React.Component {
         <h1>Contacts (using Classes)</h1>
         <ContactTable contacts={this.state.contacts} />
         <Link to='/data/details'>
-          <Button color='primary'>Create Contact</Button>
+          <Button variant='primary'>Create Contact</Button>
         </Link>
       </>
     );

@@ -1,5 +1,5 @@
 import React, { useState, createRef } from 'react';
-import { Input, Button } from 'reactstrap';
+import { Form, Button } from 'react-bootstrap';
 import MyInput from './MyInput';
 
 export default function RefSample(props) {
@@ -13,14 +13,14 @@ export default function RefSample(props) {
       <h1>Working with references</h1>
       <div>
         <h4>Using State</h4>
-        <Input
+        <Form.Control
           type='text'
           value={theState}
           onChange={(evt) => setTheState(evt.target.value)}
         />
         <Button
           onClick={() => alert(theState)}
-          color='primary'
+          variant='primary'
           className='mt-2 mb-4'
         >
           Show value
@@ -39,7 +39,7 @@ export default function RefSample(props) {
         />
         <Button
           onClick={() => alert(document.getElementById('id1').value)}
-          color='primary'
+          variant='primary'
           className='mt-2 mb-4'
         >
           Show value
@@ -56,7 +56,7 @@ export default function RefSample(props) {
         />
         <Button
           onClick={() => alert(ref1.current.value)}
-          color='primary'
+          variant='primary'
           className='mt-2 mb-4'
         >
           Show value
@@ -73,7 +73,7 @@ export default function RefSample(props) {
         />
         <Button
           onClick={() => alert('This must be fixed')}
-          color='primary'
+          variant='primary'
           className='mt-2 mb-4'
         >
           Show value
@@ -85,7 +85,7 @@ export default function RefSample(props) {
         <MyInput innerRef={ref3} defaultValue='Other uncontrolled component' />
         <Button
           onClick={() => alert(ref3.current.value)}
-          color='primary'
+          variant='primary'
           className='mt-2 mb-4'
         >
           Show value

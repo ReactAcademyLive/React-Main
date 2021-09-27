@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactApi from '../contact-api/ContactApi';
 import ContactTable from './ContactTable';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default function Contacts() {
@@ -42,7 +42,7 @@ export default function Contacts() {
       <h1>Contacts (using Hooks)</h1>
       <ContactTable contacts={contacts} />
       <Link to='/data/details'>
-        <Button color='primary'>Create Contact</Button>
+        <Button variant='primary'>Create Contact</Button>
       </Link>
     </>
   );

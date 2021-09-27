@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGroup, Button } from 'reactstrap';
+import { ButtonGroup, Button } from 'react-bootstrap';
 import { StatusFilters } from './StatusFilters';
 
 export default function FilterButtons({ value: status, onChange }) {
@@ -10,7 +10,7 @@ export default function FilterButtons({ value: status, onChange }) {
       <Button
         key={key}
         onClick={() => onChange(value)}
-        color={selected ? 'primary' : 'info'}
+        variant={selected ? 'primary' : 'info'}
       >
         {key}
       </Button>

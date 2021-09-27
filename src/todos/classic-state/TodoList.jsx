@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
-import { ListGroup } from 'reactstrap';
+import { ListGroup } from 'react-bootstrap';
 
 const TodoList = ({ todos, onToggleTodo, onDeleteTodo, onEditTodo }) => (
   <ListGroup className='my-4'>

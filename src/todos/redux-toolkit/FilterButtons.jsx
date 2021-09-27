@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGroup, Button } from 'reactstrap';
+import { ButtonGroup, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { StatusFilters, setVisibilityFilter } from './slices/visibility-filter';
 
@@ -16,7 +16,7 @@ export default function FilterButtons() {
       <Button
         key={key}
         onClick={() => onChangeFilter(value)}
-        color={selected ? 'primary' : 'info'}
+        variant={selected ? 'primary' : 'info'}
       >
         {key}
       </Button>

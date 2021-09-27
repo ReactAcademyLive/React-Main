@@ -8,7 +8,7 @@ import {
   receive,
   // fetchPosts,
 } from './redux/reducers';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 import Picker from './Picker';
 import Posts from './Posts';
 import { useDispatch, useSelector } from 'react-redux';
@@ -81,7 +81,7 @@ function AsyncApp(props) {
       <p>
         <Button
           onClick={handleRefreshClick}
-          color='primary'
+          variant='primary'
           className={(isFetching ? 'invisible' : '') + ' me-3'}
         >
           Refresh
