@@ -44,7 +44,9 @@ export default function ContactForm(props) {
         ) : (
           ''
         )} */}
-        <Button variant='primary'>Submit Contact</Button>
+        <Button variant='primary' type='submit'>
+          Submit Contact
+        </Button>
 
         {/* <Button className="ms-3" variant="danger"
                        onClick={null}>

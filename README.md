@@ -1,3 +1,3 @@
 # React-Academy-Main
 
-Project for **React Academy**, 2021.
+Project for **React Academy**, 2022. For classroom training.

@@ -34,7 +34,7 @@ export default function ElectionProvider(props) {
     });
     try {
       const result = await fetch(
-        'https://dgeq.org/doc/gen1-10-2018/resultats.json'
+        'https://dgeq.org/doc/gen2018-10-01/resultats.json'
       );
       const data = await result.json();
       setResults(data.circonscriptions);

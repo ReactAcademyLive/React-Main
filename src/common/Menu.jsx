@@ -10,7 +10,7 @@ export default function Menu() {
     <div className='mb-4'>
       <Navbar bg='dark' variant='dark' expand='md'>
         <Container fluid>
-          <Navbar.Brand as={NavLink} to='/' exact>
+          <Navbar.Brand as={NavLink} to='/'>
             <img src={logo} height='40' alt='Logo' />
             React Academy
           </Navbar.Brand>
@@ -18,7 +18,7 @@ export default function Menu() {
           <Navbar.Collapse>
             <Nav>
               <Nav.Item>
-                <Nav.Link as={NavLink} to='/' exact>
+                <Nav.Link as={NavLink} to='/'>
                   Home
                 </Nav.Link>
               </Nav.Item>

@@ -11,7 +11,7 @@ export default function MyInputs(ctx) {
         onChange={ctx.onChange}
         className='mb-4'
       />
-      {ctx.lastName !== null && (
+      {ctx.lastName !== undefined && (
         <Form.Control
           value={ctx.lastName}
           name='lastName'

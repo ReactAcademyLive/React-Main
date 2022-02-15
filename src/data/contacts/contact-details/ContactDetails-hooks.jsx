@@ -1,8 +1,9 @@
 import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import ContactApi from '../contact-api/ContactApi';
 import ContactForm from './ContactForm';
 
-export default function ContactDetails(props) {
+export default function ContactDetails() {
   const [state, setState] = React.useState({
     id: 0,
     firstName: '',
@@ -11,16 +12,19 @@ export default function ContactDetails(props) {
     formErrors: {},
   });
 
+  const id = useParams().id;
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     async function getData(id) {
       let contact = await ContactApi.getContact(id);
       setState({ ...contact, formErrors: {} });
     }
 
-    if (props.match.params.id) {
-      getData(props.match.params.id);
+    if (id) {
+      getData(id);
     }
-  }, [props.match.params.id]);
+  }, [id]);
 
   React.useEffect(() => {
     contactFormIsValid();
@@ -30,14 +34,13 @@ export default function ContactDetails(props) {
     if (!contactFormIsValid()) {
       return;
     }
-
     await ContactApi.saveContact({
       id: state.id || undefined,
       firstName: state.firstName,
       lastName: state.lastName,
       email: state.email,
     });
-    props.history.push('/data/hooks');
+    navigate('/data/hooks');
   }
 
   function change(evt) {
@@ -65,7 +68,7 @@ export default function ContactDetails(props) {
   return (
     <>
       <h1>
-        {props.match.params.id
+        {id
           ? `Contact ${state.firstName} ${state.lastName} `
           : 'Create Contact'}
       </h1>
