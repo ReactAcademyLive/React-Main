@@ -11,6 +11,7 @@ import HooksCounterV3 from '../counter/hooks/counter-v3';
 import HooksCounterV4 from '../counter/hooks/counter-v4';
 import HooksCounterV5 from '../counter/hooks/counter-v5';
 import Covid from '../data/covid';
+import Videos from '../data/videos';
 import ContactsHooks from '../data/contacts/contact-list/Contacts-hooks';
 import ContactsClass from '../data/contacts/contact-list/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
@@ -44,8 +45,7 @@ import Clock from '../perf/Clock';
 // import SignOff from '../security/SignOff';
 
 import About from '../basics/list';
-
-//const About = React.lazy(() => import('./about'));
+//const About = React.lazy(() => import('../basics/list'));
 
 export default function MyRouting({ location }) {
   return (
@@ -66,6 +66,7 @@ export default function MyRouting({ location }) {
           </Route>
           <Route path='data'>
             <Route path='covid' element={<Covid />} />
+            <Route path='videos' element={<Videos />} />
             <Route path='hooks' element={<ContactsHooks />} />
             <Route path='class' element={<ContactsClass />} />
             <Route path='details'>

@@ -60,6 +60,9 @@ export default function Menu() {
                 <NavDropdown.Item as={NavLink} to='/data/covid'>
                   Covid
                 </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to='/data/videos'>
+                  Videos
+                </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/data/hooks'>
                   Contacts using hooks
                 </NavDropdown.Item>

@@ -15,12 +15,12 @@ export default function ContactDetails() {
   const id = useParams().id;
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    async function getData(id) {
-      let contact = await ContactApi.getContact(id);
-      setState({ ...contact, formErrors: {} });
-    }
+  async function getData(id) {
+    let contact = await ContactApi.getContact(id);
+    setState({ ...contact, formErrors: {} });
+  }
 
+  React.useEffect(() => {
     if (id) {
       getData(id);
     }
