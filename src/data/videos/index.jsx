@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import Video from './Video';
 
 function Videos() {
@@ -21,16 +22,26 @@ function Videos() {
   return (
     <>
       <h1>Videos</h1>
-      <Form.Group className='mb-2' controlId='exampleForm.ControlInput1'>
-        <Form.Label>Search Videos</Form.Label>
-        <Form.Control
-          type='text'
-          value={searchQuery}
-          onChange={(evt) => {
-            setSearch(evt.target.value);
-          }}
-        />
-      </Form.Group>
+      <Row className='align-items-center mb-4'>
+        <Col sm='auto'>
+          <Form.Label>Search Videos:</Form.Label>
+        </Col>
+        <Col>
+          <Form.Control
+            type='text'
+            value={searchQuery}
+            onChange={(evt) => {
+              setSearch(evt.target.value);
+            }}
+          />
+        </Col>
+        <Col>
+          <Button variant='primary' type='submit' onClick={getData}>
+            Rechercher
+          </Button>
+        </Col>
+      </Row>
+
       {videos.map((vid) => (
         <Video id={vid.id.videoId} />
       ))}

@@ -53,7 +53,7 @@ function Content() {
         paddingBottom: '100px',
       }}
     >
-      <Outlet />
+      <Outlet location={location} />
     </animated.div>
   ));
 }
