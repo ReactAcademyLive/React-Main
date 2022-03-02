@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Form } from 'react-bootstrap';
+import Video from './Video';
 
 function Videos() {
-  const [searchQuery, setSearch] = useState('react');
+  const [searchQuery, setSearch] = useState('reactjs');
   const [videos, setVideos] = useState([]);
   const link = `https://youtube.googleapis.com/youtube/v3/search?q=${searchQuery}&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`;
   useEffect(() => {
@@ -13,13 +15,25 @@ function Videos() {
   async function getData() {
     const resp = await fetch(link);
     const data = await resp.json();
-    setVideos(data);
+    setVideos(data.items);
   }
-
+  console.log(videos);
   return (
     <>
       <h1>Videos</h1>
-      {}
+      <Form.Group className='mb-2' controlId='exampleForm.ControlInput1'>
+        <Form.Label>Search Videos</Form.Label>
+        <Form.Control
+          type='text'
+          value={searchQuery}
+          onChange={(evt) => {
+            setSearch(evt.target.value);
+          }}
+        />
+      </Form.Group>
+      {videos.map((vid) => (
+        <Video id={vid.id.videoId} />
+      ))}
     </>
   );
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { FloatingLabel, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const MyTextBox = (props) => {
   return (
     //form-floating or form-label-group
-    <Form.Group className='form-floating my-4'>
+    <FloatingLabel label={props.fullName} className=' my-4'>
       <Form.Control
         type='text'
         id={props.name}
@@ -15,11 +15,10 @@ const MyTextBox = (props) => {
         onChange={props.onChange}
         isInvalid={!!props.formErrors[props.name]}
       />
-      <Form.Label>{props.fullName}</Form.Label>
       <Form.Control.Feedback>
         {props.formErrors[props.name]}
       </Form.Control.Feedback>
-    </Form.Group>
+    </FloatingLabel>
   );
 };
 
