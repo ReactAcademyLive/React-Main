@@ -9,6 +9,7 @@ export default function GreyBox(props) {
         padding: '5px 20px 20px',
       }}
     >
+      <h1>Containment</h1>
       {props.children}
     </div>
   );

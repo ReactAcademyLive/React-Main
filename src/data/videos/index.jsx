@@ -1,24 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import Video from './Video';
 
 function Videos() {
   const [searchQuery, setSearch] = useState('reactjs');
   const [videos, setVideos] = useState([]);
+  const [errorMessage, setError] = useState(null);
+
   const link = `https://youtube.googleapis.com/youtube/v3/search?q=${searchQuery}&type=video&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`;
+
   useEffect(() => {
     getData();
   }, []);
 
-  console.log(process.env);
-
   async function getData() {
-    const resp = await fetch(link);
-    const data = await resp.json();
-    setVideos(data.items);
+    try {
+      const resp = await fetch(link);
+      if (!resp.ok) {
+        throw new Error('Network response was not OK');
+      }
+      const data = await resp.json();
+      setVideos(data.items);
+    } catch (e) {
+      setError(e.message);
+      console.log(e);
+    }
   }
-  console.log(videos);
   return (
     <>
       <h1>Videos</h1>
@@ -41,10 +49,43 @@ function Videos() {
           </Button>
         </Col>
       </Row>
-
-      {videos.map((vid) => (
-        <Video id={vid.id.videoId} />
-      ))}
+      {errorMessage ? (
+        <Alert variant='danger'>{errorMessage}</Alert>
+      ) : process.env.REACT_APP_YOUTUBE_API_KEY ? (
+        videos.map((vid) => <Video id={vid.id.videoId} key={vid.id.videoId} />)
+      ) : (
+        <>
+          <p>
+            You need to add an API key to get the you tube Data. To get the key,
+            do the following:
+          </p>
+          <ol>
+            <li>
+              Go to{' '}
+              <a href='https://developers.google.com/youtube/v3/getting-started'>
+                https://developers.google.com/youtube/v3/getting-started
+              </a>
+              .
+            </li>
+            <li>
+              Follow the steps at the top of the page to get your API key. Get
+              the value of your key.
+            </li>
+            <li>
+              If you are deploying, create an environnment variable on your
+              server called REACT_APP_YOUTUBE_API_KEY with the value of your key
+            </li>
+            <li>
+              If you are developing, create in the project root a new file
+              called <code>.env.local</code>. It will contain a line: <br />
+              <code>
+                REACT_APP_YOUTUBE_API_KEY=AIzaSyCEKhpokh17lEOFrNzujgRM8O2Fyk-IB5
+                o
+              </code>
+            </li>
+          </ol>
+        </>
+      )}
     </>
   );
 }

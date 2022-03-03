@@ -3,6 +3,7 @@ import React from 'react';
 function Video({ id }) {
   return (
     <iframe
+      className='m-3'
       type='text/html'
       width='480'
       height='270'
