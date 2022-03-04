@@ -1,13 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 //import PropTypes from 'prop-types';
 
-import {
-  invalidate,
-  select,
-  request,
-  receive,
-  // fetchPosts,
-} from './redux/reducers';
+import { invalidate, select, fetchPosts } from './redux/reducers';
 import { Button } from 'react-bootstrap';
 import Picker from './Picker';
 import Posts from './Posts';
@@ -30,19 +24,8 @@ function AsyncApp() {
       }
 
       if (shouldFetch) {
-        dispatch(request(selectedSubreddit));
         try {
-          //dispatch(fetchPosts(selectedSubreddit));
-          const response = await fetch(
-            `https://www.reddit.com/r/${selectedSubreddit}.json`
-          );
-          const data = await response.json();
-          dispatch(
-            receive({
-              selectedSubreddit,
-              posts: data.data.children.map((child) => child.data),
-            })
-          );
+          dispatch(fetchPosts(selectedSubreddit));
         } catch (err) {
           // dispatch({ type: 'error', payload: e.message });
         }

@@ -34,7 +34,7 @@ import TodosReduxHooks from '../todos/older-ways/redux/classic/hooks/todos';
 import TodosToolkitClassic from '../todos/older-ways/toolkit/connect/todos';
 import ToolkitHooks from '../todos/redux-toolkit/TodosContainer';
 import RedditToolkit from '../reddit/toolkit/fetch';
-import RedditThunk from '../reddit/toolkit/fetch';
+import RedditThunk from '../reddit/toolkit/thunk';
 import RedditClassicFetch from '../reddit/classic/fetch';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/Clock';
