@@ -49,14 +49,18 @@ function Videos() {
           </Button>
         </Col>
       </Row>
-      {errorMessage ? (
-        <Alert variant='danger'>{errorMessage}</Alert>
-      ) : process.env.REACT_APP_YOUTUBE_API_KEY ? (
-        videos.map((vid) => <Video id={vid.id.videoId} key={vid.id.videoId} />)
+      {process.env.REACT_APP_YOUTUBE_API_KEY ? (
+        errorMessage ? (
+          <Alert variant='danger'>{errorMessage}</Alert>
+        ) : (
+          videos.map((vid) => (
+            <Video id={vid.id.videoId} key={vid.id.videoId} />
+          ))
+        )
       ) : (
         <>
           <p>
-            You need to add an API key to get the you tube Data. To get the key,
+            You need to add an API key to get the YouTube data. To get the key,
             do the following:
           </p>
           <ol>
@@ -77,7 +81,8 @@ function Videos() {
             </li>
             <li>
               If you are developing, create in the project root a new file
-              called <code>.env.local</code>. It will contain a line: <br />
+              called <code>.env.local</code>. It will contain a single line that
+              looks like this: <br />
               <code>
                 REACT_APP_YOUTUBE_API_KEY=AIzaSyCEKhpokh17lEOFrNzujgRM8O2Fyk-IB5
                 o
