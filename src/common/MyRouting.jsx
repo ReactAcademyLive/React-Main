@@ -4,7 +4,7 @@ import Layout from './Layout';
 import Home from '../home';
 import NotFound from '../404';
 import Lifecycle from '../basics/lifecycle';
-import MyForm from '../test/MyForm';
+import MyForm from '../basics/forms/ValidatedForm';
 import ClassesCounter from '../counter/classes/counter';
 import HooksCounterV1 from '../counter/hooks/counter-v1';
 import HooksCounterV2 from '../counter/hooks/counter-v2';
@@ -55,6 +55,10 @@ export default function MyRouting({ location }) {
       <Routes location={location}>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path='hello'>
+            <Route index element={<Home />} />
+            <Route path=':name' element={<Home />} />
+          </Route>
           <Route path='about' element={<About />} />
           <Route path='lifecycle' element={<Lifecycle />} />
           <Route path='myform' element={<MyForm />} />

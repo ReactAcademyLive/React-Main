@@ -17,13 +17,14 @@ afterEach(() => {
   container = null;
 });
 
+//This
 jest.mock('react-router-dom', () => ({
   Link: (props) => {
-    return <a href=''>{props.children}</a>;
+    return <a href='/mocked'>{props.children}</a>;
   },
 }));
 
-it('Can display fake data, second TD is Dave!', async () => {
+it('Can display fake data, second TD is Dan...', async () => {
   const fakeData = [
     {
       id: 1,
