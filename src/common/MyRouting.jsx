@@ -4,6 +4,7 @@ import Layout from './Layout';
 import Home from '../home';
 import NotFound from '../404';
 import Lifecycle from '../basics/lifecycle';
+import MyForm from '../test/MyForm';
 import ClassesCounter from '../counter/classes/counter';
 import HooksCounterV1 from '../counter/hooks/counter-v1';
 import HooksCounterV2 from '../counter/hooks/counter-v2';
@@ -33,9 +34,9 @@ import TodosReduxClassic from '../todos/older-ways/redux/classic/connect/todos';
 import TodosReduxHooks from '../todos/older-ways/redux/classic/hooks/todos';
 import TodosToolkitClassic from '../todos/older-ways/toolkit/connect/todos';
 import ToolkitHooks from '../todos/redux-toolkit/TodosContainer';
-import RedditToolkit from '../reddit/toolkit/fetch';
+import RedditNoThunk from '../reddit/toolkit/no-thunk';
 import RedditThunk from '../reddit/toolkit/thunk';
-import RedditClassicFetch from '../reddit/classic/fetch';
+import RedditClassicNoThunk from '../reddit/classic/no-thunk';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/Clock';
 // import SignUp from '../security/SignUp';
@@ -56,6 +57,7 @@ export default function MyRouting({ location }) {
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='lifecycle' element={<Lifecycle />} />
+          <Route path='myform' element={<MyForm />} />
           <Route path='counter'>
             <Route path='classes' element={<ClassesCounter init={5} />} />
             <Route path='hooks-v1' element={<HooksCounterV1 init={5} />} />
@@ -85,9 +87,9 @@ export default function MyRouting({ location }) {
             <Route path='ToolkitHooks' element={<ToolkitHooks />} />
           </Route>
           <Route path='reddit'>
-            <Route path='toolkitFetch' element={<RedditToolkit />} />
+            <Route path='toolkitNoThunk' element={<RedditNoThunk />} />
             <Route path='toolkitThunk' element={<RedditThunk />} />
-            <Route path='classicFetch' element={<RedditClassicFetch />} />
+            <Route path='classicNoThunk' element={<RedditClassicNoThunk />} />
             <Route path='classicThunk' element={<RedditClassicThunk />} />
           </Route>
           <Route path='/clock' element={<Clock />} />

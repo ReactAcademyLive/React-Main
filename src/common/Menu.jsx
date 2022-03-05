@@ -32,6 +32,9 @@ export default function Menu() {
                 <NavDropdown.Item as={NavLink} to='/context/reference'>
                   Using references
                 </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to='/myform'>
+                  Form validation
+                </NavDropdown.Item>
               </NavDrop>
 
               <NavDrop title='Counter' link='counter'>
@@ -160,10 +163,10 @@ export default function Menu() {
                 <NavDropdown.Header>Redux Toolkit</NavDropdown.Header>
                 <NavDropdown.Item
                   as={NavLink}
-                  to='/reddit/toolkitFetch'
+                  to='/reddit/toolkitNoThunk'
                   className='ps-5'
                 >
-                  Redux Toolkit — Hooks
+                  Redux Toolkit — No Thunk
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   as={NavLink}
@@ -176,17 +179,17 @@ export default function Menu() {
                 <NavDropdown.Header>Old Redux</NavDropdown.Header>
                 <NavDropdown.Item
                   as={NavLink}
-                  to='/reddit/classicFetch'
+                  to='/reddit/classicNoThunk'
                   className='ps-5'
                 >
-                  Classic Redux
+                  Classic Redux - No Thunks
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   as={NavLink}
                   to='/reddit/classicThunk'
                   className='ps-5'
                 >
-                  Classic Redux thunks
+                  Classic Redux - Thunks
                 </NavDropdown.Item>
               </NavDrop>
 
