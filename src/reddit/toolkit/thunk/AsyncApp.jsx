@@ -1,11 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
-//import PropTypes from 'prop-types';
-
-import { invalidate, select, fetchPosts } from './redux/reducers';
 import { Button } from 'react-bootstrap';
-import Picker from './Picker';
-import Posts from './Posts';
 import { useDispatch, useSelector } from 'react-redux';
+import { invalidate, fetchPosts } from './redux/posts(create-thunk)';
+import { select } from './redux/selectedSubreddit';
+import Picker from '../../common/Picker';
+import Posts from '../../common/Posts';
 
 function AsyncApp() {
   const dispatch = useDispatch();
@@ -39,7 +38,6 @@ function AsyncApp() {
   }, [isInvalid, selectedSubreddit, fetchPostsIfNeeded]);
 
   function handleChange(nextSubreddit) {
-    //distpatch the Change, and fetchPostIfNeeded
     dispatch(select(nextSubreddit));
   }
 

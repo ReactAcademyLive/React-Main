@@ -7,8 +7,8 @@ import {
   invalidateSubreddit,
 } from './redux/actions';
 import { Button } from 'react-bootstrap';
-import Picker from './Picker';
-import Posts from './Posts';
+import Picker from '../../common/Picker';
+import Posts from '../../common/Posts';
 
 class AsyncApp extends Component {
   constructor(props) {

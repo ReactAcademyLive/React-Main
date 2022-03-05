@@ -2,21 +2,12 @@ import React, { useRef } from 'react';
 import { Provider } from 'react-redux';
 import createStore from './redux/createStore';
 import AsyncApp from './AsyncApp';
+import useTitle from '../../../common/useTitle';
 
 const Reddits = () => {
-  const store = useRef();
+  const store = useRef(createStore());
 
-  if (!store.current) {
-    store.current = createStore();
-  }
-
-  React.useEffect(() => {
-    const savedTitle = document.title;
-    document.title = 'Reddits!';
-    return () => {
-      document.title = savedTitle;
-    };
-  }, []);
+  useTitle('Reddit RTK - with NoThunk');
 
   return (
     <Provider store={store.current}>

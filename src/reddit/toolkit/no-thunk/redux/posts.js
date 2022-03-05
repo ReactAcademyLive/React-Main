@@ -1,14 +1,4 @@
-import { combineReducers, createSlice } from '@reduxjs/toolkit';
-
-const selectedSubredditSlice = createSlice({
-  name: 'selectedSubreddit',
-  initialState: 'reactjs',
-  reducers: {
-    select(state, action) {
-      return action.payload;
-    },
-  },
-});
+import { createSlice } from '@reduxjs/toolkit';
 
 const postsSlice = createSlice({
   name: 'posts',
@@ -17,7 +7,7 @@ const postsSlice = createSlice({
       isFetching: false,
       isInvalid: true,
       posts: [],
-      lastUpdated: new Date(),
+      lastUpdated: Date.now(),
     },
   },
 
@@ -40,17 +30,11 @@ const postsSlice = createSlice({
       state[action.payload.selectedSubreddit].isInvalid = false;
       state[action.payload.selectedSubreddit].isFetching = false;
       state[action.payload.selectedSubreddit].posts = action.payload.posts;
-      state[action.payload.selectedSubreddit].lastUpdated = new Date();
+      state[action.payload.selectedSubreddit].lastUpdated = Date.now();
     },
   },
 });
 
-const rootReducer = combineReducers({
-  selectedSubreddit: selectedSubredditSlice.reducer,
-  posts: postsSlice.reducer,
-});
-
-export const { select } = selectedSubredditSlice.actions;
 export const { invalidate, receive, request } = postsSlice.actions;
 
-export default rootReducer;
+export default postsSlice.reducer;

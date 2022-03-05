@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import postsReducer from './posts(create-thunk)';
+import postsReducer from './posts';
 import selectedSubredditReducer from './selectedSubreddit';
-// import { createLogger } from 'redux-logger';
+//import { createLogger } from 'redux-logger';
 
-// const loggerMiddleware = createLogger();
+//const loggerMiddleware = createLogger()
 
 const createStore = () =>
   configureStore({

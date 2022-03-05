@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   selectSubreddit,
-  //fetchPostsIfNeeded,
   invalidateSubreddit,
   requestPosts,
   receivePosts,
 } from './redux/actions';
 import { Button } from 'react-bootstrap';
-import Picker from './Picker';
-import Posts from './Posts';
+import Picker from '../../common/Picker';
+import Posts from '../../common/Posts';
 
 class AsyncApp extends Component {
   constructor(props) {
@@ -20,23 +19,20 @@ class AsyncApp extends Component {
   }
 
   componentDidMount() {
-    const { /* dispatch, */ selectedSubreddit } = this.props;
+    const { selectedSubreddit } = this.props;
     this.fetchPostsIfNeeded(selectedSubreddit);
-    //dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
-      const { /* dispatch, */ selectedSubreddit } = this.props;
+      const { selectedSubreddit } = this.props;
       this.fetchPostsIfNeeded(selectedSubreddit);
-      //dispatch(fetchPostsIfNeeded(selectedSubreddit));
     }
   }
 
   handleChange(nextSubreddit) {
     this.props.dispatch(selectSubreddit(nextSubreddit));
     this.fetchPostsIfNeeded(nextSubreddit);
-    //this.props.dispatch(fetchPostsIfNeeded(nextSubreddit));
   }
 
   handleRefreshClick(evt) {
@@ -45,7 +41,6 @@ class AsyncApp extends Component {
     const { dispatch, selectedSubreddit } = this.props;
     dispatch(invalidateSubreddit(selectedSubreddit));
     this.fetchPostsIfNeeded(selectedSubreddit, true);
-    //dispatch(fetchPostsIfNeeded(selectedSubreddit));
   }
 
   shouldFetchPosts(subreddit, isInvalid) {
