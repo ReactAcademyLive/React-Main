@@ -2,7 +2,7 @@ import React, { useState, createRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import MyInput from './MyInput';
 
-export default function RefSample(props) {
+export default function RefSample() {
   const [theState, setTheState] = useState('Controlled component');
   const ref1 = createRef();
   const ref2 = createRef();

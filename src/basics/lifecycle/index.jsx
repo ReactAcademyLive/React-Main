@@ -2,22 +2,42 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-let consoleText = '';
+let consoleText = ''; //module variable with the logged text.
 
-// To be able do display the log data on the screen,
-// as soon as possible
-// we are using DOM updates instead of modifying
+// https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/
+// A normal react render goes through the following steps:
+// 1. Event happens (click, scroll, input change, fetch result, run effect, etc)
+// 2. Event handler runs and calls setState() (this schedules a re-render)
+// 3. React runs all events and batches all the setStates once,
+//    all together, after all events have run.
+// 4. React updates all states.
+// 5. React calls the top-most component of the changed state
+// 6  Runs the component (and sub-components), which returns a tree of objects
+//       (This was previously called "virtual dom")
+// 7. React compares the components from the previous tree and the current tree
+//       (This is called "reconciliation")
+// 8. React determines the diff and updates the DOM.
+//       (This is called "commit")
+// 9. If there is are useEffectLayout, and execute them by going back to step 1.
+//    (ignore this step if not needed)
+// 10. Paints the DOM on the screen
+// 11. If there are useEffect, execute them by going back to step 1.
+//
+
+// logThis() uses DOM updates instead of modifying
 // the React state
 // This is NOT the proper 'React' way of doing things.
 // (To do it the React way, logThis() would need
-// to call setState().  This would create an infinite loop
-// when using useEffect().)
+// to call setState(). But then, when trying to logThis()
+// from useEffect(), this would create an infinite loop.
+// The workaround is to use DOM Updates.
+// In real life, you would not need to do this. )
 function logThis(data) {
   consoleText += data + '\n';
   console.log(data);
 
-  // following line updates the DOM.
-  // --NOT the React way of doing things.
+  // the following line updates the DOM.
+  // --IMPORTANT: NOT the React way of doing things.
   document.querySelector('#logConsole') &&
     (document.querySelector('#logConsole').value = consoleText);
 }

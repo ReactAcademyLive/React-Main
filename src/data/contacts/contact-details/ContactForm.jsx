@@ -5,42 +5,50 @@ import MyTextBox from './MyTextbox';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faTrashAlt  } from "@fortawesome/free-solid-svg-icons";
 
-export default function ContactForm(props) {
+export default function ContactForm({
+  id,
+  firstName,
+  lastName,
+  email,
+  formErrors,
+  onChange,
+  onSubmit,
+}) {
   return (
     <Form
       onSubmit={(evt) => {
         evt.preventDefault();
-        props.onSubmit();
+        onSubmit();
       }}
     >
-      <Form.Control type='hidden' name='id' value={props.id} />
+      <Form.Control type='hidden' name='id' value={id} />
       <MyTextBox
         name='firstName'
         fullName='First Name'
-        value={props.firstName}
-        onChange={props.onChange}
-        formErrors={props.formErrors}
+        value={firstName}
+        onChange={onChange}
+        formErrors={formErrors}
       />
 
       <MyTextBox
         name='lastName'
         fullName='Last Name'
-        value={props.lastName}
-        onChange={props.onChange}
-        formErrors={props.formErrors}
+        value={lastName}
+        onChange={onChange}
+        formErrors={formErrors}
       />
 
       <MyTextBox
         name='email'
         fullName='Email'
-        value={props.email}
-        onChange={props.onChange}
-        formErrors={props.formErrors}
+        value={email}
+        onChange={onChange}
+        formErrors={formErrors}
       />
 
       <Form.Group>
-        {/* {props.formErrors.global ? (
-          <Alert variant='danger'>{props.formErrors.global}</Alert>
+        {/* {formErrors.global ? (
+          <Alert variant='danger'>{formErrors.global}</Alert>
         ) : (
           ''
         )} */}

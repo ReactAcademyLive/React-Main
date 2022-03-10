@@ -21,8 +21,8 @@ function useLocalStorage(initial, name) {
   return [state, setState];
 }
 
-export default function Counter(props) {
-  let [count, setCount] = useLocalStorage(props.init || 1, 'count');
+export default function Counter({ init }) {
+  let [count, setCount] = useLocalStorage(+init || 1, 'count');
   count = +count;
 
   function increment(incr) {

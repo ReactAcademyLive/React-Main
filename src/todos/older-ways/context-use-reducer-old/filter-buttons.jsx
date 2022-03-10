@@ -4,7 +4,7 @@ import FilterLink from './filter-link';
 import { VisibilityFilters } from './action';
 import TodoContext from './todo-context';
 
-export default function FilterButtons(props) {
+export default function FilterButtons() {
   const context = React.useContext(TodoContext);
   const { visibilityFilter, onChangeFilter } = context;
 

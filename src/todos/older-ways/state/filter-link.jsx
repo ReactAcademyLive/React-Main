@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from './link';
 
-const FilterLink = (props) => (
+const FilterLink = ({ filter, visibilityFilter, onChangeFilter, children }) => (
   <Link
-    active={props.filter === props.visibilityFilter}
-    onClick={() => props.onChangeFilter(props.filter)}
+    active={filter === visibilityFilter}
+    onClick={() => onChangeFilter(filter)}
   >
-    {props.children}
+    {children}
   </Link>
 );
 

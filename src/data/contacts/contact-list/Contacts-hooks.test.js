@@ -19,8 +19,8 @@ afterEach(() => {
 
 //This
 jest.mock('react-router-dom', () => ({
-  Link: (props) => {
-    return <a href='/mocked'>{props.children}</a>;
+  Link: ({ children }) => {
+    return <a href='/mocked'>{children}</a>;
   },
 }));
 

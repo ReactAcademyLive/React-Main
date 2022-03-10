@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const ContactTable = (props) => {
+const ContactTable = ({ contacts }) => {
   return (
     <Table striped>
       <thead>
@@ -17,7 +17,7 @@ const ContactTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.contacts.map((contact) => (
+        {contacts.map((contact) => (
           <tr key={contact.id}>
             <td>
               <Link to={`/data/details/${contact.id}`}>

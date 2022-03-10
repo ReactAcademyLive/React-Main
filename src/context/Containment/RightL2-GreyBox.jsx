@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function GreyBox(props) {
+export default function GreyBox({ children }) {
   return (
     <div
       style={{
@@ -10,7 +10,7 @@ export default function GreyBox(props) {
       }}
     >
       <h1>Containment</h1>
-      {props.children}
+      {children}
     </div>
   );
 }

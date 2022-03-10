@@ -10,10 +10,10 @@ export default function ParentRoot() {
   );
 }
 
-function MouseProvider(props) {
+function MouseProvider({ children }) {
   const [mouseState, setMouseState] = useState({ x: 0, y: 0 });
-  const ChildElement = props.children.type;
-  const childProps = props.children.props;
+  const ChildElement = children.type;
+  const childProps = children.props;
 
   function handleMouseMove(evt) {
     setMouseState({ x: evt.clientX, y: evt.clientY });
@@ -34,7 +34,7 @@ function DisplayMouse({ mouse }) {
   );
 }
 
-//Functionality is now split in two components.
+//Functionality is now split in two components.  This is called containment.
 
 //problem 1:
 //using JSX, "key" and "ref" are not passed down to props.
@@ -61,4 +61,4 @@ function DisplayMouse({ mouse }) {
 //mousePos instead of mouse?
 
 //Solution:
-//Render Props
+//Render Props  (see step 5)

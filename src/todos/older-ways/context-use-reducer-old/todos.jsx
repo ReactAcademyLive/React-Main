@@ -19,7 +19,7 @@ import initialTodos from '../common/initial-todos';
 //{type: "TOGGLE_TODO", id: 2}
 //{type: "DELETE_TODO", id: 3}
 
-export default function Todos(props) {
+export default function Todos() {
   const [todos, dispatch] = useReducer(reducer, initialTodos);
   const [visibilityFilter, setVisibilityFilter] = useState(
     VisibilityFilters.SHOW_ALL

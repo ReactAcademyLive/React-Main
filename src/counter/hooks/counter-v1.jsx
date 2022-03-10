@@ -3,8 +3,8 @@ import MyButton from '../common/my-button';
 import MyTextbox from '../common/my-textbox';
 
 //simple use of hooks.  No effects (so no save or restore of the counter value)
-export default function Counter(props) {
-  const [count, setCount] = React.useState(+props.init || 1);
+export default function Counter({ init }) {
+  const [count, setCount] = React.useState(+init || 1);
 
   function increment(incr) {
     setCount(count + incr);

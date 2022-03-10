@@ -1,30 +1,30 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-export default function ModifyData(props) {
+export default function ModifyData({ firstName, lastName, color, onChange }) {
   return (
     <>
       <Form.Control
-        value={props.firstName}
+        value={firstName}
         name='firstName'
         placeholder='First Name'
-        onChange={props.onChange}
+        onChange={onChange}
         className='mb-4'
       />
-      {props.lastName && (
+      {lastName && (
         <Form.Control
-          value={props.lastName}
+          value={lastName}
           name='lastName'
           placeholder='Last Name'
-          onChange={props.onChange}
+          onChange={onChange}
           className='mb-4'
         />
       )}
       <Form.Control
-        value={props.color}
+        value={color}
         name='color'
         placeholder='Color'
-        onChange={props.onChange}
+        onChange={onChange}
       />
     </>
   );

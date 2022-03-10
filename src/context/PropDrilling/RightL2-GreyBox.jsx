@@ -1,7 +1,7 @@
 import React from 'react';
 import ModifyData from './RightL3-ModifyData';
 
-export default function GreyBox(props) {
+export default function GreyBox(firstName, color, onChange) {
   return (
     <div
       style={{
@@ -10,12 +10,8 @@ export default function GreyBox(props) {
         padding: '5px 20px 20px',
       }}
     >
-      <h1>Modify State (props)</h1>
-      <ModifyData
-        firstName={props.firstName}
-        color={props.color}
-        onChange={props.onChange}
-      />
+      <h1>Modify State (Property Drilling)</h1>
+      <ModifyData firstName={firstName} color={color} onChange={onChange} />
       {/* <ModifyData {...props} /> */}
     </div>
   );

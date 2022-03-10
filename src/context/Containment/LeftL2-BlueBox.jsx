@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BlueBox(props) {
+export default function BlueBox({ children }) {
   return (
     <div
       style={{
@@ -10,7 +10,7 @@ export default function BlueBox(props) {
         padding: '5px 20px',
       }}
     >
-      {props.children}
+      {children}
     </div>
   );
 }

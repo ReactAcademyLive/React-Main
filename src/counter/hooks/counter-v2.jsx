@@ -4,8 +4,8 @@ import MyTextbox from '../common/my-textbox';
 
 //This version stores the counter in local storage
 //each time the counter changes its value
-export default function Counter(props) {
-  const [count, setCount] = React.useState(props.init || 1);
+export default function Counter({ init }) {
+  const [count, setCount] = React.useState(+init || 1);
 
   React.useEffect(() => {
     if (+window.localStorage.getItem('count')) {

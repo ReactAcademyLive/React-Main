@@ -1,7 +1,7 @@
 import React from 'react';
 import DisplayData from './LeftL3-DisplayData';
 
-export default function BlueBox(props) {
+export default function BlueBox({ firstName, color }) {
   return (
     <div
       style={{
@@ -11,7 +11,7 @@ export default function BlueBox(props) {
         padding: '5px 20px',
       }}
     >
-      <DisplayData firstName={props.firstName} color={props.color} />
+      <DisplayData firstName={firstName} color={color} />
     </div>
   );
 }

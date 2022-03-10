@@ -5,7 +5,7 @@ import { Spinner, Table, Button } from 'react-bootstrap';
 
 const formatNum = Intl.NumberFormat('en-US').format;
 
-export default function Covid(props) {
+export default function Covid() {
   const [countries, setCountries] = useState([]);
   const [isFetching, setFetching] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);

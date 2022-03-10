@@ -27,7 +27,7 @@ export default function SimpleContext() {
 
 //the following would prevent the content from re-rendering
 //when the props are the same (hint: here they are always the same)
-//var MemoContent = React.memo(Content);
+//let MemoContent = React.memo(Content);
 
 function Content() {
   return (

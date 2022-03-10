@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import ElectionContext from './ElectionContext';
 
-export default function ElectionProvider(props) {
+export default function ElectionProvider({ children }) {
   const [results, setResults] = useState([]);
   const [selectedRegion, setRegion] = useState(0);
   const [loading, setLoading] = useState({
@@ -50,7 +50,7 @@ export default function ElectionProvider(props) {
     <ElectionContext.Provider
       value={{ results, selectedRegion, setRegion, loading }}
     >
-      {props.children}
+      {children}
     </ElectionContext.Provider>
   );
 }

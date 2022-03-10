@@ -8,7 +8,7 @@ export default function ParentRoot() {
   );
 }
 
-function MouseProvider(props) {
+function MouseProvider({ children }) {
   const [mouseState, setMouseState] = useState({ x: 0, y: 0 });
 
   function handleMouseMove(evt) {
@@ -17,7 +17,7 @@ function MouseProvider(props) {
 
   return (
     <div style={{ height: '500px' }} onMouseMove={handleMouseMove}>
-      {props.children(mouseState)}
+      {children(mouseState)}
     </div>
   );
 }

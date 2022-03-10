@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 
-const DarkModeButton = (props) => {
+export default function DarkModeButton() {
   const [mode, setMode] = useState(
     window.matchMedia('(prefers-color-scheme: dark)')?.matches
       ? 'dark'
@@ -30,6 +30,4 @@ const DarkModeButton = (props) => {
       {mode === 'dark' ? 'Light' : 'Dark'} Mode
     </Button>
   );
-};
-
-export default DarkModeButton;
+}
