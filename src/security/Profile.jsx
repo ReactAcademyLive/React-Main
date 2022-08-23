@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../common/AuthProvider';
+import { AuthContext } from '../firebase/AuthProvider.Firebase';
 import { Button } from 'react-bootstrap';
 
 const ProfilePage = () => {

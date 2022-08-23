@@ -9,7 +9,7 @@ export default function Footer({ className, ...rest }) {
 
   return (
     <footer {...rest} className={classes}>
-      <Container>Copyright 2022</Container>
+      <Container>Copyright 2023</Container>
     </footer>
   );
 }

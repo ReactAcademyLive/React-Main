@@ -1,0 +1,58 @@
+api-version: 2021-10-01
+location: canadacentral
+name: keycloak-react
+properties:
+  containers:
+    - name: keycloak
+      properties:
+        image: quay.io/keycloak/keycloak:latest
+        command:
+          [
+            '/opt/keycloak/bin/kc.sh',
+            'start',
+            '--hostname',
+            '<keyclock.server.com>',
+            '--proxy',
+            'edge',
+          ]
+        ports:
+          - port: 8443
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 1
+            memoryInGB: 1.5
+        environmentVariables:
+          - name: KEYCLOAK_ADMIN
+            value: '<admin>'
+          - name: KEYCLOAK_ADMIN_PASSWORD
+            value: '<password>'
+    - name: caddy
+      properties:
+        image: caddy:latest
+        command:
+          [
+            'caddy',
+            'reverse-proxy',
+            '--from',
+            'https://<keyclock.server.com>',
+            '--to',
+            'http://localhost:8080',
+          ]
+        ports:
+          - port: 443
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 0.5
+            memoryInGB: 0.5
+  ipAddress:
+    ports:
+      - port: 443
+        protocol: TCP
+    type: Public
+    dnsNameLabel: keycloak-react
+  osType: Linux
+  restartPolicy: Never
+tags: null
+type: Microsoft.ContainerInstance/containerGroups

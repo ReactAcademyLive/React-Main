@@ -39,29 +39,38 @@ import RedditThunk from '../reddit/toolkit/thunk';
 import RedditClassicNoThunk from '../reddit/classic/no-thunk';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/Clock';
-// import SignUp from '../security/SignUp';
-// import SignIn from '../security/SignIn';
-// import Profile from '../security/Profile';
-// import PasswordReset from '../security/PasswordReset';
-// import SignOff from '../security/SignOff';
+// import SignUp from '../keycloak/SignUp';
+// import SignIn from '../keycloak/SignIn';
+// import Profile from '../keycloak/Profile';
+// import PasswordReset from '../keycloak/PasswordReset';
+// import SignOff from '../keycloak/SignOff';
 
 import About from '../basics/list';
 //const About = React.lazy(() => import('../basics/list'));
 
 export default function MyRouting({ location }) {
+  //check if Keycloak library is loaded
+  // const { initialized } = useKeycloak();
+  // if (!initialized) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // show the page
   return (
     <>
       {/* <React.Suspense fallback={<h1>Loading...</h1>}   > */}
       <Routes location={location}>
         <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Home />} />{' '}
           <Route path='hello'>
             <Route index element={<Home />} />
             <Route path=':name' element={<Home />} />
           </Route>
-          <Route path='about' element={<About />} />
-          <Route path='lifecycle' element={<Lifecycle />} />
-          <Route path='myform' element={<MyForm />} />
+          <Route path='basics'>
+            <Route path='about' element={<About />} />
+            <Route path='lifecycle' element={<Lifecycle />} />
+            <Route path='myform' element={<MyForm />} />
+          </Route>
           <Route path='counter'>
             <Route path='classes' element={<ClassesCounter init={5} />} />
             <Route path='hooks-v1' element={<HooksCounterV1 init={5} />} />
@@ -97,7 +106,6 @@ export default function MyRouting({ location }) {
             <Route path='classicThunk' element={<RedditClassicThunk />} />
           </Route>
           <Route path='/clock' element={<Clock />} />
-
           <Route path='context'>
             <Route path='PropDrill' element={<ContextDrill />} />
             <Route path='WithContext' element={<ContextWith />} />
@@ -112,7 +120,19 @@ export default function MyRouting({ location }) {
             <Route path='step5' element={<Step5 />} />
             <Route path='step6' element={<Step6 />} />
           </Route>
-          {/* <Route path='/auth/signup' element={<SignUp/>} />
+          <Route
+            path='auth'
+            element={
+              <div style={{ backgroundColor: 'bisque', height: 400 }}></div>
+            }
+          >
+            <Route path='signup' element={<NotFound />} />
+            <Route path='signin' element={<NotFound />} />
+            <Route path='profile' element={<NotFound />} />
+            <Route path='passwordreset' element={<NotFound />} />
+            <Route path='signoff' element={<NotFound />} />
+          </Route>
+          {/* 
           <Route path='/auth/signin' element={<SignIn/>} />
           <Route path='/auth/profile' element={<Profile/>} />
           <Route path='/auth/passwordreset' element={<PasswordReset/>} />

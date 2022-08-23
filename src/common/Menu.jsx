@@ -23,16 +23,16 @@ export default function Menu() {
                 </Nav.Link>
               </Nav.Item>
               <NavDrop title='Basics' link='basics'>
-                <NavDropdown.Item as={NavLink} to='/about'>
+                <NavDropdown.Item as={NavLink} to='/basics/about'>
                   Display list
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/lifecycle'>
+                <NavDropdown.Item as={NavLink} to='/basics/lifecycle'>
                   Hooks Lifecyle
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/context/reference'>
                   Using references
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/myform'>
+                <NavDropdown.Item as={NavLink} to='/basics/myform'>
                   Form validation
                 </NavDropdown.Item>
               </NavDrop>
