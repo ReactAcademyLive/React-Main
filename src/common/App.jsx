@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import AuthProvider from '../keycloak/AuthProvider';
 import './custom.scss';
 import MyRouting from './MyRouting';
 //import Keycloak from 'keycloak-js';
@@ -7,9 +8,11 @@ import MyRouting from './MyRouting';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <MyRouting />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <MyRouting />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

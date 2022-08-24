@@ -2,6 +2,9 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Form, Button } from 'react-bootstrap';
 
+//Todo: create a new field for 'name'
+//that is required and has between 5 and 25 characters
+
 export default function ValidatedForm({ login }) {
   const {
     register,

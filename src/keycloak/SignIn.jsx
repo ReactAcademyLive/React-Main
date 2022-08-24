@@ -1,26 +1,19 @@
-import { useEffect, useRef } from 'react';
-import axios from 'axios';
-import type { AxiosInstance } from 'axios';
+import React from 'react';
+import { Button } from 'react-bootstrap';
+import { useAuth } from './AuthProvider';
 
-import { useKeycloak } from '@react-keycloak/web';
+export default function Signin() {
+  const auth = useAuth();
 
-export const useAxios = (baseURL: string) => {
-  const axiosInstance = useRef<AxiosInstance>();
-  const { keycloak, initialized } = useKeycloak();
-  const kcToken = keycloak?.token ?? '';
+  function loginBtn(evt) {
+    auth.login();
+  }
 
-  useEffect(() => {
-    axiosInstance.current = axios.create({
-      baseURL,
-      headers: {
-        Authorization: initialized ? `Bearer ${kcToken}` : undefined,
-      },
-    });
-
-    return () => {
-      axiosInstance.current = undefined;
-    };
-  }, [baseURL, initialized, kcToken]);
-
-  return axiosInstance;
-};
+  return auth?.token ? (
+    <>
+      <h1>Welcome authenticated</h1>
+    </>
+  ) : (
+    <Button onClick={loginBtn}>Login</Button>
+  );
+}

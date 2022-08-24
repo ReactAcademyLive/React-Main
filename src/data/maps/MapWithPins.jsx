@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -15,66 +15,66 @@ const MyPopupMarker = ({ content, position }) => (
 
 const MyMarkersList = ({ markers }) => {
   return (
-    <Fragment>
+    <>
       {markers.map(({ key, ...props }) => (
         <MyPopupMarker key={key} {...props} />
       ))}
-    </Fragment>
+    </>
   );
 };
 
-export default class MapWithPins extends Component {
-  state = {
-    markers: [
-      {
-        key: 'marker1',
-        position: [46.82, -71.22],
-        content: 'This is marker 1',
-      },
-      {
-        key: 'marker2',
-        position: [46.81, -71.21],
-        content: 'This is marker 2',
-      },
-      {
-        key: 'marker3',
-        position: [46.79, -71.23],
-        content: 'This is marker 3',
-      },
-    ],
-  };
+const defaultPins = {
+  markers: [
+    {
+      key: 'marker1',
+      position: [46.82, -71.22],
+      content: 'This is marker 1',
+    },
+    {
+      key: 'marker2',
+      position: [46.81, -71.21],
+      content: 'This is marker 2',
+    },
+    {
+      key: 'marker3',
+      position: [46.79, -71.23],
+      content: 'This is marker 3',
+    },
+  ],
+};
 
-  incr = 4;
+export default function MapWithPins() {
+  const [pins, setPins] = useState(defaultPins);
+  const [currentNumber, setCurrentNumber] = useState(4);
 
-  handleClick = (e) => {
+  function handleClick(e) {
     console.log(e);
-    this.setState({
+    setPins({
       markers: [
-        ...this.state.markers,
+        ...pins.markers,
         {
-          key: `marker${this.incr}`,
+          key: `marker${currentNumber}`,
           position: [e.latlng.lat, e.latlng.lng],
-          content: `This is marker ${this.incr++}`,
+          content: `This is marker ${currentNumber}`,
         },
       ],
     });
-  };
-
-  render() {
-    return (
-      <>
-        <h1>Map with pins</h1>
-        <MapContainer center={[46.8141244, -71.22]} zoom={13}>
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-          />
-          <MyMarkersList markers={this.state.markers} />
-          <EventHandler onClick={this.handleClick} />
-        </MapContainer>
-      </>
-    );
+    setCurrentNumber(currentNumber + 1);
   }
+
+  return (
+    <>
+      <h1>Map with pins</h1>
+      <MapContainer center={[46.8141244, -71.22]} zoom={13}>
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        />
+        <MyMarkersList markers={pins.markers} />
+        <EventHandler onClick={handleClick} />
+      </MapContainer>
+    </>
+  );
 }
 
 function EventHandler({ onClick }) {

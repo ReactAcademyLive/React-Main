@@ -29,7 +29,7 @@ export default function Menu() {
                 <NavDropdown.Item as={NavLink} to='/basics/lifecycle'>
                   Hooks Lifecyle
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/context/reference'>
+                <NavDropdown.Item as={NavLink} to='/basics/reference'>
                   Using references
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/basics/myform'>

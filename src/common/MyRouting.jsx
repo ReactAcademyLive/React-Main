@@ -40,7 +40,7 @@ import RedditClassicNoThunk from '../reddit/classic/no-thunk';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/Clock';
 // import SignUp from '../keycloak/SignUp';
-// import SignIn from '../keycloak/SignIn';
+import SignIn from '../keycloak/signin';
 // import Profile from '../keycloak/Profile';
 // import PasswordReset from '../keycloak/PasswordReset';
 // import SignOff from '../keycloak/SignOff';
@@ -70,6 +70,7 @@ export default function MyRouting({ location }) {
             <Route path='about' element={<About />} />
             <Route path='lifecycle' element={<Lifecycle />} />
             <Route path='myform' element={<MyForm />} />
+            <Route path='reference' element={<WithRef />} />
           </Route>
           <Route path='counter'>
             <Route path='classes' element={<ClassesCounter init={5} />} />
@@ -110,7 +111,6 @@ export default function MyRouting({ location }) {
             <Route path='PropDrill' element={<ContextDrill />} />
             <Route path='WithContext' element={<ContextWith />} />
             <Route path='containment' element={<ContextContainment />} />
-            <Route path='reference' element={<WithRef />} />
           </Route>
           <Route path='best'>
             <Route path='step1' element={<Step1 />} />
@@ -120,14 +120,9 @@ export default function MyRouting({ location }) {
             <Route path='step5' element={<Step5 />} />
             <Route path='step6' element={<Step6 />} />
           </Route>
-          <Route
-            path='auth'
-            element={
-              <div style={{ backgroundColor: 'bisque', height: 400 }}></div>
-            }
-          >
+          <Route path='auth'>
             <Route path='signup' element={<NotFound />} />
-            <Route path='signin' element={<NotFound />} />
+            <Route path='signin' element={<SignIn />} />
             <Route path='profile' element={<NotFound />} />
             <Route path='passwordreset' element={<NotFound />} />
             <Route path='signoff' element={<NotFound />} />

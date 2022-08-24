@@ -1,18 +1,24 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import Keycloak from 'keycloak-js';
 
 export const AuthContext = createContext({ user: null });
 
-function AuthProvider({ config, children }) {
+const conf = {
+  url: 'https://keycloak2.reactacademy.live/',
+  realm: 'react-courses',
+  clientId: 'august-course',
+};
+
+function AuthProvider({ config = conf, children }) {
   const [keycloak] = useState(new Keycloak(config));
   const [, refresh] = useState({});
 
   useEffect(() => {
     keycloak.onAuthRefreshSuccess = refresh({});
-    keycloak.init({ onLoad: 'login-required' }).then((authenticated) => {
+    keycloak.init({ checkLoginIframe: false }).then((authenticated) => {
       //do nothing
     });
-  }, []);
+  }, [keycloak]);
 
   // async function refreshDoc(user) {
   //   const doc = await getUserDocument(user.uid);
@@ -22,6 +28,9 @@ function AuthProvider({ config, children }) {
   //     photoURL: user.photoURL ?? doc?.photoURL,
   //   });
   // }
+
+  console.log('context is generated');
+  console.log(keycloak.idTokenParsed?.nonce);
 
   return (
     <AuthContext.Provider

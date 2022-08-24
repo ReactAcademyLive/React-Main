@@ -1,7 +1,7 @@
 import React from 'react';
 import ModifyData from './RightL3-ModifyData';
 
-export default function GreyBox(firstName, color, onChange) {
+export default function GreyBox({ firstName, color, onChange }) {
   return (
     <div
       style={{
