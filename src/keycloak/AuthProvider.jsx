@@ -5,15 +5,12 @@ export const AuthContext = createContext({ user: null });
 
 function AuthProvider({ config, children }) {
   const [keycloak] = useState(new Keycloak(config));
-  const [token, setToken] = useState(null);
+  const [, refresh] = useState({});
 
   useEffect(() => {
+    keycloak.onAuthRefreshSuccess = refresh({});
     keycloak.init({ onLoad: 'login-required' }).then((authenticated) => {
-      if (authenticated) {
-        setToken(keycloak.tokenParsed);
-        console.log('!!!!!');
-        console.log(keycloak.tokenParsed);
-      }
+      //do nothing
     });
   }, []);
 
@@ -28,10 +25,21 @@ function AuthProvider({ config, children }) {
 
   return (
     <AuthContext.Provider
-      value={{ token, login: keycloak.login, logout: keycloak.logout }}
+      value={{
+        token: keycloak.token,
+        tokenParsed: keycloak.tokenParsed,
+        login: keycloak.login,
+        logout: keycloak.logout,
+        keycloak,
+      }}
     >
       {children}
     </AuthContext.Provider>
   );
 }
 export default AuthProvider;
+
+export function useAuth() {
+  let authCtx = useContext(AuthContext);
+  return authCtx;
+}
