@@ -40,10 +40,10 @@ import RedditClassicNoThunk from '../reddit/classic/no-thunk';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/Clock';
 // import SignUp from '../keycloak/SignUp';
-import SignIn from '../keycloak/signin';
+import SignIn from '../keycloak/SignIn';
 // import Profile from '../keycloak/Profile';
 // import PasswordReset from '../keycloak/PasswordReset';
-// import SignOff from '../keycloak/SignOff';
+import SignOff from '../keycloak/SignOff';
 
 import About from '../basics/list';
 //const About = React.lazy(() => import('../basics/list'));
@@ -125,13 +125,8 @@ export default function MyRouting({ location }) {
             <Route path='signin' element={<SignIn />} />
             <Route path='profile' element={<NotFound />} />
             <Route path='passwordreset' element={<NotFound />} />
-            <Route path='signoff' element={<NotFound />} />
+            <Route path='signoff' element={<SignOff />} />
           </Route>
-          {/* 
-          <Route path='/auth/signin' element={<SignIn/>} />
-          <Route path='/auth/profile' element={<Profile/>} />
-          <Route path='/auth/passwordreset' element={<PasswordReset/>} />
-          <Route path='/auth/signoff' element={<SignOff/>} /> */}
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
