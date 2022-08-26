@@ -44,6 +44,7 @@ import SignIn from '../keycloak/SignIn';
 // import Profile from '../keycloak/Profile';
 // import PasswordReset from '../keycloak/PasswordReset';
 import SignOff from '../keycloak/SignOff';
+import ApiCalls from '../keycloak/ApiCalls';
 
 import About from '../basics/list';
 //const About = React.lazy(() => import('../basics/list'));
@@ -125,6 +126,7 @@ export default function MyRouting({ location }) {
             <Route path='signin' element={<SignIn />} />
             <Route path='profile' element={<NotFound />} />
             <Route path='passwordreset' element={<NotFound />} />
+            <Route path='apicalls' element={<ApiCalls />} />
             <Route path='signoff' element={<SignOff />} />
           </Route>
           <Route path='*' element={<NotFound />} />

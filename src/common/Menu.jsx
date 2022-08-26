@@ -211,6 +211,9 @@ export default function Menu() {
                 <NavDropdown.Item as={NavLink} to='/auth/passwordreset'>
                   Reset Password
                 </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to='/auth/apicalls'>
+                  Api Calls
+                </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/auth/signoff'>
                   Sign Off
                 </NavDropdown.Item>

@@ -18,7 +18,7 @@ function AuthProvider({ config = conf, children }) {
       console.log('token refreshed');
       refresh({});
     };
-    keycloak.init({ checkLoginIframe: false }).then((authenticated) => {
+    keycloak.init({ checkLoginIframe: true }).then((authenticated) => {
       console.log(`Authenticated: ${authenticated}`);
       refresh({});
     });
@@ -27,6 +27,7 @@ function AuthProvider({ config = conf, children }) {
   return (
     <AuthContext.Provider
       value={{
+        idToken: keycloak.idToken,
         idTokenParsed: keycloak.idTokenParsed,
         profile: keycloak.profile,
         token: keycloak.token,
@@ -34,6 +35,7 @@ function AuthProvider({ config = conf, children }) {
         login: keycloak.login,
         logout: keycloak.logout,
         register: keycloak.register,
+        updateToken:  keycloak.updateToken,
         keycloak,
       }}
     >
