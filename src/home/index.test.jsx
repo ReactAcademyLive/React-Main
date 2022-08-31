@@ -1,6 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import Home from './index';
 
+//Let's put the routing of /Dave, for the last test below.
+jest.mock('react-router-dom', () => ({
+  useParams: () => {
+    return { name: 'Dave' };
+  },
+}));
+
 test("There's an h1 tag", () => {
   render(<Home />);
   const h1 = screen.getByRole('heading', {
@@ -14,12 +21,6 @@ test('Paragraph says Hello World', () => {
   const p = screen.getByText(/Hello/i);
   expect(p).toBeInTheDocument();
 });
-
-jest.mock('react-router-dom', () => ({
-  useParams: () => {
-    return { name: 'Dave' };
-  },
-}));
 
 test('Paragraph says Hello Dave', () => {
   render(<Home />);

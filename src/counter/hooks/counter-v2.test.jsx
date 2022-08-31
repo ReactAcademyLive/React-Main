@@ -1,16 +1,16 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Counter from './counter-v2';
 
 let textbox;
 
-describe('Counter ', () => {
+describe('Counter', () => {
   beforeEach(() => {
     render(<Counter init={5} />);
     textbox = screen.getByRole('textbox');
   });
 
-  it('Nombre qui est égal à deux endroits', () => {
+  it('Both numbers shown are equal', () => {
     const h1 = screen.getByRole('heading', {
       name: /the count is:/i,
     });
@@ -21,12 +21,15 @@ describe('Counter ', () => {
     expect(num1).toBe(num2);
   });
 
-  it('valider quand on clique 1 fois sur le boutton', () => {
+  it('Validate that the number is 6 after we click the button', async () => {
     userEvent.click(
       screen.getByRole('button', {
         name: 'increment 1',
       })
     );
-    expect(+textbox.value).toBe(6);
+
+    await waitFor(() => {
+      expect(+textbox.value).toBe(6);
+    });
   });
 });

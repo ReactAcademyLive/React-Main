@@ -1,12 +1,13 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import MyForm from './ValidatedForm';
+import { EmailAuthCredential } from 'firebase/auth';
 
 const mockLogin = jest.fn((email, password) => {
   return Promise.resolve({ email, password });
 });
 
-describe('Formulaire', () => {
+describe('LoginForm', () => {
   beforeEach(() => {
     render(<MyForm login={mockLogin} />);
   });
@@ -14,10 +15,9 @@ describe('Formulaire', () => {
   it('should display required error when value is invalid', async () => {
     fireEvent.submit(screen.getByRole('button'));
 
-    expect(await screen.findAllByRole('alert')).toHaveLength(2);
-    expect((await screen.findAllByRole('alert'))[0].textContent).toBe(
-      'required'
-    );
+    const alerts = await screen.findAllByRole('alert');
+    expect(alerts).toHaveLength(2);
+    expect(alerts[0].textContent).toBe('required');
     expect(mockLogin).not.toBeCalled();
   });
 
@@ -80,9 +80,11 @@ describe('Formulaire', () => {
 
     fireEvent.submit(screen.getByRole('button'));
 
-    await waitFor(() => expect(screen.queryAllByRole('alert')).toHaveLength(0));
+    await waitFor(() =>
+      expect(screen.getByRole('textbox', { name: /email/i }).value).toBe('')
+    );
     expect(mockLogin).toBeCalledWith('test@mail.com', 'password');
-    expect(screen.getByRole('textbox', { name: /email/i }).value).toBe('');
+    expect(screen.queryAllByRole('alert')).toHaveLength(0);
     expect(screen.getByLabelText('Password').value).toBe('');
   });
 });

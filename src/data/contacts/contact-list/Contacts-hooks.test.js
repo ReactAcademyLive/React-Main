@@ -1,18 +1,20 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Contacts from './Contacts-hooks';
 
 let container = null;
+let root = null;
 beforeEach(() => {
   // setup a DOM element as a render target
   container = document.createElement('div');
   document.body.appendChild(container);
+  root = createRoot(container);
 });
 
 afterEach(() => {
   // cleanup on exiting
-  unmountComponentAtNode(container);
+  act(() => root.unmount());
   container.remove();
   container = null;
 });
@@ -47,7 +49,7 @@ it('Can display fake data, second TD is Dan...', async () => {
   );
 
   await act(async () => {
-    render(<Contacts />, container);
+    root.render(<Contacts />);
   });
 
   expect(document.querySelectorAll('td')[1].textContent).toBe('Dan');
