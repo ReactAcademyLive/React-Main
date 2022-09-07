@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 import Layout from './Layout';
 import Home from '../home';
 import NotFound from '../404';
@@ -45,6 +46,8 @@ import SignIn from '../keycloak/SignIn';
 // import PasswordReset from '../keycloak/PasswordReset';
 import SignOff from '../keycloak/SignOff';
 import ApiCalls from '../keycloak/ApiCalls';
+import ManageAccount from '../keycloak/ManageAccount';
+import Secret from '../keycloak/Secret';
 
 import About from '../basics/list';
 //const About = React.lazy(() => import('../basics/list'));
@@ -127,6 +130,15 @@ export default function MyRouting({ location }) {
             <Route path='profile' element={<NotFound />} />
             <Route path='passwordreset' element={<NotFound />} />
             <Route path='apicalls' element={<ApiCalls />} />
+            <Route
+              path='secret'
+              element={
+                <ProtectedRoute roles='app-admin'>
+                  <Secret />
+                </ProtectedRoute>
+              }
+            />
+            <Route path='manageaccount' element={<ManageAccount />} />
             <Route path='signoff' element={<SignOff />} />
           </Route>
           <Route path='*' element={<NotFound />} />

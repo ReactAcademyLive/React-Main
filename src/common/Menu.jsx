@@ -214,6 +214,12 @@ export default function Menu() {
                 <NavDropdown.Item as={NavLink} to='/auth/apicalls'>
                   Api Calls
                 </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to='/auth/manageaccount'>
+                  Manage Account
+                </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to='/auth/secret'>
+                  Secret section
+                </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/auth/signoff'>
                   Sign Off
                 </NavDropdown.Item>
