@@ -7,13 +7,23 @@ function ApiCalls() {
 
   async function callApi(url) {
     try {
-      const refreshed = await auth.updateToken(5);
+      let refreshed = false;
+      if (auth?.token) {
+        refreshed = await auth?.updateToken(5);
+      }
 
-      const result = await axios.get(`http://localhost:3001/api/${url}`, {
-        headers: auth?.token
-          ? { Authorization: `Bearer ${refreshed ? auth.keycloak.token : auth.token}` }
-          : null,
-      });
+      const result = await axios.get(
+        `https://secure-api-kc.azurewebsites.net/api/${url}`,
+        {
+          headers: auth?.token
+            ? {
+                Authorization: `Bearer ${
+                  refreshed ? auth.keycloak.token : auth.token
+                }`,
+              }
+            : null,
+        }
+      );
 
       alert(result.data);
     } catch (err) {
@@ -24,7 +34,10 @@ function ApiCalls() {
   return (
     <>
       <h1>Api Calls</h1>
-      <div className='d-flex justify-content-around' style={{maxWidth: '35em'}}>
+      <div
+        className='d-flex justify-content-around'
+        style={{ maxWidth: '35em' }}
+      >
         <Button
           onClick={() => {
             callApi('anonymous');
@@ -48,10 +61,10 @@ function ApiCalls() {
         </Button>
         <Button
           onClick={() => {
-            callApi('both-roles');
+            callApi('either-role');
           }}
         >
-          Both Roles
+          Either Role
         </Button>
       </div>
     </>
