@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
-import Layout from './Layout';
+import Layout from './Root';
 import Home from '../home';
 import NotFound from '../404';
 import Lifecycle from '../basics/lifecycle';

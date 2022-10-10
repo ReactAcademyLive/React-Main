@@ -1,11 +1,11 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React, { Suspense } from 'react';
+import { Container, Spinner } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import './custom.scss';
 import Menu from './Menu';
 import Footer from './Footer';
 
-export default function Layout() {
+export default function Root() {
   return (
     <div
       style={{
@@ -16,7 +16,9 @@ export default function Layout() {
     >
       <Menu />
       <Container className='mb-5'>
-        <Outlet />
+        <Suspense fallback={<Spinner variant='primary' animation='border' />}>
+          <Outlet />
+        </Suspense>
       </Container>
       <Footer />
     </div>
