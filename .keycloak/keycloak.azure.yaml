@@ -1,6 +1,6 @@
 api-version: 2021-10-01
 location: canadacentral
-name: keycloak-reacrm
+name: keycloak-react
 properties:
   containers:
     - name: keycloak
@@ -8,13 +8,9 @@ properties:
         image: quay.io/keycloak/keycloak:latest
         command:
           [
-            '/opt/keycloak/bin/kc.sh',
-            'start',
-            '--import-realm',
-            '--hostname',
-            'keycloak2.reactacademy.live',
-            '--proxy',
-            'edge',
+            '/bin/bash',
+            '-c',
+            'mkdir /opt/keycloak/data/import && cp /home/vol/keycloak/.keycloak/react-courses-realm.json /opt/keycloak/data/import/react-courses-realm.json && /opt/keycloak/bin/kc.sh start --hostname keycloak3.reactacademy.live --proxy edge --import-realm',
           ]
         ports:
           - port: 8443
@@ -40,7 +36,7 @@ properties:
             'caddy',
             'reverse-proxy',
             '--from',
-            'https://keycloak2.reactacademy.live',
+            'https://keycloak3.reactacademy.live',
             '--to',
             'http://localhost:8080',
           ]

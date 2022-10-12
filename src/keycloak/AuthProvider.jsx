@@ -4,7 +4,7 @@ import Keycloak from 'keycloak-js';
 export const AuthContext = createContext({ user: null });
 
 const conf = {
-  url: 'https://keycloak2.reactacademy.live/',
+  url: 'https://keycloak3.reactacademy.live/',
   realm: 'react-courses',
   clientId: 'august-course',
 };
@@ -35,7 +35,7 @@ function AuthProvider({ config = conf, children }) {
         login: keycloak.login,
         logout: keycloak.logout,
         register: keycloak.register,
-        updateToken:  keycloak.updateToken,
+        updateToken: keycloak.updateToken,
         keycloak,
       }}
     >
