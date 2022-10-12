@@ -1,6 +1,6 @@
 api-version: 2021-10-01
 location: canadacentral
-name: keycloak-react
+name: keycloak-reacrm
 properties:
   containers:
     - name: keycloak
@@ -10,8 +10,9 @@ properties:
           [
             '/opt/keycloak/bin/kc.sh',
             'start',
+            '--import-realm',
             '--hostname',
-            '<keyclock.server.com>',
+            'keycloak2.reactacademy.live',
             '--proxy',
             'edge',
           ]
@@ -24,9 +25,13 @@ properties:
             memoryInGB: 1.5
         environmentVariables:
           - name: KEYCLOAK_ADMIN
-            value: '<admin>'
+            value: 'admin'
           - name: KEYCLOAK_ADMIN_PASSWORD
-            value: '<password>'
+            value: 'afi123123123!'
+        volumeMounts:
+          - name: github
+            mountPath: /home/vol
+
     - name: caddy
       properties:
         image: caddy:latest
@@ -35,7 +40,7 @@ properties:
             'caddy',
             'reverse-proxy',
             '--from',
-            'https://<keyclock.server.com>',
+            'https://keycloak2.reactacademy.live',
             '--to',
             'http://localhost:8080',
           ]
@@ -54,5 +59,11 @@ properties:
     dnsNameLabel: keycloak-react
   osType: Linux
   restartPolicy: Never
+  volumes:
+    - name: github
+      gitRepo:
+        directory: .keycloak
+        repository: https://github.com/ReactAcademyLive/React-Main.git
+        revision:
 tags: null
 type: Microsoft.ContainerInstance/containerGroups

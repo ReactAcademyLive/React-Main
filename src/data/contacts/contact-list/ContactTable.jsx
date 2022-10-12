@@ -20,7 +20,7 @@ const ContactTable = ({ contacts }) => {
         {contacts.map((contact) => (
           <tr key={contact.id}>
             <td>
-              <Link to={`/data/details/${contact.id}`}>
+              <Link to={`/data/details-data-router/${contact.id}`}>
                 <Button variant='primary'>
                   <FontAwesomeIcon icon={faPenAlt} />
                 </Button>

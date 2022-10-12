@@ -60,23 +60,53 @@ export default function Menu() {
               </NavDrop>
 
               <NavDrop title='Data' link='data'>
-                <NavDropdown.Item as={NavLink} to='/data/covid'>
+                <NavDropdown.Header>with Hooks</NavDropdown.Header>
+                <NavDropdown.Item
+                  as={NavLink}
+                  to='/data/covid'
+                  className='ps-5'
+                >
                   Covid
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/data/videos'>
+                <NavDropdown.Item
+                  as={NavLink}
+                  to='/data/videos'
+                  className='ps-5'
+                >
                   Videos
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/data/hooks'>
-                  Contacts using hooks
-                </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/data/class'>
-                  Contacts using classes
-                </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/data/map'>
+                <NavDropdown.Item as={NavLink} to='/data/map' className='ps-5'>
                   Map with pins
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/data/election'>
-                  Election Results (context provider and hooks)
+                <NavDropdown.Item
+                  as={NavLink}
+                  to='/data/election'
+                  className='ps-5'
+                >
+                  Election Results (context provider)
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={NavLink}
+                  to='/data/contacts'
+                  className='ps-5'
+                >
+                  Contacts
+                </NavDropdown.Item>
+                <NavDropdown.Header>with Data Router</NavDropdown.Header>
+                <NavDropdown.Item
+                  as={NavLink}
+                  to='/data/contacts-data-router'
+                  className='ps-5'
+                >
+                  Contacts
+                </NavDropdown.Item>
+                <NavDropdown.Header>Legacy (classes)</NavDropdown.Header>
+                <NavDropdown.Item
+                  as={NavLink}
+                  to='/data/contacts-classes'
+                  className='ps-5'
+                >
+                  Contacts
                 </NavDropdown.Item>
               </NavDrop>
               <NavDrop title='Context' link='context'>

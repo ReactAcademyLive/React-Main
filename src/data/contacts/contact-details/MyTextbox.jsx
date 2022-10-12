@@ -11,7 +11,7 @@ const MyTextBox = ({ fullName, name, value, formErrors, onChange }) => {
         id={name}
         name={name}
         placeholder={fullName}
-        value={value}
+        defaultValue={value}
         onChange={onChange}
         isInvalid={!!formErrors[name]}
       />
@@ -27,5 +27,4 @@ MyTextBox.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   formErrors: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
 };

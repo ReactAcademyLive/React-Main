@@ -1,5 +1,5 @@
 import './ContactTypes';
-import { firestore as db } from '../../../common/firebase';
+import { firestore as db } from '../../../firebase/firebase';
 
 // db.collection("contacts").add({
 //   firstName: "Ada",

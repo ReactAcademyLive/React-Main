@@ -1,6 +1,7 @@
 import React from 'react';
-import { createBrowserRouter, Route } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute';
+import { createBrowserRouter, redirect } from 'react-router-dom';
+import ContactApi from '../data/contacts/contact-api/ContactApi';
+
 import Root from './Root';
 import Home from '../home';
 import NotFound from '../404';
@@ -14,9 +15,11 @@ import HooksCounterV4 from '../counter/hooks/counter-v4';
 import HooksCounterV5 from '../counter/hooks/counter-v5';
 import Covid from '../data/covid';
 import Videos from '../data/videos';
+import ContactsRouterData from '../data/contacts/contact-list/Contacts-data-router';
 import ContactsHooks from '../data/contacts/contact-list/Contacts-hooks';
 import ContactsClass from '../data/contacts/contact-list/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
+import ContactDetailsData from '../data/contacts/contact-details/ContactDetails-data-router';
 import MapWithPins from '../data/maps/MapWithPins';
 import ElectionResult from '../data/election/ElectionResult';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
@@ -48,16 +51,17 @@ import SignOff from '../keycloak/SignOff';
 import ApiCalls from '../keycloak/ApiCalls';
 import ManageAccount from '../keycloak/ManageAccount';
 import Secret from '../keycloak/Secret';
+import ProtectedRoute from './ProtectedRoute';
 
-//import About from '../basics/list';
-const About = React.lazy(() => import('../basics/list'));
+import About from '../basics/list';
+//const About = React.lazy(() => import('../basics/list'));
 
-const MyRouting2 = createBrowserRouter([
+const routes = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
     children: [
-      { path: '/', element: <Home /> },
+      { index: true, element: <Home /> },
       {
         path: 'hello',
         children: [
@@ -90,8 +94,15 @@ const MyRouting2 = createBrowserRouter([
         children: [
           { path: 'covid', element: <Covid /> },
           { path: 'videos', element: <Videos /> },
-          { path: 'hooks', element: <ContactsHooks /> },
-          { path: 'class', element: <ContactsClass /> },
+          {
+            path: 'contacts-data-router',
+            loader: () => {
+              return ContactApi.getAllContacts();
+            },
+            element: <ContactsRouterData />,
+          },
+          { path: 'contacts', element: <ContactsHooks /> },
+          { path: 'contacts-classes', element: <ContactsClass /> },
           {
             path: 'details',
             children: [
@@ -99,106 +110,130 @@ const MyRouting2 = createBrowserRouter([
               { path: ':id', element: <ContactDetails /> },
             ],
           },
+          {
+            path: 'details-data-router',
+            children: [
+              {
+                index: true,
+                element: <ContactDetailsData />,
+                loader: () => ({
+                  id: 0,
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  formErrors: {},
+                }),
+                action: async ({ request, params }) => {
+                  const formData = await request.formData();
+                  console.log(formData);
+                  const state = Object.fromEntries(formData);
+                  console.log(state);
+                  await ContactApi.saveContact({
+                    id: state.id || undefined,
+                    firstName: state.firstName,
+                    lastName: state.lastName,
+                    email: state.email,
+                  });
+
+                  return redirect('/data/contacts-data-router');
+                },
+              },
+              {
+                path: ':id',
+                element: <ContactDetailsData />,
+                loader: async ({ params }) => {
+                  let contact = await ContactApi.getContact(params.id);
+                  return { ...contact, formErrors: {} };
+                },
+                action: async ({ request, params }) => {
+                  const formData = await request.formData();
+                  console.log(formData);
+                  const state = Object.fromEntries(formData);
+                  console.log(state);
+                  await ContactApi.saveContact({
+                    id: state.id || undefined,
+                    firstName: state.firstName,
+                    lastName: state.lastName,
+                    email: state.email,
+                  });
+
+                  return redirect('/data/contacts-data-router');
+                },
+              },
+            ],
+          },
 
           { path: 'map', element: <MapWithPins /> },
           { path: 'election', element: <ElectionResult /> },
         ],
       },
+      {
+        path: 'todos',
+        children: [
+          { path: 'ClassicState', element: <TodosClassic /> },
+          { path: 'ContextHooks', element: <TodosContextHooks /> },
+          { path: 'ReduxClassic', element: <TodosReduxClassic /> },
+          { path: 'ReduxHooks', element: <TodosReduxHooks /> },
+          { path: 'ToolkitClassic', element: <TodosToolkitClassic /> },
+          { path: 'ToolkitHooks', element: <ToolkitHooks /> },
+        ],
+      },
+      {
+        path: 'reddit',
+        children: [
+          { path: 'toolkitNoThunk', element: <RedditNoThunk /> },
+          { path: 'toolkitThunk', element: <RedditThunk /> },
+          { path: 'classicNoThunk', element: <RedditClassicNoThunk /> },
+          { path: 'classicThunk', element: <RedditClassicThunk /> },
+        ],
+      },
+      {
+        path: 'clock',
+        element: <Clock />,
+      },
+      {
+        path: 'context',
+        children: [
+          { path: 'PropDrill', element: <ContextDrill /> },
+          { path: 'WithContext', element: <ContextWith /> },
+          { path: 'containment', element: <ContextContainment /> },
+        ],
+      },
+
+      {
+        path: 'best',
+        children: [
+          { path: 'step1', element: <Step1 /> },
+          { path: 'step2', element: <Step2 /> },
+          { path: 'step3', element: <Step3 /> },
+          { path: 'step4', element: <Step4 /> },
+          { path: 'step5', element: <Step5 /> },
+          { path: 'step6', element: <Step6 /> },
+        ],
+      },
+      {
+        path: 'auth',
+        children: [
+          { path: 'signup', element: <NotFound /> },
+          { path: 'signin', element: <SignIn /> },
+          { path: 'profile', element: <NotFound /> },
+          { path: 'passwordreset', element: <NotFound /> },
+          { path: 'apicalls', element: <ApiCalls /> },
+          {
+            path: 'secret',
+            element: (
+              <ProtectedRoute roles='app-admin'>
+                <Secret />
+              </ProtectedRoute>
+            ),
+          },
+          { path: 'manageaccount', element: <ManageAccount /> },
+          { path: 'signoff', element: <SignOff /> },
+        ],
+      },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ]);
 
-function MyRouting() {
-  //check if Keycloak library is loaded
-  // const { initialized } = useKeycloak();
-  // if (!initialized) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // show the page
-  return (
-    <>
-      <Route path='/' element={<Root />}>
-        <Route index element={<Home />} />
-        <Route path='hello'>
-          <Route index element={<Home />} />
-          <Route path=':name' element={<Home />} />
-        </Route>
-        <Route path='basics'>
-          <Route path='about' element={<About />} />
-          <Route path='lifecycle' element={<Lifecycle />} />
-          <Route path='myform' element={<MyForm />} />
-          <Route path='reference' element={<WithRef />} />
-        </Route>
-        <Route path='counter'>
-          <Route path='classes' element={<ClassesCounter init={5} />} />
-          <Route path='hooks-v1' element={<HooksCounterV1 init={5} />} />
-          <Route path='hooks-v2' element={<HooksCounterV2 init={5} />} />
-          <Route path='hooks-v3' element={<HooksCounterV3 init={5} />} />
-          <Route path='hooks-v4' element={<HooksCounterV4 init={5} />} />
-          <Route path='hooks-v5' element={<HooksCounterV5 init={5} />} />
-        </Route>
-        <Route path='data'>
-          <Route path='covid' element={<Covid />} />
-          <Route path='videos' element={<Videos />} />
-          <Route path='hooks' element={<ContactsHooks />} />
-          <Route path='class' element={<ContactsClass />} />
-          <Route path='details'>
-            <Route index element={<ContactDetails />} />
-            <Route path=':id' element={<ContactDetails />} />
-          </Route>
-          <Route path='map' element={<MapWithPins />} />
-          <Route path='election' element={<ElectionResult />} />
-        </Route>
-        <Route path='todos'>
-          <Route path='ClassicState' element={<TodosClassic />} />
-          <Route path='ContextHooks' element={<TodosContextHooks />} />
-          <Route path='ReduxClassic' element={<TodosReduxClassic />} />
-          <Route path='ReduxHooks' element={<TodosReduxHooks />} />
-          <Route path='ToolkitClassic' element={<TodosToolkitClassic />} />
-          <Route path='ToolkitHooks' element={<ToolkitHooks />} />
-        </Route>
-        <Route path='reddit'>
-          <Route path='toolkitNoThunk' element={<RedditNoThunk />} />
-          <Route path='toolkitThunk' element={<RedditThunk />} />
-          <Route path='classicNoThunk' element={<RedditClassicNoThunk />} />
-          <Route path='classicThunk' element={<RedditClassicThunk />} />
-        </Route>
-        <Route path='/clock' element={<Clock />} />
-        <Route path='context'>
-          <Route path='PropDrill' element={<ContextDrill />} />
-          <Route path='WithContext' element={<ContextWith />} />
-          <Route path='containment' element={<ContextContainment />} />
-        </Route>
-        <Route path='best'>
-          <Route path='step1' element={<Step1 />} />
-          <Route path='step2' element={<Step2 />} />
-          <Route path='step3' element={<Step3 />} />
-          <Route path='step4' element={<Step4 />} />
-          <Route path='step5' element={<Step5 />} />
-          <Route path='step6' element={<Step6 />} />
-        </Route>
-        <Route path='auth'>
-          <Route path='signup' element={<NotFound />} />
-          <Route path='signin' element={<SignIn />} />
-          <Route path='profile' element={<NotFound />} />
-          <Route path='passwordreset' element={<NotFound />} />
-          <Route path='apicalls' element={<ApiCalls />} />
-          <Route
-            path='secret'
-            element={
-              <ProtectedRoute roles='app-admin'>
-                <Secret />
-              </ProtectedRoute>
-            }
-          />
-          <Route path='manageaccount' element={<ManageAccount />} />
-          <Route path='signoff' element={<SignOff />} />
-        </Route>
-        <Route path='*' element={<NotFound />} />
-      </Route>
-    </>
-  );
-}
-//console.log(JSON.stringify(createRoutesFromElements(MyRouting())));
-export default createBrowserRouter(MyRouting2);
+export default routes;
