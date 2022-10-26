@@ -18,7 +18,7 @@ export default function Menu() {
           <Navbar.Collapse>
             <Nav>
               <Nav.Item>
-                <Nav.Link as={NavLink} to='/'>
+                <Nav.Link as={NavLink} to='/' end>
                   Home
                 </Nav.Link>
               </Nav.Item>

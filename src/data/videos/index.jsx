@@ -45,7 +45,7 @@ function Videos() {
         </Col>
         <Col>
           <Button variant='primary' type='submit' onClick={getData}>
-            Rechercher
+            Search
           </Button>
         </Col>
       </Row>
