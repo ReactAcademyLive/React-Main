@@ -15,7 +15,7 @@ import { firestore as db } from '../../../firebase/firebase';
 export default class ContactApi {
   static unsubscribe = null;
 
-  static subscribeChangeNotification(onChange) {
+  static registerNotification(onChange) {
     ContactApi.unsubscribe = db.collection('contacts').onSnapshot((snap) => {
       snap.docChanges().forEach((change) => {
         if (
@@ -29,7 +29,7 @@ export default class ContactApi {
     });
   }
 
-  static unsubscribeChangeNotification() {
+  static unregisterNotification() {
     ContactApi.unsubscribe();
   }
 

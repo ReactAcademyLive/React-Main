@@ -1,7 +1,6 @@
 import React from 'react';
 import { ListGroup, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { TrashFill } from 'react-bootstrap-icons';
 
 const CustomCheckbox = ({ text, completed }) => (
   <div className='form-check float-start my-3'>
@@ -26,7 +25,7 @@ const TodoItem = ({ onToggle, onDelete, completed, text }) => (
   <ListGroup.Item onClick={onToggle} action as='a'>
     <CustomCheckbox text={text} completed={completed} />
     <Button className='float-end mt-2' variant='info' onClick={onDelete}>
-      <FontAwesomeIcon icon={faTrashAlt} />
+      <TrashFill />
     </Button>
   </ListGroup.Item>
 );

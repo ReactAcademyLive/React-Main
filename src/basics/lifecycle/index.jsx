@@ -6,23 +6,24 @@ let consoleText = ''; //module variable with the logged text.
 
 // https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/
 // A normal react render goes through the following steps:
-// 1. Event happens (click, scroll, input change, fetch result, run effect, etc)
-// 2. Event handler runs and calls setState() (this schedules a re-render)
-// 3. React runs all events and batches all the setStates once,
+// 1. Browser event is *triggered* (click, scroll, input change, fetch result, run effect, etc)
+// 2. React Event handler runs and calls setState() (really schedules the change for later)
+// 3. React runs all events... it batches all the setStates to run soon,
 //    all together, after all events have run.
-// 4. React updates all states.
-// 5. React calls the top-most component of the changed state
-// 6  Runs the component (and sub-components), which returns a tree of objects
+// 4. Once all events have run, the scheduled setStates can finally run. React updates all states.
+//    If no state changes, skip to step 12.
+// 5. React re-renders the top-most component of the changed state
+// 6  This calls the component (and sub-components), which returns a tree of objects
 //       (This was previously called "virtual dom")
 // 7. React compares the components from the previous tree and the current tree
-//       (This is called "reconciliation")
+//       (This was previously called "reconciliation")
 // 8. React determines the diff and updates the DOM.
 //       (This is called "commit")
-// 9. If there is are useEffectLayout, and execute them by going back to step 1.
+// 9. If there is a useEffectLayout, execute it now by going back to step 2.
 //    (ignore this step if not needed)
 // 10. Paints the DOM on the screen
-// 11. If there are useEffect, execute them by going back to step 1.
-//
+// 11. If there is a useEffect, execute it by going back to step 2.
+// 12. We are done. Wait for the next event by going to back to step 1
 
 // logThis() uses DOM updates instead of modifying
 // the React state
@@ -30,7 +31,7 @@ let consoleText = ''; //module variable with the logged text.
 // (To do it the React way, logThis() would need
 // to call setState(). But then, when trying to logThis()
 // from useEffect(), this would create an infinite loop.
-// The workaround is to use DOM Updates.
+// The workaround here is to use DOM Updates.
 // In real life, you would not need to do this. )
 function logThis(data) {
   consoleText += data + '\n';
@@ -38,6 +39,7 @@ function logThis(data) {
 
   // the following line updates the DOM.
   // --IMPORTANT: NOT the React way of doing things.
+  // Do not do this in your projects
   document.querySelector('#logConsole') &&
     (document.querySelector('#logConsole').value = consoleText);
 }

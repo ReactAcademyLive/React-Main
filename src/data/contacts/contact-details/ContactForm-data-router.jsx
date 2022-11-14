@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap'; //Alert
 import { Form as FormRoute } from 'react-router-dom';
 import MyTextBox from './MyTextbox';
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faTrashAlt  } from "@fortawesome/free-solid-svg-icons";
+//import { TrashFill } from 'react-bootstrap-icons';
 
 export default function ContactForm({
   id,
@@ -53,7 +52,7 @@ export default function ContactForm({
 
         {/* <Button className="ms-3" variant="danger"
                        onClick={null}>
-                  <FontAwesomeIcon icon={faTrashAlt} />
+                  <TrashFill />
           </Button> */}
       </Form.Group>
     </Form>

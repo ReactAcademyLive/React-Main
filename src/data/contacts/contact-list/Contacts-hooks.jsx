@@ -1,8 +1,6 @@
 import React from 'react';
 import ContactApi from '../contact-api/ContactApi';
 import ContactTable from './ContactTable';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 export default function Contacts() {
   /** @type {[Contacts, Function]} ContactState - state hook of contacts */
@@ -10,22 +8,11 @@ export default function Contacts() {
 
   React.useEffect(() => {
     refreshData();
-    //  if (ContactApi.subscribeChangeNotification) {
-    //    ContactApi.subscribeChangeNotification(refreshData)
-    //  }
-
-    // return ()=> {ContactApi.unsubscribeChangeNotification()}
+    // ContactApi.registerNotifications(refreshData);
+    // return () => {
+    //   ContactApi.unregisterNotifications();
+    // };
   }, []);
-
-  // This is the old way of calling data (Promise)
-  // eslint-disable-next-line
-  function refreshDataPromise() {
-    ContactApi.getAllContacts()
-      .then((data) => {
-        setContacts(data);
-      })
-      .catch((err) => console.log(err));
-  }
 
   // This is the modern way of calling data (async)
   async function refreshData() {
@@ -37,13 +24,27 @@ export default function Contacts() {
     }
   }
 
+  async function modifyContact(formData) {
+    const contact = Object.fromEntries(formData);
+    //change id from "0" to undefined (for contact creation)
+    contact.id = contact.id !== '0' ? contact.id : undefined;
+    await ContactApi.saveContact(contact);
+    await refreshData();
+  }
+
+  async function deleteContact(id) {
+    await ContactApi.deleteContact(id);
+    refreshData();
+  }
+
   return (
     <>
       <h1>Contacts (using Hooks)</h1>
-      <ContactTable contacts={contacts} />
-      <Link to='/data/details'>
-        <Button variant='primary'>Create Contact</Button>
-      </Link>
+      <ContactTable
+        contacts={contacts}
+        modifyContact={modifyContact}
+        deleteContact={deleteContact}
+      />
     </>
   );
 }

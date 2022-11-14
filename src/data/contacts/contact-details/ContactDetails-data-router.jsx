@@ -1,18 +1,21 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import ContactForm from './ContactForm-data-router';
+import ContactForm from './ContactForm';
 
 export default function ContactDetails() {
   const state = useLoaderData();
+
+  function change() {}
+  function submit() {}
 
   return (
     <>
       <h1>
         {state.id
-          ? `Contact ROUTE ${state.firstName} ${state.lastName} `
-          : 'Create Contact ROUTE'}
+          ? `Contact ${state.firstName} ${state.lastName} `
+          : 'Create Contact'}
       </h1>
-      <ContactForm {...state} />
+      <ContactForm {...state} onChange={change} onSubmit={submit} />
     </>
   );
 }

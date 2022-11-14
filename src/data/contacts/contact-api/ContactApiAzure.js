@@ -3,6 +3,8 @@ import './ContactTypes';
 const base = 'https://contacts.reactacademy.live/api';
 
 export default class ContactApi {
+  static ws = null;
+
   static getAllContacts() {
     return fetch(`${base}/contacts`).then((resp) => resp.json());
   }
@@ -13,6 +15,7 @@ export default class ContactApi {
 
   static saveContact(contact) {
     // Simulate server-side validation
+
     const minContactLength = 3;
     if (contact.firstName.length < minContactLength) {
       throw new Error(
@@ -45,6 +48,28 @@ export default class ContactApi {
 
   static deleteContact(contactId) {
     return fetch(`${base}/contacts/${contactId}`, { method: 'DELETE' });
+  }
+
+  static async registerNotification(fn) {
+    if (this.ws === null) {
+      this.ws = {};
+      let res = await fetch(`${base}/negotiate`);
+      let url = await res.json();
+      this.ws = new WebSocket(url.url);
+
+      this.ws.onopen = () => console.log('connected');
+
+      this.ws.onmessage = (event) => {
+        fn();
+      };
+    }
+  }
+
+  static async unregisterNotification() {
+    if (this.ws !== null) {
+      this.ws.close();
+      this.ws = null;
+    }
   }
 
   // static async getAllContacts() {

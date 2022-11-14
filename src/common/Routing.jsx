@@ -99,6 +99,22 @@ const routes = createBrowserRouter([
             loader: () => {
               return ContactApi.getAllContacts();
             },
+            action: async ({ request, params }) => {
+              if (request.method === 'DELETE') {
+                const formData = await request.formData();
+                await ContactApi.deleteContact(formData.get('id'));
+              } else {
+                const formData = await request.formData();
+                const contact = Object.fromEntries(formData);
+                await ContactApi.saveContact({
+                  id: contact.id !== '0' ? contact.id : undefined,
+                  firstName: contact.firstName,
+                  lastName: contact.lastName,
+                  email: contact.email,
+                });
+              }
+              //  return redirect('/data/contacts-data-router');
+            },
             element: <ContactsRouterData />,
           },
           { path: 'contacts', element: <ContactsHooks /> },
