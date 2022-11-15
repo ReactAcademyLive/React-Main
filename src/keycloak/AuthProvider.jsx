@@ -18,7 +18,7 @@ function AuthProvider({ config = conf, children }) {
       console.log('token refreshed');
       refresh({});
     };
-    keycloak.init({ checkLoginIframe: true }).then((authenticated) => {
+    keycloak.init({ checkLoginIframe: false }).then((authenticated) => {
       console.log(`Authenticated: ${authenticated}`);
       refresh({});
     });

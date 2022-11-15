@@ -43,10 +43,10 @@ import RedditThunk from '../reddit/toolkit/thunk';
 import RedditClassicNoThunk from '../reddit/classic/no-thunk';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/Clock';
-// import SignUp from '../keycloak/SignUp';
+import SignUp from '../keycloak/SignUp';
 import SignIn from '../keycloak/SignIn';
+import PasswordReset from '../keycloak/PasswordReset';
 // import Profile from '../keycloak/Profile';
-// import PasswordReset from '../keycloak/PasswordReset';
 import SignOff from '../keycloak/SignOff';
 import ApiCalls from '../keycloak/ApiCalls';
 import ManageAccount from '../keycloak/ManageAccount';
@@ -54,6 +54,7 @@ import Secret from '../keycloak/Secret';
 import ProtectedRoute from './ProtectedRoute';
 
 import About from '../basics/list';
+
 //const About = React.lazy(() => import('../basics/list'));
 
 const routes = createBrowserRouter([
@@ -230,10 +231,10 @@ const routes = createBrowserRouter([
       {
         path: 'auth',
         children: [
-          { path: 'signup', element: <NotFound /> },
+          { path: 'signup', element: <SignUp /> },
           { path: 'signin', element: <SignIn /> },
           { path: 'profile', element: <NotFound /> },
-          { path: 'passwordreset', element: <NotFound /> },
+          { path: 'passwordreset', element: <PasswordReset /> },
           { path: 'apicalls', element: <ApiCalls /> },
           {
             path: 'secret',
