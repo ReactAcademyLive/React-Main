@@ -5,7 +5,7 @@ import VisibleTodoList from './visible-todo-list';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './reducers';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import { devToolsEnhancer } from '@redux-devtools/extension';
 import initialTodos from '../../../common/initial-todos';
 
 export default class Todos extends Component {
