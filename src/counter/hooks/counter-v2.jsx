@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import MyButton from '../common/my-button';
 import MyTextbox from '../common/my-textbox';
 
@@ -6,6 +6,7 @@ import MyTextbox from '../common/my-textbox';
 //each time the counter changes its value
 export default function Counter({ init }) {
   const [count, setCount] = React.useState(+init || 1);
+  const isFirstRender = useIsFirstRender();
 
   React.useEffect(() => {
     if (+window.localStorage.getItem('count')) {
@@ -13,9 +14,12 @@ export default function Counter({ init }) {
     }
   }, []);
 
+  //Store if it's not the first render, this avoids error with Strict mode
   React.useEffect(() => {
-    window.localStorage.setItem('count', count);
-  });
+    if (!isFirstRender) {
+      window.localStorage.setItem('count', count);
+    }
+  }, [count, isFirstRender]);
 
   function increment(incr) {
     setCount(count + incr);
@@ -36,4 +40,15 @@ export default function Counter({ init }) {
       <MyTextbox value={count} onChange={change} />
     </>
   );
+}
+
+function useIsFirstRender() {
+  const render = useRef(0);
+  if (render.current === 0) {
+    render.current = 1;
+    return true;
+  } else {
+    render.current++;
+    return false;
+  }
 }

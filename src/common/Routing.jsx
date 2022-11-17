@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, redirect } from 'react-router-dom';
 import ContactApi from '../data/contacts/contact-api/ContactApi';
 
+//import Root from './Animated-Root';
 import Root from './Root';
 import Home from '../home';
 import NotFound from '../404';
@@ -11,8 +12,6 @@ import ClassesCounter from '../counter/classes/counter';
 import HooksCounterV1 from '../counter/hooks/counter-v1';
 import HooksCounterV2 from '../counter/hooks/counter-v2';
 import HooksCounterV3 from '../counter/hooks/counter-v3';
-import HooksCounterV4 from '../counter/hooks/counter-v4';
-import HooksCounterV5 from '../counter/hooks/counter-v5';
 import Covid from '../data/covid';
 import Videos from '../data/videos';
 import ContactsRouterData from '../data/contacts/contact-list/Contacts-data-router';
@@ -53,9 +52,9 @@ import ManageAccount from '../keycloak/ManageAccount';
 import Secret from '../keycloak/Secret';
 import ProtectedRoute from './ProtectedRoute';
 
-import About from '../basics/list';
+import BasicList from '../basics/list';
 
-//const About = React.lazy(() => import('../basics/list'));
+//const BasicList = React.lazy(() => import('../basics/list'));
 
 const routes = createBrowserRouter([
   {
@@ -73,7 +72,7 @@ const routes = createBrowserRouter([
       {
         path: 'basics',
         children: [
-          { path: 'about', element: <About /> },
+          { path: 'list', element: <BasicList /> },
           { path: 'lifecycle', element: <Lifecycle /> },
           { path: 'myform', element: <MyForm /> },
           { path: 'reference', element: <WithRef /> },
@@ -86,8 +85,6 @@ const routes = createBrowserRouter([
           { path: 'hooks-v1', element: <HooksCounterV1 init={5} /> },
           { path: 'hooks-v2', element: <HooksCounterV2 init={5} /> },
           { path: 'hooks-v3', element: <HooksCounterV3 init={5} /> },
-          { path: 'hooks-v4', element: <HooksCounterV4 init={5} /> },
-          { path: 'hooks-v5', element: <HooksCounterV5 init={5} /> },
         ],
       },
       {

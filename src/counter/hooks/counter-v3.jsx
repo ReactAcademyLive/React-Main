@@ -1,21 +1,14 @@
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MyButton from '../common/my-button';
 import MyTextbox from '../common/my-textbox';
 
-//Use of hooks with effects. Added refs and effects.
+//
+//
+//
+//
 export default function Counter({ init }) {
-  const [count, setCount] = React.useState(+init || 1);
-  const ref = React.useRef(null);
-  ref.current = count;
-
-  React.useEffect(() => {
-    if (+window.localStorage.getItem('count')) {
-      setCount(+window.localStorage.getItem('count'));
-    }
-    return () => {
-      window.localStorage.setItem('count', ref.current);
-    };
-  }, []);
+  let [count, setCount] = useLocalStorage(+init || 1, 'count');
+  count = +count;
 
   function increment(incr) {
     setCount(count + incr);
@@ -36,4 +29,33 @@ export default function Counter({ init }) {
       <MyTextbox value={count} onChange={change} />
     </>
   );
+}
+
+function useLocalStorage(initial, name) {
+  const [state, setState] = useState(initial);
+  const isFirstRender = useIsFirstRender();
+
+  useEffect(() => {
+    let storedState = window.localStorage.getItem(name);
+    if (storedState) {
+      setState(storedState);
+    }
+  }, [name]);
+
+  useEffect(() => {
+    if (!isFirstRender) window.localStorage.setItem(name, state);
+  });
+
+  return [state, setState];
+}
+
+function useIsFirstRender() {
+  const render = useRef(0);
+  if (render.current === 0) {
+    render.current = 1;
+    return true;
+  } else {
+    render.current++;
+    return false;
+  }
 }

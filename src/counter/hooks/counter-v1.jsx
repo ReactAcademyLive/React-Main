@@ -2,7 +2,7 @@ import React from 'react';
 import MyButton from '../common/my-button';
 import MyTextbox from '../common/my-textbox';
 
-//simple use of hooks.  No effects (so no save or restore of the counter value)
+//simple use of state.  No effects (so no save or restore of the counter value)
 export default function Counter({ init }) {
   const [count, setCount] = React.useState(+init || 1);
 

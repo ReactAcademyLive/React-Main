@@ -23,7 +23,7 @@ export default function Menu() {
                 </Nav.Link>
               </Nav.Item>
               <NavDrop title='Basics' link='basics'>
-                <NavDropdown.Item as={NavLink} to='/basics/about'>
+                <NavDropdown.Item as={NavLink} to='/basics/list'>
                   Display list
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/basics/lifecycle'>
@@ -38,24 +38,19 @@ export default function Menu() {
               </NavDrop>
 
               <NavDrop title='Counter' link='counter'>
-                <NavDropdown.Item as={NavLink} to='/counter/classes'>
-                  Counter with classes
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
                 <NavDropdown.Item as={NavLink} to='/counter/hooks-v1'>
-                  Counter with hooks - V1
+                  Simple Counter without save
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/counter/hooks-v2'>
-                  Counter with hooks - V2
+                  Saving to local storage
                 </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/counter/hooks-v3'>
-                  Counter with hooks - V3
+                  Saving Local Storage with hooks
                 </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/counter/hooks-v4'>
-                  Counter with hooks - V4
-                </NavDropdown.Item>
-                <NavDropdown.Item as={NavLink} to='/counter/hooks-v5'>
-                  Counter with hooks - V5
+
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={NavLink} to='/counter/classes'>
+                  Older Counter using classes
                 </NavDropdown.Item>
               </NavDrop>
 
