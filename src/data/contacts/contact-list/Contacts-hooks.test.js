@@ -24,6 +24,9 @@ jest.mock('react-router-dom', () => ({
   Link: ({ children }) => {
     return <a href='/mocked'>{children}</a>;
   },
+  Form: ({ children }) => {
+    return <form>{children}</form>;
+  },
 }));
 
 it('Can display fake data, second TD is Dan...', async () => {

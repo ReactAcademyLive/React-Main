@@ -35,6 +35,9 @@ export default function Menu() {
                 <NavDropdown.Item as={NavLink} to='/basics/myform'>
                   Form validation
                 </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to='/basics/rendering'>
+                  Rendering
+                </NavDropdown.Item>
               </NavDrop>
 
               <NavDrop title='Counter' link='counter'>

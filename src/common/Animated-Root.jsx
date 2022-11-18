@@ -35,13 +35,13 @@ function Content() {
   const transitions = useTransition(location.pathname, {
     ref: transRef,
     keys: null,
-    // from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    // enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    // leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
-    from: { opacity: 0, transform: 'rotateY(-180deg)' },
-    enter: { opacity: 1, transform: 'rotateY(0deg)' },
-    leave: { opacity: 0, transform: 'rotateY(180deg)' },
-    config: { mass: 5, tension: 300, friction: 20 },
+    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
+    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+    // from: { opacity: 0, transform: 'rotateY(-180deg)' },
+    // enter: { opacity: 1, transform: 'rotateY(0deg)' },
+    // leave: { opacity: 0, transform: 'rotateY(180deg)' },
+    // config: { mass: 5, tension: 300, friction: 20 },
   });
 
   useEffect(() => {

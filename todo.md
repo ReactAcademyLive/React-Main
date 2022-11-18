@@ -1,2 +1,2 @@
-- Réparer le message d'erreur pour la page video.
-- Convertir tous les props par de la décomposition
+- Use destructuring everywhere
+- On the context page, just leave one way of subscribing

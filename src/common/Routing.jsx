@@ -8,6 +8,7 @@ import Home from '../home';
 import NotFound from '../404';
 import Lifecycle from '../basics/lifecycle';
 import MyForm from '../basics/forms/ValidatedForm';
+import Rendering from '../basics/rendering';
 import ClassesCounter from '../counter/classes/counter';
 import HooksCounterV1 from '../counter/hooks/counter-v1';
 import HooksCounterV2 from '../counter/hooks/counter-v2';
@@ -76,6 +77,7 @@ const routes = createBrowserRouter([
           { path: 'lifecycle', element: <Lifecycle /> },
           { path: 'myform', element: <MyForm /> },
           { path: 'reference', element: <WithRef /> },
+          { path: 'rendering', element: <Rendering /> },
         ],
       },
       {
