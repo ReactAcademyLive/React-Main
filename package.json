@@ -33,7 +33,6 @@
     "web-vitals": "^3.0.0"
   },
   "devDependencies": {
-    "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^14.0.0",
@@ -42,8 +41,16 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "concurrently": "^7.0.0",
-    "cypress": "^11.1.0",
     "json-server": "^0.17.0"
+  },
+  "alternative": {
+    "devDependency": {
+      "@testing-library/cypress": "^8.0.2",
+      "cypress": "^12.0.2"
+    },
+    "scripts": {
+      "cypress": "cypress open"
+    }
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,8 +59,7 @@
     "eject": "react-scripts eject",
     "api": "json-server ./api/db.json -p 3001",
     "slow-api": "json-server ./api/db.json -p 3001 --delay 2000",
-    "both": "concurrently \"npm run start\" \"npm run api\"",
-    "cypress": "cypress open"
+    "both": "concurrently \"npm run start\" \"npm run api\""
   },
   "proxy": "http://localhost:3001/",
   "eslintConfig": {
