@@ -19,7 +19,7 @@ function AuthProvider({ config = conf, children }) {
       refresh({});
     };
     keycloak.init({ checkLoginIframe: false }).then((authenticated) => {
-      console.log(`Authenticated: ${authenticated}`);
+      //    console.log(`Authenticated: ${authenticated}`);
       refresh({});
     });
   }, [keycloak]);

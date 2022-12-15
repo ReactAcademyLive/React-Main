@@ -6,6 +6,7 @@ import ContactApi from '../data/contacts/contact-api/ContactApi';
 import Root from './Root';
 import Home from '../home';
 import NotFound from '../404';
+import BasicList from '../basics/list';
 import Lifecycle from '../basics/lifecycle';
 import MyForm from '../basics/forms/ValidatedForm';
 import Rendering from '../basics/rendering';
@@ -20,7 +21,7 @@ import ContactsHooks from '../data/contacts/contact-list/Contacts-hooks';
 import ContactsClass from '../data/contacts/contact-list/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
 import ContactDetailsData from '../data/contacts/contact-details/ContactDetails-data-router';
-import MapWithPins from '../data/maps/MapWithPins';
+//import MapWithPins from '../data/maps/MapWithPins';
 import ElectionResult from '../data/election/ElectionResult';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextContainment from '../context/Containment/L1-SimpleContainment';
@@ -53,9 +54,9 @@ import ManageAccount from '../keycloak/ManageAccount';
 import Secret from '../keycloak/Secret';
 import ProtectedRoute from './ProtectedRoute';
 
-import BasicList from '../basics/list';
+//import MapWithPins from '../data/maps/MapWithPins';
 
-//const BasicList = React.lazy(() => import('../basics/list'));
+const MapWithPins = React.lazy(() => import('../data/maps/MapWithPins'));
 
 const routes = createBrowserRouter([
   {
