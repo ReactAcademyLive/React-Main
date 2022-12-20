@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Counter from './counter-v2';
+import Counter from '../../counter/hooks/counter-v2';
 
 let textbox;
 

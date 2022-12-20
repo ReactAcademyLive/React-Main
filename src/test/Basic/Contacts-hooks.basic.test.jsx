@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
-import Contacts from './Contacts-hooks';
+import Contacts from '../../data/contacts/contact-list/Contacts-hooks';
 
 let container = null;
 let root = null;

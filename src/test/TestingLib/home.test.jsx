@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Home from './index';
+import Home from '../home/index';
 
 //Let's put the routing of /Dave, for the last test below.
 jest.mock('react-router-dom', () => ({

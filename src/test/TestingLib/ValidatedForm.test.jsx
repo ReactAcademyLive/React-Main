@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import MyForm from './ValidatedForm';
-import { EmailAuthCredential } from 'firebase/auth';
+import MyForm from '../basics/forms/ValidatedForm';
+//import { EmailAuthCredential } from 'firebase/auth';
 
 const mockLogin = jest.fn((email, password) => {
   return Promise.resolve({ email, password });
