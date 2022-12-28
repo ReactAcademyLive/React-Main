@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from './logo.svg';
-import DarkModeButton from './DarkModeButton';
+import DarkModeMenu from './DarkModeMenu';
 import NavDrop from './NavDrop';
 
 export default function Menu() {
@@ -252,7 +252,7 @@ export default function Menu() {
                   Sign Off
                 </NavDropdown.Item>
               </NavDrop>
-              <DarkModeButton />
+              <DarkModeMenu />
             </Nav>
           </Navbar.Collapse>
         </Container>

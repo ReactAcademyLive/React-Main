@@ -15,7 +15,7 @@ const arrayOfThemes = [
   { name: 'Auto', icon: <CircleHalf /> },
 ];
 
-export default function DarkModeButton() {
+export default function DarkModeMenu() {
   const [mode, setMode] = useState(getPreferredTheme());
 
   useEffect(() => {
