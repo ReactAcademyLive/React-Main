@@ -95,20 +95,20 @@ export default function Lifecycle() {
   //   };
   // });
 
-  useEffect(() => {
-    logThis('⏳⏳⏳⏳');
-    logThis(`This effect is executed AFTER the render.`);
-    logThis(`From render ${state} at ${executionTime}`);
-    logThis('⏳⏳⏳⏳');
-    return () => {
-      logThis('🧹🧹🧹🧹');
-      logThis(
-        `This cleanup is executed AFTER the render, just before the next effect.`
-      );
-      logThis(`From render ${state} at ${executionTime}`);
-      logThis('🧹🧹🧹🧹');
-    };
-  });
+  // useEffect(() => {
+  //   logThis('⏳⏳⏳⏳');
+  //   logThis(`This effect is executed AFTER the render.`);
+  //   logThis(`From render ${state} at ${executionTime}`);
+  //   logThis('⏳⏳⏳⏳');
+  //   return () => {
+  //     logThis('🧹🧹🧹🧹');
+  //     logThis(
+  //       `This cleanup is executed AFTER the render, just before the next effect.`
+  //     );
+  //     logThis(`From render ${state} at ${executionTime}`);
+  //     logThis('🧹🧹🧹🧹');
+  //   };
+  // });
 
   logThis(`Returning render ${state} at ${executionTime}`);
   logThis('🖍🖍🖍🖍');
