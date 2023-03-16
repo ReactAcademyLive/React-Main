@@ -2,7 +2,8 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-let consoleText = ''; //module variable with the logged text.
+let logContent = ''; //module variable with the logged text.
+let isClosing = false;
 
 // https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/
 // A normal react render goes through the following steps:
@@ -32,86 +33,116 @@ let consoleText = ''; //module variable with the logged text.
 // to call setState(). But then, when trying to logThis()
 // from useEffect(), this would create an infinite loop.
 // The workaround here is to use DOM Updates.
-// In real life, you would not need to do this. )
+// In real life, you would never need to do this. )
 function logThis(data) {
-  consoleText += data + '\n';
+  if (data.length === 8 || data.length === 4) {
+    if (isClosing) {
+      logContent += '</div>';
+      isClosing = false;
+    } else {
+      const color = getColor(data.slice(0, 2));
+      logContent += `<div class='alert alert-${color}'>`;
+      isClosing = true;
+    }
+  } else {
+    logContent += `${data}<br />`;
+  }
   console.log(data);
 
   // the following line updates the DOM.
   // --IMPORTANT: NOT the React way of doing things.
   // Do not do this in your projects
   document.querySelector('#logConsole') &&
-    (document.querySelector('#logConsole').value = consoleText);
+    (document.querySelector('#logConsole').innerHTML = logContent);
+}
+
+function getColor(emoji) {
+  switch (emoji) {
+    case '🖌':
+      return 'primary';
+    case '👇':
+      return 'warning';
+    case '⚡':
+      return 'success';
+    case '⚰':
+      return 'dark';
+    case '⏳⏳':
+      return 'dark';
+    case '🧹':
+      return 'secondary';
+    default:
+      return 'dark';
+  }
 }
 
 export default function Lifecycle() {
   const [state, setState] = useState(1);
 
-  logThis('🖍🖍🖍🖍');
+  logThis('🖌🖌🖌🖌');
   logThis(`Start of component render ${state}`);
 
   const executionTime = new Date().toLocaleTimeString();
 
   function handleClick(evt) {
-    logThis('👇🖱👇🖱👇🖱');
+    logThis('👇🖱👇🖱');
     logThis(
       `${evt.currentTarget.id} is clicked, this handle is from render ${state}`
     );
     logThis(`setState is called with ${state} + 1 (state + 1) `);
     setState(state + 1);
     logThis('After setState, component is scheduled to be updated.');
-    logThis('👇🖱👇🖱👇🖱');
+    logThis('👇🖱👇🖱');
   }
 
-  // useEffect(() => {
-  //   logThis('⚡⚡⚡⚡');
-  //   logThis(`This is executed AFTER the first time we render (only once).`);
-  //   logThis(`From render ${state} at ${executionTime}`);
-  //   logThis('⚡⚡⚡⚡');
-  //   return () => {
-  //     logThis('⚰⚰⚰⚰');
-  //     logThis(
-  //       `This is executed when we unmount (ex: when we go to another route).`
-  //     );
-  //     logThis(`From render ${state} at ${executionTime}`);
-  //     logThis('⚰⚰⚰⚰');
-  //   };
-  // }, []);
+  useEffect(() => {
+    logThis('⚡⚡⚡⚡');
+    logThis(`This is executed AFTER the first time we render (only once).`);
+    logThis(`From render ${state} at ${executionTime}`);
+    logThis('⚡⚡⚡⚡');
+    return () => {
+      logThis('⚰⚰⚰⚰');
+      logThis(
+        `This is executed when we unmount (ex: when we go to another route).`
+      );
+      logThis(`From render ${state} at ${executionTime}`);
+      logThis('⚰⚰⚰⚰');
+    };
+  }, []);
 
-  // useLayoutEffect(() => {
-  //   logThis('⏳⏳⏳⏳');
-  //   logThis(
-  //     `This layout effect is executed AFTER the render, but before the browser paints`
-  //   );
-  //   logThis(`From render ${state} at ${executionTime}`);
-  //   logThis('⏳⏳⏳⏳');
-  //   return () => {
-  //     logThis('🧹🧹🧹🧹');
-  //     logThis(
-  //       `This layout cleanup is executed AFTER the render, before the next Layout Effect and browser paint.`
-  //     );
-  //     logThis(`From render ${state} at ${executionTime}`);
-  //     logThis('🧹🧹🧹🧹');
-  //   };
-  // });
+  useLayoutEffect(() => {
+    logThis('⏳⏳⏳⏳');
+    logThis(
+      `This layout effect is executed AFTER the render, but before the browser paints`
+    );
+    logThis(`From render ${state} at ${executionTime}`);
+    logThis('⏳⏳⏳⏳');
+    return () => {
+      logThis('🧹🧹🧹🧹');
+      logThis(
+        `This layout cleanup is executed AFTER the render, before the next Layout Effect and browser paint.`
+      );
+      logThis(`From render ${state} at ${executionTime}`);
+      logThis('🧹🧹🧹🧹');
+    };
+  });
 
-  // useEffect(() => {
-  //   logThis('⏳⏳⏳⏳');
-  //   logThis(`This effect is executed AFTER the render.`);
-  //   logThis(`From render ${state} at ${executionTime}`);
-  //   logThis('⏳⏳⏳⏳');
-  //   return () => {
-  //     logThis('🧹🧹🧹🧹');
-  //     logThis(
-  //       `This cleanup is executed AFTER the render, just before the next effect.`
-  //     );
-  //     logThis(`From render ${state} at ${executionTime}`);
-  //     logThis('🧹🧹🧹🧹');
-  //   };
-  // });
+  useEffect(() => {
+    logThis('⏳⏳⏳⏳');
+    logThis(`This effect is executed AFTER the render.`);
+    logThis(`From render ${state} at ${executionTime}`);
+    logThis('⏳⏳⏳⏳');
+    return () => {
+      logThis('🧹🧹🧹🧹');
+      logThis(
+        `This cleanup is executed AFTER the render, just before the next effect.`
+      );
+      logThis(`From render ${state} at ${executionTime}`);
+      logThis('🧹🧹🧹🧹');
+    };
+  });
 
   logThis(`Returning render ${state} at ${executionTime}`);
-  logThis('🖍🖍🖍🖍');
+  logThis('🖌🖌🖌🖌');
   return (
     <>
       <h1>Lifecycle of a React component using Hooks</h1>
@@ -121,17 +152,18 @@ export default function Lifecycle() {
       </p>
       <p>Look at the console. We are logging all events. </p>
       <p>Here is the state: {JSON.stringify(state)}</p>
-      <div id='div1' onNothing={handleClick}>
+      <div id='div1' /* onClick={handleClick} */>
         <Button onClick={handleClick} className='mb-4' id='btn1'>
           Update State
         </Button>
       </div>
-      <textarea
+      <div
         id='logConsole'
-        className='form-control'
-        cols='70'
-        rows='25'
-        defaultValue={consoleText}
+        // className='form-control'
+        // cols='70'
+        // rows='25'
+        // defaultValue={consoleText}
+        dangerouslySetInnerHTML={{ __html: logContent }}
       />
     </>
   );
