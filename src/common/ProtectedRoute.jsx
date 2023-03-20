@@ -1,4 +1,4 @@
-import { useAuth } from '../keycloak/AuthProvider';
+import { useAuth } from '../keycloak/KeycloakAuthProvider';
 
 export default function ProtectedRoute({ children, roles }) {
   const { token, tokenParsed } = useAuth();

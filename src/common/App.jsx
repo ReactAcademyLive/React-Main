@@ -1,16 +1,15 @@
-import React from 'react';
 import { RouterProvider } from 'react-router-dom';
-import AuthProvider from '../keycloak/AuthProvider';
+import KeycloakAuthProvider from '../keycloak/KeycloakAuthProvider';
 import './custom.scss';
 import router from './Routing';
 //import Keycloak from 'keycloak-js';
-// import AuthProvider from './AuthProvider';
+//Auth Provider was used
 
 export default function App() {
   return (
-    <AuthProvider>
+    <KeycloakAuthProvider>
       <RouterProvider router={router} />
-    </AuthProvider>
+    </KeycloakAuthProvider>
   );
 }
 

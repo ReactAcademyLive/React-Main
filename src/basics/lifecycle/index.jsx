@@ -1,9 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
+
+//Todo:
+//Comment and uncomment lines 167-168-169
 
 let logContent = ''; //module variable with the logged text.
 let isClosing = false;
+let strictModeChecker = 0;
+let isStrictMode = false;
 
 // https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/
 // A normal react render goes through the following steps:
@@ -56,22 +61,29 @@ function logThis(data) {
     (document.querySelector('#logConsole').innerHTML = logContent);
 }
 
+function logThese(wrapper, description, state, executionTime) {
+  logThis(wrapper);
+  logThis(description);
+  logThis(`From render ${state} at ${executionTime}`);
+  logThis(wrapper);
+}
+
 function getColor(emoji) {
   switch (emoji) {
     case '🖌':
       return 'primary';
     case '👇':
       return 'warning';
-    case '⚡':
+    case '⚡⚡':
       return 'success';
     case '⚰':
-      return 'dark';
+      return 'danger';
     case '⏳⏳':
       return 'dark';
     case '🧹':
-      return 'secondary';
+      return 'danger';
     default:
-      return 'dark';
+      return 'info';
   }
 }
 
@@ -80,6 +92,13 @@ export default function Lifecycle() {
 
   logThis('🖌🖌🖌🖌');
   logThis(`Start of component render ${state}`);
+
+  const ref_once = useRef();
+
+  strictModeChecker += 1;
+  if (state === 1 && strictModeChecker !== 1) {
+    isStrictMode = true;
+  }
 
   const executionTime = new Date().toLocaleTimeString();
 
@@ -94,77 +113,97 @@ export default function Lifecycle() {
     logThis('👇🖱👇🖱');
   }
 
-  useEffect(() => {
-    logThis('⚡⚡⚡⚡');
-    logThis(`This is executed AFTER the first time we render (only once).`);
-    logThis(`From render ${state} at ${executionTime}`);
-    logThis('⚡⚡⚡⚡');
-    return () => {
-      logThis('⚰⚰⚰⚰');
-      logThis(
-        `This is executed when we unmount (ex: when we go to another route).`
-      );
-      logThis(`From render ${state} at ${executionTime}`);
-      logThis('⚰⚰⚰⚰');
-    };
-  }, []);
-
-  useLayoutEffect(() => {
-    logThis('⏳⏳⏳⏳');
-    logThis(
-      `This layout effect is executed AFTER the render, but before the browser paints`
+  function effectRunOnce() {
+    logThese(
+      '⚡⚡⚡⚡',
+      `This EFFECT is executed AFTER the first time we render (but only once).`,
+      state,
+      executionTime
     );
-    logThis(`From render ${state} at ${executionTime}`);
-    logThis('⏳⏳⏳⏳');
     return () => {
-      logThis('🧹🧹🧹🧹');
-      logThis(
-        `This layout cleanup is executed AFTER the render, before the next Layout Effect and browser paint.`
+      logThese(
+        '⚰⚰⚰⚰',
+        `This CLEANUP is executed AFTER we unmount (ex: when we go to another route)`,
+        state,
+        executionTime
       );
-      logThis(`From render ${state} at ${executionTime}`);
-      logThis('🧹🧹🧹🧹');
     };
-  });
+  }
 
-  useEffect(() => {
-    logThis('⏳⏳⏳⏳');
-    logThis(`This effect is executed AFTER the render.`);
-    logThis(`From render ${state} at ${executionTime}`);
-    logThis('⏳⏳⏳⏳');
+  function effectRun() {
+    logThese(
+      '⏳⏳⏳⏳',
+      `This EFFECT is executed AFTER the render.`,
+      state,
+      executionTime
+    );
     return () => {
-      logThis('🧹🧹🧹🧹');
-      logThis(
-        `This cleanup is executed AFTER the render, just before the next effect.`
+      logThese(
+        '🧹🧹🧹🧹',
+        `This CLEANUP is executed AFTER the render, just before the next effect.`,
+        state,
+        executionTime
       );
-      logThis(`From render ${state} at ${executionTime}`);
-      logThis('🧹🧹🧹🧹');
     };
-  });
+  }
+
+  function effectLayout() {
+    logThese(
+      '⏳⏳⏳⏳',
+      `This layout EFFECT is executed AFTER the render, but before the browser paints`,
+      state,
+      executionTime
+    );
+    return () => {
+      logThese(
+        '🧹🧹🧹🧹',
+        `This layout CLEANUP is executed AFTER the render, before the next Layout Effect and browser paint.`,
+        state,
+        executionTime
+      );
+    };
+  }
+
+  // useEffect(effectRunOnce, []);
+  // useEffect(effectRun);
+  // useLayoutEffect(effectLayout);
 
   logThis(`Returning render ${state} at ${executionTime}`);
   logThis('🖌🖌🖌🖌');
   return (
     <>
-      <h1>Lifecycle of a React component using Hooks</h1>
-      <p>
-        You should remove <code>&lt;StrictMode&gt;</code> from{' '}
-        <code>src/index.jsx</code>
-      </p>
-      <p>Look at the console. We are logging all events. </p>
-      <p>Here is the state: {JSON.stringify(state)}</p>
-      <div id='div1' /* onClick={handleClick} */>
-        <Button onClick={handleClick} className='mb-4' id='btn1'>
-          Update State
-        </Button>
-      </div>
-      <div
-        id='logConsole'
-        // className='form-control'
-        // cols='70'
-        // rows='25'
-        // defaultValue={consoleText}
-        dangerouslySetInnerHTML={{ __html: logContent }}
-      />
+      <h1>Lifecycle of a React component using Effect Hooks</h1>
+      {isStrictMode ? (
+        <>
+          <h4>Sorry, StrictMode is activated</h4>
+          <p>
+            For this particular sample, you should remove{' '}
+            <code>&lt;StrictMode&gt;</code> from <code>src/index.jsx</code>
+          </p>
+          <p>
+            (You can use <code>&lt;StrictMode&gt;</code> for all other pages.)
+          </p>
+        </>
+      ) : (
+        // isStrictMode is false
+        <>
+          <p>
+            Look at the console. We are logging all events. Comment/uncomment
+            lines 167-168-169 in the source code.
+          </p>
+          <p>Here is the state: {JSON.stringify(state)}</p>
+
+          <div id='div1' /* onClick={handleClick} */>
+            <Button onClick={handleClick} className='mb-4' id='btn1'>
+              Update State
+            </Button>
+          </div>
+          <div
+            id='logConsole'
+            dangerouslySetInnerHTML={{ __html: logContent }}
+          />
+        </>
+      )}
     </>
   );
 }

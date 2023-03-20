@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import axios from 'axios';
-import { useAuth } from './AuthProvider';
+import { useAuth } from './KeycloakAuthProvider';
 
 export const useAxios = (baseURL) => {
   const axiosInstance = useRef();

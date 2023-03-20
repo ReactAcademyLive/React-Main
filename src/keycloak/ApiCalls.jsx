@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import { useAuth } from './AuthProvider';
+import { useAuth } from './KeycloakAuthProvider';
 import axios from 'axios';
 
 function ApiCalls() {
