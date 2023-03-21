@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import Link from './link';
 
 const FilterLink = ({ filter, visibilityFilter, onChangeFilter, children }) => (
@@ -10,11 +10,5 @@ const FilterLink = ({ filter, visibilityFilter, onChangeFilter, children }) => (
     {children}
   </Link>
 );
-
-FilterLink.propTypes = {
-  filter: PropTypes.string.isRequired,
-  visibilityFilter: PropTypes.string.isRequired,
-  onChangeFilter: PropTypes.func.isRequired,
-};
 
 export default FilterLink;

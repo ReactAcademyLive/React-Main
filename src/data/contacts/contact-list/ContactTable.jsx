@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Table, Button, Form as F } from 'react-bootstrap';
 import { Link, Form } from 'react-router-dom';
 import {
-  TrashFill,
   Pen,
   ListUl,
   PersonPlusFill,
@@ -114,7 +113,7 @@ function Row({ contact, setRow, deleteContact }) {
           variant='danger'
           onClick={() => deleteContact(contact.id)}
         >
-          <TrashFill />
+          🗑️
         </Button>
       </td>
     </tr>

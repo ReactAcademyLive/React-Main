@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 
 export default function AddTodo({ onAddTodo }) {
@@ -30,7 +29,3 @@ export default function AddTodo({ onAddTodo }) {
     </div>
   );
 }
-
-AddTodo.propTypes = {
-  onAddTodo: PropTypes.func.isRequired,
-};

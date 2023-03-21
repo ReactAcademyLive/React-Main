@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { NavDropdown, Button } from 'react-bootstrap';
-import {
-  SunFill,
-  MoonStarsFill,
-  CircleHalf,
-  Check2,
-} from 'react-bootstrap-icons';
 
 const storedTheme = localStorage.getItem('theme');
 
 const arrayOfThemes = [
-  { name: 'Light', icon: <SunFill /> },
-  { name: 'Dark', icon: <MoonStarsFill /> },
-  { name: 'Auto', icon: <CircleHalf /> },
+  { name: 'Light', icon: '☀️' },
+  { name: 'Dark', icon: '🌙' },
+  { name: 'Auto', icon: '⚙️' },
 ];
 
 export default function DarkModeMenu() {
@@ -76,7 +70,7 @@ export default function DarkModeMenu() {
             }}
           >
             {' '}
-            {theme.icon} {theme.name} {active ? <Check2 /> : ''}
+            {theme.icon} {theme.name} {active ? '✔️' : ''}
           </NavDropdown.Item>
         );
       })}

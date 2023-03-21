@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap'; //Alert
 import { Form as FormRoute } from 'react-router-dom';
 import MyTextBox from './MyTextbox';
-//import { TrashFill } from 'react-bootstrap-icons';
 
 export default function ContactForm({
   id,
@@ -52,16 +50,9 @@ export default function ContactForm({
 
         {/* <Button className="ms-3" variant="danger"
                        onClick={null}>
-                  <TrashFill />
+                🗑️
           </Button> */}
       </Form.Group>
     </Form>
   );
 }
-
-ContactForm.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  id: PropTypes.any.isRequired,
-  formErrors: PropTypes.object.isRequired,
-};

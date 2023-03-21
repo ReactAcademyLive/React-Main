@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from 'react';
-//import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { invalidate, request, receive } from './redux/posts';

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import TodoList from './todo-list';
 import { VisibilityFilters } from './visibility-filters';
 
@@ -22,17 +22,5 @@ const VisibleTodoList = (props) => (
     todos={getVisibleTodos(props.todos, props.visibilityFilter)}
   />
 );
-
-VisibleTodoList.propTypes = {
-  todos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      completed: PropTypes.bool.isRequired,
-      text: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  onToggleTodo: PropTypes.func.isRequired,
-  // onDeleteTodo: PropTypes.func.isRequired
-};
 
 export default VisibleTodoList;

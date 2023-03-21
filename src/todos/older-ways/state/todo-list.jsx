@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import TodoItem from './todo-item';
 import { ListGroup } from 'react-bootstrap';
 
@@ -10,17 +8,5 @@ const TodoList = ({ todos, onToggleTodo }) => (
     ))}
   </ListGroup>
 );
-
-TodoList.propTypes = {
-  todos: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      completed: PropTypes.bool.isRequired,
-      text: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  onToggleTodo: PropTypes.func.isRequired,
-  //onDeleteTodo: PropTypes.func.isRequired,
-};
 
 export default TodoList;

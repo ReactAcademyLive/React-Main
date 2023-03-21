@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ButtonGroup } from 'react-bootstrap';
 import FilterLink from './filter-link';
 import { VisibilityFilters } from './visibility-filters';
@@ -34,8 +33,3 @@ export default function FilterButtons({ visibilityFilter, onChangeFilter }) {
     </div>
   );
 }
-
-FilterButtons.propTypes = {
-  visibilityFilter: PropTypes.string.isRequired,
-  onChangeFilter: PropTypes.func.isRequired,
-};

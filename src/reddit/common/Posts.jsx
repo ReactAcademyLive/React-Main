@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 
 export default function Posts({ posts }) {
@@ -26,7 +25,3 @@ export default function Posts({ posts }) {
     </ListGroup>
   );
 }
-
-Posts.propTypes = {
-  posts: PropTypes.array.isRequired,
-};

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap';
 
 export default function Picker({ value, onChange, options }) {
@@ -22,9 +21,3 @@ export default function Picker({ value, onChange, options }) {
     </span>
   );
 }
-
-Picker.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};

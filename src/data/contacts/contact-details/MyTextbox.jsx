@@ -1,6 +1,5 @@
 import React from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 
 const MyTextBox = ({ fullName, name, value, formErrors, onChange }) => {
   return (
@@ -21,10 +20,3 @@ const MyTextBox = ({ fullName, name, value, formErrors, onChange }) => {
 };
 
 export default MyTextBox;
-
-MyTextBox.propTypes = {
-  fullName: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  formErrors: PropTypes.object.isRequired,
-};
