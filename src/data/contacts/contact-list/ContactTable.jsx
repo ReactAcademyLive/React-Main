@@ -1,13 +1,6 @@
 import { useState } from 'react';
 import { Table, Button, Form as F } from 'react-bootstrap';
 import { Link, Form } from 'react-router-dom';
-import {
-  Pen,
-  ListUl,
-  PersonPlusFill,
-  CheckSquareFill,
-  XSquareFill,
-} from 'react-bootstrap-icons';
 
 const ContactTable = ({ contacts, modifyContact, deleteContact }) => {
   const [modificationRow, setModificationRow] = useState(null);
@@ -63,7 +56,7 @@ const ContactTable = ({ contacts, modifyContact, deleteContact }) => {
                     setModificationRow(0);
                   }}
                 >
-                  <PersonPlusFill /> Create Contact
+                  ➕ Create Contact
                 </Button>
               </td>
             </tr>
@@ -100,12 +93,12 @@ function Row({ contact, setRow, deleteContact }) {
             setRow(contact.id);
           }}
         >
-          <Pen />
+          🖊️
         </Button>
 
         <Link to={`/data/details-data-router/${contact.id}`}>
           <Button variant='secondary' className='me-3' title='Details'>
-            <ListUl />
+            🧾
           </Button>
         </Link>
         <Button
@@ -158,7 +151,7 @@ function EditRow({ contact, setRow }) {
       </td>
       <td className='align-middle'>
         <Button variant='success' className='me-3' title='Save' type='submit'>
-          <CheckSquareFill />
+          ✔️
         </Button>
         <Button
           variant='warning'
@@ -168,7 +161,7 @@ function EditRow({ contact, setRow }) {
             setRow(null);
           }}
         >
-          <XSquareFill />
+          ❌
         </Button>
       </td>
     </tr>
