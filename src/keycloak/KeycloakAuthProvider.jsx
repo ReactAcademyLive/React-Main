@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useState, useEffect, useContext, createContext, useRef } from 'react';
 import Keycloak from 'keycloak-js';
 
 export const AuthContext = createContext({ user: null });
@@ -10,7 +10,8 @@ const conf = {
 };
 
 function AuthProvider({ config = conf, children }) {
-  const [keycloak] = useState(new Keycloak(config));
+  const ref = useRef(new Keycloak(config));
+  const keycloak = ref.current;
   const [, refresh] = useState({});
 
   useEffect(() => {

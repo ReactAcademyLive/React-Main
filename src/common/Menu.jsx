@@ -245,6 +245,9 @@ export default function Menu() {
                 <NavDropdown.Item as={NavLink} to='/auth/manageaccount'>
                   Manage Account
                 </NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to='/auth/tokendetails'>
+                  ID Token details
+                </NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to='/auth/secret'>
                   Secret section
                 </NavDropdown.Item>

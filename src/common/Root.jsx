@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React, { Suspense } from 'react';
+import { Container, Spinner } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import './custom.scss';
 import Menu from './Menu';
@@ -16,9 +16,9 @@ export default function Root() {
     >
       <Menu />
       <Container className='mb-5'>
-        {/* <Suspense fallback={<Spinner variant='primary' animation='border' />}> */}
-        <Outlet />
-        {/* </Suspense> */}
+        <Suspense fallback={<Spinner variant='primary' animation='border' />}>
+          <Outlet />
+        </Suspense>
       </Container>
       <Footer />
     </div>

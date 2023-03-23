@@ -53,6 +53,7 @@ import ApiCalls from '../keycloak/ApiCalls';
 import ManageAccount from '../keycloak/ManageAccount';
 import Secret from '../keycloak/Secret';
 import ProtectedRoute from './ProtectedRoute';
+import TokenDetails from '../keycloak/TokenDetails';
 
 //import MapWithPins from '../data/maps/MapWithPins';
 
@@ -180,7 +181,7 @@ const routes = createBrowserRouter([
             ],
           },
 
-          { path: 'map', element: <MapWithPins /> },
+          // { path: 'map', element: <MapWithPins /> },
           { path: 'election', element: <ElectionResult /> },
         ],
       },
@@ -245,6 +246,7 @@ const routes = createBrowserRouter([
             ),
           },
           { path: 'manageaccount', element: <ManageAccount /> },
+          { path: 'tokendetails', element: <TokenDetails /> },
           { path: 'signoff', element: <SignOff /> },
         ],
       },
