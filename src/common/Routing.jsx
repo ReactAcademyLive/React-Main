@@ -21,7 +21,6 @@ import ContactsHooks from '../data/contacts/contact-list/Contacts-hooks';
 import ContactsClass from '../data/contacts/contact-list/Contacts-class';
 import ContactDetails from '../data/contacts/contact-details/ContactDetails-hooks';
 import ContactDetailsData from '../data/contacts/contact-details/ContactDetails-data-router';
-//import MapWithPins from '../data/maps/MapWithPins';
 import ElectionResult from '../data/election/ElectionResult';
 import ContextDrill from '../context/PropDrilling/L1-SimpleState';
 import ContextContainment from '../context/Containment/L1-SimpleContainment';
@@ -56,8 +55,7 @@ import ProtectedRoute from './ProtectedRoute';
 import TokenDetails from '../keycloak/TokenDetails';
 
 //import MapWithPins from '../data/maps/MapWithPins';
-
-const MapWithPins = React.lazy(() => import('../data/maps/MapWithPins'));
+//const MapWithPins = React.lazy(() => import('../data/maps/MapWithPins'));
 
 const routes = createBrowserRouter([
   {

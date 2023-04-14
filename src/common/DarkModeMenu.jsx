@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavDropdown, Button } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 
 const storedTheme = localStorage.getItem('theme');
 
@@ -21,6 +21,7 @@ export default function DarkModeMenu() {
     } else {
       document.documentElement.setAttribute('data-bs-theme', mode);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function getPreferredTheme() {
