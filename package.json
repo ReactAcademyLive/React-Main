@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000",
-    "build": "vite build",
+    "dev": "vite",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
     "test2": "NODE_ENV=test jest",
-    "lint": "eslint --max-warnings=0 src/**/*.j* src/**/*.t*"
+    "lint": "eslint --max-warnings=0  src/**/*.j* src/**/*.t*"
   },
   "dependencies": {
     "@arcgis/core": "^4.25.3",
@@ -55,6 +55,7 @@
     "json-server": "^0.17.0",
     "rollup-plugin-visualizer": "^5.8.3",
     "sass": "^1.49.9",
+    "typescript": "^5.0.4",
     "vite": "^4.0.0",
     "vite-plugin-eslint": "^1.8.1"
   }

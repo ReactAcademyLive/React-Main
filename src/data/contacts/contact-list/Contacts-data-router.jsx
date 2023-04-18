@@ -1,4 +1,4 @@
-import React /*, { useEffect } */ from 'react';
+import ContactApi from '../contact-api/ContactApi';
 import ContactTable from './ContactTable';
 import {
   /* useRevalidator, */ useSubmit,
@@ -39,5 +39,23 @@ export default function Contacts() {
   );
 }
 
-// to show a spinner while loading:
-// { isLoading ? <Spinner /> : <ContactTable /> }
+export function loader() {
+  return ContactApi.getAllContacts();
+}
+
+export async function action({ request, params }) {
+  if (request.method === 'DELETE') {
+    const formData = await request.formData();
+    await ContactApi.deleteContact(formData.get('id'));
+  } else {
+    const formData = await request.formData();
+    const contact = Object.fromEntries(formData);
+    await ContactApi.saveContact({
+      id: contact.id !== '0' ? contact.id : undefined,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      email: contact.email,
+    });
+  }
+  //  return redirect('/data/contacts-data-router');
+}

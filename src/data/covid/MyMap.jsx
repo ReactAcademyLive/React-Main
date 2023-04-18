@@ -1,7 +1,7 @@
 // Run the following on the command line (to add the esri-loader package.)
 // yarn add esri-loader
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import '@arcgis/core/assets/esri/themes/dark/main.css';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';

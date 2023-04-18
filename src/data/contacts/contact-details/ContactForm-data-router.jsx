@@ -1,4 +1,3 @@
-import React from 'react';
 import { Form, Button } from 'react-bootstrap'; //Alert
 import { Form as FormRoute } from 'react-router-dom';
 import MyTextBox from './MyTextbox';
