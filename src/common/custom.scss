@@ -35,3 +35,21 @@ h4 {
   width: 80%;
   margin: 0 auto;
 }
+
+//-----------------------------
+// Blue theme!
+[data-bs-theme='darkblue'] {
+  --bs-body-color: var(--bs-white);
+  --bs-body-color-rgb: #{to-rgb($white)};
+  --bs-body-bg: $blue-800;
+  --bs-body-bg-rgb: #{to-rgb($blue-800)};
+  --bs-tertiary-bg: #{$blue-600};
+  --bs-emphasis-color: var(--bs-white);
+  --bs-emphasis-color-rgb: #{to-rgb($white)};
+
+  .dropdown-menu {
+    --bs-dropdown-bg: #{mix($blue-800, $blue-700)};
+    --bs-dropdown-link-active-bg: #{$blue-500};
+    --bs-dropdown-header-color: #dddddd;
+  }
+}
