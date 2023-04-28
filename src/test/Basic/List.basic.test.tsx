@@ -1,5 +1,5 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { beforeEach, afterEach, it, expect } from 'vitest';
+import { Root, createRoot } from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import About from '../../basics/list/index';
 
@@ -8,8 +8,8 @@ import About from '../../basics/list/index';
 //just the basic React libs and
 //Dom validation are sufficient to test
 
-let container = null;
-let root = null;
+let container: HTMLDivElement | null = null;
+let root: Root | null = null;
 beforeEach(() => {
   // setup a DOM element as a render target
   container = document.createElement('div');
@@ -19,31 +19,31 @@ beforeEach(() => {
 
 afterEach(() => {
   // cleanup on exiting
-  act(() => root.unmount());
-  container.remove();
+  act(() => root?.unmount());
+  container?.remove();
   container = null;
 });
 
 it('displays Eric as the first author', () => {
   act(() => {
-    root.render(<About />);
+    root?.render(<About />);
   });
 
-  expect(container.querySelector('li').textContent).toBe('Eric');
+  expect(container?.querySelector('li')?.textContent).toBe('Eric');
 });
 
 it('displays Joe as the second author', () => {
   act(() => {
-    root.render(<About />);
+    root?.render(<About />);
   });
 
-  expect(container.querySelectorAll('li')[1].textContent).toBe('Joe');
+  expect(container?.querySelectorAll('li')[1].textContent).toBe('Joe');
 });
 
 it('displays Bob as the third author', () => {
   act(() => {
-    root.render(<About />);
+    root?.render(<About />);
   });
 
-  expect(container.querySelectorAll('li')[2].textContent).toBe('Bob');
+  expect(container?.querySelectorAll('li')[2].textContent).toBe('Bob');
 });

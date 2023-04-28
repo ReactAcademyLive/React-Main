@@ -3,7 +3,7 @@
  *
  * @remark
  *
- * This is great!
+ * This is a great remark!
  */
 export default interface Contact {
   /** unique id of contact */

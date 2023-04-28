@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import Home from '../home/index';
+import Home from '../../home/index';
+import { expect, vi } from 'vitest';
 
 //Let's put the routing of /Dave, for the last test below.
-jest.mock('react-router-dom', () => ({
+vi.mock('react-router-dom', () => ({
   useParams: () => {
     return { name: 'Dave' };
   },
@@ -25,5 +26,5 @@ test('Paragraph says Hello World', () => {
 test('Paragraph says Hello Dave', () => {
   render(<Home />);
   const p = screen.getByText(/hello/i);
-  expect(p.textContent.includes('Dave')).toBe(true);
+  expect(p.textContent?.includes('Dave')).toBe(true);
 });

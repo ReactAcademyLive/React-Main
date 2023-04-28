@@ -1,20 +1,12 @@
 # React-Academy-Main
 
-Project for **React Academy**, 2022. For classroom training.
+Project for **React Academy**, 2023. For classroom training.
 
-Il existe 3 package manager:
+## Usage
 
-- npm (installé par défaut)
-- yarn (rapide)
-- pnpm (gestion des monorepo)
-
-**Pour utiliser avec yarn**
-
-1. Activer yarn: `corepack --enable`
-2. Installer les dépendences dans node_modules `yarn install`
-3. Lancer en mode dev: `yarn run dev`
-
-**Pour utiliser avec npm**
-
-1. Installer les dépendences dans node_modules `npm install`
-2. Lancer en mode dev: `npm run dev`
+| command           | description                                                   |
+| ----------------- | ------------------------------------------------------------- |
+| `npm install`     | Installs dependency modules in a folder called `node_modules` |
+| `npm run dev`     | Launch your web app in dev mode (type `Ctrl-C` to exit)       |
+| `npm run build`   | Build a release website (outputs to `dist` folder)            |
+| `npm run preview` | Launch a web server from the `dist` folder (`Ctrl-C` to exit) |

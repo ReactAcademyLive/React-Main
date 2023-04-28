@@ -1,4 +1,3 @@
-//const { default: MyMath } = require('./MyMath');
 import MyMath from './MyMath';
 
 test('2+2=4', () => {

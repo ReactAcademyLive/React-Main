@@ -9,7 +9,11 @@ interface FormValues {
   password: string;
 }
 
-function login(email: string, password: string) {
+interface ValidatedFormProps {
+  login: (email: string, password: string) => Promise<boolean>;
+}
+
+function myLogin(email: string, password: string) {
   const p = new Promise((resolve) => {
     if (email === password) {
       resolve(true);
@@ -20,7 +24,7 @@ function login(email: string, password: string) {
   return p;
 }
 
-export default function ValidatedForm() {
+export default function ValidatedForm({ login }: ValidatedFormProps) {
   const {
     register,
     handleSubmit,
@@ -28,13 +32,18 @@ export default function ValidatedForm() {
     reset,
   } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
+    login = login ?? myLogin;
     const result = await login(data.email, data.password);
-    if (result) {
-      alert('Login was a success');
-    } else {
-      alert(
-        'Login failed. Try using using a password that is identical to the email.'
-      );
+
+    //@ts-ignore
+    if (!global.chai) {
+      if (result) {
+        alert('Login was a success');
+      } else {
+        alert(
+          'Login failed. Try using using a password that is identical to the email.'
+        );
+      }
     }
     reset();
   };
