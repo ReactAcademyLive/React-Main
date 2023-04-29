@@ -64,10 +64,13 @@ describe('LoginForm', () => {
 
     expect(await screen.findAllByRole('alert')).toHaveLength(1);
     expect(mockLogin).not.toBeCalled();
-    expect(screen.getByRole('textbox', { name: /email/i }).value).toBe(
-      'test@mail.com'
+    expect(
+      (screen.getByRole('textbox', { name: /email/i }) as HTMLInputElement)
+        .value
+    ).toBe('test@mail.com');
+    expect((screen.getByLabelText('Password') as HTMLInputElement).value).toBe(
+      'pass'
     );
-    expect(screen.getByLabelText('Password').value).toBe('pass');
   });
 
   it('should not display error when value is valid', async () => {

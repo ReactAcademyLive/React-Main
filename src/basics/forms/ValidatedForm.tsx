@@ -10,11 +10,11 @@ interface FormValues {
 }
 
 interface ValidatedFormProps {
-  login: (email: string, password: string) => Promise<boolean>;
+  login?: (email: string, password: string) => Promise<boolean>;
 }
 
 function myLogin(email: string, password: string) {
-  const p = new Promise((resolve) => {
+  const p = new Promise<boolean>((resolve) => {
     if (email === password) {
       resolve(true);
     } else {
