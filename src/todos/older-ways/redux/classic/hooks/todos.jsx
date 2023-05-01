@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from '../connect/reducers/index.js';
 import { devToolsEnhancer } from '@redux-devtools/extension';
-import initialTodos from '../../../common/initial-todos';
+import initialTodos from '../../../../common/initial-todos';
 
 export default function Todos() {
   React.useEffect(() => {

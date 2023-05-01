@@ -5,7 +5,7 @@ import VisibleTodoList from './visible-todo-list';
 import TodoContext from './todo-context';
 import reducer from './reducer';
 import { addTodo, toggleTodo, VisibilityFilters } from './action';
-import initialTodos from '../common/initial-todos';
+import initialTodos from '../../common/initial-todos';
 
 //dispatch: single function that schedules the changes: dispatch(action)
 //action: object that describes the changes we want to do to the state

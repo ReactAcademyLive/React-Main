@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import FilterButtons from './FilterButtons';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
-import initialTodos from '../older-ways/common/initial-todos';
+import initialTodos from '../common/initial-todos';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './slices/reducer';

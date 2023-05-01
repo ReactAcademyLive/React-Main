@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 import FilterButtons from './FilterButtons';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
-import initialTodos from '../older-ways/common/initial-todos';
+import initialTodos from '../common/initial-todos';
 import { addTodo, toggleTodo, setFilter } from './StateManager/actions';
 import { todoReducer, filterReducer } from './StateManager/reducers';
 import TodoContext from './StateManager/todo-context';
