@@ -2,6 +2,7 @@ import DisplayData from './L3Left-DisplayData';
 
 interface BlueBoxProps {
   firstName: string;
+  lastName?: string;
   color: string;
 }
 

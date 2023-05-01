@@ -1,16 +1,12 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import FilterButtons from './FilterButtons';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import initialTodos from '../older-ways/common/initial-todos';
-import {
-  addTodo,
-  toggleTodo,
-  setFilter,
-  StatusFilters,
-} from './StateManager/actions';
+import { addTodo, toggleTodo, setFilter } from './StateManager/actions';
 import { todoReducer, filterReducer } from './StateManager/reducers';
 import TodoContext from './StateManager/todo-context';
+import { StatusFilters } from '../common/StatusFilters';
 
 //dispatch: single function that schedules the changes: dispatch(action)
 //action: object that describes the changes we want to do to the state

@@ -1,7 +1,18 @@
-import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 
-export default function Posts({ posts }) {
+interface PostsProps {
+  posts: Post[];
+}
+
+interface Post {
+  url: string;
+  title: string;
+  permalink: string;
+  is_self: boolean;
+  ups: number;
+}
+
+export default function Posts({ posts }: PostsProps) {
   return (
     <ListGroup>
       {posts.map((post, i) => (

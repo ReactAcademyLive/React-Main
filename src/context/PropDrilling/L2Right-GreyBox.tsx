@@ -3,6 +3,7 @@ import ModifyData from './L3Right-ModifyData';
 
 interface GreyBoxProps {
   firstName: string;
+  lastName?: string;
   color: string;
   onChange: ChangeEventHandler;
 }

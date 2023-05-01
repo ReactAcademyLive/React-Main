@@ -1,18 +1,22 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
 import todoContext from './StateManager/todo-context';
-import { StatusFilters } from './StateManager/actions';
+import { StatusFilters } from '../common/StatusFilters';
+
+type StatusFiltersStrings = keyof typeof StatusFilters;
 
 export default function FilterButtons() {
   const ctx = useContext(todoContext);
   const { visibilityFilter, onChangeFilter } = ctx;
   const buttonList = Object.keys(StatusFilters).map((key) => {
-    const value = StatusFilters[key];
+    const value = StatusFilters[key as StatusFiltersStrings];
     const selected = value === visibilityFilter;
     return (
       <Button
         key={key}
-        onClick={() => onChangeFilter(value)}
+        onClick={() => {
+          if (onChangeFilter) onChangeFilter(value);
+        }}
         variant={selected ? 'primary' : 'info'}
       >
         {key}

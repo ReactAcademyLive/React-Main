@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import { MouseEvent, useContext } from 'react';
 import TodoItem from './TodoItem';
 import { ListGroup } from 'react-bootstrap';
 import TodoContext from './StateManager/todo-context';
 
-const TodoList = () => {
+export default function TodoList() {
   const ctx = useContext(TodoContext);
   const { todos, onToggleTodo, onDeleteTodo, onEditTodo } = ctx;
   return (
@@ -12,16 +12,18 @@ const TodoList = () => {
         <TodoItem
           key={todo.id}
           {...todo}
-          onToggle={() => onToggleTodo(todo.id)}
-          onDelete={(evt) => {
-            evt.stopPropagation();
-            onDeleteTodo(todo.id);
+          onToggle={() => {
+            if (onToggleTodo) onToggleTodo(todo.id);
           }}
-          onEdit={(newText) => onEditTodo(todo.id, newText)}
+          onDelete={(evt: MouseEvent) => {
+            evt.stopPropagation();
+            if (onDeleteTodo) onDeleteTodo(todo.id);
+          }}
+          onEdit={(newText: string) => {
+            if (onEditTodo) onEditTodo(todo.id, newText);
+          }}
         />
       ))}
     </ListGroup>
   );
-};
-
-export default TodoList;
+}

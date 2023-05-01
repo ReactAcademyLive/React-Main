@@ -1,17 +1,18 @@
-import React, { useContext } from 'react';
+import { createRef } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import todoContext from './StateManager/todo-context';
 
-export default function AddTodo() {
-  const ctx = useContext(todoContext);
-  const { onAddTodo } = ctx;
-  let inputText = React.createRef();
+interface AddTodoProps {
+  onAddTodo: (text: string) => void;
+}
+
+export default function AddTodo({ onAddTodo }: AddTodoProps) {
+  let inputText = createRef<HTMLInputElement>();
   return (
     <div>
       <Form
         onSubmit={(evt) => {
           evt.preventDefault();
-          if (!inputText.current.value.trim()) {
+          if (!inputText.current?.value.trim()) {
             return;
           }
           onAddTodo(inputText.current.value);

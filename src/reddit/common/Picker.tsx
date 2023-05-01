@@ -1,7 +1,12 @@
-import React from 'react';
 import { Form } from 'react-bootstrap';
 
-export default function Picker({ value, onChange, options }) {
+interface PickerProps {
+  value: string;
+  onChange: (s: string) => void;
+  options: string[];
+}
+
+export default function Picker({ value, onChange, options }: PickerProps) {
   return (
     <span>
       <h1>{value}</h1>
