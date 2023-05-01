@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-export const StatusFilters = {
-  All: 'all',
-  Active: 'active',
-  Completed: 'completed',
-};
+import { StatusFilters } from '../../common/StatusFilters';
 
 const visibilityFilter = createSlice({
   name: 'visibilityFilter',

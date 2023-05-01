@@ -1,11 +1,8 @@
-import React, { useRef } from 'react';
 import FilterButtons from './FilterButtons';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
-import initialTodos from '../common/initial-todos';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './slices/reducer';
+import { store } from './slices/store';
 
 //dispatch: single function that schedules the changes: dispatch(action)
 //action: object that describes the changes we want to do to the state
@@ -22,17 +19,8 @@ import rootReducer from './slices/reducer';
 //{type: 'todos/editTodo, payload: {id:4, newText: 'Walk the dog'}}
 
 export default function Todos() {
-  let store = useRef();
-
-  if (!store.current) {
-    store.current = configureStore({
-      reducer: rootReducer,
-      preloadedState: { todos: initialTodos },
-    });
-  }
-
   return (
-    <Provider store={store.current}>
+    <Provider store={store}>
       <h1>Todos (using Redux Toolkit)</h1>
       <AddTodo />
       <FilterButtons />

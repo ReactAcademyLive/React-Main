@@ -1,16 +1,19 @@
-import React from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
-import { StatusFilters, setVisibilityFilter } from './slices/visibility-filter';
+
+import { setVisibilityFilter } from './slices/visibility-filter';
+import { StatusFilters } from '../common/StatusFilters';
+import { useAppDispatch, useAppSelector } from './slices/hooks';
+
+type StatusFiltersStrings = keyof typeof StatusFilters;
 
 export default function FilterButtons() {
-  const dispatch = useDispatch();
-  const visibilityFilter = useSelector((state) => state.visibilityFilter);
-  const onChangeFilter = (newFilter) =>
+  const dispatch = useAppDispatch();
+  const visibilityFilter = useAppSelector((state) => state.visibilityFilter);
+  const onChangeFilter = (newFilter: StatusFilters) =>
     dispatch(setVisibilityFilter(newFilter));
 
   const buttonList = Object.keys(StatusFilters).map((key) => {
-    const value = StatusFilters[key];
+    const value = StatusFilters[key as StatusFiltersStrings];
     const selected = value === visibilityFilter;
     return (
       <Button

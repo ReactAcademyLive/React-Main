@@ -1,22 +1,22 @@
-import React, { createRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { createRef } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { addTodo } from './slices/todos';
+import { useAppDispatch } from './slices/hooks';
 
 export default function AddTodo() {
-  const dispatch = useDispatch();
-  let inputText = createRef();
+  const dispatch = useAppDispatch();
+  let inputText = createRef<HTMLInputElement>();
 
-  const onAddTodo = (text) => {
+  function onAddTodo(text: string) {
     dispatch(addTodo(text));
-  };
+  }
 
   return (
     <div>
       <Form
         onSubmit={(evt) => {
           evt.preventDefault();
-          if (!inputText.current.value.trim()) {
+          if (!inputText.current?.value.trim()) {
             return;
           }
           onAddTodo(inputText.current.value);

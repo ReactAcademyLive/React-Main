@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import initialTodos from '../../common/initial-todos';
 
 let nextTodoId = 4;
 
 const todos = createSlice({
   name: 'todos',
-  initialState: [],
+  initialState: initialTodos,
   reducers: {
     addTodo: (state, action) => {
       state.push({ id: nextTodoId++, text: action.payload, completed: false });

@@ -1,16 +1,17 @@
-import React from 'react';
-import TodoItem from './TodoItem';
 import { ListGroup } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, editTodo /*, deleteTodo */ } from './slices/todos';
-import { StatusFilters } from './slices/visibility-filter';
+import { RootState } from './slices/store';
+import { StatusFilters } from '../common/StatusFilters';
 import { createSelector } from '@reduxjs/toolkit';
-
-const getTodos = (state) => state.todos;
-const getVisibilityFilter = (state) => state.visibilityFilter;
+import TodoItem from './TodoItem';
+import { useAppDispatch } from './slices/hooks';
+import { useAppSelector } from './slices/hooks';
 
 const selectVisibleTodos = createSelector(
-  [getTodos, getVisibilityFilter],
+  [
+    (state: RootState) => state.todos,
+    (state: RootState) => state.visibilityFilter,
+  ],
   (todos, filter) => {
     switch (filter) {
       case StatusFilters.All:
@@ -26,12 +27,13 @@ const selectVisibleTodos = createSelector(
 );
 
 const TodoList = () => {
-  const dispatch = useDispatch();
-  const filteredTodos = useSelector(selectVisibleTodos);
+  const dispatch = useAppDispatch();
+  const filteredTodos = useAppSelector(selectVisibleTodos);
 
-  const onToggleTodo = (id) => dispatch(toggleTodo(id));
-  const onDeleteTodo = (id) => alert('To be implemented');
-  const onEditTodo = (id, newText) => dispatch(editTodo(id, newText));
+  const onToggleTodo = (id: number) => dispatch(toggleTodo(id));
+  const onDeleteTodo = (id: number) => alert('To be implemented');
+  const onEditTodo = (id: number, newText: string) =>
+    dispatch(editTodo({ id, newText }));
 
   return (
     <ListGroup as='div' className='my-4'>
