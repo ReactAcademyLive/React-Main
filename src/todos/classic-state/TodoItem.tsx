@@ -43,7 +43,7 @@ function CustomCheckbox({ text, completed }: CustomCheckboxProps) {
       <label
         className={
           'form-check-label' +
-          (completed ? ' text-decoration-line-through text-muted' : '')
+          (completed ? ' text-decoration-line-through text-body-secondary' : '')
         }
       >
         {text}

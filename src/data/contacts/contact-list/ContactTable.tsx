@@ -33,7 +33,7 @@ function ContactTable({
       <Table striped>
         <thead>
           <tr>
-            <th className='text-muted' style={{ maxWidth: 70 }}>
+            <th className='text-body-secondary' style={{ maxWidth: 70 }}>
               id
             </th>
             <th>First Name</th>
@@ -96,7 +96,7 @@ function Row({ contact, setRow, deleteContact }: RowProps) {
     <tr key={contact.id}>
       <td
         style={{ maxWidth: 70 }}
-        className='align-middle text-muted text-truncate'
+        className='align-middle text-body-secondary text-truncate'
         title={contact.id.toString()}
       >
         {contact.id}
@@ -144,7 +144,7 @@ function EditRow({ contact, setRow }: EditRowProps) {
     <tr key={contact.id} className='bg-warning'>
       <td
         style={{ maxWidth: 70 }}
-        className='align-middle text-muted text-truncate'
+        className='align-middle text-body-secondary text-truncate'
         title={contact.id.toString()}
       >
         <F.Control
