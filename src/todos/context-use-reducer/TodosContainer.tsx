@@ -7,6 +7,7 @@ import { addTodo, toggleTodo, setFilter } from './StateManager/actions';
 import { todoReducer, filterReducer } from './StateManager/reducers';
 import TodoContext from './StateManager/todo-context';
 import { StatusFilters } from '../common/StatusFilters';
+import Todo from '../common/Todo';
 
 //dispatch: single function that schedules the changes: dispatch(action)
 //action: object that describes the changes we want to do to the state
@@ -29,7 +30,7 @@ export default function Todos() {
     StatusFilters.All
   );
 
-  function filterTodos(todos, filter) {
+  function filterTodos(todos: Todo[], filter: StatusFilters) {
     switch (filter) {
       case StatusFilters.All:
         return todos;
