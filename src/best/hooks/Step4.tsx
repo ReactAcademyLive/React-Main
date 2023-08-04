@@ -60,3 +60,8 @@ function DisplayMouse({ mouse }: DisplayMouseProps) {
 //to this child component
 
 //Probem: not easy to wrap multiple components at the same time.
+
+//higher order function: Function that takes an
+//existing function and wraps it into a new function
+//Higher order component: function that takes an
+//e

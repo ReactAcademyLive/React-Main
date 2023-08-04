@@ -1,0 +1,53 @@
+State can be simple or complex
+
+There is a a new React rule about state:
+-state is immutable
+
+
+In JS, certain things are immutable, others are mutable:
+bool: immutable
+numbers: immutable
+strings: immutable
+Object: mutable
+Arrays: mutable 
+
+We must avoid mutating, because setState doesn't like it.  We should create a 
+new object or a new array instead of mutating.
+
+If an object is mutated, setState will not update an object or array. 
+
+
+x=[5,6,7];
+x.push(8); (bad, mutation)
+x=[...x,8]; (good, creates a new array)
+x[0]=1; (bad,mutation)
+x=[1, ...x.slice(1)] (good, creates a new array)
+
+emp ={name: "Ash", city:"Chicago"}
+emp.name="Bob" (bad, mutation)
+{...emp, name:"Bob"} (good, creates a new object)
+
+
+Redux uses a reducer:
+a reducer is a special kind of function to manage the state
+
+it takes two arguments:
+1. current state
+2. action object
+   type of action (delete, add, modify, insert)
+   payload 
+
+And it will return an object of the new state.
+
+Tooling to help to scrutinize the data and the changes
+performance gains
+Easier state management
+easy history and undos
+easy to save or load the data 
+
+
+
+
+
+
+

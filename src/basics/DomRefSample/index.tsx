@@ -1,4 +1,4 @@
-import { useState, createRef, RefObject } from 'react';
+import { useState, createRef, RefObject, useId } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import InnerInput from './InputOldInnerRef';
 import ForwardInput from './InputWithRef';
@@ -9,6 +9,8 @@ export default function RefSample() {
   const ref2: RefObject<HTMLInputElement> = createRef();
   const ref3: RefObject<HTMLInputElement> = createRef();
   const ref4: RefObject<HTMLInputElement> = createRef();
+  const id: string = useId();
+  //console.log(id);
 
   return (
     <>

@@ -3,5 +3,9 @@ import MyContext from './MyContext';
 
 export default function DisplayData() {
   const ctx = useContext(MyContext);
-  return <h1 style={{ color: ctx.color }}>The name is {ctx.firstName}</h1>;
+  return (
+    <h1 style={{ color: ctx.color }}>
+      The name is {ctx.firstName} {ctx.lastName}
+    </h1>
+  );
 }
