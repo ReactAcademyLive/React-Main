@@ -118,7 +118,7 @@ function Row({ contact, setRow, deleteContact }: RowProps) {
           🖊️
         </Button>
 
-        <Link to={`/data/details-data-router/${contact.id}`}>
+        <Link to={`/data/details/${contact.id}`}>
           <Button variant='secondary' className='me-3' title='Details'>
             🧾
           </Button>

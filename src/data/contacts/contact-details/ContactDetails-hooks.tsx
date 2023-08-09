@@ -49,7 +49,7 @@ export default function ContactDetails() {
       lastName: state.lastName,
       email: state.email,
     });
-    navigate('/data/hooks');
+    navigate('/data/contacts');
   }
 
   function change(evt: ChangeEvent<HTMLInputElement>) {
