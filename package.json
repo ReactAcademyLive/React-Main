@@ -18,8 +18,8 @@
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^1.1.2",
     "bootstrap": "^5.3.0-alpha3",
-    "firebase": "^9.6.7",
-    "keycloak-js": "^21.0.1",
+    "firebase": "^10.1.0",
+    "keycloak-js": "^22.0.1",
     "leaflet": "^1.7.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -54,6 +54,6 @@
     "typescript": "^5.0.4",
     "vite": "^4.3.9",
     "vite-plugin-eslint": "^1.8.1",
-    "vitest": "^0.32.0"
+    "vitest": "^0.34.1"
   }
 }
