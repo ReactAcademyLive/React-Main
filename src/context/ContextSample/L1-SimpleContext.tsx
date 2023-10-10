@@ -25,11 +25,12 @@ export default function SimpleContext() {
   );
 }
 
-//the following would prevent the content from re-rendering
+//The following would prevent the content from re-rendering
 //when the props are the same (hint: here they are always the same)
-//let MemoContent = React.memo(Content);
+//let MemoContent = memo(Content);
 
 function Content() {
+  //console.log('Rendering Content');
   return (
     <Row>
       <Col md='6'>
