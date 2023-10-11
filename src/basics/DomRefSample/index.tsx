@@ -9,6 +9,7 @@ export default function RefSample() {
   const ref2: RefObject<HTMLInputElement> = createRef();
   const ref3: RefObject<HTMLInputElement> = createRef();
   const ref4: RefObject<HTMLInputElement> = createRef();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const id: string = useId();
   //console.log(id);
 
