@@ -35,15 +35,12 @@ export default function ValidatedForm({ login }: ValidatedFormProps) {
     login = login ?? myLogin;
     const result = await login(data.email, data.password);
 
-    // @   ts-ignore
-    if (!global.chai) {
-      if (result) {
-        alert('Login was a success');
-      } else {
-        alert(
-          'Login failed. Try using using a password that is identical to the email.'
-        );
-      }
+    if (result) {
+      alert('Login was a success');
+    } else {
+      alert(
+        'Login failed. Try using using a password that is identical to the email.',
+      );
     }
     reset();
   };
