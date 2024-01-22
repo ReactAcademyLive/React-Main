@@ -88,8 +88,8 @@ export default function ContactDetails() {
 
 function isEquivalent(a: Record<string, any>, b: Record<string, any>) {
   // Create arrays of property names
-  var aProps = Object.getOwnPropertyNames(a);
-  var bProps = Object.getOwnPropertyNames(b);
+  let aProps = Object.getOwnPropertyNames(a);
+  let bProps = Object.getOwnPropertyNames(b);
 
   // If number of properties is different,
   // objects are not equivalent
@@ -97,8 +97,8 @@ function isEquivalent(a: Record<string, any>, b: Record<string, any>) {
     return false;
   }
 
-  for (var i = 0; i < aProps.length; i++) {
-    var propName = aProps[i];
+  for (let i = 0; i < aProps.length; i++) {
+    const propName = aProps[i];
 
     // If values of same property are not equal,
     // objects are not equivalent

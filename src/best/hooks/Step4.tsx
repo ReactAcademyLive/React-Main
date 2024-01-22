@@ -11,7 +11,7 @@ export default function ParentRoot() {
 
 //Component DisplayMouse is wrapped with the HOC that
 //provides mouse coordinates to DisplayMouse
-var DisplayPosition = withMouse(DisplayMouse);
+const DisplayPosition = withMouse(DisplayMouse);
 
 //This is a HOC, a higher-order component.
 //The goal is to provide mouse coordinates to Component

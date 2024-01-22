@@ -35,7 +35,7 @@ export default function ValidatedForm({ login }: ValidatedFormProps) {
     login = login ?? myLogin;
     const result = await login(data.email, data.password);
 
-    //@ts-ignore
+    // @   ts-ignore
     if (!global.chai) {
       if (result) {
         alert('Login was a success');

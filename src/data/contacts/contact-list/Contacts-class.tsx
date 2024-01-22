@@ -8,7 +8,10 @@ interface ContactsState {
   contacts: Contact[];
 }
 
-export default class Contacts extends React.Component<{}, ContactsState> {
+export default class Contacts extends React.Component<
+  Record<string, never>,
+  ContactsState
+> {
   state = { contacts: [] };
 
   componentDidMount() {
@@ -44,7 +47,7 @@ export default class Contacts extends React.Component<{}, ContactsState> {
 
   refreshData = async () => {
     try {
-      let data = await ContactApi.getAllContacts();
+      const data = await ContactApi.getAllContacts();
       this.setState({ contacts: data });
     } catch (err) {
       console.log(err);

@@ -7,6 +7,9 @@ import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import eslint from 'vite-plugin-eslint';
 
+rollupOptions: {
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
@@ -17,6 +20,7 @@ export default defineConfig({
     //src/context/PropDrilling/L1-SimpleState.jsx
     //src/context/ContextSample/L1-SimpleContext.jsx
     rollupOptions: {
+      // external: ['react-redux', 'react-router', 'react-router-dom', 'redux'],
       onwarn: ({ loc }) => {
         if (loc?.file?.match(/sha256.js$|src\/context/)) return;
       },

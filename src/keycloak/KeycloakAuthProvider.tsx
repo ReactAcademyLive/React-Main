@@ -39,6 +39,8 @@ const conf = {
   clientId: 'august-course',
 };
 
+let initialized = false;
+
 function AuthProvider({ config = conf, children }: AuthProviderProps) {
   const ref = useRef(new Keycloak(config));
   const keycloak = ref.current;
@@ -49,10 +51,13 @@ function AuthProvider({ config = conf, children }: AuthProviderProps) {
       console.log('token refreshed');
       refresh({});
     };
-    keycloak.init({ checkLoginIframe: false }).then((authenticated) => {
-      //    console.log(`Authenticated: ${authenticated}`);
-      refresh({});
-    });
+    if (!initialized) {
+      keycloak.init({ checkLoginIframe: false }).then((authenticated) => {
+        //    console.log(`Authenticated: ${authenticated}`);
+        refresh({});
+      });
+      initialized = true;
+    }
   }, [keycloak]);
 
   return (
