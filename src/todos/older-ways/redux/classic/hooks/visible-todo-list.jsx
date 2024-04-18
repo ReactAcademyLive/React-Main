@@ -25,6 +25,7 @@ export default function VisibleTodoList() {
     <TodoList
       todos={getVisibleTodos(todos, visibilityFilter)}
       onToggleTodo={(id) => dispatch(toggleTodo(id))}
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onDeleteTodo={(id) => null}
     />
   );

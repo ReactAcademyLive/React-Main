@@ -6,7 +6,7 @@ interface AddTodoProps {
 }
 
 export default function AddTodo({ onAddTodo }: AddTodoProps) {
-  let inputText = createRef<HTMLInputElement>();
+  const inputText = createRef<HTMLInputElement>();
   return (
     <div>
       <Form

@@ -10,4 +10,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => dispatch(setVisibilityFilter(ownProps.filter)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Link);
+const FilterLink = connect(mapStateToProps, mapDispatchToProps)(Link);
+
+export default FilterLink;

@@ -10,20 +10,20 @@ import initialTodos from '../../../../common/initial-todos';
 
 export default function Todos() {
   React.useEffect(() => {
-    let savedTitle = document.title;
+    const savedTitle = document.title;
     document.title = 'Todos using classic Redux and Hooks!';
     return () => {
       document.title = savedTitle;
     };
   }, []);
 
-  let store = useRef();
+  const store = useRef();
 
   if (!store.current) {
     store.current = createStore(
       rootReducer,
       { todos: initialTodos },
-      devToolsEnhancer()
+      devToolsEnhancer(),
     );
   }
 

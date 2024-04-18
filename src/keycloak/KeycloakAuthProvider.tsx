@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import {
   useState,
   useEffect,
@@ -41,7 +42,10 @@ const conf = {
 
 let initialized = false;
 
-function AuthProvider({ config = conf, children }: AuthProviderProps) {
+export default function AuthProvider({
+  config = conf,
+  children,
+}: AuthProviderProps) {
   const ref = useRef(new Keycloak(config));
   const keycloak = ref.current;
   const [, refresh] = useState<object>({});
@@ -53,7 +57,7 @@ function AuthProvider({ config = conf, children }: AuthProviderProps) {
     };
     if (!initialized) {
       keycloak.init({ checkLoginIframe: false }).then((authenticated) => {
-        //    console.log(`Authenticated: ${authenticated}`);
+        console.log(`Authenticated: ${authenticated}`);
         refresh({});
       });
       initialized = true;
@@ -79,9 +83,8 @@ function AuthProvider({ config = conf, children }: AuthProviderProps) {
     </AuthContext.Provider>
   );
 }
-export default AuthProvider;
 
 export function useAuth() {
-  let authCtx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
   return authCtx;
 }

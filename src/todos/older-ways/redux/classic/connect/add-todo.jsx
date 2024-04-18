@@ -3,8 +3,8 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 //import { addTodo } from './actions'
 import { connect } from 'react-redux';
 
-function AddTodo({ dispatch /*onAddTodo*/ }) {
-  let inputText = React.createRef();
+function AddTodo2({ dispatch /*onAddTodo*/ }) {
+  const inputText = React.createRef();
   return (
     <div>
       <Form
@@ -38,4 +38,6 @@ function AddTodo({ dispatch /*onAddTodo*/ }) {
 //  const mapDispatchToProps= dispatch =>
 //        ({onAddTodo: (text)=>{dispatch(addTodo(text))}});
 
-export default connect()(AddTodo);
+const AddTodo = connect()(AddTodo2);
+
+export default AddTodo;

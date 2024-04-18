@@ -5,7 +5,7 @@ import todoContext from './StateManager/todo-context';
 export default function AddTodo() {
   const ctx = useContext(todoContext);
   const { onAddTodo } = ctx;
-  let inputText = React.createRef<HTMLInputElement>();
+  const inputText = React.createRef<HTMLInputElement>();
   return (
     <div>
       <Form

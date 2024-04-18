@@ -4,7 +4,10 @@ interface InputProps {
   defaultValue: string;
 }
 
-function Input({ defaultValue }: InputProps, ref: RefObject<HTMLInputElement>) {
+function Input2(
+  { defaultValue }: InputProps,
+  ref: RefObject<HTMLInputElement>,
+) {
   return (
     <input
       type='search'
@@ -15,9 +18,11 @@ function Input({ defaultValue }: InputProps, ref: RefObject<HTMLInputElement>) {
   );
 }
 
-export default forwardRef(
-  Input as ForwardRefRenderFunction<HTMLInputElement, InputProps>
+const Input = forwardRef(
+  Input2 as ForwardRefRenderFunction<HTMLInputElement, InputProps>,
 );
+
+export default Input;
 
 // There are two "special" props, which don't get
 // pushed down to child components: `ref` and `key`.

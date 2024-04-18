@@ -17,7 +17,6 @@ interface CustomCheckboxProps {
 export default function TodoItem({
   onToggle,
   onDelete,
-  onEdit,
   completed,
   text,
 }: TodoItemProps) {

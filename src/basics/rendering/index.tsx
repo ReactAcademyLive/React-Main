@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, JSX } from 'react';
 import { Button, OverlayTrigger, Popover } from 'react-bootstrap';
 import { Placement } from '@popperjs/core';
 
@@ -20,7 +20,7 @@ interface Scenarios {
 interface MyButtonProps {
   placement: Placement;
   fn: () => void;
-  children: any;
+  children: JSX.Element;
   variant: string;
   details: string;
   code: string;

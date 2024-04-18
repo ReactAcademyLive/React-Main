@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect, RefObject } from 'react';
 import { DisplayMouseProps, DisplayMouseState } from '../classes/MouseState';
 //import Cat from '../Cat';
@@ -8,6 +7,7 @@ export default function ParentRoot() {
   return <DisplayMouse mouse={mouse} />;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function useMouse(div?: RefObject<HTMLDivElement>) {
   const [mouse, setMouse] = useState<DisplayMouseState>({ x: 0, y: 0 });
 
@@ -18,12 +18,12 @@ function useMouse(div?: RefObject<HTMLDivElement>) {
   useEffect(() => {
     window.addEventListener(
       'mousemove',
-      handleMouseMove as EventListenerOrEventListenerObject
+      handleMouseMove as EventListenerOrEventListenerObject,
     );
     return () => {
       window.removeEventListener(
         'mousemove',
-        handleMouseMove as EventListenerOrEventListenerObject
+        handleMouseMove as EventListenerOrEventListenerObject,
       );
     };
   }, []);

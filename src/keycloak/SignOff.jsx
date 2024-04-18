@@ -5,7 +5,7 @@ import { useAuth } from './KeycloakAuthProvider';
 export default function Signin() {
   const auth = useAuth();
 
-  function logoutBtn(evt) {
+  function logoutBtn() {
     auth.logout();
   }
 

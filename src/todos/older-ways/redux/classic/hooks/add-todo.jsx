@@ -5,7 +5,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 
 export default function AddTodo() {
   const dispatch = useDispatch();
-  let inputText = React.createRef();
+  const inputText = React.createRef();
 
   //const onAddTodo = (text) => {dispatch(addTodo(inputText.current.value));};
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useState, useEffect, useContext, useRef, ReactNode } from 'react';
 import ElectionContext, { District, Loading } from './ElectionContext';
 
@@ -39,7 +40,7 @@ export default function ElectionProvider({ children }: ElectionProviderProps) {
     try {
       const result = await fetch(
         //'https://dgeq.org/doc/gen2018-10-01/resultats.json'
-        'https://www.dgeq.org/doc/gen2022-10-03/resultats.json'
+        'https://www.dgeq.org/doc/gen2022-10-03/resultats.json',
       );
       const data = await result.json();
       setResults(data.circonscriptions as District[]);
@@ -71,7 +72,7 @@ export function useLoading() {
 
 export function useSelection(): [
   number,
-  ((regionID: number) => void) | undefined
+  ((regionID: number) => void) | undefined,
 ] {
   const ctx = useContext(ElectionContext);
   return [ctx.selectedRegion, ctx.setRegion];

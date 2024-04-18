@@ -5,7 +5,7 @@ import { useAuth } from './KeycloakAuthProvider';
 export default function Signup() {
   const auth = useAuth();
 
-  function resetBtn(evt) {
+  function resetBtn() {
     auth.login({ action: 'UPDATE_PASSWORD' });
   }
 

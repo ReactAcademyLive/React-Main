@@ -3,13 +3,12 @@ import {
   useEffect,
   createContext,
   useContext,
-  ElementType,
   ReactNode,
 } from 'react';
 
 interface ThemeItem {
   name: string;
-  icon: ElementType<any> | string;
+  icon: ReactNode;
 }
 interface ThemeContextType {
   theme: string;
@@ -26,17 +25,17 @@ interface ThemeProviderProps {
 
 interface LocalThemeProps {
   theme: string;
-  as?: ElementType<any>;
+  as?: ReactNode;
   children: ReactNode;
 }
 
 const IS_SERVER: boolean = typeof window === 'undefined';
 
-let storedTheme: string | null = IS_SERVER
+const storedTheme: string | null = IS_SERVER
   ? 'light'
   : localStorage.getItem('theme');
 
-let defaultThemes: ThemeItem[] = [
+const defaultThemes: ThemeItem[] = [
   { name: 'Light', icon: '☀️' },
   { name: 'Dark', icon: '🌙' },
   { name: 'Auto', icon: '⚙️' },
@@ -104,6 +103,7 @@ export default function ThemeProvider({
 
 type ThemePair = [string, (theme: string) => void];
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTheme(): ThemePair {
   const context = useContext(ThemeContext);
 
@@ -114,6 +114,7 @@ export function useTheme(): ThemePair {
   return [context.theme, context.setTheme];
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useThemeList() {
   const context = useContext(ThemeContext);
 

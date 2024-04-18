@@ -20,7 +20,7 @@ const TodoList = ({
       <TodoItem
         key={todo.id}
         {...todo}
-        onToggle={(evt) => onToggleTodo(todo.id)}
+        onToggle={() => onToggleTodo(todo.id)}
         onDelete={(evt) => {
           evt.stopPropagation();
           onDeleteTodo(todo.id);

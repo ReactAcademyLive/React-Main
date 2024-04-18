@@ -25,7 +25,7 @@ export default function ContactDetails() {
   const navigate = useNavigate();
 
   async function getData(id: string) {
-    let contact = await ContactApi.getContact(id);
+    const contact = await ContactApi.getContact(id);
     setState({ ...contact, formErrors: {} });
   }
 
@@ -57,7 +57,7 @@ export default function ContactDetails() {
   }
 
   function contactFormIsValid() {
-    let formErrors: FormErrors = {};
+    const formErrors: FormErrors = {};
 
     if (state.firstName.length < 3) {
       formErrors.firstName = `First name needs three letters or more (${state.firstName})`;
@@ -86,10 +86,10 @@ export default function ContactDetails() {
   );
 }
 
-function isEquivalent(a: Record<string, any>, b: Record<string, any>) {
+function isEquivalent(a: Record<string, unknown>, b: Record<string, unknown>) {
   // Create arrays of property names
-  let aProps = Object.getOwnPropertyNames(a);
-  let bProps = Object.getOwnPropertyNames(b);
+  const aProps = Object.getOwnPropertyNames(a);
+  const bProps = Object.getOwnPropertyNames(b);
 
   // If number of properties is different,
   // objects are not equivalent

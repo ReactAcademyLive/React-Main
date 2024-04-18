@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toggleTodo /*, deleteTodo */ } from './slices/todos';
 import { createSelector } from '@reduxjs/toolkit';
-import TodoList from '../../common/todo-list';
+import TodoList2 from '../../common/todo-list';
 import { VisibilityFilters } from './slices/visibility-filter';
 
 // const getVisibleTodos = (todos, filter) => {
@@ -33,7 +33,7 @@ const selectVisibleTodos = createSelector(
       default:
         throw new Error('Unknown filter: ' + filter);
     }
-  }
+  },
 );
 
 const mapStateToProps = (state) => ({
@@ -42,7 +42,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   onToggleTodo: toggleTodo,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onDeleteTodo: (id) => (id) => null,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+const TodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList2);
+
+export default TodoList;

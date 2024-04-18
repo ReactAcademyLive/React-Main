@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 import Picker from '../../common/Picker';
 import Posts from '../../common/Posts';
 
-class AsyncApp extends Component {
+class AsyncApp2 extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -90,4 +90,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(AsyncApp);
+const AsyncApp = connect(mapStateToProps)(AsyncApp2);
+
+export default AsyncApp;

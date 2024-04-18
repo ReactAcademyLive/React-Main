@@ -23,7 +23,7 @@ const selectVisibleTodos = createSelector(
       default:
         throw new Error('Unknown filter: ' + filter);
     }
-  }
+  },
 );
 
 const TodoList = () => {
@@ -31,7 +31,7 @@ const TodoList = () => {
   const filteredTodos = useAppSelector(selectVisibleTodos);
 
   const onToggleTodo = (id: number) => dispatch(toggleTodo(id));
-  const onDeleteTodo = (id: number) => alert('To be implemented');
+  const onDeleteTodo = (id: number) => alert(`To be implemented with ${id}`);
   const onEditTodo = (id: number, newText: string) =>
     dispatch(editTodo({ id, newText }));
 

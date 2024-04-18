@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 export default function Home() {
-  let { name } = useParams();
+  const { name } = useParams();
   return (
     <>
       <h1>Home page</h1>

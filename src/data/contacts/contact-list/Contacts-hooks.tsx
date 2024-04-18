@@ -17,7 +17,7 @@ export default function Contacts() {
   // This is the modern way of calling data (async)
   async function refreshData() {
     try {
-      let data = await ContactApi.getAllContacts();
+      const data = await ContactApi.getAllContacts();
       setContacts(data);
     } catch (err) {
       console.log(err);

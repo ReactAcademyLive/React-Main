@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toggleTodo /*, deleteTodo */ } from './actions';
-import TodoList from '../../../common/todo-list';
+import TodoList2 from '../../../common/todo-list';
 import { VisibilityFilters } from './actions';
 
 const getVisibleTodos = (todos, filter) => {
@@ -23,7 +23,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onToggleTodo: (id) => dispatch(toggleTodo(id)),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onDeleteTodo: (id) => null,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+const TodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList2);
+
+export default TodoList;

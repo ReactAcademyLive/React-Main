@@ -14,7 +14,7 @@ interface CounterProps {
 }
 
 export default function Counter({ init }: CounterProps) {
-  let [count, setCount] = useLocalStorage<number | null>(+init || 1, 'count');
+  const [count, setCount] = useLocalStorage<number | null>(+init || 1, 'count');
 
   function increment(incr: number) {
     setCount((count ?? 0) + incr);
@@ -42,13 +42,13 @@ export default function Counter({ init }: CounterProps) {
 
 function useLocalStorage<T>(
   initial: T,
-  name: string
+  name: string,
 ): [T, Dispatch<SetStateAction<T>>] {
   const [state, setState] = useState<T>(initial);
   const isFirstRender = useIsFirstRender();
 
   useEffect(() => {
-    let storedState = window.localStorage.getItem(name);
+    const storedState = window.localStorage.getItem(name);
     if (storedState) {
       setState(JSON.parse(storedState) as T);
     }

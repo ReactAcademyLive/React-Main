@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import ContactApi from '../contact-api/ContactApi';
 import Contact from '../contact-api/ContactType';
 import ContactTable from './ContactTable';
@@ -47,6 +48,7 @@ export function loader() {
 }
 
 export async function action({ request, params }: ActionFunctionArgs) {
+  console.log(`action params: ${params}`);
   if (request.method === 'DELETE') {
     const formData = await request.formData();
     await ContactApi.deleteContact((formData.get('id') as string) ?? '');

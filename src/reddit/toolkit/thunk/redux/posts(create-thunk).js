@@ -4,7 +4,7 @@ export const fetchPosts = createAsyncThunk(
   'posts/fetchPosts',
   async (selectedSubreddit) => {
     const response = await fetch(
-      `https://www.reddit.com/r/${selectedSubreddit}.json`
+      `https://www.reddit.com/r/${selectedSubreddit}.json`,
     );
     const data = await response.json();
     return {
@@ -12,7 +12,7 @@ export const fetchPosts = createAsyncThunk(
       posts: data.data.children.map((child) => child.data),
       receivedAt: Date.now(),
     };
-  }
+  },
 );
 
 const postsSlice = createSlice({
@@ -46,6 +46,7 @@ const postsSlice = createSlice({
       state[currentSubreddit].lastUpdated = action.payload.receivedAt;
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     builder.addCase(fetchPosts.rejected, (state, action) => {
       console.log('rejected');
       console.log(state['reactjs']);

@@ -7,13 +7,13 @@ export default class ContactApi {
 
   static getAllContacts() {
     return fetch(`${base}/contacts`).then(
-      (resp): Promise<Contact[]> => resp.json()
+      (resp): Promise<Contact[]> => resp.json(),
     );
   }
 
   static getContact(contactId: string) {
     return fetch(`${base}/contacts/${contactId}`).then(
-      (resp): Promise<Contact> => resp.json()
+      (resp): Promise<Contact> => resp.json(),
     );
   }
 
@@ -23,13 +23,13 @@ export default class ContactApi {
     const minContactLength = 3;
     if (contact.firstName.length < minContactLength) {
       throw new Error(
-        `First Name must be at least ${minContactLength} characters.`
+        `First Name must be at least ${minContactLength} characters.`,
       );
     }
 
     if (contact.lastName.length < minContactLength) {
       throw new Error(
-        `Last Name must be at least ${minContactLength} characters.`
+        `Last Name must be at least ${minContactLength} characters.`,
       );
     }
 
@@ -57,13 +57,13 @@ export default class ContactApi {
   static async registerNotification(fn: () => void) {
     if (this.ws === null) {
       // this.ws = {};
-      let res = await fetch(`${base}/negotiate`);
-      let url = await res.json();
+      const res = await fetch(`${base}/negotiate`);
+      const url = await res.json();
       this.ws = new WebSocket(url.url);
 
       this.ws.onopen = () => console.log('connected');
 
-      this.ws.onmessage = (event) => {
+      this.ws.onmessage = () => {
         fn();
       };
     }

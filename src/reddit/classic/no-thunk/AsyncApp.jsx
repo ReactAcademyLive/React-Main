@@ -10,7 +10,7 @@ import { Button } from 'react-bootstrap';
 import Picker from '../../common/Picker';
 import Posts from '../../common/Posts';
 
-class AsyncApp extends Component {
+class AsyncApp2 extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -59,7 +59,7 @@ class AsyncApp extends Component {
       dispatch(requestPosts(subreddit));
       try {
         const response = await fetch(
-          `https://www.reddit.com/r/${subreddit}.json`
+          `https://www.reddit.com/r/${subreddit}.json`,
         );
         const json = await response.json();
         dispatch(receivePosts(subreddit, json));
@@ -119,4 +119,5 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(AsyncApp);
+const AsyncApp = connect(mapStateToProps)(AsyncApp2);
+export default AsyncApp;

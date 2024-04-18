@@ -58,9 +58,11 @@ import ManageAccount from '../keycloak/ManageAccount';
 import Secret from '../keycloak/Secret';
 import ProtectedRoute from './ProtectedRoute';
 import TokenDetails from '../keycloak/TokenDetails';
+import { lazy } from 'react';
 
-// import MapWithPins from '../data/maps/MapWithPins';
-//const MapWithPins = React.lazy(() => import('../data/maps/MapWithPins'));
+//import MapWithPins from '../data/maps/MapWithPins';
+// eslint-disable-next-line react-refresh/only-export-components
+const MapWithPins = lazy(() => import('../data/maps/MapWithPins'));
 
 const routes = createBrowserRouter([
   {
@@ -132,7 +134,7 @@ const routes = createBrowserRouter([
             ],
           },
 
-          // { path: 'map', element: <MapWithPins /> },
+          { path: 'map', element: <MapWithPins /> },
           { path: 'election', element: <ElectionResult /> },
         ],
       },

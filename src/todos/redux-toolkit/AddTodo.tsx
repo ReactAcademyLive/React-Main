@@ -5,7 +5,7 @@ import { useAppDispatch } from './slices/hooks';
 
 export default function AddTodo() {
   const dispatch = useAppDispatch();
-  let inputText = createRef<HTMLInputElement>();
+  const inputText = createRef<HTMLInputElement>();
 
   function onAddTodo(text: string) {
     dispatch(addTodo(text));

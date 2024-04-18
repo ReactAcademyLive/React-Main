@@ -5,7 +5,7 @@ import { useAuth } from './KeycloakAuthProvider';
 export default function Signup() {
   const auth = useAuth();
 
-  function registerBtn(evt) {
+  function registerBtn() {
     auth.register();
   }
 
