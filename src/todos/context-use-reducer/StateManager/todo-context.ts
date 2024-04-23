@@ -20,6 +20,7 @@ export default createContext<TodoContext>({
 export type ActionTodos =
   | { type: 'todos/addTodo'; payload: string }
   | { type: 'todos/toggleTodo'; payload: number }
+  | { type: 'todos/deleteTodo'; payload: number }
   | { type: 'todos/editTodo'; payload: { id: number; text: string } };
 
 export type ActionFilters = {

@@ -8,17 +8,17 @@ import Todo from '../common/Todo';
 
 let currentId: number = 4;
 
-export default function Todos() {
+export default function TodosContainer() {
   const [todos, setTodos] = useState<Todo[]>(initialTodos);
   const [visibilityFilter, setVisibilityFilter] = useState<StatusFilters>(
-    StatusFilters.All
+    StatusFilters.All,
   );
 
   function toggleTodo(id: number) {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
     );
   }
 

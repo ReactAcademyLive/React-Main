@@ -23,11 +23,11 @@ import Todo from '../common/Todo';
 //{type: 'todos/deleteTodo', payload: 3}
 //{type: 'todos/editTodo, payload: {id:4, newText: 'Walk the dog'}}
 
-export default function Todos() {
+export default function TodosContainer() {
   const [todos, dispatchTodos] = useReducer(todoReducer, initialTodos);
   const [visibilityFilter, dispatchFilter] = useReducer(
     filterReducer,
-    StatusFilters.All
+    StatusFilters.All,
   );
 
   function filterTodos(todos: Todo[], filter: StatusFilters) {
@@ -52,7 +52,7 @@ export default function Todos() {
         visibilityFilter: visibilityFilter,
         onAddTodo: (text) => dispatchTodos(addTodo(text)),
         onToggleTodo: (id) => dispatchTodos(toggleTodo(id)),
-        onDeleteTodo: (id) => alert('to be completed ' + id),
+        onDeleteTodo: (id) => alert(`To be completed with id: ${id}`),
         onChangeFilter: (text) => dispatchFilter(setFilter(text)),
       }}
     >

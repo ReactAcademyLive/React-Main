@@ -1,10 +1,10 @@
-import React, { ContextType } from 'react';
+import { ContextType, useContext, Component } from 'react';
 import MyInputs from './MyInputs';
 import MyContext from './MyContext';
 
 //Hooks only work with functions
 export default function ContextHooks() {
-  const ctx = React.useContext(MyContext);
+  const ctx = useContext(MyContext);
   return <MyInputs {...ctx} />;
 }
 
@@ -42,7 +42,7 @@ export function ContextConsumer() {
 //2. using ContextTypes
 //This way only works with classes.
 
-export class ContextTypes extends React.Component {
+export class ContextTypes extends Component {
   static contextType = MyContext;
   declare context: ContextType<typeof MyContext>;
 

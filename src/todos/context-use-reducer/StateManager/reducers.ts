@@ -19,13 +19,13 @@ export function todoReducer(todos: Todo[], action: ActionTodos): Todo[] {
       return todos.map((todo) =>
         todo.id === action.payload
           ? { ...todo, completed: !todo.completed }
-          : todo
+          : todo,
       );
     case 'todos/editTodo':
       return todos.map((todo) =>
         todo.id === action.payload.id
           ? { ...todo, text: action.payload.text }
-          : todo
+          : todo,
       );
     default:
       return todos;
@@ -34,7 +34,7 @@ export function todoReducer(todos: Todo[], action: ActionTodos): Todo[] {
 
 export function filterReducer(
   currentFilter: StatusFilters,
-  action: ActionFilters
+  action: ActionFilters,
 ) {
   switch (action.type) {
     case 'visibilityFilter/setStatus':
