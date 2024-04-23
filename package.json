@@ -10,6 +10,7 @@
     "test": "vitest",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "convert-to-js": "./scripts/convert-to-js.sh",
+    "convert-to-js-pc": ".\\scripts\\convert-to-js-pc.sh",
     "convert-back": "./scripts/convert-back.sh"
   },
   "dependencies": {
@@ -19,7 +20,7 @@
     "@redux-devtools/extension": "^3.2.3",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.1.2",
-    "bootstrap": "^5.3.0-alpha3",
+    "bootstrap": "^5.3.0",
     "firebase": "^10.1.0",
     "keycloak-js": "^24.0.3",
     "leaflet": "^1.7.1",
