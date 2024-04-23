@@ -10,8 +10,9 @@
     "test": "vitest",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "convert-to-js": "./scripts/convert-to-js.sh",
-    "convert-to-js-pc": ".\\scripts\\convert-to-js-pc.sh",
-    "convert-back": "./scripts/convert-back.sh"
+    "convert-to-js-pc": ".\\scripts\\convert-to-js-pc.bat",
+    "convert-back": "./scripts/convert-back.sh",
+    "convert-back-pc": ".\\scripts\\convert-back-pc.bat"
   },
   "dependencies": {
     "@arcgis/core": "^4.25.3",
