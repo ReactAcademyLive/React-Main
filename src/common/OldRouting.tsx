@@ -38,13 +38,13 @@ import RedditClassicNoThunk from '../reddit/classic/no-thunk';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/clock/Clock';
 // import SignUp from '../keycloak/SignUp';
-import SignIn from '../keycloak/SignIn';
+import SignIn from '../security/keycloak/SignIn';
 // import Profile from '../keycloak/Profile';
 // import PasswordReset from '../keycloak/PasswordReset';
-import SignOff from '../keycloak/SignOff';
-import ApiCalls from '../keycloak/ApiCalls';
-import ManageAccount from '../keycloak/ManageAccount';
-import Secret from '../keycloak/Secret';
+import SignOff from '../security/keycloak/SignOff';
+import ApiCalls from '../security/keycloak/ApiCalls';
+import ManageAccount from '../security/keycloak/ManageAccount';
+import Secret from '../security/keycloak/Secret';
 
 import About from '../basics/list';
 //const About = React.lazy(() => import('../basics/list'));

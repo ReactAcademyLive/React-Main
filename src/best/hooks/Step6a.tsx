@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { MouseEvent, useState } from 'react';
 import { DisplayMouseState } from '../classes/MouseState';
 //import Cat from '../Cat';
@@ -14,7 +13,7 @@ export default function ParentRoot() {
 
 function useMouse(): [
   DisplayMouseState,
-  (evt: MouseEvent<HTMLDivElement>) => void
+  (evt: MouseEvent<HTMLDivElement>) => void,
 ] {
   const [mouse, setMouse] = useState<DisplayMouseState>({ x: 0, y: 0 });
 

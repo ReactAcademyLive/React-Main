@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars,no-eval */
-import { ChangeEvent, ChangeEventHandler, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { ChangeEvent, useState } from 'react';
 import BlueBox from './L2Left-BlueBox';
 import GreyBox from './L2Right-GreyBox';
 import { Row, Col } from 'react-bootstrap';

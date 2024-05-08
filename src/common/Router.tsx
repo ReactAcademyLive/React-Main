@@ -48,17 +48,26 @@ import RedditThunk from '../reddit/toolkit/thunk';
 import RedditClassicNoThunk from '../reddit/classic/no-thunk';
 import RedditClassicThunk from '../reddit/classic/thunk';
 import Clock from '../perf/clock/Clock';
-import SignUp from '../keycloak/SignUp';
-import SignIn from '../keycloak/SignIn';
-import PasswordReset from '../keycloak/PasswordReset';
-// import Profile from '../keycloak/Profile';
-import SignOff from '../keycloak/SignOff';
-import ApiCalls from '../keycloak/ApiCalls';
-import ManageAccount from '../keycloak/ManageAccount';
-import Secret from '../keycloak/Secret';
+import SignUp from '../security/keycloak/SignUp';
+import SignIn from '../security/keycloak/SignIn';
+import PasswordReset from '../security/keycloak/PasswordReset';
+import SignOff from '../security/keycloak/SignOff';
+import ApiCalls from '../security/keycloak/ApiCalls';
+import ManageAccount from '../security/keycloak/ManageAccount';
+import Secret from '../security/keycloak/Secret';
 import ProtectedRoute from './ProtectedRoute';
-import TokenDetails from '../keycloak/TokenDetails';
+import TokenDetails from '../security/keycloak/TokenDetails';
 import { lazy } from 'react';
+import Profile from '../security/msal/Profile';
+import MsalSignUp from '../security/msal/SignUp';
+import MsalSignIn from '../security/msal/SignIn';
+//import MsalPasswordReset from '../security/msal/PasswordReset';
+import MsalSignOff from '../security/msal/SignOff';
+//import MsalApiCalls from '../security/msal/ApiCalls';
+//import MsalManageAccount from '../security/msal/ManageAccount';
+//import MsalSecret from '../security/msal/Secret';
+//import MsalTokenDetails from '../security/msal/TokenDetails';
+//import Profile from '../security/msal/Profile';
 
 //import MapWithPins from '../data/maps/MapWithPins';
 // eslint-disable-next-line react-refresh/only-export-components
@@ -69,7 +78,11 @@ const routes = createBrowserRouter([
     path: '/',
     element: <Root />,
     children: [
-      { index: true, element: <Home /> },
+      {
+        index: true,
+        element: <Home />,
+        handle: { title: 'Home', advanced: false },
+      },
       {
         path: 'hello',
         children: [
@@ -79,42 +92,122 @@ const routes = createBrowserRouter([
       },
       {
         path: 'basics',
+        handle: { dropMenu: 'Basics', advanced: false },
         children: [
-          { path: 'list', element: <BasicList /> },
-          { path: 'lifecycle', element: <Lifecycle /> },
-          { path: 'myform', element: <MyForm /> },
-          { path: 'reference', element: <WithRef /> },
-          { path: 'rendering', element: <Rendering /> },
+          {
+            path: 'list',
+            element: <BasicList />,
+            handle: { title: 'Display List' },
+          },
+          {
+            path: 'lifecycle',
+            element: <Lifecycle />,
+            handle: { title: 'Hooks Lifecycle' },
+          },
+
+          {
+            path: 'reference',
+            element: <WithRef />,
+            handle: { title: 'Using References' },
+          },
+          {
+            path: 'myform',
+            element: <MyForm />,
+            handle: { title: 'Form Validation' },
+          },
+          {
+            path: 'rendering',
+            element: <Rendering />,
+            handle: { title: 'Rendering' },
+          },
         ],
       },
       {
         path: 'counter',
+        handle: { dropMenu: 'Counter', advanced: false },
         children: [
-          { path: 'classes', element: <ClassesCounter init={5} /> },
-          { path: 'hooks-v1', element: <HooksCounterV1 init={5} /> },
-          { path: 'hooks-v2', element: <HooksCounterV2 init={5} /> },
-          { path: 'hooks-v3', element: <HooksCounterV3 init={5} /> },
+          {
+            path: 'hooks-v1',
+            element: <HooksCounterV1 init={5} />,
+            handle: { title: 'Simple Counter Without Save' },
+          },
+          {
+            path: 'hooks-v2',
+            element: <HooksCounterV2 init={5} />,
+            handle: { title: 'Saving to Local Storage' },
+          },
+          {
+            path: 'hooks-v3',
+            element: <HooksCounterV3 init={5} />,
+            handle: { title: 'Saving with Custom Hooks' },
+          },
+          { path: 'divider1', element: <></> },
+          {
+            path: 'classes',
+            element: <ClassesCounter init={5} />,
+            handle: { title: 'Counter Class (legacy)' },
+          },
         ],
       },
       {
         path: 'data',
+        handle: { dropMenu: 'Data', advanced: false },
         children: [
-          { path: 'covid', element: <Covid /> },
-          { path: 'videos', element: <Videos /> },
           {
-            path: 'contacts-data-router',
-            loader: contactsLoader,
-            action: contactsAction,
-            element: <ContactsRouterData />,
+            path: 'heading1',
+            element: <></>,
+            handle: { title: 'Effect Hooks' },
           },
-          { path: 'contacts', element: <ContactsHooks /> },
-          { path: 'contacts-classes', element: <ContactsClass /> },
+          {
+            path: 'covid',
+            element: <Covid />,
+            handle: { title: 'Covid' },
+          },
+          {
+            path: 'videos',
+            element: <Videos />,
+            handle: { title: 'Videos' },
+          },
+          {
+            path: 'map',
+            element: <MapWithPins />,
+            handle: { title: 'Map with Pins' },
+          },
+          {
+            path: 'election',
+            element: <ElectionResult />,
+            handle: { title: 'Election Results (Context Provider)' },
+          },
+
+          {
+            path: 'contacts',
+            element: <ContactsHooks />,
+            handle: { title: 'Contacts' },
+          },
           {
             path: 'details',
             children: [
               { index: true, element: <ContactDetails /> },
               { path: ':id', element: <ContactDetails /> },
             ],
+          },
+          {
+            path: 'heading2',
+            element: <></>,
+            handle: { title: 'Use Hooks (new)' },
+          },
+
+          {
+            path: 'heading3',
+            element: <></>,
+            handle: { title: 'Data Router' },
+          },
+          {
+            path: 'contacts-data-router',
+            loader: contactsLoader,
+            action: contactsAction,
+            element: <ContactsRouterData />,
+            handle: { title: 'Contacts' },
           },
           {
             path: 'details-data-router',
@@ -133,63 +226,179 @@ const routes = createBrowserRouter([
               },
             ],
           },
-
-          { path: 'map', element: <MapWithPins /> },
-          { path: 'election', element: <ElectionResult /> },
+          {
+            path: 'heading4',
+            element: <></>,
+            handle: { title: 'Legacy (classes)' },
+          },
+          {
+            path: 'contacts-classes',
+            element: <ContactsClass />,
+            handle: { title: 'Contacts' },
+          },
+        ],
+      },
+      {
+        path: 'context',
+        handle: { dropMenu: 'Context', advanced: false },
+        children: [
+          {
+            path: 'PropDrill',
+            element: <ContextDrill />,
+            handle: { title: 'Property Drilling' },
+          },
+          {
+            path: 'WithContext',
+            element: <ContextWith />,
+            handle: { title: 'Context' },
+          },
+          {
+            path: 'containment',
+            element: <ContextContainment />,
+            handle: { title: 'Containment' },
+          },
+        ],
+      },
+      {
+        path: 'best',
+        handle: { dropMenu: 'React Patterns', advanced: true },
+        children: [
+          {
+            path: 'step1',
+            element: <Step1 />,
+            handle: { title: 'Single Component' },
+          },
+          {
+            path: 'step2',
+            element: <Step2 />,
+            handle: { title: 'Split Components' },
+          },
+          {
+            path: 'step3',
+            element: <Step3 />,
+            handle: { title: 'Containment with children (2014)' },
+          },
+          {
+            path: 'step4',
+            element: <Step4 />,
+            handle: { title: 'Higher-Order Component (2015)' },
+          },
+          {
+            path: 'step5',
+            element: <Step5 />,
+            handle: { title: 'Render Props (2016' },
+          },
+          {
+            path: 'step6',
+            element: <Step6 />,
+            handle: { title: 'Custom Hooks (2019)' },
+          },
         ],
       },
       {
         path: 'todos',
+        handle: { dropMenu: 'Todos', advanced: true },
         children: [
-          { path: 'ClassicState', element: <TodosClassic /> },
-          { path: 'ContextHooks', element: <TodosContextHooks /> },
-          { path: 'ReduxClassic', element: <TodosReduxClassic /> },
-          { path: 'ReduxHooks', element: <TodosReduxHooks /> },
-          { path: 'ToolkitClassic', element: <TodosToolkitClassic /> },
-          { path: 'ToolkitHooks', element: <ToolkitHooks /> },
+          {
+            path: 'heading1',
+            element: <></>,
+            handle: { title: 'Current ways' },
+          },
+          {
+            path: 'ClassicState',
+            element: <TodosClassic />,
+            handle: { title: 'Classic State' },
+          },
+          {
+            path: 'ContextHooks',
+            element: <TodosContextHooks />,
+            handle: { title: 'Context and Reducer' },
+          },
+
+          {
+            path: 'ToolkitHooks',
+            element: <ToolkitHooks />,
+            handle: { title: 'Redux Toolkit' },
+          },
+          {
+            path: 'heading2',
+            element: <></>,
+            handle: { title: 'Legacy' },
+          },
+          {
+            path: 'ReduxClassic',
+            element: <TodosReduxClassic />,
+            handle: { title: 'Redux Connect' },
+          },
+          {
+            path: 'ReduxHooks',
+            element: <TodosReduxHooks />,
+            handle: { title: 'Redux Hooks' },
+          },
+          {
+            path: 'ToolkitClassic',
+            element: <TodosToolkitClassic />,
+            handle: { title: 'Redux Tookit Connect' },
+          },
         ],
       },
       {
         path: 'reddit',
+        handle: { dropMenu: 'Reddit', advanced: true },
         children: [
-          { path: 'toolkitNoThunk', element: <RedditNoThunk /> },
-          { path: 'toolkitThunk', element: <RedditThunk /> },
-          { path: 'classicNoThunk', element: <RedditClassicNoThunk /> },
-          { path: 'classicThunk', element: <RedditClassicThunk /> },
+          {
+            path: 'toolkitNoThunk',
+            element: <RedditNoThunk />,
+            handle: { title: 'ReduxToolkit - No Thunk' },
+          },
+          {
+            path: 'toolkitThunk',
+            element: <RedditThunk />,
+            handle: { title: 'ReduxToolkit - with Thunk' },
+          },
+          {
+            path: 'classicNoThunk',
+            element: <RedditClassicNoThunk />,
+            handle: { title: 'Classic Redux - No Thunk' },
+          },
+          {
+            path: 'classicThunk',
+            element: <RedditClassicThunk />,
+            handle: { title: 'Classic Redux - with Thunk' },
+          },
         ],
       },
       {
         path: 'perf',
-        children: [{ path: 'clock', element: <Clock /> }],
-      },
-      {
-        path: 'context',
+        handle: { dropMenu: 'Performance', advanced: true },
         children: [
-          { path: 'PropDrill', element: <ContextDrill /> },
-          { path: 'WithContext', element: <ContextWith /> },
-          { path: 'containment', element: <ContextContainment /> },
+          { path: 'clock', element: <Clock />, handle: { title: 'Clock' } },
         ],
       },
 
       {
-        path: 'best',
-        children: [
-          { path: 'step1', element: <Step1 /> },
-          { path: 'step2', element: <Step2 /> },
-          { path: 'step3', element: <Step3 /> },
-          { path: 'step4', element: <Step4 /> },
-          { path: 'step5', element: <Step5 /> },
-          { path: 'step6', element: <Step6 /> },
-        ],
-      },
-      {
         path: 'auth',
+        handle: { dropMenu: 'Authentication', advanced: true },
         children: [
-          { path: 'signup', element: <SignUp /> },
-          { path: 'signin', element: <SignIn /> },
-          { path: 'profile', element: <NotFound /> },
-          { path: 'passwordreset', element: <PasswordReset /> },
-          { path: 'apicalls', element: <ApiCalls /> },
+          { path: 'heading1', element: <></>, handle: { title: 'Keycloak' } },
+
+          { path: 'signup', element: <SignUp />, handle: { title: 'Sign Up' } },
+          { path: 'signin', element: <SignIn />, handle: { title: 'Sign In' } },
+          {
+            path: 'profile2',
+            element: <NotFound />,
+            handle: { title: 'Profile' },
+          },
+          {
+            path: 'passwordreset',
+            element: <PasswordReset />,
+            handle: { title: 'Reset Password' },
+          },
+          {
+            path: 'apicalls',
+            element: <ApiCalls />,
+            handle: { title: 'Api Calls' },
+          },
           {
             path: 'secret',
             element: (
@@ -197,10 +406,44 @@ const routes = createBrowserRouter([
                 <Secret />
               </ProtectedRoute>
             ),
+            handle: { title: 'Secret Section' },
           },
-          { path: 'manageaccount', element: <ManageAccount /> },
-          { path: 'tokendetails', element: <TokenDetails /> },
-          { path: 'signoff', element: <SignOff /> },
+          {
+            path: 'manageaccount',
+            element: <ManageAccount />,
+            handle: { title: 'Manage Account' },
+          },
+          {
+            path: 'tokendetails',
+            element: <TokenDetails />,
+            handle: { title: 'ID Token Details' },
+          },
+          {
+            path: 'signoff',
+            element: <SignOff />,
+            handle: { title: 'Sign Off' },
+          },
+          { path: 'heading2', element: <></>, handle: { title: 'Msal' } },
+          {
+            path: 'msal/signup',
+            element: <MsalSignUp />,
+            handle: { title: 'SignUp' },
+          },
+          {
+            path: 'msal/signin',
+            element: <MsalSignIn />,
+            handle: { title: 'SignIn' },
+          },
+          {
+            path: 'msal/profile',
+            element: <Profile />,
+            handle: { title: 'Profile' },
+          },
+          {
+            path: 'msal/signoff',
+            element: <MsalSignOff />,
+            handle: { title: 'SignOff' },
+          },
         ],
       },
       { path: '*', element: <NotFound /> },

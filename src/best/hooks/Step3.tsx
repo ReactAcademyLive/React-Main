@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { MouseEvent, ReactElement, useState } from 'react';
 import { MouseProviderProps } from '../classes/MouseState';
 //import Cat from '../Cat';

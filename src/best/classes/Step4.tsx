@@ -8,7 +8,7 @@ export default ParentRoot;
 
 //This is a HOC, a higher-order component.
 function withMouse(WrappedComponent: ComponentType<DisplayMouseProps>) {
-  class WithMouse extends Component<{}, DisplayMouseState> {
+  class WithMouse extends Component<object, DisplayMouseState> {
     state = { x: 0, y: 0 };
 
     handleMouseMove = (evt: MouseEvent<HTMLDivElement>) => {
@@ -16,7 +16,7 @@ function withMouse(WrappedComponent: ComponentType<DisplayMouseProps>) {
     };
 
     public static displayName = `WithMouse(${getDisplayName(
-      WrappedComponent
+      WrappedComponent,
     )})`;
 
     render() {

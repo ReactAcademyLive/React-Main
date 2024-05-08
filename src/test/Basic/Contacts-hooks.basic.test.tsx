@@ -50,11 +50,10 @@ it('Can display fake data, second TD is Dan...', async () => {
     },
   ];
 
-  // @ts-ignore
   vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
     return Promise.resolve({
       json: () => Promise.resolve(fakeData),
-    });
+    } as Response);
   });
 
   await act(async () => {
@@ -63,6 +62,6 @@ it('Can display fake data, second TD is Dan...', async () => {
 
   expect(document.querySelectorAll('td')[1].textContent).toBe('Dan');
 
-  // @ts-ignore
+  // @ts-expect-error this is how spy works
   globalThis.fetch.mockRestore();
 });

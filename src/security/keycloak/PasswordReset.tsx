@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useAuth } from './KeycloakAuthProvider';
 
@@ -6,7 +5,7 @@ export default function Signup() {
   const auth = useAuth();
 
   function resetBtn() {
-    auth.login({ action: 'UPDATE_PASSWORD' });
+    if (auth?.login) auth.login({ action: 'UPDATE_PASSWORD' });
   }
 
   return (

@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form, Alert } from 'react-bootstrap';
-import { AuthContext } from '../firebase/AuthProvider.Firebase';
+import { AuthContext } from './AuthProvider.Firebase';
 
 const SignUp = ({ history }) => {
   const [email, setEmail] = useState('');
@@ -14,13 +14,13 @@ const SignUp = ({ history }) => {
     event,
     email,
     password,
-    displayName
+    displayName,
   ) => {
     event.preventDefault();
     try {
       const { user } = await auth.auth.createUserWithEmailAndPassword(
         email,
-        password
+        password,
       );
 
       const result = await fetch('https://randomuser.me/api/', {
@@ -87,7 +87,7 @@ const SignUp = ({ history }) => {
             onChange={(event) => onChangeHandler(event)}
           />
           <label htmlFor='userPassword'>Password:</label>
-          <Input
+          <Form.Control
             type='password'
             className='mb-4'
             name='userPassword'
@@ -103,7 +103,7 @@ const SignUp = ({ history }) => {
                 event,
                 email,
                 password,
-                displayName
+                displayName,
               );
             }}
           >

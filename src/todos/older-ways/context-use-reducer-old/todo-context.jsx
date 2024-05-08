@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default React.createContext({ todos: [] });
+const TodoContext = React.createContext({ todos: [] });
+
+export default TodoContext;

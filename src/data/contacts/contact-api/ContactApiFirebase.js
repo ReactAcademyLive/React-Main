@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import './ContactTypes';
 import { firestore as db } from '../../../firebase/firebase';
 
@@ -66,13 +67,13 @@ export default class ContactApi {
     const minContactLength = 3;
     if (contact.firstName.length < minContactLength) {
       throw new Error(
-        `First Name must be at least ${minContactLength} characters.`
+        `First Name must be at least ${minContactLength} characters.`,
       );
     }
 
     if (contact.lastName.length < minContactLength) {
       throw new Error(
-        `Last Name must be at least ${minContactLength} characters.`
+        `Last Name must be at least ${minContactLength} characters.`,
       );
     }
 

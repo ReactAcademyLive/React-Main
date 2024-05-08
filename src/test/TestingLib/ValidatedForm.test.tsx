@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import MyForm from '../../basics/forms/ValidatedForm';
-import { beforeEach, it, expect, vi } from 'vitest';
+import { beforeEach, it, expect, vi, describe } from 'vitest';
 //import { EmailAuthCredential } from 'firebase/auth';
 
 const mockLogin = vi.fn((email, password) => {
@@ -40,10 +41,10 @@ describe('LoginForm', () => {
     expect(mockLogin).not.toBeCalled();
     expect(
       (screen.getByRole('textbox', { name: /email/i }) as HTMLInputElement)
-        .value
+        .value,
     ).toBe('test');
     expect((screen.getByLabelText('Password') as HTMLInputElement).value).toBe(
-      'password'
+      'password',
     );
   });
 
@@ -66,10 +67,10 @@ describe('LoginForm', () => {
     expect(mockLogin).not.toBeCalled();
     expect(
       (screen.getByRole('textbox', { name: /email/i }) as HTMLInputElement)
-        .value
+        .value,
     ).toBe('test@mail.com');
     expect((screen.getByLabelText('Password') as HTMLInputElement).value).toBe(
-      'pass'
+      'pass',
     );
   });
 
@@ -91,13 +92,13 @@ describe('LoginForm', () => {
     await waitFor(() =>
       expect(
         (screen.getByRole('textbox', { name: /email/i }) as HTMLInputElement)
-          .value
-      ).toBe('')
+          .value,
+      ).toBe(''),
     );
     expect(mockLogin).toBeCalledWith('test@mail.com', 'password');
     expect(screen.queryAllByRole('alert')).toHaveLength(0);
     expect((screen.getByLabelText('Password') as HTMLInputElement).value).toBe(
-      ''
+      '',
     );
   });
 });

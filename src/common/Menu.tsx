@@ -1,17 +1,10 @@
-import {
-  Container,
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormCheck,
-} from 'react-bootstrap';
+import { Container, Navbar, Form, FormCheck, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import DarkModeMenu from './DarkModeMenu';
-import NavDrop from './NavDrop';
 import logo from './logo.svg';
 import { LocalTheme } from './ThemeProvider';
 import { useState } from 'react';
+import GeneratedMenuItems from './GeneratedMenuItems';
 
 export default function Menu() {
   const [menuMode, setMenuMode] = useState<string>('basic');
@@ -24,12 +17,14 @@ export default function Menu() {
               <img src={logo} height='40' alt='Logo' />
               React Academy
             </Navbar.Brand>
-            <Navbar.Toggle />
-            <Navbar.Collapse>
-              <Nav>
-                {menuMode === 'basic' ? (
+            <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            <Navbar.Collapse id='basic-navbar-nav'>
+              <Nav className='me-auto'>
+                <GeneratedMenuItems
+                  advanced={menuMode == 'advanced'}
+                ></GeneratedMenuItems>
+                {/* {menuMode === 'basics' ? (
                   <>
-                    {' '}
                     <Nav.Item>
                       <Nav.Link as={NavLink} to='/' end>
                         Home
@@ -273,49 +268,49 @@ export default function Menu() {
                       </NavDropdown.Item>
                     </NavDrop>
                   </>
-                )}
-
-                <DarkModeMenu />
-                <Form
-                  onChange={(evt) => {
-                    const formData = new FormData(evt.currentTarget);
-                    setMenuMode(formData.get('menuMode') as string);
-                  }}
-                >
-                  <FormCheck.Input
-                    type='radio'
-                    id='basicMode'
-                    bsPrefix='btn-check'
-                    name='menuMode'
-                    value='basic'
-                    onChange={() => {}}
-                    checked={menuMode === 'basic'}
-                  />
-                  <FormCheck.Label
-                    htmlFor='basicMode'
-                    bsPrefix='btn'
-                    className='btn-outline-success btn-small me-3'
-                  >
-                    Fundamentals
-                  </FormCheck.Label>
-                  <FormCheck.Input
-                    type='radio'
-                    id='advancedMode'
-                    bsPrefix='btn-check'
-                    name='menuMode'
-                    value='advanced'
-                    onChange={() => {}}
-                    checked={menuMode === 'advanced'}
-                  />
-                  <FormCheck.Label
-                    htmlFor='advancedMode'
-                    bsPrefix='btn '
-                    className='btn-outline-danger btn-small'
-                  >
-                    Advanced
-                  </FormCheck.Label>
-                </Form>
+                )} */}
               </Nav>
+              <DarkModeMenu />
+              <Form
+                onChange={(evt) => {
+                  const formData = new FormData(evt.currentTarget);
+                  setMenuMode(formData.get('menuMode') as string);
+                }}
+                className='ms-2'
+              >
+                <FormCheck.Input
+                  type='radio'
+                  id='basicMode'
+                  bsPrefix='btn-check'
+                  name='menuMode'
+                  value='basic'
+                  onChange={() => {}}
+                  checked={menuMode === 'basic'}
+                />
+                <FormCheck.Label
+                  htmlFor='basicMode'
+                  bsPrefix='btn'
+                  className='btn-outline-success btn-small me-1'
+                >
+                  Fundamentals
+                </FormCheck.Label>
+                <FormCheck.Input
+                  type='radio'
+                  id='advancedMode'
+                  bsPrefix='btn-check'
+                  name='menuMode'
+                  value='advanced'
+                  onChange={() => {}}
+                  checked={menuMode === 'advanced'}
+                />
+                <FormCheck.Label
+                  htmlFor='advancedMode'
+                  bsPrefix='btn '
+                  className='btn-outline-danger btn-small'
+                >
+                  Advanced
+                </FormCheck.Label>
+              </Form>
             </Navbar.Collapse>
           </Container>
         </Navbar>

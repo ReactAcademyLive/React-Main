@@ -6,7 +6,7 @@ export default function ParentRoot() {
   return <DisplayMouse />;
 }
 
-class DisplayMouse extends React.Component<{}, DisplayMouseState> {
+class DisplayMouse extends React.Component<object, DisplayMouseState> {
   state = { x: 0, y: 0 };
 
   handleMouseMove = (evt: MouseEvent<HTMLDivElement>) => {

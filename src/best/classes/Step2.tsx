@@ -6,7 +6,7 @@ export default function ParentRoot() {
   return <MouseProvider />;
 }
 
-class MouseProvider extends Component<{}, DisplayMouseState> {
+class MouseProvider extends Component<object, DisplayMouseState> {
   state = { x: 0, y: 0 };
 
   handleMouseMove = (evt: MouseEvent<HTMLDivElement>) => {

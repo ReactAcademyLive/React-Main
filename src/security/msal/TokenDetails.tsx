@@ -1,16 +1,16 @@
 import { Table } from 'react-bootstrap';
-import { useAuth } from './KeycloakAuthProvider';
+import { useMsal } from '@azure/msal-react';
 
 function TokenDetails() {
-  const auth = useAuth();
-  const myIDToken = auth.idTokenParsed;
-  const myAccessToken = auth.tokenParsed;
+  const msal = useMsal();
+  const myIDToken = msal.instance.getActiveAccount()?.idTokenClaims;
+  const myAccessToken = msal.instance.getActiveAccount()?.idTokenClaims;
 
   return (
     <>
       <h2>ID Token Details</h2>
       {myIDToken ? (
-        <Table bordered hover dark>
+        <Table bordered hover variant='dark'>
           <tbody>
             {Object.keys(myIDToken).map((key) => {
               return (
@@ -18,7 +18,11 @@ function TokenDetails() {
                   <td>
                     <b>{key}</b>
                   </td>
-                  <td>{myIDToken[key]}</td>
+                  <td>
+                    {typeof myIDToken[key] === 'object'
+                      ? JSON.stringify(myIDToken[key])
+                      : (myIDToken[key] as string)}
+                  </td>
                 </tr>
               );
             })}
@@ -29,7 +33,7 @@ function TokenDetails() {
       )}
       <h2>Access Token Details</h2>
       {myAccessToken ? (
-        <Table bordered hover dark>
+        <Table bordered hover variant='dark'>
           <tbody>
             {Object.keys(myAccessToken).map((key) => {
               return (
@@ -40,7 +44,7 @@ function TokenDetails() {
                   <td>
                     {typeof myAccessToken[key] === 'object'
                       ? JSON.stringify(myAccessToken[key])
-                      : myAccessToken[key]}
+                      : (myAccessToken[key] as string)}
                   </td>
                 </tr>
               );

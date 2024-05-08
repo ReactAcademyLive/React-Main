@@ -6,7 +6,7 @@ export default function AddTodo() {
   const context = React.useContext(TodoContext);
   const { onAddTodo } = context;
 
-  let inputText = React.createRef();
+  const inputText = React.createRef();
   return (
     <div>
       <Form

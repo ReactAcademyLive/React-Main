@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { ComponentType } from '@react-spring/web';
-import React, { MouseEvent, useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { DisplayMouseProps } from '../classes/MouseState';
 //import Cat from '../Cat';
 //import withCat from '../with-cat';

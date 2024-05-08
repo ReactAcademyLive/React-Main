@@ -22,7 +22,7 @@ import initialTodos from '../../common/initial-todos';
 export default function Todos() {
   const [todos, dispatch] = useReducer(reducer, initialTodos);
   const [visibilityFilter, setVisibilityFilter] = useState(
-    VisibilityFilters.SHOW_ALL
+    VisibilityFilters.SHOW_ALL,
   );
 
   return (
@@ -31,7 +31,7 @@ export default function Todos() {
         todos: todos,
         onAddTodo: (text) => dispatch(addTodo(text)),
         onToggleTodo: (id) => dispatch(toggleTodo(id)),
-        onDeleteTodo: (id) => null,
+        onDeleteTodo: (id) => alert(`To be programmed to delete ${id}`),
         visibilityFilter: visibilityFilter,
         onChangeFilter: setVisibilityFilter,
       }}

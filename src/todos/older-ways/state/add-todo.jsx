@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 
 export default function AddTodo({ onAddTodo }) {
-  let inputText = React.createRef();
+  const inputText = React.createRef();
   return (
     <div>
       <Form

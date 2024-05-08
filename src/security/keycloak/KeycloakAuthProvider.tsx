@@ -7,7 +7,13 @@ import {
   useRef,
   ReactNode,
 } from 'react';
-import Keycloak, { KeycloakProfile, KeycloakTokenParsed } from 'keycloak-js';
+import Keycloak, {
+  KeycloakLoginOptions,
+  KeycloakLogoutOptions,
+  KeycloakProfile,
+  KeycloakRegisterOptions,
+  KeycloakTokenParsed,
+} from 'keycloak-js';
 
 export const AuthContext = createContext<AuthContextType>({});
 
@@ -17,9 +23,9 @@ interface AuthContextType {
   profile?: KeycloakProfile;
   token?: string;
   tokenParsed?: KeycloakTokenParsed;
-  login?: () => void;
-  logout?: () => void;
-  register?: () => void;
+  login?: (options?: KeycloakLoginOptions) => Promise<void>;
+  logout?: (options?: KeycloakLogoutOptions) => Promise<void>;
+  register?: (options?: KeycloakRegisterOptions) => Promise<void>;
   updateToken?: (minValidity: number) => Promise<boolean>;
   keycloak?: Keycloak;
 }

@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@arcgis/core": "^4.25.3",
+    "@azure/msal-browser": "^3.13.0",
+    "@azure/msal-react": "^2.0.15",
     "@popperjs/core": "^2.11.6",
     "@react-spring/web": "^9.5.5",
     "@redux-devtools/extension": "^3.2.3",

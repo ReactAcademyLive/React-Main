@@ -1,33 +1,32 @@
 import { Button } from 'react-bootstrap';
-import { useAuth } from './KeycloakAuthProvider';
-import axios from 'axios';
+import { useMsalAuthentication } from '@azure/msal-react';
+import axios, { AxiosError } from 'axios';
+import { InteractionType } from '@azure/msal-browser';
 
 function ApiCalls() {
-  const auth = useAuth();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, error, acquireToken } = useMsalAuthentication(
+    InteractionType.Redirect,
+  );
 
-  async function callApi(url) {
+  async function callApi(url: string) {
     try {
-      let refreshed = false;
-      if (auth?.token) {
-        refreshed = await auth?.updateToken(5);
-      }
-
-      const result = await axios.get(
-        `https://secure-api-kc.azurewebsites.net/api/${url}`,
+      const r = await axios.get(
+        `https://securefunction456.azurewebsites.net/api/${url}`,
         {
-          headers: auth?.token
+          headers: result?.accessToken
             ? {
-                Authorization: `Bearer ${
-                  refreshed ? auth.keycloak.token : auth.token
-                }`,
+                Authorization: `Bearer ${result?.accessToken}`,
               }
-            : null,
-        }
+            : {},
+        },
       );
 
-      alert(result.data);
+      alert(r.data);
     } catch (err) {
-      alert("You don't have the permission! " + err.response.status);
+      if (err instanceof AxiosError) {
+        alert('Http Error ' + (err.response?.status || 503));
+      }
     }
   }
 

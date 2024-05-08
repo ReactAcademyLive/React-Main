@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useAuth } from '../keycloak/KeycloakAuthProvider';
+import { useAuth } from '../security/keycloak/KeycloakAuthProvider';
 
 interface ProtectedRouteProps {
   children: ReactNode;

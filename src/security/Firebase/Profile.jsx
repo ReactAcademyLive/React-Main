@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../firebase/AuthProvider.Firebase';
+import { useContext } from 'react';
+import { AuthContext } from './AuthProvider.Firebase';
 import { Button } from 'react-bootstrap';
 
 const ProfilePage = () => {
-  let auth = useContext(AuthContext);
-  let user = auth.user ?? { displayName: 'Not logged' };
+  const auth = useContext(AuthContext);
+  const user = auth.user ?? { displayName: 'Not logged' };
 
   const { photoURL, displayName, email } = user;
 

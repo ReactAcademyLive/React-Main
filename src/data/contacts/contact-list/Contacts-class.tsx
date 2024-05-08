@@ -24,7 +24,6 @@ export default class Contacts extends React.Component<
   // }
 
   // This is the old way of calling data
-  // eslint-disable-next-line
   refreshDataPromise() {
     ContactApi.getAllContacts()
       .then((data) => {

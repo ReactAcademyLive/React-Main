@@ -1,12 +1,11 @@
-import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useAuth } from './KeycloakAuthProvider';
 
-export default function Signin() {
+export default function SignOff() {
   const auth = useAuth();
 
   function logoutBtn() {
-    auth.logout();
+    auth.logout!();
   }
 
   return auth?.token ? (

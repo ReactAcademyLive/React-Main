@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { AuthContext } from '../firebase/AuthProvider.Firebase';
+import { AuthContext } from './AuthProvider.Firebase';
 
 const SignIn = ({ history }) => {
   const [email, setEmail] = useState('');

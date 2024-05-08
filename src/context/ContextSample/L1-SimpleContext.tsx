@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars,no-eval  */
+/* eslint-disable @typescript-eslint/no-unused-vars  */
 import { ChangeEvent, useState } from 'react';
 import BlueBox from './L2Left-BlueBox';
 import GreyBoxes from './L2Right-GreyBoxes';

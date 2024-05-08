@@ -1,11 +1,12 @@
 import { NavDropdown } from 'react-bootstrap';
 import { useTheme, useThemeList } from './ThemeProvider';
 
-export default function DarkModeMenu() {
+export default function DarkModeMenu(props: object) {
   const [currentTheme, setTheme] = useTheme();
   const themeList = useThemeList();
   return (
     <NavDropdown
+      {...props}
       title={
         <>
           {

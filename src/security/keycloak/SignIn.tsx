@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useAuth } from './KeycloakAuthProvider';
 
@@ -6,15 +5,16 @@ export default function Signin() {
   const auth = useAuth();
 
   function loginBtn() {
-    auth.login();
+    auth.login!();
   }
 
   return auth?.token ? (
     <>
       <h1>
-        Welcome {auth.idTokenParsed.given_name} {auth.idTokenParsed.family_name}
+        Welcome {auth.idTokenParsed!.given_name}{' '}
+        {auth.idTokenParsed!.family_name}
       </h1>
-      <p>email : {auth.idTokenParsed.email}</p>
+      <p>email : {auth.idTokenParsed!.email}</p>
     </>
   ) : (
     <>

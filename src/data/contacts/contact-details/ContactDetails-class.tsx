@@ -4,20 +4,24 @@ import ContactForm from './ContactForm';
 import Contact from '../contact-api/ContactType';
 import { useNavigate, useParams } from 'react-router-dom';
 
+interface Params {
+  id: string;
+}
+
 interface ParamsProps {
-  params: { [key: string]: any };
+  params: Params;
   navigate: (to: string) => void;
 }
 
 //https://reactrouter.com/en/main/start/faq#what-happened-to-withrouter-i-need-it
-function withRouter(Component: ComponentType<ParamsProps>) {
+function withRouter2(Component: ComponentType<ParamsProps>) {
   function ComponentWithParams({ ...props }) {
-    let navigate = useNavigate();
-    let params = useParams();
+    const navigate = useNavigate();
+    const params = useParams();
     return (
       <Component
         {...props}
-        params={params as unknown as ParamsProps}
+        params={params as unknown as Params}
         navigate={navigate}
       />
     );
@@ -48,7 +52,7 @@ class ContactDetails extends React.Component<ParamsProps, ContactDetailsState> {
 
   async componentDidMount() {
     if (this.props.params.id) {
-      let contact = await ContactApi.getContact(this.props.params.id);
+      const contact = await ContactApi.getContact(this.props.params.id);
       this.setState(contact);
     }
   }
@@ -70,12 +74,12 @@ class ContactDetails extends React.Component<ParamsProps, ContactDetailsState> {
   change = (evt: ChangeEvent<HTMLInputElement>) => {
     this.setState(
       { [evt.target.name]: evt.target.value } as unknown as ContactDetailsState,
-      this.contactFormIsValid
+      this.contactFormIsValid,
     );
   };
 
   contactFormIsValid = () => {
-    let formErrors: FormErrors = {};
+    const formErrors: FormErrors = {};
 
     if (this.state.firstName.length < 3) {
       formErrors.firstName = `First name needs three letters or more (${this.state.firstName})`;
@@ -105,4 +109,6 @@ class ContactDetails extends React.Component<ParamsProps, ContactDetailsState> {
   );
 }
 
-export default withRouter(ContactDetails);
+const withRouter = withRouter2(ContactDetails);
+
+export default withRouter;
