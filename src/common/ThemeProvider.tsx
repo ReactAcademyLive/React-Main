@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   ReactNode,
+  ElementType,
 } from 'react';
 
 interface ThemeItem {
@@ -25,8 +26,9 @@ interface ThemeProviderProps {
 
 interface LocalThemeProps {
   theme: string;
-  as?: ReactNode;
+  as?: ElementType;
   children: ReactNode;
+  otherProps?: [];
 }
 
 const IS_SERVER: boolean = typeof window === 'undefined';
