@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import MyContext from './MyContext';
+import { PersonContext } from './PersonContext';
 
 export default function DisplayData() {
-  const ctx = useContext(MyContext);
+  const person = useContext(PersonContext);
   return (
-    <h1 style={{ color: ctx.color }}>
-      The name is {ctx.firstName} {ctx.lastName}
+    <h1 style={{ color: person.color }}>
+      The name is {person.firstName} {person.lastName}
     </h1>
   );
 }

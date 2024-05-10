@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from 'react';
 import BlueBox from './L2Left-BlueBox';
 import GreyBoxes from './L2Right-GreyBoxes';
 import { Row, Col } from 'react-bootstrap';
-import MyContext from './MyContext';
+import { PersonContext } from './PersonContext';
 
 export default function SimpleContext() {
   const [firstName, setFirstName] = useState<string>('John');
@@ -19,9 +19,9 @@ export default function SimpleContext() {
   }
 
   return (
-    <MyContext.Provider value={{ firstName, color, onChange: change }}>
+    <PersonContext.Provider value={{ firstName, color, onChange: change }}>
       <Content />
-    </MyContext.Provider>
+    </PersonContext.Provider>
   );
 }
 
