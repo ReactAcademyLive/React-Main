@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Home from '../../home/index';
-import { expect, vi } from 'vitest';
+import { expect, vi, test } from 'vitest';
 
 //Let's put the routing of /Dave, for the last test below.
 vi.mock('react-router-dom', () => ({

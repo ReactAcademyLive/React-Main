@@ -37,6 +37,7 @@ import Step3 from '../best/hooks/Step3';
 import Step4 from '../best/hooks/Step4';
 import Step5 from '../best/hooks/Step5';
 import Step6 from '../best/hooks/Step6';
+import Step7 from '../best/hooks/Step7';
 import TodosClassic from '../todos/classic-state/TodosContainer';
 import TodosContextHooks from '../todos/context-use-reducer/TodosContainer';
 import TodosReduxClassic from '../todos/older-ways/redux/classic/connect/todos';
@@ -286,12 +287,17 @@ const routes = createBrowserRouter([
           {
             path: 'step5',
             element: <Step5 />,
-            handle: { title: 'Render Props (2016' },
+            handle: { title: 'Render Props (2016)' },
           },
           {
             path: 'step6',
             element: <Step6 />,
             handle: { title: 'Custom Hooks (2019)' },
+          },
+          {
+            path: 'step7',
+            element: <Step7 />,
+            handle: { title: 'Provider Context (2022)' },
           },
         ],
       },

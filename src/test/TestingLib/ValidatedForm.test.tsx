@@ -8,6 +8,10 @@ const mockLogin = vi.fn((email, password) => {
   return Promise.resolve(true);
 });
 
+vi.spyOn(globalThis, 'alert').mockImplementation((msg) => {
+  return;
+});
+
 describe('LoginForm', () => {
   beforeEach(() => {
     render(<MyForm login={mockLogin} />);

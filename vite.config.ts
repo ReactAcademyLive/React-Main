@@ -11,7 +11,7 @@ import eslint from 'vite-plugin-eslint';
 export default defineConfig({
   build: {
     //increase the size of chunks from 500 to 1000
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 900,
     //the following will remove warnings for these files:
     //node_modules/js-sha256/src/sha256.js
     //src/context/PropDrilling/L1-SimpleState.jsx

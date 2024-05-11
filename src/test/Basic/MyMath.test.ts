@@ -1,4 +1,5 @@
 import MyMath from './MyMath';
+import { test, expect } from 'vitest';
 
 test('2+2=4', () => {
   const result = MyMath.add(2, 2);

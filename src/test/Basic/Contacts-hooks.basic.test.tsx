@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Root, createRoot } from 'react-dom/client';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 import Contacts from '../../data/contacts/contact-list/Contacts-hooks';
 import { beforeEach, afterEach, it, expect, vi } from 'vitest';
 import Contact from '../../data/contacts/contact-api/ContactType';

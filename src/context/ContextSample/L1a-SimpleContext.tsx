@@ -27,7 +27,7 @@ export default function SimpleContext() {
 
 //The following would prevent the content from re-rendering
 //when the props are the same (hint: here they are always the same)
-//let MemoContent = memo(Content);
+//const MemoContent = memo(Content);
 
 function Content() {
   //console.log('Rendering Content');

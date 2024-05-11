@@ -24,7 +24,7 @@ function myLogin(email: string, password: string) {
   return p;
 }
 
-export default function ValidatedForm({ login }: ValidatedFormProps) {
+export default function ValidatedForm({ login = myLogin }: ValidatedFormProps) {
   const {
     register,
     handleSubmit,
@@ -32,7 +32,6 @@ export default function ValidatedForm({ login }: ValidatedFormProps) {
     reset,
   } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
-    login = login ?? myLogin;
     const result = await login(data.email, data.password);
 
     if (result) {

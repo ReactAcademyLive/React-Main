@@ -1,12 +1,12 @@
 import { ContextType, useContext, Component } from 'react';
 import MyInputs from './MyInputs';
 import { PersonContext, Person } from './PersonContext';
-//import { usePerson} from  './PersonContext';
+//import { usePerson } from './PersonContext';
 
 //Hooks only work with functions
 export default function EditData() {
   const person = useContext(PersonContext);
-  //const Person = usePerson();
+  //const person = usePerson();
   return <MyInputs {...person} />;
 }
 

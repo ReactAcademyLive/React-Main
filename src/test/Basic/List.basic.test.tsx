@@ -1,6 +1,6 @@
 import { beforeEach, afterEach, it, expect } from 'vitest';
 import { Root, createRoot } from 'react-dom/client';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 import About from '../../basics/list/index';
 
 //This test is showing that:
