@@ -16,10 +16,12 @@ interface CounterProps {
 export default function Counter({ init }: CounterProps) {
   const [count, setCount] = useLocalStorage<number | null>(+init || 1, 'count');
 
+  //event handler when a button is clicked
   function increment(incr: number) {
     setCount((count ?? 0) + incr);
   }
 
+  //event handler when we type in the textbox
   function change(evt: ChangeEvent<HTMLInputElement>) {
     if (Number.isInteger(+evt.target.value)) {
       setCount(+evt.target.value);
@@ -40,6 +42,7 @@ export default function Counter({ init }: CounterProps) {
   );
 }
 
+//hook to save and load data in local storage
 function useLocalStorage<T>(
   initial: T,
   name: string,
@@ -63,6 +66,7 @@ function useLocalStorage<T>(
   return [state, setState];
 }
 
+//This custom hook returns true when it is the first render, false otherwise
 function useIsFirstRender() {
   const render = useRef(0);
   if (render.current === 0) {

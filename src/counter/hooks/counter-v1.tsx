@@ -10,10 +10,12 @@ interface CounterProps {
 export default function Counter({ init }: CounterProps) {
   const [count, setCount] = React.useState<number | null>(+init || 1);
 
+  //event handler when the button is clicked
   function increment(incr: number) {
     setCount((count ?? 0) + incr);
   }
 
+  //event handler when we type in the textbox
   function change(evt: ChangeEvent<HTMLInputElement>) {
     if (Number.isInteger(+evt.target.value)) {
       setCount(+evt.target.value);

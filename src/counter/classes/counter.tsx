@@ -10,6 +10,7 @@ interface CounterState {
   count: number;
 }
 
+//Old way of doing React.  AVOID in 2024.
 export default class Counter extends React.Component<
   CounterProps,
   CounterState
