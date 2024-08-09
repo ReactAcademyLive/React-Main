@@ -5,7 +5,6 @@ import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
-import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,7 +34,6 @@ export default defineConfig({
       filename: 'stats.html',
       template: 'sunburst',
     }),
-    eslint(),
   ],
   test: {
     globals: true,

@@ -19,6 +19,7 @@ export const msalConfig: Configuration = {
     redirectUri: '/auth/msal/signin',
     postLogoutRedirectUri: '/',
   },
+
   cache: {
     cacheLocation: 'localStorage',
     storeAuthStateInCookie: isIE || isEdge || isFirefox,
@@ -53,5 +54,8 @@ export const msalConfig: Configuration = {
 
 // Add here scopes for id token to be used at MS Identity Platform endpoints.
 export const loginRequest = {
-  scopes: ['User.Read'],
+  scopes: [
+    'User.Read',
+    'api://35c27401-c1e3-4c8f-837b-d568f9ad83fd/user_impersonation',
+  ],
 };

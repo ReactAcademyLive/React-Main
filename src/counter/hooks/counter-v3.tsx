@@ -55,7 +55,9 @@ function useLocalStorage<T>(
   }, [name]);
 
   useEffect(() => {
-    !isFirstRender && window.localStorage.setItem(name, JSON.stringify(state));
+    if (!isFirstRender) {
+      window.localStorage.setItem(name, JSON.stringify(state));
+    }
   }, [state, name, isFirstRender]);
 
   return [state, setState];

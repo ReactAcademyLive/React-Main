@@ -46,7 +46,6 @@ const postsSlice = createSlice({
       state[currentSubreddit].lastUpdated = action.payload.receivedAt;
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     builder.addCase(fetchPosts.rejected, (state, action) => {
       console.log('rejected');
       console.log(state['reactjs']);

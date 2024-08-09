@@ -14,7 +14,9 @@ export default function AddTodo() {
           if (!inputText.current?.value.trim()) {
             return;
           }
-          onAddTodo && onAddTodo(inputText.current.value);
+          if (onAddTodo) {
+            onAddTodo(inputText.current.value);
+          }
           inputText.current.value = '';
         }}
       >

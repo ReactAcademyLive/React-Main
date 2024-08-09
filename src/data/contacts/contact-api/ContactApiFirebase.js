@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import './ContactTypes';
 import { firestore as db } from '../../../firebase/firebase';
 

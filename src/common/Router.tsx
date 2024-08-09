@@ -64,7 +64,7 @@ import MsalSignUp from '../security/msal/SignUp';
 import MsalSignIn from '../security/msal/SignIn';
 //import MsalPasswordReset from '../security/msal/PasswordReset';
 import MsalSignOff from '../security/msal/SignOff';
-//import MsalApiCalls from '../security/msal/ApiCalls';
+import MsalApiCalls from '../security/msal/ApiCalls';
 //import MsalManageAccount from '../security/msal/ManageAccount';
 //import MsalSecret from '../security/msal/Secret';
 //import MsalTokenDetails from '../security/msal/TokenDetails';
@@ -444,6 +444,11 @@ const routes = createBrowserRouter([
             path: 'msal/profile',
             element: <Profile />,
             handle: { title: 'Profile' },
+          },
+          {
+            path: 'msal/apicalls',
+            element: <MsalApiCalls />,
+            handle: { title: 'Api Calls' },
           },
           {
             path: 'msal/signoff',

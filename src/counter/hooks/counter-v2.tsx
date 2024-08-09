@@ -19,8 +19,9 @@ export default function Counter({ init }: CounterProps) {
   }, []);
 
   React.useEffect(() => {
-    !isFirstRender &&
+    if (!isFirstRender) {
       window.localStorage.setItem('count', JSON.stringify(count));
+    }
   }, [count, isFirstRender]);
 
   function increment(incr: number) {
