@@ -68,7 +68,7 @@ function logThese(
   wrapper: string,
   description: string,
   state: number,
-  executionTime: string
+  executionTime: string,
 ) {
   logThis(wrapper);
   logThis(description);
@@ -108,7 +108,7 @@ export default function Lifecycle() {
   function handleClick(evt: MouseEvent<HTMLElement>) {
     logThis('👇🖱👇🖱');
     logThis(
-      `${evt.currentTarget.id} is clicked, this handle is from render ${state}`
+      `${evt.currentTarget.id} is clicked, this handle is from render ${state}`,
     );
     logThis(`setState is called with ${state} + 1 (state + 1) `);
     setState(state + 1);
@@ -122,14 +122,14 @@ export default function Lifecycle() {
       '⚡⚡⚡⚡',
       `This EFFECT is executed AFTER the first time we render (but only once).`,
       state,
-      executionTime
+      executionTime,
     );
     return () => {
       logThese(
         '⚰⚰⚰⚰',
         `This CLEANUP is executed AFTER we unmount (ex: when we go to another route)`,
         state,
-        executionTime
+        executionTime,
       );
     };
   }
@@ -140,14 +140,14 @@ export default function Lifecycle() {
       '⏳⏳⏳⏳',
       `This EFFECT is executed AFTER the render.`,
       state,
-      executionTime
+      executionTime,
     );
     return () => {
       logThese(
         '🧹🧹🧹🧹',
         `This CLEANUP is executed AFTER the render, just before the next effect.`,
         state,
-        executionTime
+        executionTime,
       );
     };
   }
@@ -158,14 +158,14 @@ export default function Lifecycle() {
       '⏳⏳⏳⏳',
       `This layout EFFECT is executed AFTER the render, but before the browser paints`,
       state,
-      executionTime
+      executionTime,
     );
     return () => {
       logThese(
         '🧹🧹🧹🧹',
         `This layout CLEANUP is executed AFTER the render, before the next Layout Effect and browser paint.`,
         state,
-        executionTime
+        executionTime,
       );
     };
   }
